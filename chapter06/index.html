@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>분류와 회귀, 학습 데이터와 테스트 데이터 | HYFL 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/chapter06/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><script type="module" src="/hyfl-ai-lab/mermaid-init.js"></script><script type="module" src="/hyfl-ai-lab/toc-toggle.js"></script><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.1"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="분류와 회귀, 학습 데이터와 테스트 데이터"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/chapter06/"/><meta property="og:locale" content="ko"/><meta property="og:description"/><meta property="og:site_name" content="HYFL 인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/hyfl-ai-lab/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/index.BhkyVLz7.css"><script type="module" src="/hyfl-ai-lab/_astro/page.B1D-nYk3.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">콘텐츠로 이동</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/hyfl-ai-lab/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> HYFL 인공지능 원리탐구 </span> </a>  </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;검색&#34;}"> <button data-open-modal disabled aria-label="검색" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">검색</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="검색" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> 취소 </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/hyfl-ai-lab/_astro/Search.astro_astro_type_script_index_0_lang.Dw5VCqWR.js"></script>   </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="메인"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="메뉴" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="0akvloa" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 0. OT. Welcome to HYFL AI Lab</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter01/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Welcome to HYFL AI Lab</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 1. Part 1. 인공지능의 이해와 원리</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter02/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI란 무엇인가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter03/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI는 어떻게 학습하고 판단하는가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter04/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI는 어떻게 지금의 생성형 AI까지 왔는가</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 2. Part 2. 머신러닝과 데이터 리터러시</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter05/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">머신러닝의 개념과 학습 원리</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter06/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">분류와 회귀, 학습 데이터와 테스트 데이터</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter07/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">모델의 성능과 오류 읽기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter08/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">데이터를 읽는 법: 패턴, 한계, 편향</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter09/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">데이터로 주장하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter10/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI의 데이터 분석 결과 검증하기</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 3. Project 1. Teachable Machine AI 웹앱 프로젝트</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter11/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">문제 정의와 데이터 수집</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter12/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Teachable Machine 모델 학습</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter13/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">테스트, 오분류 분석과 모델 개선</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter14/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">생성형 AI와 함께 웹앱 제작하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter15/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">GitHub 연결과 웹 배포</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter16/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">프로젝트 발표와 성찰</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 4. Part 3. 생성형 AI와 LLM</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter17/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">생성형 AI의 원리와 LLM</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter18/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI와 잘 협업하려면: 프롬프트, 컨텍스트 그리고 반복 개선</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter19/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">멀티모달 AI와 2026년 생성형 AI 흐름</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter20/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">할루시네이션, RAG와 AI 결과 검증</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 5. Part 4. AI Agent: 대답하는 AI에서 행동하는 AI로</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter21/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Chatbot과 Agent 비교하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter22/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Agent의 구조와 작동 원리</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter23/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Agent Workflow 직접 설계하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter24/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">간단한 Agent 제작 실습</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter25/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">실행 → 실패 분석 → 개선</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="6"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 6. Part 5. AI 시대의 윤리와 책임</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter26/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">데이터와 권리: 편향, 개인정보, 저작권</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter27/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">허위정보와 AI 의존: 딥페이크의 그림자</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter28/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI 판단의 책임과 코드·보안</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="7"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 7. Part 6. AI와 함께 만드는 프로그램: Vibe Coding</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter29/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">자연어로 문제와 요구사항 정의하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter30/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI와 함께 프로토타입 구현하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter31/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">실행 → 오류 발견 → 디버깅 → 반복 개선</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="8"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 8. Project 2. AI Problem Solving Challenge</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter32/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">문제 발견과 문제 정의: 왜 이 문제인가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter33/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">사용자·상황 조사와 데이터·근거 탐색: 어떤 근거를 찾았는가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter34/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">해결 아이디어와 AI 기술 선택: 왜 이 기술인가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter35/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">서비스 설계와 프로토타입 구현</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter36/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">테스트, 실패 분석과 개선: 무엇이 실패했고 어떻게 나아졌는가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter37/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI 윤리 검토, 최종 발표와 성찰: 이 서비스는 누구에게 어떤 영향을 주는가</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#이-챕터의-교과-결합" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">이 챕터의 교과 결합</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-생각-열기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🌱 생각 열기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#이-단원의-학습-목표" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">이 단원의 학습 목표</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#선수학습-확인" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">선수학습 확인</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-탐구-활동" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔬 탐구 활동</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#탐구-이-문제-이름표를-답하나-숫자를-답하나" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">탐구: 이 문제, 이름표를 답하나 숫자를 답하나?</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-핵심-개념" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📘 핵심 개념</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-1-분류와-회귀-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 1. 분류와 회귀 [인공지능]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-2-학습-데이터와-테스트-데이터-정보-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 2. 학습 데이터와 테스트 데이터 [정보] [인공지능]</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-교과-간-연결-다리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🌉 교과 간 연결 다리</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#다교과-관점-비교" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">다교과 관점 비교</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#가로지르는-질문" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">가로지르는 질문</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-읽을거리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📖 읽을거리</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#️-확인-문제" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">✏️ 확인 문제</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#기본-개념-확인" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">기본 (개념 확인)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#응용-적용" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">응용 (적용)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#심화-사고력서술형" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">심화 (사고력·서술형)</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-메타인지-성찰" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🧠 메타인지 성찰</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-산출물-평가-루브릭" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📊 산출물 평가 루브릭</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-단원-정리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📌 단원 정리</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#이-챕터의-교과-결합" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">이 챕터의 교과 결합</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-생각-열기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🌱 생각 열기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#이-단원의-학습-목표" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">이 단원의 학습 목표</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#선수학습-확인" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">선수학습 확인</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-탐구-활동" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔬 탐구 활동</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#탐구-이-문제-이름표를-답하나-숫자를-답하나" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">탐구: 이 문제, 이름표를 답하나 숫자를 답하나?</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-핵심-개념" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📘 핵심 개념</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-1-분류와-회귀-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 1. 분류와 회귀 [인공지능]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-2-학습-데이터와-테스트-데이터-정보-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 2. 학습 데이터와 테스트 데이터 [정보] [인공지능]</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-교과-간-연결-다리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🌉 교과 간 연결 다리</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#다교과-관점-비교" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">다교과 관점 비교</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#가로지르는-질문" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">가로지르는 질문</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-읽을거리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📖 읽을거리</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#️-확인-문제" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">✏️ 확인 문제</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#기본-개념-확인" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">기본 (개념 확인)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#응용-적용" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">응용 (적용)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#심화-사고력서술형" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">심화 (사고력·서술형)</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-메타인지-성찰" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🧠 메타인지 성찰</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-산출물-평가-루브릭" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📊 산출물 평가 루브릭</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-단원-정리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📌 단원 정리</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">분류와 회귀, 학습 데이터와 테스트 데이터</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p><strong>Part 2. 머신러닝과 데이터 리터러시 · 6/37차시</strong></p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="이-챕터의-교과-결합">이 챕터의 교과 결합</h2><a class="sl-anchor-link" href="#이-챕터의-교과-결합"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “이 챕터의 교과 결합”</span></a></div>
+<pre class="mermaid">mindmap
+  root((분류·회귀와&#x3C;br/>데이터 분할))
+    정보
+      데이터 전처리
+      데이터셋 분할
+      pandas 표 다루기
+    인공지능
+      지도학습 개념
+      분류와 회귀
+      과적합과 일반화
+    연결다리
+      "실생활 문제를&#x3C;br/>예측 유형으로 번역"
+      "데이터를 나눠&#x3C;br/>성능을 정직하게 측정"
+</pre>
+<p>이 챕터는 <strong>[정보]</strong>의 데이터 다루기 기능과 <strong>[인공지능]</strong>의 지도학습 개념을 결합합니다. 정보 교과가 “데이터를 표로 정리하고 나누는 손”이라면, 인공지능 교과는 “그 데이터로 무엇을 예측할지 정하는 눈”입니다. 오늘의 산출물은 실생활 문제를 예측 유형으로 분류한 표와, 데이터셋을 학습·테스트로 나눈 결과입니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-생각-열기">🌱 생각 열기</h2><a class="sl-anchor-link" href="#-생각-열기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🌱 생각 열기”</span></a></div>
+<p>여러분이 중고 거래 앱을 만든다고 상상해 봅시다. 두 가지 기능을 넣으려 합니다.</p>
+<ul>
+<li>기능 A: 사진을 올리면 “이 물건은 정품인가요, 가품인가요?”를 알려 줍니다.</li>
+<li>기능 B: 물건 정보를 입력하면 “이 물건은 얼마에 팔릴까요?”를 알려 줍니다.</li>
+</ul>
+<p>두 기능은 모두 AI가 예측을 해 줍니다. 그런데 <strong>답의 모양</strong>이 다릅니다. 하나는 “정품/가품” 같은 <strong>꼬리표</strong>를 답하고, 하나는 “34,000원” 같은 <strong>숫자</strong>를 답합니다.</p>
+<blockquote>
+<p>“예측이라고 다 같은 예측이 아닙니다.
+답이 ‘이름표’인지 ‘숫자’인지에 따라
+AI가 푸는 문제의 종류가 완전히 달라집니다.”</p>
+</blockquote>
+<p>또 한 가지 궁금증이 있습니다. AI가 “이 문제 다 맞혔어요!”라고 자랑할 때, 그 말을 그대로 믿어도 될까요? 시험 문제를 미리 보고 답을 외운 학생과, 처음 보는 문제를 푼 학생 중 누구를 더 믿어야 할까요?</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="이-단원의-학습-목표">이 단원의 학습 목표</h2><a class="sl-anchor-link" href="#이-단원의-학습-목표"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “이 단원의 학습 목표”</span></a></div>
+<ul>
+<li>분류 문제와 회귀 문제의 차이를 예시로 설명할 수 있다.</li>
+<li>학습 데이터와 테스트 데이터를 나누는 이유를 설명하고, 간단한 데이터셋을 직접 분할할 수 있다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="선수학습-확인">선수학습 확인</h2><a class="sl-anchor-link" href="#선수학습-확인"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선수학습 확인”</span></a></div>
+<ul>
+<li><strong>지도학습</strong> <code dir="auto">[인공지능]</code>: 정답(레이블)이 붙은 데이터로 AI를 훈련시키는 방법입니다. 4차시에서 배웠습니다.</li>
+<li><strong>특성과 레이블</strong> <code dir="auto">[정보]</code>: 입력으로 쓰는 열이 특성, 맞혀야 하는 답이 레이블입니다. 표에서 “입력 열”과 “정답 열”로 생각하면 됩니다.</li>
+<li><strong>데이터셋</strong> <code dir="auto">[정보]</code>: 여러 행(데이터 하나하나)과 열(특성)로 이루어진 표입니다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-탐구-활동">🔬 탐구 활동</h2><a class="sl-anchor-link" href="#-탐구-활동"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🔬 탐구 활동”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="탐구-이-문제-이름표를-답하나-숫자를-답하나">탐구: 이 문제, 이름표를 답하나 숫자를 답하나?</h3><a class="sl-anchor-link" href="#탐구-이-문제-이름표를-답하나-숫자를-답하나"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “탐구: 이 문제, 이름표를 답하나 숫자를 답하나?”</span></a></div>
+<ul>
+<li><strong>준비물</strong>: 활동지, 필기구, 포스트잇(선택)</li>
+<li><strong>소요 시간</strong>: 12분</li>
+</ul>
+<p><strong>과정</strong></p>
+<ol>
+<li>아래 6개의 실생활 예측 문제를 봅니다.</li>
+<li>각 문제의 <strong>답이 어떤 모양인지</strong> 짝과 이야기합니다. “이름표(범주)“인지 “숫자(연속값)“인지 판단합니다.</li>
+<li>판단 근거를 활동지에 한 줄씩 적습니다.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>번호</th><th>예측 문제</th><th>답의 예시</th><th>이름표 or 숫자?</th></tr></thead><tbody><tr><td>1</td><td>이메일이 스팸인가?</td><td>스팸 / 정상</td><td></td></tr><tr><td>2</td><td>내일 최고 기온은?</td><td>27.5도</td><td></td></tr><tr><td>3</td><td>이 사진 속 동물은?</td><td>개 / 고양이 / 토끼</td><td></td></tr><tr><td>4</td><td>이 집은 얼마에 팔릴까?</td><td>3억 2천만 원</td><td></td></tr><tr><td>5</td><td>이 리뷰는 긍정인가 부정인가?</td><td>긍정 / 부정</td><td></td></tr><tr><td>6</td><td>이 학생의 다음 시험 점수는?</td><td>84점</td><td></td></tr></tbody></table>
+<p><strong>결과 예측</strong></p>
+<blockquote>
+<p>“1, 3, 5번은 정해진 이름표 중에서 하나를 고르는 문제입니다.
+2, 4, 6번은 끝없이 이어지는 숫자 중 하나를 맞히는 문제입니다.
+두 무리로 자연스럽게 갈릴 것입니다.”</p>
+</blockquote>
+<p><strong>토의</strong></p>
+<ul>
+<li>“이름표를 답하는 문제와 숫자를 답하는 문제는 왜 다르게 다뤄야 할까요?”</li>
+<li>“3번처럼 답이 3개인 것도 이름표 무리에 넣을 수 있을까요? 왜 그럴까요?”</li>
+</ul>
+<p>탐구에서 확인한 두 무리가 바로 다음에 배울 <strong>분류</strong>와 <strong>회귀</strong>입니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-핵심-개념">📘 핵심 개념</h2><a class="sl-anchor-link" href="#-핵심-개념"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📘 핵심 개념”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-1-분류와-회귀-인공지능">개념 1. 분류와 회귀 <code dir="auto">[인공지능]</code></h3><a class="sl-anchor-link" href="#개념-1-분류와-회귀-인공지능"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 1. 분류와 회귀 [인공지능]”</span></a></div>
+<ul>
+<li>
+<p><strong>정의</strong>:</p>
+<ul>
+<li><strong>분류(Classification)</strong>: 답이 <strong>정해진 범주(이름표)</strong> 중 하나인 예측 문제입니다. 예) 스팸/정상, 개/고양이/토끼.</li>
+<li><strong>회귀(Regression)</strong>: 답이 <strong>연속된 숫자</strong>인 예측 문제입니다. 예) 기온, 집값, 시험 점수.</li>
+</ul>
+</li>
+<li>
+<p><strong>비유</strong>: 분류는 마치 <strong>서랍에 물건을 넣는 일</strong>과 같습니다. 서랍의 개수는 정해져 있고, 물건을 그중 한 칸에 넣습니다. 회귀는 마치 <strong>자로 길이를 재는 일</strong>과 같습니다. 눈금은 끊김 없이 이어지고, 그 위의 한 지점을 가리킵니다.</p>
+</li>
+</ul>
+<p>두 문제를 가르는 기준은 딱 하나, <strong>답의 모양</strong>입니다. 답이 셀 수 있는 이름표면 분류, 재야 하는 숫자면 회귀입니다.</p>
+<pre class="mermaid">flowchart TD
+  A["예측 문제"] --> B{"답이 어떤 모양?"}
+  B -->|"정해진 이름표 중 하나"| C["분류&#x3C;br/>예: 스팸/정상"]
+  B -->|"이어지는 숫자"| D["회귀&#x3C;br/>예: 집값 3.2억"]
+</pre>
+<p>[그림 6-1] 답의 모양에 따라 분류와 회귀로 갈립니다.</p>
+<blockquote>
+<p><strong>주의</strong>: 숫자처럼 보여도 분류일 수 있습니다. 예를 들어 “별점 1-5점 중 하나”는 숫자지만 정해진 5칸 중 하나를 고르므로 분류에 가깝습니다. 핵심은 “숫자냐”가 아니라 “이어지는 값이냐, 정해진 칸이냐”입니다.</p>
+</blockquote>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-2-학습-데이터와-테스트-데이터-정보-인공지능">개념 2. 학습 데이터와 테스트 데이터 <code dir="auto">[정보]</code> <code dir="auto">[인공지능]</code></h3><a class="sl-anchor-link" href="#개념-2-학습-데이터와-테스트-데이터-정보-인공지능"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 2. 학습 데이터와 테스트 데이터 [정보] [인공지능]”</span></a></div>
+<ul>
+<li>
+<p><strong>정의</strong>:</p>
+<ul>
+<li><strong>학습 데이터(Training data)</strong>: AI를 훈련시킬 때 쓰는 데이터입니다. AI는 이 데이터를 보며 규칙을 배웁니다.</li>
+<li><strong>테스트 데이터(Test data)</strong>: 훈련이 끝난 AI의 실력을 <strong>처음 보는 문제로</strong> 확인할 때 쓰는 데이터입니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>비유</strong>: 학습 데이터는 <strong>문제집</strong>, 테스트 데이터는 <strong>실전 시험지</strong>입니다. 문제집으로 공부한 뒤 실전 시험을 봐야 진짜 실력을 알 수 있습니다. 시험 문제를 미리 외웠다면 100점을 받아도 실력이라 할 수 없습니다.</p>
+</li>
+</ul>
+<p>AI도 마찬가지입니다. 훈련에 쓴 데이터로 다시 시험을 보면 답을 외운 것과 같아서 점수가 부풀려집니다. 이렇게 훈련 데이터만 잘 맞히고 새 데이터는 못 맞히는 현상을 <strong>과적합(overfitting)</strong>이라 합니다. 그래서 데이터를 미리 나눠, 테스트 데이터는 훈련에 절대 쓰지 않고 아껴 둡니다. 보통 전체의 <strong>70-80%를 학습용, 20-30%를 테스트용</strong>으로 나눕니다.</p>
+<pre class="mermaid">flowchart LR
+  A["전체 데이터&#x3C;br/>100개"] --> B["학습 데이터&#x3C;br/>80개"]
+  A --> C["테스트 데이터&#x3C;br/>20개"]
+  B --> D["AI 훈련"]
+  C --> E["실력 측정"]
+  D --> E
+</pre>
+<p>[그림 6-2] 데이터를 미리 나눠, 훈련에 쓴 적 없는 데이터로 실력을 잽니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-교과-간-연결-다리">🌉 교과 간 연결 다리</h2><a class="sl-anchor-link" href="#-교과-간-연결-다리"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🌉 교과 간 연결 다리”</span></a></div>
+<p><strong>[정보] + [인공지능]이 만나는 지점</strong></p>
+<p>실생활 문제를 AI로 풀려면 두 교과의 도구가 순서대로 필요합니다.</p>
+<ol>
+<li><code dir="auto">[인공지능]</code> 먼저 문제를 <strong>분류인지 회귀인지 번역</strong>합니다. (“집값 예측”이면 회귀)</li>
+<li><code dir="auto">[정보]</code> 그다음 데이터를 <strong>표로 정리하고 학습/테스트로 나눕니다.</strong> (80행/20행)</li>
+<li><code dir="auto">[인공지능]</code> 마지막으로 나눈 데이터로 훈련하고 테스트해 <strong>성능을 정직하게 측정</strong>합니다.</li>
+</ol>
+<p>인공지능이 “무엇을 예측할지” 정해도, 정보의 “데이터를 나누는 손”이 없으면 성능을 믿을 수 없습니다. 반대로 데이터를 잘 나눠도, 그 문제가 분류인지 회귀인지 모르면 어떤 AI를 골라야 할지 알 수 없습니다. 두 교과는 한 몸처럼 붙어 움직입니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="다교과-관점-비교">다교과 관점 비교</h3><a class="sl-anchor-link" href="#다교과-관점-비교"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “다교과 관점 비교”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>쟁점</th><th>정보의 관점</th><th>인공지능의 관점</th></tr></thead><tbody><tr><td>”예측 문제란?”</td><td>입력 열로 정답 열을 채우는 표 작업</td><td>함수를 학습해 답을 추론하는 과정</td></tr><tr><td>”데이터 분할”</td><td>표의 행을 두 묶음으로 나누는 조작</td><td>일반화 성능을 측정하기 위한 실험 설계</td></tr><tr><td>”좋은 결과란?”</td><td>결측 없이 깔끔히 정리된 데이터</td><td>테스트 데이터에서도 잘 맞히는 모델</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="가로지르는-질문">가로지르는 질문</h3><a class="sl-anchor-link" href="#가로지르는-질문"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “가로지르는 질문”</span></a></div>
+<blockquote>
+<p>“테스트 데이터 점수는 높은데 실제 서비스에서는 자꾸 틀립니다. 무엇이 잘못됐을까요?”</p>
+</blockquote>
+<p>이 질문에 답하려면 두 교과 도구가 모두 필요합니다. <code dir="auto">[정보]</code> 테스트 데이터가 실제 상황과 다르게 편향되어 뽑혔는지(예: 특정 계절 데이터만) 점검하고, <code dir="auto">[인공지능]</code> 데이터를 나누는 과정에서 실수로 정보가 새어 나갔는지(data leakage) 따져 봐야 합니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-읽을거리">📖 읽을거리</h2><a class="sl-anchor-link" href="#-읽을거리"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📖 읽을거리”</span></a></div>
+<p><strong>카글(Kaggle)의 리더보드 이야기</strong></p>
+<p>세계 최대의 데이터 분석 대회 플랫폼 카글에는 재미있는 규칙이 있습니다. 참가자는 자기 모델의 점수를 확인할 수 있지만, <strong>최종 순위는 참가자가 한 번도 본 적 없는 비밀 테스트 데이터</strong>로 매깁니다. 대회 중간에 1등이던 팀이 마지막 순간에 순위가 뚝 떨어지는 일이 자주 벌어집니다. 공개된 데이터에만 맞춰 모델을 너무 세밀하게 다듬은 팀들, 즉 과적합된 팀들입니다. 이 규칙 덕분에 카글은 “진짜 일반화 실력”을 겨루는 무대가 되었습니다. 데이터를 아껴 두는 것이 얼마나 중요한지 보여 주는 사례입니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="️-확인-문제">✏️ 확인 문제</h2><a class="sl-anchor-link" href="#️-확인-문제"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “✏️ 확인 문제”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="기본-개념-확인">기본 (개념 확인)</h3><a class="sl-anchor-link" href="#기본-개념-확인"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “기본 (개념 확인)”</span></a></div>
+<p><strong>1.</strong> 다음 중 <strong>회귀</strong> 문제인 것을 모두 고르세요.
+① 이메일이 스팸인지 판별 ② 내일 강수량(mm) 예측 ③ 손글씨 숫자가 0-9 중 무엇인지 판별 ④ 중고차 판매 가격 예측</p>
+<p><strong>2.</strong> 학습 데이터와 테스트 데이터를 나누는 이유로 가장 알맞은 것은?
+① 데이터 용량을 줄이려고 ② 훈련에 쓴 적 없는 데이터로 실력을 정직하게 재려고 ③ 계산 속도를 빠르게 하려고 ④ 데이터를 예쁘게 정리하려고</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="응용-적용">응용 (적용)</h3><a class="sl-anchor-link" href="#응용-적용"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “응용 (적용)”</span></a></div>
+<p><strong>3.</strong> 200개의 데이터를 학습:테스트 = 8:2로 나누려 합니다. 학습 데이터와 테스트 데이터는 각각 몇 개인가요? 또, 테스트 데이터로 훈련을 하면 안 되는 이유를 한 문장으로 쓰세요.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="심화-사고력서술형">심화 (사고력·서술형)</h3><a class="sl-anchor-link" href="#심화-사고력서술형"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “심화 (사고력·서술형)”</span></a></div>
+<p><strong>4.</strong> 한 학생이 “우리 AI는 학습 데이터에서 정확도가 99%예요!”라고 자랑했습니다. 이 말만 듣고 이 AI가 실제로 쓸 만하다고 판단할 수 있을까요? 판단할 수 없다면 어떤 정보를 추가로 물어봐야 하는지, <code dir="auto">[인공지능]</code>과 <code dir="auto">[정보]</code>의 관점을 각각 하나씩 들어 서술하세요.</p>
+<details><summary>정답 확인</summary>
+<p><strong>1.</strong> ②, ④ (①③은 정해진 이름표 중 하나를 고르는 분류 문제)</p>
+<p><strong>2.</strong> ②</p>
+<p><strong>3.</strong> 학습 데이터 160개, 테스트 데이터 40개. 테스트 데이터로 훈련하면 AI가 답을 미리 외운 것과 같아서 실력이 부풀려져 정직한 측정이 안 되기 때문입니다.</p>
+<p><strong>4.</strong> 판단할 수 없습니다. 학습 데이터 정확도는 “문제집을 외운 점수”라서 실력을 보장하지 않습니다.</p>
+<ul>
+<li><code dir="auto">[인공지능]</code> 관점: “훈련에 쓰지 않은 테스트 데이터에서의 정확도는 얼마인가?”를 물어야 합니다. 학습 정확도만 높고 테스트 정확도가 낮으면 과적합입니다.</li>
+<li><code dir="auto">[정보]</code> 관점: “테스트 데이터가 실제 사용 상황을 골고루 대표하도록 편향 없이 나뉘었는가?”를 물어야 합니다.</li>
+</ul>
+</details>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-메타인지-성찰">🧠 메타인지 성찰</h2><a class="sl-anchor-link" href="#-메타인지-성찰"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🧠 메타인지 성찰”</span></a></div>
+<p>이번 시간에 쓴 교과 도구를 스스로 정리해 봅시다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>성찰 질문</th><th>나의 답</th></tr></thead><tbody><tr><td>오늘 문제를 분류/회귀로 번역할 때 쓴 것은 어느 교과의 도구인가?</td><td></td></tr><tr><td>데이터를 나누는 활동에서 쓴 것은 어느 교과의 도구인가?</td><td></td></tr><tr><td>두 교과 중 어느 도구가 없었다면 오늘 산출물을 못 만들었을까?</td><td></td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-산출물-평가-루브릭">📊 산출물 평가 루브릭</h2><a class="sl-anchor-link" href="#-산출물-평가-루브릭"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📊 산출물 평가 루브릭”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>평가 차원</th><th>상</th><th>중</th><th>하</th></tr></thead><tbody><tr><td>분류·회귀 구분 <code dir="auto">[인공지능]</code></td><td>6문제 모두 정확히 구분하고 근거 제시</td><td>대부분 구분</td><td>구분 기준 모호</td></tr><tr><td>데이터 분할 <code dir="auto">[정보]</code></td><td>비율대로 정확히 나누고 개수 계산</td><td>나눴으나 계산 오류</td><td>분할 미완성</td></tr><tr><td><strong>교과 통합 정도</strong></td><td>두 교과 도구의 연결을 설명함</td><td>한 교과만 설명</td><td>연결 인식 없음</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-단원-정리">📌 단원 정리</h2><a class="sl-anchor-link" href="#-단원-정리"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📌 단원 정리”</span></a></div>
+<ul>
+<li>
+<p><strong>핵심 개념 요약</strong></p>
+<ul>
+<li><strong>분류</strong>는 답이 이름표(범주), <strong>회귀</strong>는 답이 이어지는 숫자입니다. 답의 모양으로 구분합니다.</li>
+<li>AI 실력을 정직하게 재려면 <strong>학습 데이터</strong>와 <strong>테스트 데이터</strong>를 미리 나누고, 테스트 데이터는 훈련에 쓰지 않습니다.</li>
+<li>훈련 데이터만 잘 맞히는 현상이 <strong>과적합</strong>입니다.</li>
+<li><code dir="auto">[정보]</code>의 데이터 나누기와 <code dir="auto">[인공지능]</code>의 문제 번역이 결합해야 믿을 수 있는 예측이 완성됩니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>다음 차시 예고</strong>: 다음 시간에는 나눈 데이터로 실제 간단한 분류 모델을 훈련시키고, 정확도를 계산해 성능을 측정하는 방법을 알아봅니다.</p>
+</li>
+</ul> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/hyfl-ai-lab/chapter05/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">머신러닝의 개념과 학습 원리</span> </span> </a> <a href="/hyfl-ai-lab/chapter07/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">모델의 성능과 오류 읽기</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>

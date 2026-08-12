@@ -1,0 +1,448 @@
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>허위정보와 AI 의존: 딥페이크의 그림자 | HYFL 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/chapter27/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><script type="module" src="/hyfl-ai-lab/mermaid-init.js"></script><script type="module" src="/hyfl-ai-lab/toc-toggle.js"></script><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.1"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="허위정보와 AI 의존: 딥페이크의 그림자"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/chapter27/"/><meta property="og:locale" content="ko"/><meta property="og:description"/><meta property="og:site_name" content="HYFL 인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/hyfl-ai-lab/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/index.BhkyVLz7.css"><script type="module" src="/hyfl-ai-lab/_astro/page.B1D-nYk3.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">콘텐츠로 이동</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/hyfl-ai-lab/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> HYFL 인공지능 원리탐구 </span> </a>  </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;검색&#34;}"> <button data-open-modal disabled aria-label="검색" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">검색</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="검색" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> 취소 </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/hyfl-ai-lab/_astro/Search.astro_astro_type_script_index_0_lang.Dw5VCqWR.js"></script>   </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="메인"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="메뉴" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="0akvloa" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 0. OT. Welcome to HYFL AI Lab</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter01/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Welcome to HYFL AI Lab</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 1. Part 1. 인공지능의 이해와 원리</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter02/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI란 무엇인가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter03/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI는 어떻게 학습하고 판단하는가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter04/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI는 어떻게 지금의 생성형 AI까지 왔는가</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 2. Part 2. 머신러닝과 데이터 리터러시</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter05/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">머신러닝의 개념과 학습 원리</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter06/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">분류와 회귀, 학습 데이터와 테스트 데이터</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter07/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">모델의 성능과 오류 읽기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter08/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">데이터를 읽는 법: 패턴, 한계, 편향</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter09/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">데이터로 주장하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter10/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI의 데이터 분석 결과 검증하기</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 3. Project 1. Teachable Machine AI 웹앱 프로젝트</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter11/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">문제 정의와 데이터 수집</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter12/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Teachable Machine 모델 학습</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter13/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">테스트, 오분류 분석과 모델 개선</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter14/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">생성형 AI와 함께 웹앱 제작하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter15/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">GitHub 연결과 웹 배포</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter16/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">프로젝트 발표와 성찰</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 4. Part 3. 생성형 AI와 LLM</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter17/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">생성형 AI의 원리와 LLM</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter18/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI와 잘 협업하려면: 프롬프트, 컨텍스트 그리고 반복 개선</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter19/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">멀티모달 AI와 2026년 생성형 AI 흐름</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter20/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">할루시네이션, RAG와 AI 결과 검증</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 5. Part 4. AI Agent: 대답하는 AI에서 행동하는 AI로</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter21/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Chatbot과 Agent 비교하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter22/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Agent의 구조와 작동 원리</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter23/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Agent Workflow 직접 설계하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter24/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">간단한 Agent 제작 실습</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter25/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">실행 → 실패 분석 → 개선</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="6"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 6. Part 5. AI 시대의 윤리와 책임</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter26/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">데이터와 권리: 편향, 개인정보, 저작권</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter27/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">허위정보와 AI 의존: 딥페이크의 그림자</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter28/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI 판단의 책임과 코드·보안</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="7"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 7. Part 6. AI와 함께 만드는 프로그램: Vibe Coding</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter29/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">자연어로 문제와 요구사항 정의하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter30/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI와 함께 프로토타입 구현하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter31/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">실행 → 오류 발견 → 디버깅 → 반복 개선</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="8"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Part 8. Project 2. AI Problem Solving Challenge</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter32/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">문제 발견과 문제 정의: 왜 이 문제인가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter33/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">사용자·상황 조사와 데이터·근거 탐색: 어떤 근거를 찾았는가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter34/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">해결 아이디어와 AI 기술 선택: 왜 이 기술인가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter35/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">서비스 설계와 프로토타입 구현</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter36/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">테스트, 실패 분석과 개선: 무엇이 실패했고 어떻게 나아졌는가</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/hyfl-ai-lab/chapter37/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AI 윤리 검토, 최종 발표와 성찰: 이 서비스는 누구에게 어떤 영향을 주는가</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#이-챕터의-교과-결합" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">이 챕터의 교과 결합</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-생각-열기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔍 생각 열기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-이-단원의-학습-목표" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🎯 이 단원의 학습 목표</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-선수학습-확인" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📌 선수학습 확인</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-탐구-활동" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🧪 탐구 활동</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#탐구-진짜일까-가짜일까--판별-지표-만들기" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">탐구: 진짜일까, 가짜일까? — 판별 지표 만들기</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-핵심-개념" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">💡 핵심 개념</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-1-딥페이크와-허위정보-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 1. 딥페이크와 허위정보 [인공지능]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-2-ai-판별과-ai-의존-정보-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 2. AI 판별과 AI 의존 [정보] [인공지능]</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-교과-간-연결-다리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🌉 교과 간 연결 다리</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#️-따라하기-판별-데이터-시각화-대시보드-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🖥️ 따라하기: 판별 데이터 시각화 대시보드 만들기</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1단계-데이터-정리하기-정보" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1단계: 데이터 정리하기 [정보]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2단계-임계값-정하기-정보-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2단계: 임계값 정하기 [정보] [인공지능]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3단계-막대그래프로-시각화-정보" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3단계: 막대그래프로 시각화 [정보]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4단계-정답과-비교하기-정보" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4단계: 정답과 비교하기 [정보]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5단계-임계값-조정하기-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5단계: 임계값 조정하기 [인공지능]</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-논의-활동-ai-의존의-그림자" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">💬 논의 활동: AI 의존의 그림자</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-읽을거리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📖 읽을거리</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-확인-문제" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">✅ 확인 문제</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#기본-개념-확인" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">기본 (개념 확인)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#응용-적용" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">응용 (적용)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#심화-사고력서술형" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">심화 (사고력·서술형)</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-메타인지-성찰" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🧭 메타인지 성찰</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-단원-정리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📚 단원 정리</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#이-챕터의-교과-결합" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">이 챕터의 교과 결합</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-생각-열기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🔍 생각 열기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-이-단원의-학습-목표" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🎯 이 단원의 학습 목표</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-선수학습-확인" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📌 선수학습 확인</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-탐구-활동" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🧪 탐구 활동</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#탐구-진짜일까-가짜일까--판별-지표-만들기" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">탐구: 진짜일까, 가짜일까? — 판별 지표 만들기</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-핵심-개념" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">💡 핵심 개념</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-1-딥페이크와-허위정보-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 1. 딥페이크와 허위정보 [인공지능]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#개념-2-ai-판별과-ai-의존-정보-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">개념 2. AI 판별과 AI 의존 [정보] [인공지능]</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-교과-간-연결-다리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🌉 교과 간 연결 다리</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#️-따라하기-판별-데이터-시각화-대시보드-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🖥️ 따라하기: 판별 데이터 시각화 대시보드 만들기</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1단계-데이터-정리하기-정보" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1단계: 데이터 정리하기 [정보]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2단계-임계값-정하기-정보-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2단계: 임계값 정하기 [정보] [인공지능]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3단계-막대그래프로-시각화-정보" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3단계: 막대그래프로 시각화 [정보]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4단계-정답과-비교하기-정보" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4단계: 정답과 비교하기 [정보]</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5단계-임계값-조정하기-인공지능" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5단계: 임계값 조정하기 [인공지능]</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-논의-활동-ai-의존의-그림자" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">💬 논의 활동: AI 의존의 그림자</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-읽을거리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📖 읽을거리</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-확인-문제" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">✅ 확인 문제</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#기본-개념-확인" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">기본 (개념 확인)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#응용-적용" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">응용 (적용)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#심화-사고력서술형" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">심화 (사고력·서술형)</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-메타인지-성찰" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">🧭 메타인지 성찰</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#-단원-정리" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">📚 단원 정리</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">허위정보와 AI 의존: 딥페이크의 그림자</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p><strong>Part 5. AI 시대의 윤리와 책임 · 27차시</strong></p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="이-챕터의-교과-결합">이 챕터의 교과 결합</h2><a class="sl-anchor-link" href="#이-챕터의-교과-결합"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “이 챕터의 교과 결합”</span></a></div>
+<pre class="mermaid">mindmap
+  root((딥페이크와&#x3C;br/>허위정보))
+    정보
+      데이터 수집
+      판별 지표 설계
+      시각화 대시보드
+    인공지능
+      생성모델 원리
+      탐지 알고리즘
+      신뢰도 점수
+    연결다리
+      AI가 만든 데이터를&#x3C;br/>정보의 도구로 분석
+      탐지 정확도를&#x3C;br/>지표로 시각화
+</pre>
+<p>이 차시는 <strong>정보</strong>를 주축으로, <strong>인공지능</strong>을 연계 교과로 결합합니다. 딥페이크는 인공지능(생성모델)이 만들어 낸 산물이고, 우리는 그것을 정보 교과의 도구(데이터 수집·판별 지표·시각화)로 분석합니다. <code dir="auto">[인공지능]</code>은 “무엇이 문제인가”를 설명하고, <code dir="auto">[정보]</code>는 “어떻게 데이터로 다룰 것인가”를 담당합니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-생각-열기">🔍 생각 열기</h2><a class="sl-anchor-link" href="#-생각-열기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🔍 생각 열기”</span></a></div>
+<p>여러분이 좋아하는 연예인이 하지도 않은 말을 하는 영상이 SNS에 퍼졌다고 상상해 봅시다. 목소리도 얼굴도 똑같습니다. 그런데 사실은 인공지능이 만든 가짜입니다.</p>
+<p>2023년, 실제로 한 유명인의 얼굴을 합성한 광고 영상이 퍼져 수많은 사람이 사기 피해를 입었습니다. 영상 속 인물은 진짜처럼 웃고 말했지만, 단 한 순간도 촬영된 적이 없었습니다.</p>
+<blockquote>
+<p><strong>질문</strong>: 우리 눈은 진짜와 가짜를 구별할 수 있을까요? 만약 눈으로 구별할 수 없다면, 무엇으로 판별해야 할까요?</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-이-단원의-학습-목표">🎯 이 단원의 학습 목표</h2><a class="sl-anchor-link" href="#-이-단원의-학습-목표"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🎯 이 단원의 학습 목표”</span></a></div>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> 딥페이크와 허위정보의 위험성을 원리와 함께 설명할 수 있다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> 딥페이크 판별 지표를 데이터로 정리하고 시각화할 수 있다.</li>
+<li class="task-list-item"><input type="checkbox" disabled> AI 의존이 개인과 사회에 미치는 영향을 근거를 들어 논의할 수 있다.</li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-선수학습-확인">📌 선수학습 확인</h2><a class="sl-anchor-link" href="#-선수학습-확인"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📌 선수학습 확인”</span></a></div>
+<ul>
+<li><strong>생성모델</strong>(GAN, 확산모델): 이전 차시에서 인공지능이 없던 이미지를 “새로 만들어 내는” 원리를 배웠습니다. 두 신경망이 서로 경쟁하며 진짜 같은 결과를 만드는 구조였습니다. <code dir="auto">[인공지능]</code></li>
+<li><strong>데이터 시각화</strong>: 수집한 데이터를 표와 그래프로 나타내 패턴을 읽는 방법을 배웠습니다. <code dir="auto">[정보]</code></li>
+</ul>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-탐구-활동">🧪 탐구 활동</h2><a class="sl-anchor-link" href="#-탐구-활동"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🧪 탐구 활동”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="탐구-진짜일까-가짜일까--판별-지표-만들기">탐구: 진짜일까, 가짜일까? — 판별 지표 만들기</h3><a class="sl-anchor-link" href="#탐구-진짜일까-가짜일까--판별-지표-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “탐구: 진짜일까, 가짜일까? — 판별 지표 만들기”</span></a></div>
+<ul>
+<li>
+<p><strong>준비물</strong>: 교사가 제공하는 이미지 세트 8장(진짜 4장, 딥페이크 4장, 정답은 비공개), 판별 기록표, 모둠별 태블릿 또는 노트북</p>
+</li>
+<li>
+<p><strong>과정</strong>:</p>
+<ol>
+<li>모둠별로 이미지 8장을 순서대로 관찰합니다. 처음에는 <strong>아무 정보 없이</strong> 직관으로만 진짜/가짜를 판정합니다. <code dir="auto">[정보]</code></li>
+<li>각자 판정한 결과를 기록표에 적고, 모둠 정답률을 계산합니다.</li>
+<li>이제 <strong>판별 힌트 5가지</strong>(아래 표)를 받아 다시 관찰합니다. 힌트를 기준으로 각 이미지에 점수를 매깁니다. <code dir="auto">[인공지능]</code></li>
+<li>힌트를 적용한 후의 정답률을 다시 계산합니다.</li>
+<li>정답 공개 후, “직관만 썼을 때”와 “지표를 썼을 때” 정답률을 비교합니다.</li>
+</ol>
+</li>
+</ul>
+<p><strong>판별 힌트 기록표</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>판별 지표</th><th>이미지1</th><th>이미지2</th><th>…</th><th>설명</th></tr></thead><tbody><tr><td>눈동자 반사가 좌우 다른가</td><td></td><td></td><td></td><td>딥페이크는 빛 반사가 불일치</td></tr><tr><td>귀·치아 경계가 뭉개졌나</td><td></td><td></td><td></td><td>세밀한 부분에서 오류</td></tr><tr><td>머리카락 가닥이 부자연스러운가</td><td></td><td></td><td></td><td>경계선 처리 약점</td></tr><tr><td>배경과 얼굴 조명이 어긋나나</td><td></td><td></td><td></td><td>합성 시 조명 불일치</td></tr><tr><td>피부 질감이 지나치게 매끈한가</td><td></td><td></td><td></td><td>과도한 평활화 흔적</td></tr></tbody></table>
+<ul>
+<li>
+<p><strong>결과 예측</strong>: “지표를 사용하면 정답률이 올라갈까요? 어떤 지표가 가장 잘 맞을까요?”</p>
+</li>
+<li>
+<p><strong>토의</strong>: “왜 직관만으로는 부족했을까요? 인공지능은 왜 특정 부분(눈·귀·머리카락)에서 실수를 남길까요?”</p>
+</li>
+</ul>
+<blockquote>
+<p>탐구에서 확인한 것처럼, 딥페이크는 완벽해 보여도 <strong>데이터로 측정 가능한 흔적</strong>을 남깁니다. 이제 그 원리를 살펴봅니다.</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-핵심-개념">💡 핵심 개념</h2><a class="sl-anchor-link" href="#-핵심-개념"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “💡 핵심 개념”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-1-딥페이크와-허위정보-인공지능">개념 1. 딥페이크와 허위정보 <code dir="auto">[인공지능]</code></h3><a class="sl-anchor-link" href="#개념-1-딥페이크와-허위정보-인공지능"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 1. 딥페이크와 허위정보 [인공지능]”</span></a></div>
+<ul>
+<li>
+<p><strong>정의</strong>: 딥페이크(deepfake)는 딥러닝(deep learning)으로 만든 가짜(fake) 이미지·영상·음성입니다. 생성모델이 실제 사람의 데이터를 학습해, 존재하지 않는 장면을 진짜처럼 만들어 냅니다.</p>
+</li>
+<li>
+<p><strong>비유</strong>: 딥페이크는 마치 <strong>위조지폐</strong>와 같습니다. 진짜 지폐를 수없이 관찰한 위조범이 아주 정교한 가짜를 만들지만, 자외선 검사나 미세 인쇄를 확인하면 흔적이 드러나는 것과 같습니다.</p>
+</li>
+</ul>
+<p>딥페이크가 위험한 진짜 이유는 <strong>허위정보(disinformation)의 확산 속도</strong>에 있습니다. 그럴듯한 가짜는 진짜보다 빠르고 넓게 퍼집니다. 사람은 자극적이고 감정을 흔드는 정보를 더 잘 공유하기 때문입니다.</p>
+<pre class="mermaid">flowchart LR
+  A[생성모델이&#x3C;br/>가짜 제작] --> B[SNS 업로드]
+  B --> C[감정 자극]
+  C --> D[빠른 공유·확산]
+  D --> E[진위 확인 전&#x3C;br/>여론 형성]
+  E --> F[사회적 피해]
+</pre>
+<p><em>[그림 1-1] 딥페이크 허위정보의 확산 경로</em></p>
+<div class="sl-heading-wrapper level-h3"><h3 id="개념-2-ai-판별과-ai-의존-정보-인공지능">개념 2. AI 판별과 AI 의존 <code dir="auto">[정보]</code> <code dir="auto">[인공지능]</code></h3><a class="sl-anchor-link" href="#개념-2-ai-판별과-ai-의존-정보-인공지능"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “개념 2. AI 판별과 AI 의존 [정보] [인공지능]”</span></a></div>
+<ul>
+<li>
+<p><strong>정의</strong>: 딥페이크를 만드는 것도 AI, 판별하는 것도 AI입니다. <strong>탐지 AI</strong>는 사람 눈이 못 보는 미세한 픽셀 오류·주파수 패턴을 학습해 “진짜일 확률”을 점수로 계산합니다. 이 점수를 데이터로 모아 표와 그래프로 정리하면, 우리는 판단의 <strong>근거</strong>를 시각적으로 확보할 수 있습니다. <code dir="auto">[정보]</code></p>
+</li>
+<li>
+<p><strong>비유</strong>: 탐지 AI는 마치 <strong>은행의 위폐 감별기</strong>와 같습니다. 감별기가 “이 지폐 진짜일 확률 12%“라고 알려주듯, 탐지 AI도 확률 점수를 제시합니다.</p>
+</li>
+</ul>
+<p>하지만 여기에 함정이 있습니다. 판별을 전적으로 AI에게 맡기면 <strong>AI 의존</strong>이 생깁니다. AI가 틀렸을 때 사람이 걸러내지 못하면, 오히려 더 큰 오판으로 이어집니다.</p>
+<pre class="mermaid">flowchart TD
+  A[콘텐츠 입력] --> B[탐지 AI 점수]
+  B --> C{사람의&#x3C;br/>비판적 검토}
+  C -->|검토함| D[근거 있는 판단]
+  C -->|무조건 신뢰| E[AI 의존·오판 위험]
+</pre>
+<p><em>[그림 1-2] 탐지 AI와 사람의 역할 분담</em></p>
+<p><strong>다교과 관점 비교표</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>쟁점</th><th>인공지능의 관점</th><th>정보의 관점</th></tr></thead><tbody><tr><td>딥페이크란 무엇인가</td><td>생성모델의 학습 결과물</td><td>진위 판별이 필요한 데이터</td></tr><tr><td>어떻게 판별하나</td><td>탐지 모델의 확률 예측</td><td>지표별 점수를 수집·비교</td></tr><tr><td>판단 근거는</td><td>픽셀·주파수 특징</td><td>시각화된 정답률·신뢰도</td></tr><tr><td>위험 요소</td><td>모델의 오탐·미탐</td><td>AI 점수 맹신(의존)</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-교과-간-연결-다리">🌉 교과 간 연결 다리</h2><a class="sl-anchor-link" href="#-교과-간-연결-다리"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🌉 교과 간 연결 다리”</span></a></div>
+<p><strong>인공지능의 산물을 정보의 도구로 다루기.</strong> 탐지 AI가 내놓는 것은 “진짜일 확률 87%” 같은 <strong>숫자 데이터</strong>입니다. 이 숫자 하나만으로는 판단하기 어렵습니다. 그래서 <code dir="auto">[정보]</code>의 도구가 필요합니다.</p>
+<p>예를 들어 이미지 20장에 대해 탐지 AI 점수를 모두 기록한 뒤, 막대그래프로 시각화하면 “어떤 유형의 딥페이크가 탐지를 잘 피하는가”라는 패턴이 보입니다. <code dir="auto">[인공지능]</code>이 만든 데이터를 <code dir="auto">[정보]</code>가 읽어 내는 순간, 우리는 AI를 맹신하지 않고 <strong>검증</strong>할 수 있게 됩니다.</p>
+<blockquote>
+<p><strong>가로지르는 질문</strong></p>
+<p>“탐지 AI가 진짜라고 판정한 영상을, 우리는 그대로 믿어도 될까요?”</p>
+<p>이 질문에 답하려면 <code dir="auto">[인공지능]</code>(탐지 모델의 한계·오탐률)과 <code dir="auto">[정보]</code>(여러 지표를 교차 검증하는 방법) 두 교과의 도구가 모두 필요합니다. 어떤 도구를 어떻게 쓸지 모둠에서 선택해 보세요.</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="️-따라하기-판별-데이터-시각화-대시보드-만들기">🖥️ 따라하기: 판별 데이터 시각화 대시보드 만들기</h2><a class="sl-anchor-link" href="#️-따라하기-판별-데이터-시각화-대시보드-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🖥️ 따라하기: 판별 데이터 시각화 대시보드 만들기”</span></a></div>
+<p>탐구에서 모은 데이터를 시각화해, 판단 근거를 한눈에 보이게 만듭니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="1단계-데이터-정리하기-정보">1단계: 데이터 정리하기 <code dir="auto">[정보]</code></h3><a class="sl-anchor-link" href="#1단계-데이터-정리하기-정보"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1단계: 데이터 정리하기 [정보]”</span></a></div>
+<p>이미지 8장에 대해 5가지 지표 점수(0-2점)를 표로 정리합니다. 합계가 높을수록 “가짜 의심”입니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>이미지</th><th>눈반사</th><th>경계</th><th>머리카락</th><th>조명</th><th>질감</th><th>합계</th></tr></thead><tbody><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>2</td></tr><tr><td>2</td><td>2</td><td>2</td><td>1</td><td>2</td><td>2</td><td>9</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="2단계-임계값-정하기-정보-인공지능">2단계: 임계값 정하기 <code dir="auto">[정보]</code> <code dir="auto">[인공지능]</code></h3><a class="sl-anchor-link" href="#2단계-임계값-정하기-정보-인공지능"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2단계: 임계값 정하기 [정보] [인공지능]”</span></a></div>
+<p>합계 몇 점 이상을 “가짜”로 판정할지 <strong>임계값(threshold)</strong>을 모둠이 정합니다. 예: 6점 이상이면 가짜.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="3단계-막대그래프로-시각화-정보">3단계: 막대그래프로 시각화 <code dir="auto">[정보]</code></h3><a class="sl-anchor-link" href="#3단계-막대그래프로-시각화-정보"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3단계: 막대그래프로 시각화 [정보]”</span></a></div>
+<p>이미지별 합계 점수를 막대그래프로 그립니다. 임계값 선을 가로로 그어, 어떤 이미지가 선을 넘는지 표시합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="4단계-정답과-비교하기-정보">4단계: 정답과 비교하기 <code dir="auto">[정보]</code></h3><a class="sl-anchor-link" href="#4단계-정답과-비교하기-정보"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4단계: 정답과 비교하기 [정보]”</span></a></div>
+<p>정답을 공개해 우리 판정과 맞춰 봅니다. 맞춘 것과 틀린 것을 색으로 구분합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="5단계-임계값-조정하기-인공지능">5단계: 임계값 조정하기 <code dir="auto">[인공지능]</code></h3><a class="sl-anchor-link" href="#5단계-임계값-조정하기-인공지능"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5단계: 임계값 조정하기 [인공지능]”</span></a></div>
+<p>틀린 게 많으면 임계값을 조정합니다. 임계값을 낮추면 놓치는 가짜는 줄지만 진짜를 가짜로 오해할 수 있습니다. 이 <strong>균형(trade-off)</strong>을 표로 정리합니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>임계값</th><th>놓친 가짜(미탐)</th><th>잘못 의심한 진짜(오탐)</th></tr></thead><tbody><tr><td>4점</td><td>0</td><td>2</td></tr><tr><td>6점</td><td>1</td><td>0</td></tr><tr><td>8점</td><td>2</td><td>0</td></tr></tbody></table>
+<blockquote>
+<p>임계값을 정하는 일은 정답이 하나가 아닙니다. “가짜를 놓치는 위험”과 “진짜를 의심하는 위험” 중 무엇을 더 줄일지 판단해야 합니다. 이것이 바로 <code dir="auto">[인공지능]</code>의 성능 조절 원리입니다.</p>
+</blockquote>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-논의-활동-ai-의존의-그림자">💬 논의 활동: AI 의존의 그림자</h2><a class="sl-anchor-link" href="#-논의-활동-ai-의존의-그림자"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “💬 논의 활동: AI 의존의 그림자”</span></a></div>
+<p>모둠별로 아래 상황을 읽고 토론합니다.</p>
+<blockquote>
+<p><strong>상황</strong>: “이제 딥페이크 탐지 앱이 있으니, 앱이 ‘진짜’라고 하면 그냥 믿으면 되지 않나요?”</p>
+</blockquote>
+<p><strong>토론 질문</strong></p>
+<ol>
+<li>탐지 앱도 틀릴 수 있다면, 우리는 무엇을 추가로 해야 할까요?</li>
+<li>사람들이 판별을 전부 AI에게 맡기면, 사회에는 어떤 문제가 생길까요?</li>
+<li>반대로 “모든 영상을 의심하라”고 하면 어떤 부작용이 생길까요?</li>
+</ol>
+<p><strong>논의 정리표</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>관점</th><th>AI에만 의존할 때 위험</th><th>사람이 함께 검토할 때 이점</th></tr></thead><tbody><tr><td>개인</td><td>오판을 걸러내지 못함</td><td>비판적 사고력 유지</td></tr><tr><td>사회</td><td>진실 판단 능력 약화</td><td>여러 근거로 교차 검증</td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-읽을거리">📖 읽을거리</h2><a class="sl-anchor-link" href="#-읽을거리"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📖 읽을거리”</span></a></div>
+<p><strong>리버 아이(Liar’s Dividend), ‘거짓말쟁이의 이득’</strong></p>
+<p>딥페이크가 퍼지면 예상 밖의 부작용이 생깁니다. 진짜 영상이 나와도 “저거 딥페이크 아니야?”라며 부정할 수 있게 되는 것입니다. 실제로 잘못을 저지른 사람이 진짜 증거 영상을 두고 “AI가 만든 가짜”라고 우기는 사례가 등장했습니다.</p>
+<p>즉 딥페이크는 가짜를 진짜처럼 보이게 할 뿐 아니라, <strong>진짜마저 가짜로 의심하게</strong> 만듭니다. 이것을 학자들은 ‘거짓말쟁이의 이득’이라 부릅니다. 기술이 발전할수록 “무엇을 믿을 것인가”라는 질문은 더 중요해집니다.</p>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-확인-문제">✅ 확인 문제</h2><a class="sl-anchor-link" href="#-확인-문제"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “✅ 확인 문제”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="기본-개념-확인">기본 (개념 확인)</h3><a class="sl-anchor-link" href="#기본-개념-확인"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “기본 (개념 확인)”</span></a></div>
+<p><strong>1.</strong> 딥페이크에 대한 설명으로 옳은 것은?
+① 사람이 손으로 그린 그림이다
+② 딥러닝 생성모델이 만든 가짜 콘텐츠다
+③ 반드시 화질이 나빠서 쉽게 구별된다
+④ 탐지 AI가 100% 완벽하게 걸러낸다</p>
+<p><strong>2.</strong> 탐지 AI가 제시하는 것으로 가장 알맞은 것은?
+① 진짜일 확률 점수
+② 영상의 원본 촬영 장소
+③ 제작자의 이름
+④ 영상의 저작권자</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="응용-적용">응용 (적용)</h3><a class="sl-anchor-link" href="#응용-적용"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “응용 (적용)”</span></a></div>
+<p><strong>3.</strong> 따라하기 5단계에서 임계값을 6점에서 4점으로 낮추면 어떤 변화가 생기는지, 위 표를 근거로 설명하세요.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="심화-사고력서술형">심화 (사고력·서술형)</h3><a class="sl-anchor-link" href="#심화-사고력서술형"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “심화 (사고력·서술형)”</span></a></div>
+<p><strong>4.</strong> “탐지 AI가 진짜라고 판정했으니 믿어도 된다”는 주장의 문제점을, <code dir="auto">[인공지능]</code>과 <code dir="auto">[정보]</code> 두 교과의 관점에서 각각 근거를 들어 서술하세요.</p>
+<details><summary>정답 확인</summary>
+<p><strong>1.</strong> ② (딥페이크는 딥러닝 생성모델이 만든 가짜 콘텐츠입니다.)</p>
+<p><strong>2.</strong> ① (탐지 AI는 진위 여부를 확률 점수로 제시합니다.)</p>
+<p><strong>3.</strong> 임계값을 4점으로 낮추면 가짜를 놓치는 경우(미탐)는 0으로 줄지만, 진짜를 가짜로 잘못 의심하는 경우(오탐)가 2건으로 늘어납니다. 즉 가짜를 더 잘 잡는 대신 진짜를 의심하는 부작용이 커집니다.</p>
+<p><strong>4.</strong> (예시 답안)</p>
+<ul>
+<li><code dir="auto">[인공지능]</code> 관점: 탐지 모델도 학습 데이터의 한계 때문에 오탐·미탐이 발생한다. 새로운 유형의 딥페이크는 학습하지 못해 놓칠 수 있으므로 “100% 진짜”라는 보장은 불가능하다.</li>
+<li><code dir="auto">[정보]</code> 관점: 하나의 점수만 근거로 삼는 것은 위험하다. 여러 지표를 교차 검증하고 시각화해 패턴을 확인하며, 사람이 비판적으로 검토해야 한다. AI 점수를 맹신하면 AI 의존에 빠져 오판을 걸러낼 수 없다.</li>
+</ul>
+</details>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-메타인지-성찰">🧭 메타인지 성찰</h2><a class="sl-anchor-link" href="#-메타인지-성찰"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “🧭 메타인지 성찰”</span></a></div>
+<p>이번 차시에서 사용한 교과 도구를 스스로 정리해 봅시다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>성찰 질문</th><th>나의 정리</th></tr></thead><tbody><tr><td>인공지능 도구를 어디에 썼나</td><td></td></tr><tr><td>정보 도구(데이터·시각화)를 어디에 썼나</td><td></td></tr><tr><td>두 교과가 만난 지점은 어디였나</td><td></td></tr><tr><td>가장 결정적이었던 도구는 무엇인가</td><td></td></tr></tbody></table>
+<hr>
+<div class="sl-heading-wrapper level-h2"><h2 id="-단원-정리">📚 단원 정리</h2><a class="sl-anchor-link" href="#-단원-정리"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “📚 단원 정리”</span></a></div>
+<p><strong>핵심 개념 요약</strong></p>
+<ul>
+<li><strong>딥페이크</strong>는 딥러닝 생성모델이 만든 가짜 콘텐츠로, 허위정보를 빠르게 확산시켜 사회에 피해를 준다. <code dir="auto">[인공지능]</code></li>
+<li>딥페이크는 눈·경계·조명 등에서 <strong>데이터로 측정 가능한 흔적</strong>을 남긴다.</li>
+<li><strong>탐지 AI</strong>는 진위를 확률 점수로 제시하지만 완벽하지 않다. 이 점수를 <code dir="auto">[정보]</code>의 시각화 도구로 검증해야 한다.</li>
+<li><strong>임계값 조절</strong>에는 미탐과 오탐 사이의 균형(trade-off)이 존재한다.</li>
+<li>AI에게 판별을 전적으로 맡기는 <strong>AI 의존</strong>은 오판을 키운다. 사람의 비판적 검토가 반드시 필요하다.</li>
+</ul>
+<p><strong>다음 차시 예고</strong>
+다음 시간에는 “AI의 편향과 공정성 — 데이터가 만드는 차별”에 대해 알아봅니다. AI가 왜 특정 집단에 불리한 판단을 내리는지, 그 원인을 데이터에서 찾아봅니다.</p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/hyfl-ai-lab/chapter26/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">데이터와 권리: 편향, 개인정보, 저작권</span> </span> </a> <a href="/hyfl-ai-lab/chapter28/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">AI 판단의 책임과 코드·보안</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
