@@ -1,0 +1,100 @@
+---
+const steps = [
+	{ icon: '🎯', en: 'Problem', ko: '해결할 문제를 정의한다' },
+	{ icon: '✏️', en: 'My Thinking', ko: 'AI를 쓰기 전에 내 생각을 먼저 기록한다' },
+	{ icon: '🧭', en: 'Context', ko: '목적·대상·자료·조건·제약을 제공한다' },
+	{ icon: '🤖', en: 'First Output', ko: 'AI의 첫 결과를 확인한다' },
+	{ icon: '🔍', en: 'Critique', ko: '부족한 점, 오류, 빠진 조건을 찾는다' },
+	{ icon: '✅', en: 'Verification', ko: '사실·계산·출처를 검증한다' },
+	{ icon: '🔁', en: 'Iteration', ko: '맥락과 피드백을 더해 개선한다' },
+	{ icon: '🧑‍⚖️', en: 'Human Decision', ko: '최종 선택과 책임은 내가 진다' },
+];
+---
+
+<div class="collab-process">
+	<p class="collab-process__title">AI 협업 기본 구조</p>
+	<ol class="collab-process__grid">
+		{
+			steps.map((s, i) => (
+				<li class="collab-process__item">
+					<span class="collab-process__icon" aria-hidden="true">
+						{s.icon}
+					</span>
+					<span class="collab-process__index">{i + 1}</span>
+					<span class="collab-process__en">{s.en}</span>
+					<span class="collab-process__ko">{s.ko}</span>
+				</li>
+			))
+		}
+	</ol>
+</div>
+
+<style>
+	.collab-process {
+		margin: 1.75rem 0;
+		padding: 1.25rem;
+		border-radius: var(--lab-radius-lg);
+		background: var(--lab-card-bg);
+		border: 1px solid var(--lab-border);
+	}
+
+	.collab-process__title {
+		margin: 0 0 1rem;
+		font-weight: 700;
+		font-size: 0.95rem;
+		color: var(--sl-color-white);
+	}
+
+	.collab-process__grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.75rem;
+	}
+
+	.collab-process__item {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		padding: 0.85rem 0.7rem 0.7rem;
+		border-radius: var(--lab-radius-sm);
+		background: var(--sl-color-bg);
+		border: 1px solid var(--lab-border);
+	}
+
+	.collab-process__icon {
+		font-size: 1.25rem;
+		line-height: 1;
+	}
+
+	.collab-process__index {
+		position: absolute;
+		top: 0.6rem;
+		right: 0.65rem;
+		font-size: 0.7rem;
+		font-weight: 700;
+		color: var(--sl-color-gray-3);
+	}
+
+	.collab-process__en {
+		margin-top: 0.35rem;
+		font-weight: 700;
+		font-size: 0.85rem;
+		color: var(--lab-mint);
+	}
+
+	.collab-process__ko {
+		font-size: 0.78rem;
+		line-height: 1.5;
+		color: var(--sl-color-gray-2);
+	}
+
+	@media (max-width: 46rem) {
+		.collab-process__grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

@@ -230,8 +230,7 @@ summary:focus-visible,
 
 /* Project-lab sidebar groups get a small badge via data attribute set in config labels (🧪) already embedded in the label text, plus a left accent bar */
 .sidebar-pane .top-level > li:has(a[href*='/project1/']) details,
-.sidebar-pane .top-level > li:has(a[href*='/project2/']) details,
-.sidebar-pane .top-level > li:has(a[href*='/project3/']) details {
+.sidebar-pane .top-level > li:has(a[href*='/project2/']) details {
 	border-left: 3px solid var(--lab-mint);
 	padding-left: 0.5rem;
 	border-radius: 4px;

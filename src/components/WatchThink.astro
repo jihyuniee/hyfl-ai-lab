@@ -1,0 +1,135 @@
+---
+// videoUrl은 아직 정해지지 않았다면 비워두세요 — 깨진 버튼 대신 안내 문구만 표시됩니다.
+// 교사가 실제 영상을 정하면 이 컴포넌트를 사용하는 .mdx 파일에서 videoUrl="https://..." 로 채워주세요.
+interface Props {
+	videoUrl?: string;
+	before: string[];
+	while: string[];
+	after: string[];
+}
+const { videoUrl, before, while: whileWatching, after } = Astro.props;
+---
+
+<div class="watch-think">
+	<p class="watch-think__title">🎬 Watch &amp; Think</p>
+	<p class="watch-think__lead">
+		Google DeepMind의 공동 창립자이자 CEO인 데미스 허사비스가 왜 AI를 연구하는지, AI로 무엇을 하고 싶어 하는지 담긴 영상을 함께 봅니다.
+	</p>
+
+	{
+		videoUrl ? (
+			<div class="watch-think__video">
+				<iframe
+					src={videoUrl}
+					title="Watch & Think 영상"
+					loading="lazy"
+					allowfullscreen
+				/>
+			</div>
+		) : (
+			<p class="watch-think__pending">📺 선생님이 수업 시간에 안내하는 영상을 함께 시청합니다.</p>
+		)
+	}
+
+	<div class="watch-think__cols">
+		<div class="watch-think__col">
+			<p class="watch-think__col-title">시청 전</p>
+			<ul>
+				{before.map((q) => <li>{q}</li>)}
+			</ul>
+		</div>
+		<div class="watch-think__col">
+			<p class="watch-think__col-title">시청하면서</p>
+			<ul>
+				{whileWatching.map((q) => <li>{q}</li>)}
+			</ul>
+		</div>
+		<div class="watch-think__col">
+			<p class="watch-think__col-title">시청한 후</p>
+			<ul>
+				{after.map((q) => <li>{q}</li>)}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<style>
+	.watch-think {
+		margin: 1.75rem 0;
+		padding: 1.4rem 1.5rem;
+		border-radius: var(--lab-radius-lg);
+		background: var(--lab-card-bg);
+		border: 1px solid var(--lab-border);
+		border-top: 3px solid var(--lab-violet);
+	}
+
+	.watch-think__title {
+		margin: 0 0 0.4rem;
+		font-weight: 800;
+		font-size: 1.05rem;
+		color: var(--sl-color-white);
+	}
+
+	.watch-think__lead {
+		margin: 0 0 1rem;
+		font-size: 0.92rem;
+		color: var(--sl-color-gray-2);
+	}
+
+	.watch-think__video {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		border-radius: var(--lab-radius-sm);
+		overflow: hidden;
+		margin-bottom: 1rem;
+		background: black;
+	}
+	.watch-think__video iframe {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	.watch-think__pending {
+		margin: 0 0 1rem;
+		padding: 0.75rem 1rem;
+		border-radius: var(--lab-radius-sm);
+		background: var(--sl-color-bg);
+		border: 1px dashed var(--lab-border);
+		font-size: 0.88rem;
+		color: var(--sl-color-gray-3);
+	}
+
+	.watch-think__cols {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.watch-think__col-title {
+		margin: 0 0 0.4rem;
+		font-weight: 700;
+		font-size: 0.85rem;
+		color: var(--lab-violet);
+	}
+
+	.watch-think__col ul {
+		margin: 0;
+		padding-left: 1.1rem;
+		font-size: 0.85rem;
+		color: var(--sl-color-gray-2);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	@media (max-width: 46rem) {
+		.watch-think__cols {
+			grid-template-columns: 1fr;
+			gap: 1.1rem;
+		}
+	}
+</style>

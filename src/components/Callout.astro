@@ -7,6 +7,7 @@ interface Props {
 		| 'question'
 		| 'think'
 		| 'concept'
+		| 'why'
 		| 'lab'
 		| 'mission'
 		| 'fail'
@@ -26,6 +27,7 @@ const presets: Record<string, { icon: string; label: string }> = {
 	question: { icon: '💭', label: '오늘의 질문' },
 	think: { icon: '✏️', label: '먼저 생각하기' },
 	concept: { icon: '📚', label: '핵심 개념' },
+	why: { icon: '🎯', label: '왜 배우는가?' },
 	lab: { icon: '🧪', label: 'Lab 활동' },
 	mission: { icon: '🎯', label: 'Mission' },
 	fail: { icon: '🔁', label: '실패 기록' },
@@ -124,6 +126,10 @@ const heading = title ?? preset.label;
 	.lab-callout--concept {
 		border-left-color: var(--sl-color-accent);
 		background: linear-gradient(180deg, var(--sl-color-accent-low) 0%, var(--lab-card-bg) 18%);
+	}
+	.lab-callout--why {
+		border-left-color: var(--lab-amber);
+		border-style: dotted;
 	}
 	.lab-callout--lab {
 		border-left-color: var(--lab-mint);
