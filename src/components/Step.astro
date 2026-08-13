@@ -1,0 +1,79 @@
+---
+interface Props {
+	title: string;
+}
+const { title } = Astro.props;
+---
+
+<li class="lab-steps__item">
+	<div class="lab-steps__marker" aria-hidden="true"></div>
+	<div class="lab-steps__content">
+		<p class="lab-steps__heading">{title}</p>
+		<div class="lab-steps__body">
+			<slot />
+		</div>
+	</div>
+</li>
+
+<style>
+	.lab-steps__item {
+		counter-increment: lab-step;
+		display: grid;
+		grid-template-columns: 2.25rem 1fr;
+		gap: 0 1rem;
+	}
+
+	.lab-steps__marker {
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
+	.lab-steps__marker::before {
+		content: counter(lab-step);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 50%;
+		background: var(--lab-gradient-accent);
+		color: white;
+		font-weight: 700;
+		font-size: 0.9rem;
+		flex-shrink: 0;
+	}
+
+	.lab-steps__item:not(:last-child) .lab-steps__marker::after {
+		content: '';
+		position: absolute;
+		top: 2.25rem;
+		bottom: -0.75rem;
+		left: 50%;
+		width: 2px;
+		background: var(--lab-border);
+		transform: translateX(-50%);
+	}
+
+	.lab-steps__content {
+		padding-bottom: 1.75rem;
+	}
+
+	.lab-steps__heading {
+		font-weight: 700;
+		margin: 0.2rem 0 0.35rem;
+	}
+
+	.lab-steps__body {
+		font-size: 0.93rem;
+		color: var(--sl-color-gray-2);
+	}
+
+	.lab-steps__body :global(> *:first-child) {
+		margin-top: 0;
+	}
+	.lab-steps__body :global(> *:last-child) {
+		margin-bottom: 0;
+	}
+</style>
