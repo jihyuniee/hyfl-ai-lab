@@ -17,6 +17,7 @@ export default defineConfig({
 			},
 			customCss: ['./src/styles/custom.css'],
 			social: [],
+			tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
 			components: {
 				// keep default Starlight page frame; only styling is overridden
 			},
@@ -54,7 +55,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Part 5. 데이터에서 문제를 발견하다',
-					items: [{ label: '🧪 Project 3. 공공데이터 × AI 문제 해결', slug: 'project3' }],
+					items: [{ label: '🧪 Project 3. Data to AI Solution', slug: 'project3' }],
 				},
 				{
 					label: 'Part 6. AI Playground',
