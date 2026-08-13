@@ -1,0 +1,32 @@
+---
+interface Props {
+	title?: string;
+}
+const { title } = Astro.props;
+---
+
+<div class="lab-steps">
+	{title && <p class="lab-steps__title">{title}</p>}
+	<ol class="lab-steps__list">
+		<slot />
+	</ol>
+</div>
+
+<style>
+	.lab-steps {
+		margin: 1.75rem 0;
+	}
+	.lab-steps__title {
+		font-weight: 700;
+		margin-bottom: 0.75rem;
+	}
+	.lab-steps__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		counter-reset: lab-step;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+</style>

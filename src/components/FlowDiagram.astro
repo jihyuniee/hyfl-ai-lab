@@ -1,0 +1,96 @@
+---
+interface Item {
+	en?: string;
+	ko: string;
+}
+interface Props {
+	items: Item[];
+}
+const { items } = Astro.props;
+---
+
+<div class="lab-flow" role="list">
+	{
+		items.map((item, i) => (
+			<>
+				<div class="lab-flow__step" role="listitem">
+					<span class="lab-flow__index">{i + 1}</span>
+					<span class="lab-flow__ko">{item.ko}</span>
+					{item.en && <span class="lab-flow__en">{item.en}</span>}
+				</div>
+				{i < items.length - 1 && (
+					<span class="lab-flow__arrow" aria-hidden="true">
+						→
+					</span>
+				)}
+			</>
+		))
+	}
+</div>
+
+<style>
+	.lab-flow {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.6rem;
+		margin: 2rem 0;
+	}
+
+	.lab-flow__step {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.15rem;
+		padding: 0.85rem 1.2rem;
+		border-radius: var(--lab-radius-md);
+		background: var(--lab-card-bg);
+		border: 1px solid var(--lab-border);
+		box-shadow: var(--lab-shadow-sm);
+		min-width: 7.5rem;
+		text-align: center;
+	}
+
+	.lab-flow__index {
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
+		background: var(--lab-gradient-accent);
+		color: white;
+		font-size: 0.78rem;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 0.3rem;
+	}
+
+	.lab-flow__ko {
+		font-weight: 700;
+		font-size: 0.95rem;
+		color: var(--sl-color-white);
+	}
+
+	.lab-flow__en {
+		font-size: 0.75rem;
+		color: var(--sl-color-gray-3);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.lab-flow__arrow {
+		color: var(--lab-mint);
+		font-size: 1.3rem;
+		font-weight: 700;
+	}
+
+	@media (max-width: 46rem) {
+		.lab-flow {
+			flex-direction: column;
+		}
+		.lab-flow__arrow {
+			transform: rotate(90deg);
+		}
+	}
+</style>

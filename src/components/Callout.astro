@@ -1,0 +1,162 @@
+---
+/**
+ * kind: question | think | concept | lab | mission | fail | discuss | caution | teacher | exit | reflect | checklist | rubric
+ */
+interface Props {
+	kind:
+		| 'question'
+		| 'think'
+		| 'concept'
+		| 'lab'
+		| 'mission'
+		| 'fail'
+		| 'discuss'
+		| 'caution'
+		| 'teacher'
+		| 'exit'
+		| 'reflect'
+		| 'checklist'
+		| 'rubric';
+	title?: string;
+}
+
+const { kind, title } = Astro.props;
+
+const presets: Record<string, { icon: string; label: string }> = {
+	question: { icon: '💭', label: '오늘의 질문' },
+	think: { icon: '✏️', label: '먼저 생각하기' },
+	concept: { icon: '📚', label: '핵심 개념' },
+	lab: { icon: '🧪', label: 'Lab 활동' },
+	mission: { icon: '🎯', label: 'Mission' },
+	fail: { icon: '🔁', label: '실패 기록' },
+	discuss: { icon: '💬', label: '친구와 토론하기' },
+	caution: { icon: '⚠️', label: '주의' },
+	teacher: { icon: '🧑‍🏫', label: '교사 Tip' },
+	exit: { icon: '🎟️', label: 'Exit Ticket' },
+	reflect: { icon: '🪞', label: '성찰 질문' },
+	checklist: { icon: '☑️', label: '체크리스트' },
+	rubric: { icon: '📊', label: '평가 기준' },
+};
+
+const preset = presets[kind];
+const heading = title ?? preset.label;
+---
+
+<div class:list={['lab-callout', `lab-callout--${kind}`]}>
+	<p class="lab-callout__title">
+		<span class="lab-callout__icon" aria-hidden="true">{preset.icon}</span>
+		{heading}
+	</p>
+	<div class="lab-callout__body">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.lab-callout {
+		margin: 1.75rem 0;
+		padding: 1.1rem 1.3rem 1.3rem;
+		border-radius: var(--lab-radius-md);
+		background: var(--lab-card-bg);
+		border: 1px solid var(--lab-border);
+		border-left-width: 4px;
+		box-shadow: var(--lab-shadow-sm);
+	}
+
+	.lab-callout__title {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-weight: 700;
+		font-size: 0.95rem;
+		margin: 0 0 0.6rem;
+		color: var(--sl-color-white);
+	}
+
+	.lab-callout__icon {
+		font-size: 1.1rem;
+		line-height: 1;
+	}
+
+	.lab-callout__body {
+		font-size: 0.95rem;
+	}
+
+	.lab-callout__body :global(> *:first-child) {
+		margin-top: 0;
+	}
+	.lab-callout__body :global(> *:last-child) {
+		margin-bottom: 0;
+	}
+
+	.lab-callout__body :global(ul),
+	.lab-callout__body :global(ol) {
+		padding-left: 1.3rem;
+	}
+
+	/* checklist items render as real checkboxes look */
+	.lab-callout--checklist .lab-callout__body :global(li) {
+		list-style: none;
+		position: relative;
+		padding-left: 1.6rem;
+	}
+	.lab-callout--checklist .lab-callout__body :global(ul) {
+		padding-left: 0;
+	}
+	.lab-callout--checklist .lab-callout__body :global(li::before) {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.35rem;
+		width: 1.05rem;
+		height: 1.05rem;
+		border-radius: 5px;
+		border: 2px solid var(--lab-mint);
+	}
+
+	/* per-kind accent colors */
+	.lab-callout--question {
+		border-left-color: var(--lab-blue);
+	}
+	.lab-callout--think {
+		border-left-color: var(--lab-violet);
+	}
+	.lab-callout--concept {
+		border-left-color: var(--sl-color-accent);
+		background: linear-gradient(180deg, var(--sl-color-accent-low) 0%, var(--lab-card-bg) 18%);
+	}
+	.lab-callout--lab {
+		border-left-color: var(--lab-mint);
+	}
+	.lab-callout--mission {
+		border-left-color: var(--lab-amber);
+		background: linear-gradient(135deg, rgba(245, 185, 66, 0.1), var(--lab-card-bg) 40%);
+	}
+	.lab-callout--fail {
+		border-left-color: var(--lab-rose);
+	}
+	.lab-callout--discuss {
+		border-left-color: var(--lab-blue);
+	}
+	.lab-callout--caution {
+		border-left-color: var(--lab-rose);
+		background: linear-gradient(135deg, rgba(251, 113, 133, 0.08), var(--lab-card-bg) 40%);
+	}
+	.lab-callout--teacher {
+		border-left-color: var(--lab-amber);
+		border-style: dashed;
+	}
+	.lab-callout--exit {
+		border-left-color: var(--lab-violet);
+		background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), var(--lab-card-bg) 40%);
+	}
+	.lab-callout--reflect {
+		border-left-color: var(--sl-color-accent);
+	}
+	.lab-callout--checklist {
+		border-left-color: var(--lab-mint);
+	}
+	.lab-callout--rubric {
+		border-left-color: var(--lab-blue);
+	}
+</style>
