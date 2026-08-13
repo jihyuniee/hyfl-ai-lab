@@ -3,16 +3,18 @@ interface Props {
 	eyebrow: string;
 	title: string;
 	tagline: string;
+	slogan?: string;
 	ctaLabel: string;
 	ctaHref: string;
 }
-const { eyebrow, title, tagline, ctaLabel, ctaHref } = Astro.props;
+const { eyebrow, title, tagline, slogan, ctaLabel, ctaHref } = Astro.props;
 ---
 
 <section class="lab-hero">
 	<p class="lab-hero__eyebrow">{eyebrow}</p>
 	<h1 class="lab-hero__title">{title}</h1>
 	<p class="lab-hero__tagline">{tagline}</p>
+	{slogan && <p class="lab-hero__slogan">{slogan}</p>}
 	<a class="lab-hero__cta" href={ctaHref}>{ctaLabel}</a>
 </section>
 
@@ -70,6 +72,18 @@ const { eyebrow, title, tagline, ctaLabel, ctaHref } = Astro.props;
 		line-height: 1.7;
 		color: #dcdcff;
 		margin: 0;
+	}
+
+	.lab-hero__slogan {
+		margin: 0.1rem 0 0.4rem;
+		padding: 0.4rem 1rem;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+		color: var(--lab-mint-soft);
 	}
 
 	.lab-hero__cta {

@@ -1,0 +1,64 @@
+---
+interface Props {
+	eyebrow?: string;
+}
+const { eyebrow } = Astro.props;
+---
+
+<div class="manifesto">
+	{eyebrow && <p class="manifesto__eyebrow">{eyebrow}</p>}
+	<div class="manifesto__body">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.manifesto {
+		position: relative;
+		margin: 2rem 0;
+		padding: 1.75rem 1.75rem 1.9rem;
+		border-radius: var(--lab-radius-lg);
+		background: var(--lab-gradient-hero);
+		color: #f4f4ff;
+		overflow: hidden;
+	}
+
+	.manifesto::before {
+		content: '"';
+		position: absolute;
+		top: -1.2rem;
+		left: 1rem;
+		font-size: 7rem;
+		font-family: Georgia, serif;
+		color: rgba(255, 255, 255, 0.12);
+		line-height: 1;
+		pointer-events: none;
+	}
+
+	.manifesto__eyebrow {
+		position: relative;
+		margin: 0 0 0.6rem;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--lab-mint-soft);
+	}
+
+	.manifesto__body {
+		position: relative;
+		font-size: 1.02rem;
+		line-height: 1.85;
+	}
+
+	.manifesto__body :global(p) {
+		margin: 0 0 0.9rem;
+	}
+	.manifesto__body :global(p:last-child) {
+		margin-bottom: 0;
+	}
+
+	.manifesto__body :global(strong) {
+		color: #ffffff;
+	}
+</style>

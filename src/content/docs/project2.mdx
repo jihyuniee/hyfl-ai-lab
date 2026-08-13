@@ -6,6 +6,7 @@ description: Vibe Coding으로 학교생활·진로와 관련된 문제를 해�
 import Callout from '../../components/Callout.astro';
 import Steps from '../../components/Steps.astro';
 import Step from '../../components/Step.astro';
+import CollabProcess from '../../components/CollabProcess.astro';
 
 설문에서 가장 배우고 싶어 했던 영역(생성형 AI 활용 54.3%, AI 코딩 51.4%, 웹앱 만들기 48.6%)을 모두 담은 프로젝트입니다.
 
@@ -15,9 +16,21 @@ import Step from '../../components/Step.astro';
 주제 예시: 학습 계획 코치 · 수행평가 일정 관리 · 외국어 학습 도우미 · 진로 탐색 질문 생성기 · 독서 기록·추천 서비스 · 교내 행사 안내 · 고민 정리 질문 서비스
 </Callout>
 
+**핵심 질문**: AI와 협업하면 아이디어를 실제 서비스로 어떻게 구현할 수 있는가?
+
+이 프로젝트에서 배우는 태도는 세 가지입니다. AI가 코드를 만들 수 있어도 문제와 목적은 사람이 정한다는 것, 실행된다는 것과 이해했다는 것은 다르다는 것, 그리고 AI의 첫 결과는 완성품이 아니라 검토할 초안이라는 것입니다.
+
+<Callout kind="think" title="문제 해결 도구로서의 AI">
+필요한 데이터나 조사가 있나요? AI의 판단이 틀렸을 때 어떤 일이 생기나요? 인간이 반드시 판단해야 하는 부분은 무엇인가요? 편리함 외에 이 서비스는 어떤 가치를 만드나요?
+</Callout>
+
 <Callout kind="teacher">
 초반 프로젝트는 가능하면 **단일 `index.html`** 중심으로 구성해서, 학생이 파일 하나 안에서 전체 코드를 눈으로 확인할 수 있게 하는 것을 권장합니다. (이 저장소 자체는 유지보수를 위해 Astro 구조를 계속 사용합니다 — 학생 결과물과는 별개입니다.)
 </Callout>
+
+이 프로젝트 전체는 [6차시](/hyfl-ai-lab/part3/ch6/)에서 배운 AI 협업 기본 구조를 그대로 따라갑니다.
+
+<CollabProcess />
 
 <Steps>
 	<Step title="문제 발견">학교생활이나 진로에서 겪는 작은 불편함을 찾습니다.</Step>
