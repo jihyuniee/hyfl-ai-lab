@@ -23,7 +23,7 @@ import Manifesto from '../../components/Manifesto.astro';
 <Callout kind="question">
 **AI는 무엇을 할 수 있을까요? 그리고 우리는 그 힘으로 어떤 문제를 해결할 것인가요?**
 
-이 질문이 이 책의 시작이자 끝입니다. 한 학기가 끝나면 [Part 7](/hyfl-ai-lab/part7/)에서 이 질문으로 다시 돌아옵니다.
+이 질문이 이 책의 시작이자 끝입니다. 한 학기가 끝나면 [Part 6](/hyfl-ai-lab/part6/)에서 이 질문으로 다시 돌아옵니다.
 </Callout>
 
 <Manifesto eyebrow="첫 수업의 선언">
@@ -69,14 +69,13 @@ AI 자체가 이 수업의 목적이 아닙니다. AI는 우리가 지금까지 
 - 결과물보다 문제를 해결해가는 과정에 책임을 다합니다.
 </Callout>
 
-## 세 프로젝트의 성장 흐름
+## 두 프로젝트의 성장 흐름
 
-세 프로젝트는 따로 떨어진 과제가 아니라 하나의 흐름으로 이어집니다.
+두 프로젝트는 따로 떨어진 과제가 아니라 하나의 흐름으로 이어집니다.
 
 <FlowDiagram
 	items={[
 		{ ko: 'AI의 판단을 이해한다' },
-		{ ko: 'AI와 협업해 만든다' },
 		{ ko: 'AI로 사회의 문제를 해결한다' },
 	]}
 />
@@ -85,36 +84,27 @@ AI 자체가 이 수업의 목적이 아닙니다. AI는 우리가 지금까지 
 	<ProjectCard
 		number={1}
 		tag="AI의 판단을 이해하다"
-		title="나만의 이미지 분류 AI 웹앱"
-		description="생활 속 작은 문제를 골라 Teachable Machine으로 분류 모델을 만들고, 실패와 재학습을 거쳐 웹앱으로 배포합니다."
+		title="Teachable Machine 팀 프로젝트"
+		description="모둠 단위로 생활 속 작은 문제를 골라 Teachable Machine으로 분류 모델을 만들고, 실패와 재학습을 거쳐 웹앱으로 배포합니다."
 		href="/hyfl-ai-lab/project1/"
 	/>
 	<ProjectCard
 		number={2}
-		tag="AI와 함께 만들다"
-		title="생성형 AI와 함께 웹서비스 만들기"
-		description="학교생활이나 진로와 관련된 문제를 정하고, 생성형 AI와 함께 코드를 작성·디버깅해서 실제로 쓸 수 있는 웹서비스를 만듭니다."
-		href="/hyfl-ai-lab/project2/"
-	/>
-	<ProjectCard
-		number={3}
 		tag="AI로 사회의 문제를 해결하다"
 		title="Data to AI Solution"
 		description="서비스를 먼저 정하지 않습니다. 데이터에서 문제와 인사이트를 먼저 찾고, 그 인사이트를 해결하는 AI 서비스를 기획합니다."
-		href="/hyfl-ai-lab/project3/"
+		href="/hyfl-ai-lab/project2/"
 	/>
 </div>
 
 ## 이번 학기, 우리가 배우게 될 것
 
-> AI가 어떻게 학습하는지 이해하고, 생성형 AI와 함께 생각하고 코딩하며, 나만의 AI 서비스를 만들어 실제 문제를 해결한다.
-
-이 문장은 여러분 35명에게 물어본 설문 결과에서 나왔습니다. **생성형 AI 활용법(54.3%)**, **AI와 함께 코딩하기(51.4%)**, **웹앱 만들기(48.6%)**, <strong>나만의 AI 서비스 만들기(40%)</strong>를 가장 배우고 싶어 했습니다. 그래서 이 책은 이 네 가지에 가장 많은 시간을 씁니다. 데이터 분석과 AI 윤리도 빠지지 않지만, 별도의 긴 이론 단원이 아니라 **프로젝트 안에서 필요할 때** 배웁니다.
+> AI가 어떻게 학습하는지 이해하고, 데이터에서 인사이트를 찾아 AI 서비스를 기획하며, 생성형 AI와 협업하는 법을 배운다.
 
 <Callout kind="reflect" title="시작하기 전에, 먼저 생각해볼 질문">
 **AI가 더 똑똑해질수록, 인간에게 필요한 능력은 무엇일까요?**
 
-지금 떠오르는 대로 자유롭게 적어보세요. 이 질문은 [Part 7](/hyfl-ai-lab/part7/)에서 다시 만납니다. 한 학기를 마치고 같은 질문에 어떻게 다르게 답하게 되는지 비교해 보세요.
+지금 떠오르는 대로 자유롭게 적어보세요. 이 질문은 [Part 6](/hyfl-ai-lab/part6/)에서 다시 만납니다. 한 학기를 마치고 같은 질문에 어떻게 다르게 답하게 되는지 비교해 보세요.
 </Callout>
 
 ## 전체 구성
@@ -123,12 +113,11 @@ AI 자체가 이 수업의 목적이 아닙니다. AI는 우리가 지금까지 
 | --- | --- | --- |
 | Part 1 | [AI의 세계를 이해하다](/hyfl-ai-lab/part1/ch1/) | 이론 3차시 |
 | Part 2 | [머신러닝을 직접 경험하다](/hyfl-ai-lab/part2/ch4/) | 실습 1차시 |
-| 🧪 Project 1 | [나만의 이미지 분류 AI 웹앱](/hyfl-ai-lab/project1/) | 프로젝트 5~7차시 |
+| 🧪 Project 1 | [Teachable Machine 팀 프로젝트](/hyfl-ai-lab/project1/) | 프로젝트 5~7차시 |
 | Part 3 | [AI와 함께 생각하는 법](/hyfl-ai-lab/part3/ch5/) | 이론+토의 2~3차시 |
-| 🧪 Project 2 | [생성형 AI와 웹서비스 만들기](/hyfl-ai-lab/project2/) | 프로젝트 |
-| 🧪 Project 3 | [Data to AI Solution](/hyfl-ai-lab/project3/) | 프로젝트 |
-| Part 6 | [AI Playground](/hyfl-ai-lab/part6/) | 자유 실습 |
-| Part 7 | [AI 시대를 살아가는 우리](/hyfl-ai-lab/part7/) | 토의·성찰 |
+| 🧪 Project 2 | [Data to AI Solution](/hyfl-ai-lab/project2/) | 프로젝트 |
+| Part 5 | [AI Playground](/hyfl-ai-lab/part5/) | 자유 실습 |
+| Part 6 | [AI 시대를 살아가는 우리](/hyfl-ai-lab/part6/) | 토의·성찰 |
 
 교사이신가요? [수업 운영 가이드](/hyfl-ai-lab/teacher/guide/)에서 이 책의 철학과 차시 운영안, 평가 관점을 확인하세요.
 

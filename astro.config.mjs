@@ -10,7 +10,7 @@ export default defineConfig({
 		starlight({
 			title: 'HYFL AI Lab',
 			description:
-				'한영외국어고등학교 2학년 「인공지능 원리탐구」 학생용 AI Lab Book. 개념을 이해하고, 바로 해보고, 실패에서 배우며, 나만의 AI와 웹서비스를 만듭니다.',
+				'한영외국어고등학교 2학년 「인공지능 원리탐구」 학생용 AI Lab Book. 개념을 이해하고, 바로 해보고, 실패에서 배우며, 팀 프로젝트로 AI 서비스를 기획합니다.',
 			defaultLocale: 'ko',
 			locales: {
 				root: { label: '한국어', lang: 'ko' },
@@ -40,7 +40,7 @@ export default defineConfig({
 				},
 				{
 					label: '🧪 Project 1',
-					items: [{ label: '나만의 이미지 분류 AI 웹앱', slug: 'project1' }],
+					items: [{ label: 'Teachable Machine 팀 프로젝트', slug: 'project1' }],
 				},
 				{
 					label: 'Part 3. AI와 함께 생각하는 법',
@@ -50,20 +50,16 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Part 4. AI와 함께 만들다',
-					items: [{ label: '🧪 Project 2. 생성형 AI와 웹서비스 만들기', slug: 'project2' }],
+					label: 'Part 4. 데이터에서 문제를 발견하다',
+					items: [{ label: '🧪 Project 2. Data to AI Solution', slug: 'project2' }],
 				},
 				{
-					label: 'Part 5. 데이터에서 문제를 발견하다',
-					items: [{ label: '🧪 Project 3. Data to AI Solution', slug: 'project3' }],
+					label: 'Part 5. AI Playground',
+					items: [{ label: 'AI Playground', slug: 'part5' }],
 				},
 				{
-					label: 'Part 6. AI Playground',
-					items: [{ label: 'AI Playground', slug: 'part6' }],
-				},
-				{
-					label: 'Part 7. AI 시대를 살아가는 우리',
-					items: [{ label: 'AI 시대를 살아가는 우리', slug: 'part7' }],
+					label: 'Part 6. AI 시대를 살아가는 우리',
+					items: [{ label: 'AI 시대를 살아가는 우리', slug: 'part6' }],
 				},
 				{
 					label: '🧑‍🏫 교사용',
