@@ -13,88 +13,62 @@ const { eyebrow, title, tagline, ctaLabel, ctaHref } = Astro.props;
 	<p class="lab-hero__eyebrow">{eyebrow}</p>
 	<h1 class="lab-hero__title">{title}</h1>
 	<p class="lab-hero__tagline">{tagline}</p>
-	<a class="lab-hero__cta" href={ctaHref}>{ctaLabel}</a>
+	<a class="lab-hero__cta" href={ctaHref}>{ctaLabel} →</a>
 </section>
 
 <style>
 	.lab-hero {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		gap: 1rem;
-		padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem;
-		margin: -1.5rem -1.5rem 2.5rem;
-		border-radius: 0 0 var(--lab-radius-lg) var(--lab-radius-lg);
+		padding: clamp(2rem, 5vw, 3.5rem);
+		margin-bottom: 1rem;
+		border: 1px solid var(--lab-border);
+		border-top: 5px solid var(--sl-color-accent);
+		border-radius: var(--lab-radius-lg);
 		background: var(--lab-gradient-hero);
-		color: #f4f4ff;
-		overflow: hidden;
-	}
-
-	.lab-hero::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background:
-			radial-gradient(circle at 15% 20%, rgba(45, 212, 191, 0.25), transparent 45%),
-			radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.3), transparent 50%),
-			radial-gradient(circle at 50% 100%, rgba(79, 141, 253, 0.25), transparent 55%);
-		pointer-events: none;
-	}
-
-	.lab-hero > * {
-		position: relative;
 	}
 
 	.lab-hero__eyebrow {
-		font-size: 0.85rem;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--lab-mint-soft);
-		margin: 0;
+		margin: 0 0 0.75rem;
+		color: var(--sl-color-accent);
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
 	}
 
 	.lab-hero__title {
-		font-size: clamp(2.1rem, 1.6rem + 2vw, 3.4rem);
-		font-weight: 800;
-		letter-spacing: -0.02em;
 		margin: 0;
-		color: #ffffff;
+		color: var(--sl-color-white);
+		font-size: clamp(2rem, 1.65rem + 1.6vw, 3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
 	}
 
 	.lab-hero__tagline {
-		font-size: clamp(1rem, 0.9rem + 0.3vw, 1.2rem);
 		max-width: 42rem;
+		margin: 1rem 0 1.5rem;
+		color: var(--sl-color-gray-2);
+		font-size: 1.02rem;
 		line-height: 1.7;
-		color: #dcdcff;
-		margin: 0;
 	}
 
 	.lab-hero__cta {
-		margin-top: 0.75rem;
 		display: inline-flex;
 		align-items: center;
-		gap: 0.4rem;
-		padding: 0.85rem 1.7rem;
-		border-radius: 999px;
-		background: var(--lab-mint);
-		color: #0b3b36;
+		min-height: 2.7rem;
+		padding: 0.65rem 1rem;
+		border-radius: 7px;
+		background: var(--sl-color-accent);
+		color: #ffffff;
 		font-weight: 700;
 		text-decoration: none;
-		box-shadow: 0 10px 30px -8px rgba(45, 212, 191, 0.55);
-		transition: transform 0.15s ease;
 	}
 
 	.lab-hero__cta:hover {
-		transform: translateY(-2px);
+		background: var(--sl-color-accent-high);
 	}
 
 	@media (max-width: 30rem) {
 		.lab-hero {
-			margin: -1rem -1rem 2rem;
-			padding: 2.25rem 1.1rem;
+			padding: 1.5rem 1.2rem;
 		}
 	}
 </style>
