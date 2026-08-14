@@ -1,188 +1,162 @@
-/* ==========================================================================
-   HYFL AI Lab — design tokens & theme
-   딥 네이비/인디고 베이스 + 블루·바이올렛·민트 포인트
-   ========================================================================== */
-
 :root {
 	--sl-font: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', 'Malgun Gothic',
 		system-ui, 'Noto Sans KR', sans-serif;
-
-	/* brand accent — violet-blue */
-	--sl-color-accent-low: #2a2a72;
-	--sl-color-accent: #6d5bff;
-	--sl-color-accent-high: #c9c2ff;
-
-	/* lab-specific tokens (available in both themes) */
-	--lab-mint: #2dd4bf;
-	--lab-mint-soft: #99f6e4;
-	--lab-violet: #8b5cf6;
-	--lab-blue: #4f8dfd;
-	--lab-amber: #f5b942;
-	--lab-rose: #fb7185;
-	--lab-radius-sm: 10px;
-	--lab-radius-md: 16px;
-	--lab-radius-lg: 24px;
-	--lab-shadow: 0 8px 24px -8px rgba(20, 20, 60, 0.25);
-	--lab-shadow-sm: 0 2px 8px -2px rgba(20, 20, 60, 0.18);
-	--lab-gradient-hero: linear-gradient(135deg, #241a5e 0%, #2a2a72 45%, #1c2f6b 100%);
-	--lab-gradient-accent: linear-gradient(135deg, var(--lab-blue), var(--lab-violet));
+	--sl-color-accent-low: #dbeafe;
+	--sl-color-accent: #2563eb;
+	--sl-color-accent-high: #1e3a8a;
+	--lab-mint: #0f766e;
+	--lab-mint-soft: #ccfbf1;
+	--lab-violet: #6d5bd0;
+	--lab-blue: #2563eb;
+	--lab-amber: #b7791f;
+	--lab-rose: #c2415d;
+	--lab-radius-sm: 8px;
+	--lab-radius-md: 10px;
+	--lab-radius-lg: 12px;
+	--lab-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+	--lab-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+	--lab-gradient-hero: #f8fafc;
+	--lab-gradient-accent: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
 
-/* -------------------- Dark mode (default lab theme) -------------------- */
 :root,
-:root[data-theme='dark'] {
-	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #eef0fb;
-	--sl-color-gray-2: #c7cbe8;
-	--sl-color-gray-3: #9297c2;
-	--sl-color-gray-4: #656a97;
-	--sl-color-gray-5: #454a75;
-	--sl-color-gray-6: #2c2f57;
-	--sl-color-gray-7: #1c1e3d;
-	--sl-color-black: #13152c;
-
-	--sl-color-bg: #13152c;
-	--sl-color-bg-nav: #171a35;
-	--sl-color-bg-sidebar: #171a35;
-	--sl-color-bg-inline-code: #23264a;
-	--sl-color-hairline: #2c2f57;
-	--sl-color-hairline-light: #2c2f57;
-	--sl-color-hairline-shade: #0e1024;
-
-	--lab-card-bg: #1b1e3e;
-	--lab-card-bg-hover: #21254a;
-	--lab-border: #2f3363;
-}
-
-/* -------------------- Light mode -------------------- */
 :root[data-theme='light'] {
-	--sl-color-accent-low: #dcd6ff;
-	--sl-color-accent: #5b4fe0;
-	--sl-color-accent-high: #34298f;
-
-	--sl-color-white: #14162c;
-	--sl-color-gray-1: #24274a;
-	--sl-color-gray-2: #3a3e6b;
-	--sl-color-gray-3: #666a99;
-	--sl-color-gray-4: #9a9ec9;
-	--sl-color-gray-5: #c3c6e6;
-	--sl-color-gray-6: #e2e4f6;
-	--sl-color-gray-7: #f1f2fb;
+	--sl-color-white: #0f172a;
+	--sl-color-gray-1: #1e293b;
+	--sl-color-gray-2: #475569;
+	--sl-color-gray-3: #64748b;
+	--sl-color-gray-4: #94a3b8;
+	--sl-color-gray-5: #cbd5e1;
+	--sl-color-gray-6: #e2e8f0;
+	--sl-color-gray-7: #f1f5f9;
 	--sl-color-black: #ffffff;
-
-	--sl-color-bg: #f7f7fd;
-	--sl-color-bg-nav: #ffffff;
-	--sl-color-bg-sidebar: #ffffff;
-	--sl-color-bg-inline-code: #eceefb;
-	--sl-color-hairline: #e2e4f6;
-	--sl-color-hairline-light: #e2e4f6;
-	--sl-color-hairline-shade: #d3d6f0;
-
+	--sl-color-bg: #ffffff;
+	--sl-color-bg-nav: rgba(255, 255, 255, 0.96);
+	--sl-color-bg-sidebar: #f8fafc;
+	--sl-color-bg-inline-code: #f1f5f9;
+	--sl-color-hairline: #e2e8f0;
+	--sl-color-hairline-light: #e2e8f0;
+	--sl-color-hairline-shade: #cbd5e1;
 	--lab-card-bg: #ffffff;
-	--lab-card-bg-hover: #f2f2fc;
-	--lab-border: #e2e4f6;
-	--lab-gradient-hero: linear-gradient(135deg, #4f46c9 0%, #5b4fe0 45%, #3d63c4 100%);
+	--lab-card-bg-hover: #f8fafc;
+	--lab-border: #e2e8f0;
 }
 
-@media (prefers-color-scheme: light) {
-	:root:not([data-theme='dark']) {
-		--sl-color-accent-low: #dcd6ff;
-		--sl-color-accent: #5b4fe0;
-		--sl-color-accent-high: #34298f;
-		--sl-color-white: #14162c;
-		--sl-color-gray-1: #24274a;
-		--sl-color-gray-2: #3a3e6b;
-		--sl-color-gray-3: #666a99;
-		--sl-color-gray-4: #9a9ec9;
-		--sl-color-gray-5: #c3c6e6;
-		--sl-color-gray-6: #e2e4f6;
-		--sl-color-gray-7: #f1f2fb;
-		--sl-color-black: #ffffff;
-		--sl-color-bg: #f7f7fd;
-		--sl-color-bg-nav: #ffffff;
-		--sl-color-bg-sidebar: #ffffff;
-		--sl-color-bg-inline-code: #eceefb;
-		--sl-color-hairline: #e2e4f6;
-		--sl-color-hairline-light: #e2e4f6;
-		--sl-color-hairline-shade: #d3d6f0;
-		--lab-card-bg: #ffffff;
-		--lab-card-bg-hover: #f2f2fc;
-		--lab-border: #e2e4f6;
-		--lab-gradient-hero: linear-gradient(135deg, #4f46c9 0%, #5b4fe0 45%, #3d63c4 100%);
-	}
+:root[data-theme='dark'] {
+	--sl-color-accent-low: #172554;
+	--sl-color-accent: #60a5fa;
+	--sl-color-accent-high: #dbeafe;
+	--sl-color-white: #f8fafc;
+	--sl-color-gray-1: #e2e8f0;
+	--sl-color-gray-2: #cbd5e1;
+	--sl-color-gray-3: #94a3b8;
+	--sl-color-gray-4: #64748b;
+	--sl-color-gray-5: #475569;
+	--sl-color-gray-6: #334155;
+	--sl-color-gray-7: #1e293b;
+	--sl-color-black: #0f172a;
+	--sl-color-bg: #0f172a;
+	--sl-color-bg-nav: #111827;
+	--sl-color-bg-sidebar: #111827;
+	--sl-color-bg-inline-code: #1e293b;
+	--sl-color-hairline: #334155;
+	--sl-color-hairline-light: #334155;
+	--sl-color-hairline-shade: #020617;
+	--lab-card-bg: #111827;
+	--lab-card-bg-hover: #1e293b;
+	--lab-border: #334155;
+	--lab-gradient-hero: #111827;
 }
-
-/* ==========================================================================
-   Base tweaks
-   ========================================================================== */
 
 html {
 	scroll-behavior: smooth;
 }
 
 body {
-	letter-spacing: -0.01em;
+	letter-spacing: -0.012em;
+}
+
+.header {
+	border-bottom: 1px solid var(--lab-border);
+	box-shadow: none;
+}
+
+.sidebar-pane {
+	border-right: 1px solid var(--lab-border);
+}
+
+.sidebar-pane .top-level > li > details > summary .group-label .large {
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: var(--sl-color-gray-3);
+}
+
+.sidebar-pane a {
+	border-radius: 6px;
+}
+
+.sidebar-pane li:has(> a[aria-current='true']) > a {
+	font-weight: 700;
+	background: var(--sl-color-accent-low);
+	color: var(--sl-color-accent-high);
+}
+
+.sl-markdown-content {
+	max-width: 54rem;
 }
 
 .sl-markdown-content h1 {
-	font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+	font-size: clamp(1.8rem, 1.5rem + 1vw, 2.35rem);
 	font-weight: 800;
-	letter-spacing: -0.02em;
+	letter-spacing: -0.025em;
 }
 
 .sl-markdown-content h2 {
-	font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem);
-	font-weight: 700;
-	letter-spacing: -0.01em;
-	margin-top: 2.5rem;
-	padding-top: 0.25rem;
+	margin-top: 3rem;
+	padding-bottom: 0.55rem;
+	border-bottom: 1px solid var(--lab-border);
+	font-size: clamp(1.3rem, 1.15rem + 0.55vw, 1.65rem);
+	font-weight: 750;
+	letter-spacing: -0.018em;
 }
 
 .sl-markdown-content h3 {
-	font-size: 1.15rem;
+	font-size: 1.08rem;
 	font-weight: 700;
 }
 
 .sl-markdown-content p,
 .sl-markdown-content li {
-	line-height: 1.8;
+	line-height: 1.78;
 }
 
-/* keep the right-hand ToC short: only show top-level headings */
 .sl-markdown-content h3 {
 	--sl-toc-hidden: 1;
 }
 
-/* focus visibility */
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible,
-[tabindex]:focus-visible {
-	outline: 3px solid var(--lab-mint);
-	outline-offset: 2px;
-	border-radius: 4px;
-}
-
-/* comfortable touch targets */
 .sl-markdown-content a {
 	text-underline-offset: 3px;
 }
 
-/* ==========================================================================
-   Tables — responsive: horizontal scroll wrapper (Starlight already wraps
-   tables in a scrollable container by default; we just style it)
-   ========================================================================== */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+	outline: 3px solid var(--sl-color-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
 
 .sl-markdown-content table {
 	display: block;
 	max-width: 100%;
 	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
 	border-collapse: separate;
 	border-spacing: 0;
-	font-size: 0.95rem;
 	border: 1px solid var(--lab-border);
 	border-radius: var(--lab-radius-sm);
+	font-size: 0.94rem;
 }
 
 .sl-markdown-content th {
@@ -193,7 +167,7 @@ summary:focus-visible,
 
 .sl-markdown-content th,
 .sl-markdown-content td {
-	padding: 0.65rem 0.9rem;
+	padding: 0.7rem 0.9rem;
 	border-bottom: 1px solid var(--lab-border);
 }
 
@@ -201,83 +175,101 @@ summary:focus-visible,
 	border-bottom: none;
 }
 
-/* ==========================================================================
-   Card grid (project cards on the home page)
-   ========================================================================== */
+.textbook-quick-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin: 1rem 0 2.5rem;
+}
+
+.textbook-quick-links a,
+.textbook-question-link a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.6rem;
+	padding: 0.65rem 1rem;
+	border: 1px solid var(--lab-border);
+	border-radius: 7px;
+	background: var(--lab-card-bg);
+	color: var(--sl-color-accent-high);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.textbook-quick-links a:first-child,
+.textbook-question-link a {
+	background: var(--sl-color-accent);
+	border-color: var(--sl-color-accent);
+	color: #ffffff;
+}
+
+.textbook-quick-links a:hover,
+.textbook-question-link a:hover {
+	transform: translateY(-1px);
+	box-shadow: var(--lab-shadow-sm);
+}
+
+.textbook-toc {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.85rem;
+	margin: 1.25rem 0 2.5rem;
+}
+
+.textbook-toc__section {
+	padding: 1.15rem 1.2rem;
+	border: 1px solid var(--lab-border);
+	border-radius: var(--lab-radius-md);
+	background: var(--lab-card-bg);
+}
+
+.textbook-toc__section--project {
+	border-top: 3px solid var(--sl-color-accent);
+}
+
+.textbook-toc__part {
+	margin: 0 0 0.35rem;
+	color: var(--sl-color-accent);
+	font-size: 0.75rem;
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.textbook-toc__section h3 {
+	margin: 0 0 0.7rem;
+	font-size: 1.02rem;
+}
+
+.textbook-toc__section ol,
+.textbook-toc__section ul {
+	margin: 0;
+	padding-left: 1.25rem;
+}
+
+.textbook-toc__section li + li {
+	margin-top: 0.35rem;
+}
+
+.textbook-toc__section p:last-child {
+	margin-bottom: 0;
+	color: var(--sl-color-gray-2);
+	font-size: 0.9rem;
+}
 
 .lab-card-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-	gap: 1rem;
-	margin: 1.5rem 0 2rem;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.85rem;
+	margin: 1.25rem 0 2rem;
 }
-
-/* ==========================================================================
-   Sidebar — visually separate Project Lab groups from regular Part groups
-   ========================================================================== */
-
-.sidebar-pane .top-level > li > details > summary .group-label .large {
-	font-weight: 700;
-}
-
-.sidebar-pane a[href*='/project'] {
-	position: relative;
-}
-
-.sidebar-pane li:has(> a[aria-current='true']) > a {
-	font-weight: 700;
-}
-
-/* Project-lab sidebar groups get a small badge via data attribute set in config labels (🧪) already embedded in the label text, plus a left accent bar */
-.sidebar-pane .top-level > li:has(a[href*='/project1/']) details,
-.sidebar-pane .top-level > li:has(a[href*='/project2/']) details,
-.sidebar-pane .top-level > li:has(a[href*='/project3/']) details {
-	border-left: 3px solid var(--lab-mint);
-	padding-left: 0.5rem;
-	border-radius: 4px;
-}
-
-.sidebar-pane .top-level > li:has(a[href*='/teacher/']) details {
-	border-left: 3px solid var(--lab-amber);
-	padding-left: 0.5rem;
-	border-radius: 4px;
-}
-
-/* ==========================================================================
-   Print styles — keep core content readable on paper
-   ========================================================================== */
-
-@media print {
-	.header,
-	.sidebar,
-	.right-sidebar-container,
-	.pagination-links {
-		display: none !important;
-	}
-	.main-pane {
-		margin: 0 !important;
-	}
-	a[href]::after {
-		content: ' (' attr(href) ')';
-		font-size: 0.75em;
-		color: #555;
-	}
-	.lab-callout,
-	.lab-steps__item {
-		break-inside: avoid;
-	}
-}
-
-/* ==========================================================================
-   Question form
-   ========================================================================== */
 
 .question-form-wrap {
 	margin-top: 1.5rem;
 	overflow: hidden;
-	border: 1px solid var(--sl-color-gray-5);
-	border-radius: 0.8rem;
-	background: var(--sl-color-bg);
+	border: 1px solid var(--lab-border);
+	border-radius: var(--lab-radius-md);
+	background: var(--lab-card-bg);
 }
 
 .question-form-wrap iframe {
@@ -294,16 +286,59 @@ summary:focus-visible,
 
 .question-form-link a {
 	display: inline-block;
-	padding: 0.7rem 1.1rem;
-	border-radius: 0.55rem;
+	padding: 0.7rem 1rem;
+	border-radius: 7px;
 	background: var(--sl-color-accent);
-	color: var(--sl-color-black);
-	font-weight: 600;
+	color: #ffffff;
+	font-weight: 700;
 	text-decoration: none;
 }
 
-@media (max-width: 50rem) {
+.ef-publish-footer {
+	margin-top: 3rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--lab-border);
+	color: var(--sl-color-gray-3);
+	font-size: 0.85rem;
+}
+
+@media (max-width: 60rem) {
+	.lab-card-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 44rem) {
+	.textbook-toc {
+		grid-template-columns: 1fr;
+	}
+
 	.question-form-wrap iframe {
 		min-height: 1050px;
+	}
+}
+
+@media print {
+	.header,
+	.sidebar,
+	.right-sidebar-container,
+	.pagination-links {
+		display: none !important;
+	}
+
+	.main-pane {
+		margin: 0 !important;
+	}
+
+	a[href]::after {
+		content: ' (' attr(href) ')';
+		font-size: 0.75em;
+		color: #555;
+	}
+
+	.lab-callout,
+	.lab-steps__item,
+	.textbook-toc__section {
+		break-inside: avoid;
 	}
 }
