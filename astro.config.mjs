@@ -46,7 +46,7 @@ export default defineConfig({
 					label: 'Part 3. AI와 함께 생각하는 법',
 					items: [
 						{ label: '5. 생성형 AI는 어떻게 답을 만들까?', slug: 'part3/ch5' },
-						{ label: '6. AI에게 답을 받지 말고, AI와 생각하자', slug: 'part3/ch6' },
+						{ label: '6. 생성형 AI를 제대로 활용하는 방법', slug: 'part3/ch6' },
 					],
 				},
 				{
