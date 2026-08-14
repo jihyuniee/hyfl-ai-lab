@@ -10,76 +10,71 @@ const { number, title, description, href, tag } = Astro.props;
 ---
 
 <a class="lab-project-card" href={href}>
-	<span class="lab-project-card__tag">{tag}</span>
 	<span class="lab-project-card__number">Project {number}</span>
 	<h3 class="lab-project-card__title">{title}</h3>
 	<p class="lab-project-card__desc">{description}</p>
-	<span class="lab-project-card__cta">자세히 보기 →</span>
+	<span class="lab-project-card__tag">{tag}</span>
+	<span class="lab-project-card__cta">프로젝트 보기 →</span>
 </a>
 
 <style>
 	.lab-project-card {
 		display: flex;
 		flex-direction: column;
-		gap: 0.4rem;
-		padding: 1.5rem;
-		border-radius: var(--lab-radius-lg);
-		background: var(--lab-card-bg);
-		border: 1px solid var(--lab-border);
-		box-shadow: var(--lab-shadow-sm);
-		text-decoration: none;
-		color: inherit;
-		transition:
-			transform 0.15s ease,
-			box-shadow 0.15s ease,
-			border-color 0.15s ease;
+		gap: 0.5rem;
 		height: 100%;
+		padding: 1.25rem;
+		border: 1px solid var(--lab-border);
+		border-radius: var(--lab-radius-md);
+		background: var(--lab-card-bg);
+		color: inherit;
+		text-decoration: none;
+		transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 	}
 
 	.lab-project-card:hover {
-		transform: translateY(-3px);
+		transform: translateY(-2px);
+		border-color: var(--sl-color-accent);
 		box-shadow: var(--lab-shadow);
-		border-color: var(--lab-mint);
+	}
+
+	.lab-project-card__number {
+		color: var(--sl-color-accent);
+		font-size: 0.75rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.lab-project-card__title {
+		margin: 0;
+		color: var(--sl-color-white);
+		font-size: 1.08rem;
+		font-weight: 750;
+	}
+
+	.lab-project-card__desc {
+		flex-grow: 1;
+		margin: 0;
+		color: var(--sl-color-gray-2);
+		font-size: 0.9rem;
+		line-height: 1.65;
 	}
 
 	.lab-project-card__tag {
 		align-self: flex-start;
+		padding: 0.2rem 0.5rem;
+		border-radius: 5px;
+		background: var(--sl-color-gray-7);
+		color: var(--sl-color-gray-2);
 		font-size: 0.72rem;
 		font-weight: 700;
-		letter-spacing: 0.03em;
-		color: #0b3b36;
-		background: var(--lab-mint);
-		padding: 0.2rem 0.6rem;
-		border-radius: 999px;
-		margin-bottom: 0.25rem;
-	}
-
-	.lab-project-card__number {
-		font-size: 0.8rem;
-		font-weight: 700;
-		color: var(--lab-mint);
-		text-transform: uppercase;
-		letter-spacing: 0.04em;
-	}
-
-	.lab-project-card__title {
-		font-size: 1.15rem;
-		font-weight: 800;
-		margin: 0;
-		color: var(--sl-color-white);
-	}
-
-	.lab-project-card__desc {
-		font-size: 0.9rem;
-		color: var(--sl-color-gray-2);
-		margin: 0;
-		flex-grow: 1;
 	}
 
 	.lab-project-card__cta {
-		margin-top: 0.5rem;
-		font-size: 0.85rem;
-		font-weight: 700;
+		margin-top: 0.35rem;
 		color: var(--sl-color-accent-high);
+		font-size: 0.84rem;
+		font-weight: 700;
 	}
 </style>
