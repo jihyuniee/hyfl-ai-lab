@@ -68,13 +68,6 @@ export default defineConfig({
 					label: 'Part 7. AI 시대를 살아가는 우리',
 					items: [{ label: 'AI 시대를 살아가는 우리', slug: 'part7' }],
 				},
-				{
-					label: '🧑‍🏫 교사용',
-					items: [
-						{ label: '수업 운영 가이드', slug: 'teacher/guide' },
-						{ label: '교육과정·개념 연결표', slug: 'teacher/curriculum-map' },
-					],
-				},
 			],
 		}),
 		mdx(),
