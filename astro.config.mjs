@@ -30,7 +30,7 @@ export default defineConfig({
 					label: 'Part 1. AI의 세계를 이해하다',
 					items: [
 						{ label: '1. 인공지능이란 무엇일까?', slug: 'part1/ch1' },
-						{ label: '2. AI는 무엇을 할 수 있을까?', slug: 'part1/ch2' },
+						{ label: '2. 생활 속 AI는 어떻게 작동할까?', slug: 'part1/ch2' },
 						{ label: '3. AI·머신러닝·딥러닝은 무엇이 다를까?', slug: 'part1/ch3' },
 					],
 				},
