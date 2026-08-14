@@ -24,7 +24,10 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: 'START',
-					items: [{ label: '🏠 HYFL AI Lab 시작하기', slug: 'index' }],
+					items: [
+						{ label: '🏠 HYFL AI Lab 시작하기', slug: 'index' },
+						{ label: '💬 선생님께 질문하기', slug: 'question' },
+					],
 				},
 				{
 					label: 'Part 1. AI의 세계를 이해하다',
