@@ -21,9 +21,9 @@ export default defineConfig({
 			components: {},
 			sidebar: [
 				{
-					label: '교과서',
+					label: 'START',
 					items: [
-						{ label: '처음으로 · 전체 목차', slug: 'index' },
+						{ label: 'HYFL AI Lab 시작하기', slug: 'index' },
 						{ label: '선생님께 질문하기', slug: 'question' },
 					],
 				},
@@ -41,29 +41,30 @@ export default defineConfig({
 				},
 				{
 					label: 'Project 1',
-					items: [{ label: '티처블머신 프로젝트', slug: 'project1' }],
+					items: [{ label: '나만의 이미지 분류 AI 웹앱', slug: 'project1' }],
 				},
 				{
-					label: 'Part 3. 생성형 AI를 이해하고 활용하다',
+					label: 'Part 3. AI와 함께 생각하는 법',
 					items: [
 						{ label: '5. 생성형 AI는 어떻게 답을 만들까?', slug: 'part3/ch5' },
 						{ label: '6. 생성형 AI를 제대로 활용하는 방법', slug: 'part3/ch6' },
 					],
 				},
 				{
-					label: 'Project 2',
-					items: [{ label: '문제해결 프로젝트', slug: 'project2' }],
+					label: 'Part 4. AI와 함께 만들다',
+					items: [{ label: 'Project 2. 생성형 AI와 웹서비스 만들기', slug: 'project2' }],
 				},
 				{
-					label: 'Project 3',
-					items: [{ label: '나만의 웹앱 만들기', slug: 'project3' }],
+					label: 'Part 5. 데이터에서 문제를 발견하다',
+					items: [{ label: 'Project 3. Data to AI Solution', slug: 'project3' }],
 				},
 				{
-					label: '더 살펴보기',
-					items: [
-						{ label: 'AI Playground', slug: 'part6' },
-						{ label: 'AI 시대의 책임과 인간의 역할', slug: 'part7' },
-					],
+					label: 'Part 6. AI Playground',
+					items: [{ label: 'AI Playground', slug: 'part6' }],
+				},
+				{
+					label: 'Part 7. AI 시대를 살아가는 우리',
+					items: [{ label: 'AI 시대를 살아가는 우리', slug: 'part7' }],
 				},
 			],
 		}),
