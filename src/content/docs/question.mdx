@@ -1,0 +1,68 @@
+---
+title: "선생님께 질문하기"
+description: 수업 내용과 실습 중 궁금한 점을 자유롭게 질문하는 공간입니다.
+---
+
+import Callout from '../../components/Callout.astro';
+
+# 선생님께 질문하기
+
+수업 내용, PC 실습, 프로젝트를 진행하면서 궁금한 점이 생기면 언제든 질문해주세요. 바로 해결되지 않는 문제는 어떤 작업을 하던 중이었는지, 화면에 어떤 메시지가 나타났는지도 함께 적어주면 원인을 찾는 데 도움이 됩니다.
+
+<Callout kind="question">
+질문에는 정답이 정해져 있지 않아도 괜찮습니다. AI에 관해 더 알아보고 싶은 점, 수업에서 함께 다루었으면 하는 내용, 프로젝트 아이디어에 대한 고민도 자유롭게 남길 수 있습니다.
+</Callout>
+
+<div class="question-form-wrap">
+	<iframe
+		src="https://forms.gle/kbyrVo5cw6NnDCXn9"
+		title="선생님께 질문하기 구글폼"
+		loading="lazy"
+	>
+		질문 폼을 불러올 수 없습니다.
+	</iframe>
+</div>
+
+<div class="question-form-link">
+	<a href="https://forms.gle/kbyrVo5cw6NnDCXn9" target="_blank" rel="noopener noreferrer">
+		구글폼을 새 창에서 열기
+	</a>
+</div>
+
+<style>
+	.question-form-wrap {
+		margin-top: 1.5rem;
+		overflow: hidden;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.8rem;
+		background: var(--sl-color-bg);
+	}
+
+	.question-form-wrap iframe {
+		display: block;
+		width: 100%;
+		min-height: 920px;
+		border: 0;
+	}
+
+	.question-form-link {
+		margin-top: 1rem;
+		text-align: center;
+	}
+
+	.question-form-link a {
+		display: inline-block;
+		padding: 0.7rem 1.1rem;
+		border-radius: 0.55rem;
+		background: var(--sl-color-accent);
+		color: var(--sl-color-black);
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	@media (max-width: 50rem) {
+		.question-form-wrap iframe {
+			min-height: 1050px;
+		}
+	}
+</style>
