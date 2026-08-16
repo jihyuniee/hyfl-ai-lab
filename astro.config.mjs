@@ -9,63 +9,43 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: '인공지능 원리탐구',
-			description:
-				'한영외국어고등학교 2학년 「인공지능 원리탐구」 웹교과서',
+			description: '한영외국어고등학교 2학년 「인공지능 원리탐구」 웹교과서',
 			defaultLocale: 'ko',
-			locales: {
-				root: { label: '한국어', lang: 'ko' },
-			},
+			locales: { root: { label: '한국어', lang: 'ko' } },
 			customCss: ['./src/styles/custom.css'],
 			social: [],
 			tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
 			components: {},
 			sidebar: [
-				{
-					label: 'START',
-					items: [
-						{ label: 'HYFL AI Lab 시작하기', slug: 'index' },
-						{ label: '선생님께 질문하기', slug: 'question' },
-					],
-				},
-				{
-					label: 'Part 1. AI의 세계를 이해하다',
-					items: [
-						{ label: '1. 인공지능이란 무엇일까?', slug: 'part1/ch1' },
-						{ label: '2. 생활 속 AI는 어떻게 작동할까?', slug: 'part1/ch2' },
-						{ label: '3. AI·머신러닝·딥러닝은 무엇이 다를까?', slug: 'part1/ch3' },
-					],
-				},
-				{
-					label: 'Part 2. 머신러닝을 직접 경험하다',
-					items: [{ label: '4. 컴퓨터는 어떻게 학습할까?', slug: 'part2/ch4' }],
-				},
-				{
-					label: 'Project 1',
-					items: [{ label: '나만의 이미지 분류 AI 웹앱', slug: 'project1' }],
-				},
-				{
-					label: 'Part 3. AI와 함께 생각하는 법',
-					items: [
-						{ label: '5. 생성형 AI는 어떻게 답을 만들까?', slug: 'part3/ch5' },
-						{ label: '6. 생성형 AI를 제대로 활용하는 방법', slug: 'part3/ch6' },
-					],
-				},
-				{
-					label: 'Part 4. AI와 함께 만들다',
-					items: [{ label: 'Project 2. 생성형 AI와 웹서비스 만들기', slug: 'project2' }],
-				},
-				{
-					label: 'Part 5. 데이터에서 문제를 발견하다',
-					items: [{ label: 'Project 3. Data to AI Solution', slug: 'project3' }],
-				},
-				{
-					label: 'Part 6. AI Playground',
-					items: [{ label: 'AI Playground', slug: 'part6' }],
-				},
-				{
-					label: 'Part 7. AI 시대를 살아가는 우리',
-					items: [{ label: 'AI 시대를 살아가는 우리', slug: 'part7' }],
-				},
+				{ label: 'START · WHY', items: [
+					{ label: '왜 우리는 AI를 배우는가?', slug: 'index' },
+					{ label: '선생님께 질문하기', slug: 'question' },
+				]},
+				{ label: '1. UNDERSTAND · AI를 이해하다', items: [
+					{ label: '1. 인공지능이란 무엇일까?', slug: 'part1/ch1' },
+					{ label: '2. 생활 속 AI는 어떻게 작동할까?', slug: 'part1/ch2' },
+					{ label: '3. AI·머신러닝·딥러닝', slug: 'part1/ch3' },
+					{ label: '4. 컴퓨터는 어떻게 학습할까?', slug: 'part2/ch4' },
+				]},
+				{ label: '2. EXPERIENCE · 직접 경험하다', items: [
+					{ label: 'Mini Project. AI Learning Lab', slug: 'project1' },
+				]},
+				{ label: '3. COLLABORATE · AI와 함께 일하다', items: [
+					{ label: '5. 생성형 AI는 어떻게 답을 만들까?', slug: 'part3/ch5' },
+					{ label: '6. AI에게 일을 맡기는 방법', slug: 'part3/ch6' },
+				]},
+				{ label: '4. DISCOVER · 문제를 발견하다', items: [
+					{ label: '좋은 AI는 좋은 문제에서 시작한다', slug: 'part6' },
+				]},
+				{ label: '5. DESIGN · 해결책을 기획하다', items: [
+					{ label: 'Final Project. AI for a Better World', slug: 'project3' },
+				]},
+				{ label: '6. PROTOTYPE · 아이디어를 보여주다', items: [
+					{ label: 'Vibe Coding 맛보기', slug: 'project2' },
+				]},
+				{ label: 'FINISH · 다시 처음의 질문으로', items: [
+					{ label: 'AI 시대를 살아가는 우리', slug: 'part7' },
+				]},
 			],
 		}),
 		mdx(),
