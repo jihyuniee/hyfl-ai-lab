@@ -3,9 +3,30 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import mdx from '@astrojs/mdx';
 
+function stripLiteralDoubleAsterisks() {
+	return (tree) => {
+		const walk = (node) => {
+			if (!node || typeof node !== 'object') return;
+
+			if (node.type === 'text' && typeof node.value === 'string') {
+				node.value = node.value.replace(/\*\*/g, '');
+			}
+
+			if (Array.isArray(node.children)) {
+				for (const child of node.children) walk(child);
+			}
+		};
+
+		walk(tree);
+	};
+}
+
 export default defineConfig({
 	site: 'https://jihyuniee.github.io',
 	base: '/hyfl-ai-lab',
+	markdown: {
+		remarkPlugins: [stripLiteralDoubleAsterisks],
+	},
 	integrations: [
 		starlight({
 			title: '인공지능 원리탐구',
