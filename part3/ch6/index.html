@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>6. 생성형 AI를 제대로 활용하는 방법 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/part3/ch6/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="6. 생성형 AI를 제대로 활용하는 방법"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/part3/ch6/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="문제 정의, 맥락과 자료 제공, 요청 설계, 반복 대화, 검증과 최종 판단을 통해 생성형 AI를 목적에 맞게 활용하는 방법을 배웁니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="문제 정의, 맥락과 자료 제공, 요청 설계, 반복 대화, 검증과 최종 판단을 통해 생성형 AI를 목적에 맞게 활용하는 방법을 배웁니다."/><script>
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>6. AI와 함께 생각하는 방법 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/part3/ch6/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="6. AI와 함께 생각하는 방법"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/part3/ch6/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="학생이 먼저 질문과 기준을 세우고, 생성형 AI로 사고를 확장한 뒤, 검증·수정·판단을 다시 자신의 몫으로 가져오는 협업 방법을 배웁니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="학생이 먼저 질문과 기준을 세우고, 생성형 AI로 사고를 확장한 뒤, 검증·수정·판단을 다시 자신의 몫으로 가져오는 협업 방법을 배웁니다."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -72,198 +72,89 @@
 		})();
 	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#전-차시-확인" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">전 차시 확인</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#오늘의-질문" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">오늘의 질문</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#학습-목표" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">학습 목표</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-좋은-활용은-질문을-입력하기-전에-시작된다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 좋은 활용은 질문을 입력하기 전에 시작된다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-프롬프트는-작업-설계서다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 프롬프트는 작업 설계서다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-목적에-따라-ai에게-맡길-일이-달라진다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 목적에 따라 AI에게 맡길 일이 달라진다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-첫-답은-완성본이-아니라-초안이다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 첫 답은 완성본이 아니라 초안이다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-검증-수준은-결과의-위험도에-따라-달라진다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 검증 수준은 결과의 위험도에 따라 달라진다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-생성형-ai-활용-능력은-판단의-과정에서-드러난다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 생성형 AI 활용 능력은 판단의 과정에서 드러난다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#형성-평가" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">형성 평가</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#전-차시-확인" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">전 차시 확인</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#오늘의-질문" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">오늘의 질문</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#학습-목표" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">학습 목표</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-좋은-활용은-질문을-입력하기-전에-시작된다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 좋은 활용은 질문을 입력하기 전에 시작된다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-프롬프트는-작업-설계서다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 프롬프트는 작업 설계서다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-목적에-따라-ai에게-맡길-일이-달라진다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 목적에 따라 AI에게 맡길 일이 달라진다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-첫-답은-완성본이-아니라-초안이다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 첫 답은 완성본이 아니라 초안이다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-검증-수준은-결과의-위험도에-따라-달라진다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 검증 수준은 결과의 위험도에 따라 달라진다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-생성형-ai-활용-능력은-판단의-과정에서-드러난다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 생성형 AI 활용 능력은 판단의 과정에서 드러난다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#형성-평가" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">형성 평가</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">6. 생성형 AI를 제대로 활용하는 방법</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="sl-heading-wrapper level-h2"><h2 id="전-차시-확인">전 차시 확인</h2><a class="sl-anchor-link" href="#전-차시-확인"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “전 차시 확인”</span></a></div>
-<p>앞 차시에서 생성형 AI는 문맥을 바탕으로 다음 토큰을 확률적으로 예측하며 결과를 만든다는 것을 배웠습니다.</p>
-<ol>
-<li>문장이 자연스럽다는 사실이 내용의 정확성을 보장하지 않는 이유는 무엇인가요?</li>
-<li>할루시네이션은 어떤 상황에서 특히 문제가 될까요?</li>
-<li>생성형 AI의 답을 검증할 때 무엇을 확인해야 할까요?</li>
-</ol>
-<div class="sl-heading-wrapper level-h2"><h2 id="오늘의-질문">오늘의 질문</h2><a class="sl-anchor-link" href="#오늘의-질문"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “오늘의 질문”</span></a></div>
-<div class="lab-callout lab-callout--question astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">💭</span> 오늘의 질문 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>생성형 AI를 ‘잘 활용한다’는 것은 프롬프트를 길고 자세하게 쓰는 것일까요?</p><p>좋은 결과는 명령문의 길이만으로 결정되지 않습니다. 해결하려는 문제를 정확히 정의하고, 필요한 맥락과 자료를 제공하며, 결과를 검토하고 대화를 발전시키는 전체 과정이 중요합니다.</p> </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="학습-목표">학습 목표</h2><a class="sl-anchor-link" href="#학습-목표"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “학습 목표”</span></a></div>
-<p>오늘 수업이 끝나면 다음을 할 수 있습니다.</p>
-<ol>
-<li>생성형 AI 활용 과정을 문제 정의부터 검증까지 설명할 수 있다.</li>
-<li>목적에 맞는 요청에 필요한 요소를 선택하여 구성할 수 있다.</li>
-<li>AI의 첫 답을 근거·반론·예외의 관점에서 검토하고 개선할 수 있다.</li>
-<li>AI가 담당할 일과 사람이 판단할 일을 구분할 수 있다.</li>
-</ol>
-<div class="sl-heading-wrapper level-h2"><h2 id="1-좋은-활용은-질문을-입력하기-전에-시작된다">1. 좋은 활용은 질문을 입력하기 전에 시작된다</h2><a class="sl-anchor-link" href="#1-좋은-활용은-질문을-입력하기-전에-시작된다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 좋은 활용은 질문을 입력하기 전에 시작된다”</span></a></div>
-<p>생성형 AI를 열기 전에 먼저 다음을 분명히 해야 합니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>확인할 요소</th><th>핵심 질문</th></tr></thead><tbody><tr><td>문제</td><td>정확히 무엇을 해결하려는가?</td></tr><tr><td>목적</td><td>결과를 어디에 사용할 것인가?</td></tr><tr><td>대상</td><td>누가 읽거나 사용할 것인가?</td></tr><tr><td>기준</td><td>좋은 결과라고 판단할 조건은 무엇인가?</td></tr><tr><td>자료</td><td>AI가 참고해야 할 정보와 데이터는 무엇인가?</td></tr><tr><td>제한</td><td>시간·분량·형식·범위·금지 조건은 무엇인가?</td></tr><tr><td>책임</td><td>최종적으로 사람이 확인하고 판단할 부분은 무엇인가?</td></tr></tbody></table>
-<p>문제가 모호하면 AI는 부족한 정보를 임의로 추정합니다. 이때 결과는 자연스러워 보여도 실제 목적과 어긋날 수 있습니다. 따라서 프롬프트 작성보다 먼저 필요한 능력은 문제를 구체적인 작업으로 바꾸는 능력입니다.</p>
-<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 문제 정의의 핵심 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>“무엇을 만들어줘”에서 끝내지 말고, 누구를 위해, 어떤 상황에서, 무엇을 해결하기 위해, 어떤 기준을 만족해야 하는지를 먼저 정합니다.</p> </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="2-프롬프트는-작업-설계서다">2. 프롬프트는 작업 설계서다</h2><a class="sl-anchor-link" href="#2-프롬프트는-작업-설계서다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 프롬프트는 작업 설계서다”</span></a></div>
-<p>프롬프트는 AI를 조종하는 마법의 문장이 아니라, 수행할 작업을 설명하는 설계서에 가깝습니다. 모든 요청에 같은 공식이 필요한 것은 아니며, 목적에 따라 필요한 요소를 선택합니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>요소</th><th>설명</th><th>예시</th></tr></thead><tbody><tr><td>목표</td><td>AI가 수행할 핵심 작업</td><td>두 정책의 차이를 비교한다</td></tr><tr><td>맥락</td><td>과제의 배경과 사용 상황</td><td>고등학생 토론 준비 자료로 사용한다</td></tr><tr><td>대상</td><td>결과를 읽거나 사용할 사람</td><td>해당 개념을 처음 배우는 학생</td></tr><tr><td>자료</td><td>반드시 참고해야 할 정보</td><td>제공한 기사와 통계표만 사용한다</td></tr><tr><td>조건</td><td>범위·분량·제외 사항</td><td>공통점 2개, 차이점 3개로 제한한다</td></tr><tr><td>출력 형식</td><td>결과를 표현하는 구조</td><td>비교표와 3문장 결론으로 작성한다</td></tr><tr><td>판단 기준</td><td>좋은 결과의 조건</td><td>근거가 각 주장과 연결되어야 한다</td></tr><tr><td>검증 요청</td><td>불확실성과 한계 표시</td><td>확인이 필요한 내용과 반론을 구분한다</td></tr></tbody></table>
-<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 역할을 부여하면 항상 좋아질까? </p> <div class="lab-callout__body astro-mrmim4ef"> <p>“너는 최고의 전문가야”라는 역할만 붙인다고 결과가 정확해지는 것은 아닙니다. 역할보다 구체적인 목적, 충분한 자료, 명확한 판단 기준이 더 중요합니다. 전문성이 필요한 내용은 실제 출처로 확인해야 합니다.</p> </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="3-목적에-따라-ai에게-맡길-일이-달라진다">3. 목적에 따라 AI에게 맡길 일이 달라진다</h2><a class="sl-anchor-link" href="#3-목적에-따라-ai에게-맡길-일이-달라진다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 목적에 따라 AI에게 맡길 일이 달라진다”</span></a></div>
-<p>생성형 AI는 하나의 사용법으로 모든 문제를 해결하지 않습니다. 현재 필요한 사고 작업이 무엇인지 먼저 결정합니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>목적</th><th>AI에게 요청할 수 있는 일</th><th>사람이 확인할 것</th></tr></thead><tbody><tr><td>개념 이해</td><td>수준별 설명, 예시, 비유, 질문 생성</td><td>개념이 정확하고 지나치게 단순화되지 않았는가</td></tr><tr><td>정보 정리</td><td>요약, 분류, 비교표 작성</td><td>중요한 내용이 누락되거나 왜곡되지 않았는가</td></tr><tr><td>아이디어 확장</td><td>여러 관점, 대안, 예상 문제 제안</td><td>문제와 대상에 실제로 적합한가</td></tr><tr><td>비판적 검토</td><td>반론, 예외, 약점, 다른 해석 제시</td><td>비판이 근거를 갖추고 있는가</td></tr><tr><td>글쓰기</td><td>구조 제안, 초안, 표현 수정</td><td>주장과 판단이 자신의 생각을 반영하는가</td></tr><tr><td>데이터 분석</td><td>분석 방법, 코드, 시각화 후보 제안</td><td>열·단위·계산·해석이 실제 데이터와 맞는가</td></tr><tr><td>코딩</td><td>코드 초안, 오류 원인, 테스트 사례 제안</td><td>실행 결과·보안·예외 상황을 확인했는가</td></tr><tr><td>의사결정 보조</td><td>선택 기준과 대안 비교</td><td>가치 판단과 최종 책임을 넘기지 않았는가</td></tr></tbody></table>
-<p>AI가 잘하는 일은 빠른 생성, 정리, 변환, 후보 제시입니다. 문제의 중요성을 결정하고, 자료의 신뢰성을 판단하며, 최종 결론에 책임지는 일은 사람이 맡아야 합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="4-첫-답은-완성본이-아니라-초안이다">4. 첫 답은 완성본이 아니라 초안이다</h2><a class="sl-anchor-link" href="#4-첫-답은-완성본이-아니라-초안이다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 첫 답은 완성본이 아니라 초안이다”</span></a></div>
-<p>생성형 AI 활용은 한 번의 질문과 한 번의 답으로 끝나는 과정이 아닙니다.</p>
-<div class="lab-flow astro-5bqfpj3b" role="list">  <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">1</span> <span class="lab-flow__ko astro-5bqfpj3b">문제 정의</span> <span class="lab-flow__en astro-5bqfpj3b">목표와 기준</span> </div> <span class="lab-flow__arrow astro-5bqfpj3b" aria-hidden="true">
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#오늘의-질문" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">오늘의 질문</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-학생--ai--다시-학생" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 학생 → AI → 다시 학생</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-ai를-열기-전에-먼저-생각하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. AI를 열기 전에 먼저 생각하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-ai에게는-사고를-확장하는-일을-맡긴다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. AI에게는 사고를 확장하는 일을 맡긴다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-결과를-받으면-반드시-다시-사람이-개입한다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 결과를 받으면 반드시 다시 사람이 개입한다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-프롬프트는-사고를-전달하는-작업-설계서" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 프롬프트는 사고를 전달하는 작업 설계서</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-첫-답은-완성본이-아니라-협업의-시작" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 첫 답은 완성본이 아니라 협업의 시작</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-검증의-강도는-위험에-따라-달라진다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 검증의 강도는 위험에 따라 달라진다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-인간-중심-learning-loop" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. 인간 중심 Learning Loop</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#실습--같은-ai를-다르게-사용해보기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">실습 · 같은 AI를 다르게 사용해보기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#오늘의-check" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">오늘의 CHECK</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#exit-ticket" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">EXIT TICKET</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#참고한-교육-관점" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">참고한 교육 관점</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#오늘의-질문" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">오늘의 질문</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-학생--ai--다시-학생" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 학생 → AI → 다시 학생</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-ai를-열기-전에-먼저-생각하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. AI를 열기 전에 먼저 생각하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-ai에게는-사고를-확장하는-일을-맡긴다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. AI에게는 사고를 확장하는 일을 맡긴다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-결과를-받으면-반드시-다시-사람이-개입한다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 결과를 받으면 반드시 다시 사람이 개입한다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-프롬프트는-사고를-전달하는-작업-설계서" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 프롬프트는 사고를 전달하는 작업 설계서</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-첫-답은-완성본이-아니라-협업의-시작" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 첫 답은 완성본이 아니라 협업의 시작</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-검증의-강도는-위험에-따라-달라진다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 검증의 강도는 위험에 따라 달라진다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-인간-중심-learning-loop" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. 인간 중심 Learning Loop</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#실습--같은-ai를-다르게-사용해보기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">실습 · 같은 AI를 다르게 사용해보기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#오늘의-check" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">오늘의 CHECK</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#exit-ticket" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">EXIT TICKET</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#참고한-교육-관점" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">참고한 교육 관점</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">6. AI와 함께 생각하는 방법</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="sl-heading-wrapper level-h2"><h2 id="오늘의-질문">오늘의 질문</h2><a class="sl-anchor-link" href="#오늘의-질문"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “오늘의 질문”</span></a></div>
+<div class="lab-callout lab-callout--question astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">💭</span> 오늘의 질문 </p> <div class="lab-callout__body astro-mrmim4ef"> <p><strong>AI를 잘 활용한다는 것은 AI에게 일을 잘 시키는 것일까요, 아니면 AI와 함께 더 잘 생각하는 것일까요?</strong></p> </div> </div> 
+<p>생성형 AI는 빠르게 설명하고, 정리하고, 비교하고, 다양한 초안과 대안을 제시할 수 있습니다. 하지만 질문의 목적을 정하고, 어떤 답이 좋은지 판단하고, 결과의 의미와 영향을 해석하는 과정까지 AI에게 넘길 수는 없습니다.</p>
+<p>이번 시간에는 프롬프트 기술 자체보다 <strong>사고의 주도권을 유지하면서 AI와 협업하는 과정</strong>에 집중합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="1-학생--ai--다시-학생">1. 학생 → AI → 다시 학생</h2><a class="sl-anchor-link" href="#1-학생--ai--다시-학생"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 학생 → AI → 다시 학생”</span></a></div>
+<p>김현철 교수의 『THE AI BOOK』 소개 자료는 학교 AI 교육이 단순한 ‘AI 사용 교육’을 넘어, 학생이 질문하고 검증하고 판단하는 인간 중심 사고를 길러야 한다고 강조합니다.</p>
+<p>이 수업에서는 그 취지를 다음과 같이 적용합니다.</p>
+<div class="lab-flow astro-5bqfpj3b" role="list">  <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">1</span> <span class="lab-flow__ko astro-5bqfpj3b">내 질문</span> <span class="lab-flow__en astro-5bqfpj3b">문제·목적·기준</span> </div> <span class="lab-flow__arrow astro-5bqfpj3b" aria-hidden="true">
 →
-</span> <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">2</span> <span class="lab-flow__ko astro-5bqfpj3b">맥락 제공</span> <span class="lab-flow__en astro-5bqfpj3b">자료와 조건</span> </div> <span class="lab-flow__arrow astro-5bqfpj3b" aria-hidden="true">
+</span> <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">2</span> <span class="lab-flow__ko astro-5bqfpj3b">AI와 탐색</span> <span class="lab-flow__en astro-5bqfpj3b">설명·대안·초안</span> </div> <span class="lab-flow__arrow astro-5bqfpj3b" aria-hidden="true">
 →
-</span> <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">3</span> <span class="lab-flow__ko astro-5bqfpj3b">초안 생성</span> <span class="lab-flow__en astro-5bqfpj3b">첫 결과</span> </div> <span class="lab-flow__arrow astro-5bqfpj3b" aria-hidden="true">
+</span> <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">3</span> <span class="lab-flow__ko astro-5bqfpj3b">검증</span> <span class="lab-flow__en astro-5bqfpj3b">근거·오류·누락</span> </div> <span class="lab-flow__arrow astro-5bqfpj3b" aria-hidden="true">
 →
-</span> <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">4</span> <span class="lab-flow__ko astro-5bqfpj3b">비판적 검토</span> <span class="lab-flow__en astro-5bqfpj3b">근거·반론·예외</span> </div> <span class="lab-flow__arrow astro-5bqfpj3b" aria-hidden="true">
-→
-</span> <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">5</span> <span class="lab-flow__ko astro-5bqfpj3b">수정 요청</span> <span class="lab-flow__en astro-5bqfpj3b">보완과 재구성</span> </div> <span class="lab-flow__arrow astro-5bqfpj3b" aria-hidden="true">
-→
-</span> <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">6</span> <span class="lab-flow__ko astro-5bqfpj3b">검증·판단</span> <span class="lab-flow__en astro-5bqfpj3b">최종 결정</span> </div>  </div> 
-<p>첫 답을 받은 뒤에는 결과의 약점을 구체적으로 찾아 후속 요청을 해야 합니다.</p>
+</span> <div class="lab-flow__step astro-5bqfpj3b" role="listitem"> <span class="lab-flow__index astro-5bqfpj3b">4</span> <span class="lab-flow__ko astro-5bqfpj3b">내 판단</span> <span class="lab-flow__en astro-5bqfpj3b">수정·선택·책임</span> </div>  </div> 
+<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 핵심 </p> <div class="lab-callout__body astro-mrmim4ef"> <p><strong>AI는 중간에 들어오지만, 사고의 시작과 끝은 학생에게 돌아와야 합니다.</strong></p> </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="2-ai를-열기-전에-먼저-생각하기">2. AI를 열기 전에 먼저 생각하기</h2><a class="sl-anchor-link" href="#2-ai를-열기-전에-먼저-생각하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. AI를 열기 전에 먼저 생각하기”</span></a></div>
+<p>AI에게 질문하기 전에 짧게라도 자신의 생각을 남깁니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>먼저 생각할 것</th><th>질문</th></tr></thead><tbody><tr><td>문제</td><td>내가 지금 해결하려는 것은 무엇인가?</td></tr><tr><td>목적</td><td>왜 이것을 알아보거나 만들려는가?</td></tr><tr><td>내 생각</td><td>지금 내가 알고 있거나 예상하는 것은 무엇인가?</td></tr><tr><td>기준</td><td>어떤 결과가 좋은 결과라고 생각하는가?</td></tr><tr><td>자료</td><td>어떤 정보와 근거가 필요한가?</td></tr><tr><td>책임</td><td>마지막에 내가 판단해야 할 것은 무엇인가?</td></tr></tbody></table>
+<p>이 단계가 없으면 AI가 제시한 방향이 곧 나의 방향이 되기 쉽습니다. AI의 답을 받기 전에 <strong>내 질문과 기준을 먼저 세우는 것</strong>이 중요합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="3-ai에게는-사고를-확장하는-일을-맡긴다">3. AI에게는 사고를 확장하는 일을 맡긴다</h2><a class="sl-anchor-link" href="#3-ai에게는-사고를-확장하는-일을-맡긴다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. AI에게는 사고를 확장하는 일을 맡긴다”</span></a></div>
+<p>AI는 여러 후보를 빠르게 만들어 비교할 때 유용합니다.</p>
 <ul>
-<li>“이 결론을 뒷받침하는 근거와 확인 가능한 출처를 구분해줘.”</li>
-<li>“이 주장에 대한 가장 강한 반론과 예외 사례를 제시해줘.”</li>
-<li>“내가 제공한 자료만으로 말할 수 있는 사실과 추정을 나눠줘.”</li>
-<li>“이 답에서 모호한 용어와 논리적으로 건너뛴 부분을 찾아줘.”</li>
-<li>“다른 관점에서 해석하면 어떤 결론이 가능한지 제시해줘.”</li>
-<li>“수정된 결과가 처음 제시한 기준을 충족하는지 점검해줘.”</li>
+<li>내가 이해하지 못한 개념을 다른 방식으로 설명하게 하기</li>
+<li>내 아이디어와 다른 관점 제안받기</li>
+<li>가능한 해결 방법을 여러 개 탐색하기</li>
+<li>내 주장에 대한 반론과 예외 찾기</li>
+<li>제공한 자료를 기준에 따라 정리·비교하기</li>
+<li>초안이나 프로토타입 후보 만들기</li>
+<li>코드나 분석 방법의 초안을 제안받기</li>
 </ul>
-<p>좋은 후속 질문은 “더 자세히”가 아니라, 어떤 부분을 어떤 기준으로 개선해야 하는지를 알려줍니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="5-검증-수준은-결과의-위험도에-따라-달라진다">5. 검증 수준은 결과의 위험도에 따라 달라진다</h2><a class="sl-anchor-link" href="#5-검증-수준은-결과의-위험도에-따라-달라진다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 검증 수준은 결과의 위험도에 따라 달라진다”</span></a></div>
-<p>모든 결과를 같은 수준으로 검증할 필요는 없습니다. 잘못되었을 때 생길 수 있는 피해가 클수록 더 엄격하게 확인해야 합니다.</p>
+<div class="lab-callout lab-callout--think astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">✏️</span> AI에게 답이 아니라 다른 관점을 요청해보기 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>“정답을 알려줘” 대신 다음과 같이 요청할 수 있습니다.</p><ul>
+<li>내가 놓친 관점 세 가지를 제안해줘.</li>
+<li>내 아이디어가 실패할 수 있는 상황을 찾아줘.</li>
+<li>이 주장에 반대하는 입장에서 가장 강한 근거를 제시해줘.</li>
+<li>내가 제공한 자료만으로 말할 수 있는 사실과 추정을 구분해줘.</li>
+</ul> </div> </div> 
+<p>AI가 제안한 것이 많다고 해서 모두 좋은 것은 아닙니다. 생성 단계에서는 가능성을 넓히고, 다음 단계에서 사람이 좁혀갑니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="4-결과를-받으면-반드시-다시-사람이-개입한다">4. 결과를 받으면 반드시 다시 사람이 개입한다</h2><a class="sl-anchor-link" href="#4-결과를-받으면-반드시-다시-사람이-개입한다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 결과를 받으면 반드시 다시 사람이 개입한다”</span></a></div>
+<p>AI의 결과를 그대로 제출하지 않습니다. 다음 네 가지 질문으로 다시 살펴봅니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="근거">근거</h3><a class="sl-anchor-link" href="#근거"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “근거”</span></a></div>
+<p>이 결과를 뒷받침하는 자료가 실제로 있는가?</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="맥락">맥락</h3><a class="sl-anchor-link" href="#맥락"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “맥락”</span></a></div>
+<p>우리 문제의 대상, 상황, 문화, 시간과 장소에 적절한가?</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="가치와-영향">가치와 영향</h3><a class="sl-anchor-link" href="#가치와-영향"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “가치와 영향”</span></a></div>
+<p>누구에게 도움이 되고, 누구에게 불리하거나 위험할 수 있는가?</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="최종-판단">최종 판단</h3><a class="sl-anchor-link" href="#최종-판단"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “최종 판단”</span></a></div>
+<p>여러 선택지 가운데 무엇을 채택하고 무엇을 버릴 것인가? 그 이유를 설명할 수 있는가?</p>
+<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 기술적으로 가능하다고 반드시 해야 하는 것은 아닙니다 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>AI가 할 수 있는 일과 실제로 AI에게 맡겨야 하는 일은 다를 수 있습니다. 개인정보, 공정성, 안전, 인간의 권리와 책임이 걸린 문제에서는 특히 사람이 가치 판단을 해야 합니다.</p> </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="5-프롬프트는-사고를-전달하는-작업-설계서">5. 프롬프트는 사고를 전달하는 작업 설계서</h2><a class="sl-anchor-link" href="#5-프롬프트는-사고를-전달하는-작업-설계서"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 프롬프트는 사고를 전달하는 작업 설계서”</span></a></div>
+<p>프롬프트는 마법의 주문이 아닙니다. 내가 정한 문제와 목적을 AI에게 전달하는 작업 설계서에 가깝습니다.</p>
 
 
 
@@ -297,46 +188,96 @@
 
 
 
-<table><thead><tr><th>활용 상황</th><th>필요한 검증</th></tr></thead><tbody><tr><td>아이디어 메모·창작 초안</td><td>목적과 표현이 적절한지 확인</td></tr><tr><td>학습 자료·과제</td><td>교과서, 원문, 신뢰할 수 있는 자료와 대조</td></tr><tr><td>통계·연구·뉴스 인용</td><td>원출처 존재 여부, 수치, 조사 조건, 날짜 확인</td></tr><tr><td>코드·데이터 분석</td><td>직접 실행, 테스트 사례, 계산 재현</td></tr><tr><td>진로·건강·법률·금융 관련 판단</td><td>전문가와 공식 자료를 통한 추가 확인</td></tr><tr><td>다른 사람에게 영향을 주는 결정</td><td>편향·개인정보·책임 주체까지 검토</td></tr></tbody></table>
-<div class="sl-heading-wrapper level-h3"><h3 id="출처를-확인할-때">출처를 확인할 때</h3><a class="sl-anchor-link" href="#출처를-확인할-때"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “출처를 확인할 때”</span></a></div>
-<p>AI가 제시한 링크나 자료명은 실제로 존재하는지 직접 확인합니다. 출처가 있다는 것만으로 충분하지 않습니다.</p>
+
+
+
+
+
+
+
+
+<table><thead><tr><th>요소</th><th>설명</th></tr></thead><tbody><tr><td>목표</td><td>무엇을 하려는가</td></tr><tr><td>맥락</td><td>어떤 상황에서 사용하는가</td></tr><tr><td>대상</td><td>누가 결과를 사용하는가</td></tr><tr><td>자료</td><td>무엇을 근거로 해야 하는가</td></tr><tr><td>조건</td><td>범위·분량·제외 사항은 무엇인가</td></tr><tr><td>출력</td><td>어떤 형태가 유용한가</td></tr><tr><td>판단 기준</td><td>좋은 결과의 조건은 무엇인가</td></tr><tr><td>검증</td><td>무엇을 불확실한 것으로 표시하고 확인해야 하는가</td></tr></tbody></table>
+<p>모든 요청에 모든 요소를 넣을 필요는 없습니다. 중요한 것은 프롬프트의 길이가 아니라 <strong>내가 무엇을 원하는지 알고 있는가</strong>입니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="6-첫-답은-완성본이-아니라-협업의-시작">6. 첫 답은 완성본이 아니라 협업의 시작</h2><a class="sl-anchor-link" href="#6-첫-답은-완성본이-아니라-협업의-시작"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 첫 답은 완성본이 아니라 협업의 시작”</span></a></div>
+<p>좋은 AI 활용은 한 번의 질문과 답으로 끝나지 않습니다.</p>
+<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">내 질문과 초안</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">   </span></span><span style="--0:#d6deeb;--1:#403f53">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">AI의 설명·대안·반론</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">   </span></span><span style="--0:#d6deeb;--1:#403f53">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">내 검토</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">   </span></span><span style="--0:#d6deeb;--1:#403f53">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">추가 질문·수정 요청</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">   </span></span><span style="--0:#d6deeb;--1:#403f53">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">근거와 다른 자료로 검증</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">   </span></span><span style="--0:#d6deeb;--1:#403f53">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">내 언어로 재구성</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">   </span></span><span style="--0:#d6deeb;--1:#403f53">↓</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">최종 판단</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="내 질문과 초안   ↓AI의 설명·대안·반론   ↓내 검토   ↓추가 질문·수정 요청   ↓근거와 다른 자료로 검증   ↓내 언어로 재구성   ↓최종 판단"><div></div></button></div></figure></div>
+<p>후속 질문은 막연한 “더 자세히”보다 어떤 부분을 어떤 기준으로 다시 살펴봐야 하는지 알려주는 것이 좋습니다.</p>
 <ul>
-<li>원문에 실제로 그 내용이 있는가?</li>
-<li>작성 기관과 작성자는 신뢰할 수 있는가?</li>
-<li>자료가 만들어진 시점은 언제인가?</li>
-<li>통계의 조사 대상·표본·단위·조건은 무엇인가?</li>
-<li>일부 문장이나 수치가 원래 맥락과 다르게 사용되지 않았는가?</li>
+<li>이 결론의 근거와 추정을 구분해줘.</li>
+<li>반대되는 근거나 예외가 있는지 찾아줘.</li>
+<li>이 아이디어가 실제 사용자에게 불편을 줄 수 있는 지점을 찾아줘.</li>
+<li>내 기준을 충족하지 못한 부분을 표시해줘.</li>
+<li>다른 해결 방법과 비교했을 때 AI가 꼭 필요한지 비판해줘.</li>
 </ul>
-<div class="sl-heading-wrapper level-h2"><h2 id="6-생성형-ai-활용-능력은-판단의-과정에서-드러난다">6. 생성형 AI 활용 능력은 판단의 과정에서 드러난다</h2><a class="sl-anchor-link" href="#6-생성형-ai-활용-능력은-판단의-과정에서-드러난다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 생성형 AI 활용 능력은 판단의 과정에서 드러난다”</span></a></div>
-<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 제대로 활용하는 여섯 단계 </p> <div class="lab-callout__body astro-mrmim4ef"> <ol>
-<li>해결할 문제와 좋은 결과의 기준을 정한다.</li>
-<li>AI에 제공할 맥락·자료·조건을 선택한다.</li>
-<li>목적에 맞는 형태로 작업을 요청한다.</li>
-<li>첫 결과에서 근거·오류·누락·편향을 찾는다.</li>
-<li>후속 질문으로 반론과 대안을 탐색하고 결과를 개선한다.</li>
-<li>외부 자료와 직접 실행을 통해 검증한 뒤 사람이 최종 판단한다.</li>
-</ol> </div> </div> 
-<p>프롬프트 자체보다 중요한 것은 질문의 목적과 판단 기준을 가지고 대화를 이끌어가는 능력입니다. 생성형 AI는 사고를 대신하는 도구가 아니라, 설명·정리·비판·확장·구현을 지원하는 협업 도구로 사용할 수 있습니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="형성-평가">형성 평가</h2><a class="sl-anchor-link" href="#형성-평가"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “형성 평가”</span></a></div>
-<div class="sl-heading-wrapper level-h3"><h3 id="1-좋은-프롬프트를-만들기-전에-가장-먼저-해야-할-일은-무엇인가요">1. 좋은 프롬프트를 만들기 전에 가장 먼저 해야 할 일은 무엇인가요?</h3><a class="sl-anchor-link" href="#1-좋은-프롬프트를-만들기-전에-가장-먼저-해야-할-일은-무엇인가요"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 좋은 프롬프트를 만들기 전에 가장 먼저 해야 할 일은 무엇인가요?”</span></a></div>
-<details><summary>정답</summary><p>해결하려는 문제와 목적, 대상, 좋은 결과의 기준을 분명히 정해야 합니다.</p></details>
-<div class="sl-heading-wrapper level-h3"><h3 id="2-너는-최고의-전문가야라는-역할만-부여했을-때-정확성이-보장되지-않는-이유는-무엇인가요">2. “너는 최고의 전문가야”라는 역할만 부여했을 때 정확성이 보장되지 않는 이유는 무엇인가요?</h3><a class="sl-anchor-link" href="#2-너는-최고의-전문가야라는-역할만-부여했을-때-정확성이-보장되지-않는-이유는-무엇인가요"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. “너는 최고의 전문가야”라는 역할만 부여했을 때 정확성이 보장되지 않는 이유는 무엇인가요?”</span></a></div>
-<details><summary>예시 답안</summary><p>역할 표현은 실제 전문 지식이나 신뢰할 수 있는 근거를 추가하지 않습니다. 정확성을 높이려면 구체적인 목적과 자료를 제공하고 결과를 실제 출처로 검증해야 합니다.</p></details>
-<div class="sl-heading-wrapper level-h3"><h3 id="3-ai의-첫-답을-개선하는-후속-질문으로-가장-적절한-것은">3. AI의 첫 답을 개선하는 후속 질문으로 가장 적절한 것은?</h3><a class="sl-anchor-link" href="#3-ai의-첫-답을-개선하는-후속-질문으로-가장-적절한-것은"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. AI의 첫 답을 개선하는 후속 질문으로 가장 적절한 것은?”</span></a></div>
-<p>A. 더 잘 써줘.<br/>
-B. 최대한 길게 써줘.<br/>
-C. 결론의 근거, 반론, 확인이 필요한 내용을 구분해줘.<br/>
-D. 무조건 확신 있게 답해줘.</p>
-<details><summary>정답과 해설</summary><p>정답: C<br/>
-개선할 부분과 판단 기준이 구체적으로 제시되어 있기 때문입니다.</p></details>
-<div class="sl-heading-wrapper level-h3"><h3 id="4-다음-중-사람이-직접-판단해야-하는-일-두-가지를-고르세요">4. 다음 중 사람이 직접 판단해야 하는 일 두 가지를 고르세요.</h3><a class="sl-anchor-link" href="#4-다음-중-사람이-직접-판단해야-하는-일-두-가지를-고르세요"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 다음 중 사람이 직접 판단해야 하는 일 두 가지를 고르세요.”</span></a></div>
-<p>A. 문장 초안 여러 개 만들기<br/>
-B. 어떤 문제가 중요한지 결정하기<br/>
-C. 긴 글을 표로 바꾸기<br/>
-D. 출처의 신뢰성과 최종 결론 판단하기</p>
-<details><summary>정답과 해설</summary><p>정답: B, D<br/>
-문제의 중요성, 자료의 신뢰성, 가치 판단과 최종 책임은 사람이 담당해야 합니다.</p></details>
-<div class="sl-heading-wrapper level-h3"><h3 id="5-같은-ai를-사용해도-결과의-수준이-달라지는-이유를-세-가지-이상-설명해보세요">5. 같은 AI를 사용해도 결과의 수준이 달라지는 이유를 세 가지 이상 설명해보세요.</h3><a class="sl-anchor-link" href="#5-같은-ai를-사용해도-결과의-수준이-달라지는-이유를-세-가지-이상-설명해보세요"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 같은 AI를 사용해도 결과의 수준이 달라지는 이유를 세 가지 이상 설명해보세요.”</span></a></div>
-<details><summary>예시 답안</summary><p>문제 정의의 구체성, 제공한 맥락과 자료의 질, 요청 조건과 출력 형식, 첫 답에 대한 검토, 후속 질문, 외부 자료를 이용한 검증 과정이 다르기 때문입니다.</p></details>
-<div class="lab-callout lab-callout--exit astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎟️</span> 마무리 질문 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>생성형 AI를 사용할 때 자신이 이미 잘하고 있는 점 한 가지와, 앞으로 더 의식적으로 적용하고 싶은 과정 한 가지를 적어보세요.</p> </div> </div> 
-<p>이제 이 활용 원칙을 실제 웹서비스 제작에 적용합니다 → <a href="/hyfl-ai-lab/project2/">Project 2. 생성형 AI와 웹서비스 만들기</a></p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/hyfl-ai-lab/part3/ch5/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">5. 생성형 AI는 어떻게 답을 만들까?</span> </span> </a> <a href="/hyfl-ai-lab/part6/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">좋은 AI는 좋은 문제에서 시작한다</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
+<div class="sl-heading-wrapper level-h2"><h2 id="7-검증의-강도는-위험에-따라-달라진다">7. 검증의 강도는 위험에 따라 달라진다</h2><a class="sl-anchor-link" href="#7-검증의-강도는-위험에-따라-달라진다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “7. 검증의 강도는 위험에 따라 달라진다”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>활용 상황</th><th>필요한 검증</th></tr></thead><tbody><tr><td>아이디어·창작 초안</td><td>목적과 표현이 적절한지 확인</td></tr><tr><td>학습 자료·과제</td><td>교과서, 원문, 신뢰할 수 있는 자료와 대조</td></tr><tr><td>통계·연구·뉴스</td><td>원출처, 수치, 날짜, 조사 조건 확인</td></tr><tr><td>코드·데이터 분석</td><td>직접 실행, 테스트, 계산 재현</td></tr><tr><td>건강·법률·금융 등 중요한 판단</td><td>공식 자료와 전문가를 통한 추가 확인</td></tr><tr><td>다른 사람에게 영향을 주는 결정</td><td>편향·공정성·개인정보·책임 주체 검토</td></tr></tbody></table>
+<p>AI가 출처를 제시하더라도 실제 원문에 그 내용이 있는지 확인해야 합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="8-인간-중심-learning-loop">8. 인간 중심 Learning Loop</h2><a class="sl-anchor-link" href="#8-인간-중심-learning-loop"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “8. 인간 중심 Learning Loop”</span></a></div>
+<p>이 수업에서는 AI 활용 활동을 다음 세 단계로 반복합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="중심-잡기">중심 잡기</h3><a class="sl-anchor-link" href="#중심-잡기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “중심 잡기”</span></a></div>
+<p>내가 먼저 질문하고 목표와 기준을 정합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="융합하기">융합하기</h3><a class="sl-anchor-link" href="#융합하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “융합하기”</span></a></div>
+<p>AI와 협업하여 다양한 관점, 대안, 초안과 가능성을 탐색합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="성찰하기">성찰하기</h3><a class="sl-anchor-link" href="#성찰하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “성찰하기”</span></a></div>
+<p>결과를 검증하고 맥락과 가치까지 살펴본 뒤 자신의 언어와 판단으로 돌아옵니다.</p>
+<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> AI와 함께 생각한다는 것 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>AI에게 생각을 맡기는 것이 아니라, <strong>AI를 이용해 내 질문을 더 깊게 만들고 내 판단을 더 단단하게 만드는 것</strong>입니다.</p> </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="실습--같은-ai를-다르게-사용해보기">실습 · 같은 AI를 다르게 사용해보기</h2><a class="sl-anchor-link" href="#실습--같은-ai를-다르게-사용해보기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실습 · 같은 AI를 다르게 사용해보기”</span></a></div>
+<p>하나의 주제를 정하고 다음 두 방식을 비교합니다.</p>
+<p><strong>A. AI에게 시키기</strong><br/>
+주제를 바로 입력하고 완성된 답을 요청합니다.</p>
+<p><strong>B. AI와 함께 생각하기</strong></p>
+<ol>
+<li>먼저 내 생각과 질문을 짧게 적습니다.</li>
+<li>AI에게 다른 관점이나 반론을 요청합니다.</li>
+<li>AI의 답에서 확인할 내용을 표시합니다.</li>
+<li>다른 자료와 비교해 검증합니다.</li>
+<li>처음 생각과 무엇이 달라졌는지 적습니다.</li>
+<li>최종 결론은 자신의 말로 작성합니다.</li>
+</ol>
+<div class="lab-callout lab-callout--reflect astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🪞</span> 성찰 질문 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>두 방식에서 <strong>결과물의 차이</strong>보다 <strong>내가 생각한 과정의 차이</strong>를 비교해보세요.</p> </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="오늘의-check">오늘의 CHECK</h2><a class="sl-anchor-link" href="#오늘의-check"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “오늘의 CHECK”</span></a></div>
+<ol>
+<li>AI를 사용하기 전에 사람이 먼저 정해야 하는 것은 무엇인가요?</li>
+<li>AI에게 맡기기 좋은 일과 사람이 맡아야 할 일을 각각 하나씩 설명해보세요.</li>
+<li>AI가 제시한 답이 그럴듯할 때 오히려 검증이 필요한 이유는 무엇인가요?</li>
+<li>기술적으로 가능한 것과 실제로 해야 하는 것이 다를 수 있는 사례를 하나 생각해보세요.</li>
+</ol>
+<div class="sl-heading-wrapper level-h2"><h2 id="exit-ticket">EXIT TICKET</h2><a class="sl-anchor-link" href="#exit-ticket"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “EXIT TICKET”</span></a></div>
+<blockquote>
+<p><strong>오늘 이후 AI를 사용할 때, 내가 AI에게 넘기지 않고 직접 해야겠다고 생각한 일은 무엇인가요? 그 이유는 무엇인가요?</strong></p>
+</blockquote>
+<div class="sl-heading-wrapper level-h2"><h2 id="참고한-교육-관점">참고한 교육 관점</h2><a class="sl-anchor-link" href="#참고한-교육-관점"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “참고한 교육 관점”</span></a></div>
+<p>이 차시는 김현철 교수의 2026년 『THE AI BOOK』 소개 자료에 제시된 <strong>인간 중심 사고</strong>, <strong>중심 잡기–융합하기–성찰하기</strong>, <strong>AI에게 시키는 교육이 아니라 AI와 함께 생각하는 교육</strong>, <strong>질문·검증·판단의 과정 중심 교육</strong>의 취지를 수업에 맞게 적용했습니다.</p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/hyfl-ai-lab/part3/ch5/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">5. 생성형 AI는 어떻게 답을 만들까?</span> </span> </a> <a href="/hyfl-ai-lab/part6/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">좋은 AI는 좋은 문제에서 시작한다</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
