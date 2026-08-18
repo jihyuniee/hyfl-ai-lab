@@ -31,6 +31,7 @@ export default defineConfig({
 		starlight({
 			title: '인공지능 원리탐구',
 			description: '한영외국어고등학교 2학년 「인공지능 원리탐구」 웹교과서',
+			sidebar: [],
 			defaultLocale: 'ko',
 			locales: { root: { label: '한국어', lang: 'ko' } },
 			customCss: ['./src/styles/custom.css'],
