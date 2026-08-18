@@ -57,7 +57,7 @@ AI
 
 ## 한 학기의 Journey
 
-### WHY → UNDERSTAND → EXPERIENCE → COLLABORATE → DISCOVER → DESIGN → PROTOTYPE
+### WHY → UNDERSTAND → EXPERIENCE → DATA → COLLABORATE → DISCOVER → DESIGN → PROTOTYPE
 
 **WHY**  
 왜 AI를 배우는지 질문합니다. AI를 편리한 도구로 사용하는 데서 더 나아가, 사람과 사회의 문제 해결에 어떻게 활용할 수 있는지 생각합니다.
@@ -67,6 +67,9 @@ AI, 머신러닝, 딥러닝, 생성형 AI와 LLM의 관계를 이해합니다. �
 
 **EXPERIENCE**  
 직접 이미지 분류 모델을 학습시킵니다. 데이터 수집, 학습, 테스트, 오분류, 개선을 경험하며 'AI가 학습한다'는 말과 모델의 한계를 확인합니다.
+
+**DATA**
+공공데이터에서 질문의 근거를 찾습니다. 생성형 AI와 함께 데이터를 정리하고 시각화하되, 분석 과정과 결과를 사람이 검증하고 근거의 범위 안에서 해석합니다.
 
 **COLLABORATE**  
 AI에게 단순히 답을 받는 것이 아니라 먼저 목표와 자신의 생각을 세우고, AI로 관점과 대안을 확장한 뒤 결과를 검증·수정·판단하는 협업을 연습합니다.
@@ -79,6 +82,54 @@ AI부터 떠올리지 않습니다. 나, 학교, 지역사회, 사회와 세계�
 
 **PROTOTYPE**  
 완성된 서비스를 개발하는 것이 목표는 아닙니다. 원한다면 생성형 AI와 바이브 코딩을 활용해 기획한 서비스의 핵심 화면이나 기능을 간단히 표현해봅니다. 구현 결과보다 왜 그렇게 설계했는지를 설명하는 것이 중요합니다.
+
+## 교과서 목차
+
+<div class="textbook-toc">
+	<div class="textbook-toc__section">
+		<p class="textbook-toc__part">START · WHY</p>
+		<h3>왜 AI를 배우는가?</h3>
+		<p>데미스 허사비스의 이야기를 통해 AI를 무엇을 위해 사용할지 생각합니다.</p>
+	</div>
+	<div class="textbook-toc__section">
+		<p class="textbook-toc__part">UNDERSTAND → TRY</p>
+		<h3>짧게 이해하고 바로 실험하기</h3>
+		<ol>
+			<li><a href="/hyfl-ai-lab/part1/ch1/">인공지능이란 무엇일까?</a></li>
+			<li><a href="/hyfl-ai-lab/part2/ch4/">AI를 직접 가르쳐보자</a></li>
+		</ol>
+	</div>
+	<div class="textbook-toc__section textbook-toc__section--project">
+		<p class="textbook-toc__part">MINI PROJECT 1 · EXPERIENCE</p>
+		<h3><a href="/hyfl-ai-lab/project1/">AI Learning Lab</a></h3>
+		<p>학교 속 문제를 이미지 분류 문제로 바꾸고 모델의 실패를 데이터와 연결해 개선합니다.</p>
+	</div>
+	<div class="textbook-toc__section">
+		<p class="textbook-toc__part">DATA</p>
+		<h3>데이터로 세상을 읽기</h3>
+		<ol>
+			<li><a href="/hyfl-ai-lab/data/ch1/">데이터로 세상을 읽는 법</a></li>
+			<li><a href="/hyfl-ai-lab/data-lab/">공공데이터로 질문에 답하기</a></li>
+		</ol>
+	</div>
+	<div class="textbook-toc__section">
+		<p class="textbook-toc__part">COLLABORATE</p>
+		<h3>생성형 AI와 함께 생각하기</h3>
+		<ol>
+			<li><a href="/hyfl-ai-lab/part3/ch5/">생성형 AI는 어떻게 답을 만들까?</a></li>
+			<li><a href="/hyfl-ai-lab/part3/ch6/">AI에게 일을 맡기는 방법</a></li>
+		</ol>
+	</div>
+	<div class="textbook-toc__section textbook-toc__section--project">
+		<p class="textbook-toc__part">FINAL PROJECT</p>
+		<h3><a href="/hyfl-ai-lab/project3/">AI for a Better World</a></h3>
+		<p>문제를 먼저 발견하고 사람과 AI의 역할을 나누어 책임 있는 해결책을 기획합니다.</p>
+	</div>
+</div>
+
+<div class="textbook-question-link">
+	<a href="/hyfl-ai-lab/question/">선생님께 질문하기</a>
+</div>
 
 ## 수업의 기본 Learning Loop
 
@@ -111,7 +162,7 @@ AI의 결과를 그대로 받아들이지 않습니다. 근거, 오류, 편향, 
 - 자신의 최종 판단을 설명하고 책임질 수 있는가?
 - 기술이 사람과 사회에 미칠 영향까지 생각했는가?
 
-## Mini Project · AI Learning Lab
+## 세 번의 학습 경험
 
 <div class="lab-card-grid">
 	<ProjectCard
@@ -121,11 +172,25 @@ AI의 결과를 그대로 받아들이지 않습니다. 근거, 오류, 편향, 
 		description="직접 이미지 데이터를 모으고 모델을 학습시킨 뒤 새로운 조건에서 실패를 찾아봅니다. 오분류의 원인을 데이터와 연결해 생각하고 개선하며 AI 학습의 원리와 한계를 경험합니다."
 		href="/hyfl-ai-lab/project1/"
 	/>
+	<ProjectCard
+		number={2}
+		tag="DATA · 공공데이터"
+		title="Data Lab"
+		description="공공데이터를 생성형 AI와 함께 정리·시각화·분석하고, 과정과 결과를 검증해 근거 있는 인사이트를 만듭니다."
+		href="/hyfl-ai-lab/data-lab/"
+	/>
+	<ProjectCard
+		number={3}
+		tag="DESIGN · 문제 해결"
+		title="AI for a Better World"
+		description="해결할 가치가 있는 문제를 발견하고 AI의 역할과 사람의 판단을 나누어 책임 있는 서비스를 기획합니다."
+		href="/hyfl-ai-lab/project3/"
+	/>
 </div>
 
-이 프로젝트의 목표는 멋진 웹앱을 완성하는 것이 아닙니다.
+프로젝트의 목표는 멋진 웹앱을 완성하는 것이 아닙니다.
 
-> **AI의 판단은 데이터와 학습 과정의 영향을 받습니다. 따라서 결과를 이해하려면 어떤 데이터로 어떻게 학습했는지 살펴봐야 합니다.**
+> **기술을 작동시키는 데서 멈추지 않고, 어떤 질문과 데이터를 사용했는지 확인하며 결과를 해석하고 책임 있게 판단합니다.**
 
 ## Final Project · AI for a Better World
 
