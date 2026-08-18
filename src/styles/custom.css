@@ -375,6 +375,14 @@ summary:focus-visible,
 	display: none !important;
 }
 
+body[data-has-sidebar] {
+	--sl-content-inline-start: 0rem;
+}
+
+.main-pane {
+	width: 100% !important;
+}
+
 .main-pane { --sl-content-width: 58rem; }
 .content-panel { padding-inline: clamp(1rem, 3vw, 2.5rem); }
 .stage-label { display:inline-flex; margin:0 0 .9rem; padding:.32rem .65rem; border-radius:999px; background:var(--sl-color-accent-low); color:var(--sl-color-accent-high); font-size:.76rem; font-weight:800; letter-spacing:.06em; }
