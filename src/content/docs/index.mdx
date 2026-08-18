@@ -6,10 +6,16 @@ editUrl: false
 
 import Callout from '../../components/Callout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
+import PageNav from '../../components/PageNav.astro';
 
 <div class="course-intro"><p class="course-intro__eyebrow">한영외국어고등학교 2학년 교양 과목</p><p class="course-intro__lead">AI의 원리를 직접 경험하고, 데이터를 근거로 세상을 읽으며, AI와 함께 생각하되 질문·판단·책임은 사람이 갖는 방법을 탐구합니다.</p></div>
 
 <Callout kind="mission" title="Semester Question">**AI가 점점 더 강력해지는 시대, 우리는 AI를 무엇을 위해 사용할 것인가?**</Callout>
+
+<nav class="home-start-nav" aria-label="교과서 시작 메뉴">
+	<a class="home-start-nav__toc" href="#교과서-목차">전체 목차 보기 ↓</a>
+	<a class="home-start-nav__start" href="/hyfl-ai-lab/part1/ch1/">1단원 시작하기 →</a>
+</nav>
 
 ## 이 과목에서 가장 중요한 것
 
@@ -63,3 +69,5 @@ AI는 데이터를 빠르게 처리하고 패턴을 찾으며 분석·예측·�
 매 차시의 형성평가·개념 정리·실험 기록·성찰은 별도의 활동지에 남깁니다. 웹 교과서는 개념과 프로젝트 절차를 다시 확인하는 자료입니다.
 
 <div class="textbook-question-link"><a href="/hyfl-ai-lab/question/">선생님께 질문하기</a></div>
+
+<PageNav next={{ label: '1. 인공지능이란 무엇일까?', href: '/hyfl-ai-lab/part1/ch1/' }} />
