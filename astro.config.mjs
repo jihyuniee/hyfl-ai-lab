@@ -70,7 +70,8 @@ export default defineConfig({
 							items: [
 								{ label: '11. AI for a Better World', link: '/project3/' },
 								{ label: '12. 핵심 아이디어 표현하기', link: '/project2/' },
-								{ label: '13. 처음의 질문으로 돌아가기', link: '/part7/' },
+								{ label: '13. AI를 책임 있게 사용한다는 것은?', link: '/ethics/' },
+								{ label: '14. 처음의 질문으로 돌아가기', link: '/part7/' },
 							],
 						},
 					],
