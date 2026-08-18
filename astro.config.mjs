@@ -31,14 +31,58 @@ export default defineConfig({
 		starlight({
 			title: '인공지능 원리탐구',
 			description: '한영외국어고등학교 2학년 「인공지능 원리탐구」 웹교과서',
-			sidebar: [],
+			sidebar: [
+				{
+					label: '전체 과목 목차',
+					items: [
+						{ label: '과목 첫 화면', link: '/' },
+						{
+							label: '이해하고 경험하기',
+							collapsed: false,
+							items: [
+								{ label: '1. 인공지능이란 무엇일까?', link: '/part1/ch1/' },
+								{ label: '2. AI를 직접 가르쳐보자', link: '/part2/ch4/' },
+								{ label: '3. 실패에 개념 이름 붙이기', link: '/part2/failure/' },
+								{ label: '4. School Image Lab', link: '/project1/' },
+							],
+						},
+						{
+							label: '데이터로 세상 읽기',
+							collapsed: false,
+							items: [
+								{ label: '5. 이미지에서 표 데이터로', link: '/data/ch1/' },
+								{ label: '6. 서울의 기온은 어떻게 변했을까?', link: '/data-lab/' },
+								{ label: '7. My Data Question', link: '/data-project/' },
+							],
+						},
+						{
+							label: 'AI와 함께 생각하기',
+							collapsed: false,
+							items: [
+								{ label: '8. 생성형 AI는 어떻게 답을 만들까?', link: '/part3/ch5/' },
+								{ label: '9. AI와 함께 생각하는 법', link: '/part3/ch6/' },
+								{ label: '10. 해결할 가치가 있는 문제', link: '/part6/' },
+							],
+						},
+						{
+							label: '더 나은 세상을 위한 설계',
+							collapsed: false,
+							items: [
+								{ label: '11. AI for a Better World', link: '/project3/' },
+								{ label: '12. 핵심 아이디어 표현하기', link: '/project2/' },
+								{ label: '13. 처음의 질문으로 돌아가기', link: '/part7/' },
+							],
+						},
+					],
+				},
+			],
 			defaultLocale: 'ko',
 			locales: { root: { label: '한국어', lang: 'ko' } },
 			customCss: ['./src/styles/custom.css'],
 			social: [],
-			tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
+			tableOfContents: false,
 			components: {},
-			// 전체 목차는 첫 페이지에만 제공합니다. 각 단원은 본문과 이전·다음 링크에 집중합니다.
+			// 왼쪽에는 전체 과목 목차만 제공하고, 페이지별 소제목 목차는 표시하지 않습니다.
 		}),
 		mdx(),
 	],
