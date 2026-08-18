@@ -1,248 +1,65 @@
 ---
 title: 인공지능 원리탐구
-description: AI를 이해하고, AI와 함께 생각하며, 더 나은 세상을 위한 문제를 해결하는 한 학기
+description: AI의 원리를 경험하고, 데이터로 세상을 읽으며, 사람의 질문과 판단으로 더 나은 해결책을 설계합니다.
 editUrl: false
 ---
 
 import Callout from '../../components/Callout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 
-<div class="course-intro">
-	<p class="course-intro__eyebrow">한영외국어고등학교 2학년 교양 과목</p>
-	<p class="course-intro__lead">AI를 이해하고, AI와 함께 생각하며, 질문·검증·판단을 통해 사람과 사회의 문제를 더 나은 방향으로 해결하는 방법을 탐구합니다.</p>
-</div>
+<div class="course-intro"><p class="course-intro__eyebrow">한영외국어고등학교 2학년 교양 과목</p><p class="course-intro__lead">AI의 원리를 직접 경험하고, 데이터를 근거로 세상을 읽으며, AI와 함께 생각하되 질문·판단·책임은 사람이 갖는 방법을 탐구합니다.</p></div>
 
-## 이번 학기의 질문
+<Callout kind="mission" title="Semester Question">**AI가 점점 더 강력해지는 시대, 우리는 AI를 무엇을 위해 사용할 것인가?**</Callout>
 
-최근의 일부 AI 서비스는 텍스트 생성뿐 아니라 이미지·파일 처리, 검색, 데이터 분석, 코드 실행 등 여러 기능을 한 서비스 안에서 제공하고 있습니다. 이러한 기능은 하나의 모델이 모두 수행하는 경우도 있고, 언어·멀티모달 모델과 검색·코드 실행 같은 도구가 결합되어 제공되는 경우도 있습니다.
+## 이 과목에서 가장 중요한 것
 
-그렇다면 AI 시스템이 처리할 수 있는 작업의 범위가 넓어지는 시대에 사람에게 더 중요해지는 능력은 무엇일까요?
+AI는 데이터를 빠르게 처리하고 패턴을 찾으며 분석·예측·생성 결과를 만들 수 있습니다. 그러나 중요한 문제를 발견하고 목적을 정하며, 결과를 맥락 속에서 검증하고 최종 결정을 책임지는 일은 사람의 몫입니다.
 
-<Callout kind="mission" title="Semester Question">
-**AI가 점점 더 강력해지는 시대, 우리는 AI를 무엇을 위해 사용할 것인가?**
-</Callout>
+<div class="human-loop" aria-label="학생과 AI의 학습 순환"><div><b>학생</b><span>문제·질문·목표를 정한다</span></div><i>→</i><div><b>AI</b><span>분석·대안·초안으로 확장한다</span></div><i>→</i><div><b>다시 학생</b><span>검증·수정·판단하고 책임진다</span></div></div>
 
-이번 수업은 특정 AI 서비스의 사용법을 익히는 수업이 아닙니다. AI가 무엇인지 이해하고, AI가 잘하는 일과 한계를 판단하며, 우리가 해결하고 싶은 문제에 AI를 어떻게 활용할 것인지 생각하는 수업입니다.
+> AI는 학습을 대신하는 답안 작성기가 아니라, 학생의 사고를 넓히는 협력자로 사용합니다.
 
-## AI는 강력한 도구, 방향을 정하는 것은 사람
+## 한 학기의 학습 여정
 
-AI는 빠르게 분석하고, 패턴을 찾고, 다양한 초안과 대안을 만들어낼 수 있습니다. 하지만 무엇이 중요한 문제인지 정하고, 결과가 현재의 맥락에 적절한지 살피고, 가치와 책임이 걸린 최종 결정을 내리는 일에는 사람의 판단이 필요합니다.
-
-<Callout kind="concept" title="이 과목의 핵심">
-AI가 무엇을 할 수 있는지 아는 것에서 멈추지 않습니다.
-
-**문제를 발견하고 → 내 생각과 질문을 세우고 → AI와 함께 탐색하고 → 결과를 검증하고 → 사람이 최종 판단하며 → 더 나은 해결책을 설계하는 능력**을 기릅니다.
-</Callout>
-
-## 학생 → AI → 다시 학생
-
-AI를 잘 활용한다는 것은 질문을 입력하고 답을 복사하는 것이 아닙니다. 사고의 시작과 끝이 학생에게 있어야 합니다.
-
-```text
-학생
-문제·질문·목표를 정한다
-   ↓
-AI
-설명·분석·대안·초안으로 사고를 확장한다
-   ↓
-학생
-검증·비교·수정·판단하고 자신의 결과로 만든다
-```
-
-<Callout kind="caution" title="AI에게 시키는 수업이 되지 않도록">
-**과제 입력 → AI 답 받기 → 복사 → 끝**으로 끝나면 결과물은 생겨도 학생의 사고 과정은 충분히 드러나지 않습니다.
-
-이 수업에서는 **질문 → AI와 탐색 → 검증 → 판단 → 성찰**의 흔적을 중요하게 봅니다.
-</Callout>
-
-## 한 학기의 Journey
-
-### WHY → UNDERSTAND → EXPERIENCE → DATA → COLLABORATE → DISCOVER → DESIGN → PROTOTYPE
-
-**WHY**  
-왜 AI를 배우는지 질문합니다. AI를 편리한 도구로 사용하는 데서 더 나아가, 사람과 사회의 문제 해결에 어떻게 활용할 수 있는지 생각합니다.
-
-**UNDERSTAND**  
-AI, 머신러닝, 딥러닝, 생성형 AI와 LLM의 관계를 이해합니다. 원리를 알아야 AI의 결과를 무조건 믿지 않고 질문하고 판단할 수 있습니다.
-
-**EXPERIENCE**  
-직접 이미지 분류 모델을 학습시킵니다. 데이터 수집, 학습, 테스트, 오분류, 개선을 경험하며 'AI가 학습한다'는 말과 모델의 한계를 확인합니다.
-
-**DATA**
-공공데이터에서 질문의 근거를 찾습니다. 생성형 AI와 함께 데이터를 정리하고 시각화하되, 분석 과정과 결과를 사람이 검증하고 근거의 범위 안에서 해석합니다.
-
-**COLLABORATE**  
-AI에게 단순히 답을 받는 것이 아니라 먼저 목표와 자신의 생각을 세우고, AI로 관점과 대안을 확장한 뒤 결과를 검증·수정·판단하는 협업을 연습합니다.
-
-**DISCOVER**  
-AI부터 떠올리지 않습니다. 나, 학교, 지역사회, 사회와 세계를 살펴보며 실제로 해결할 가치가 있는 문제를 발견합니다.
-
-**DESIGN**  
-문제의 대상과 원인, 맥락과 기존 해결 방법의 한계를 살펴봅니다. 그 뒤 AI가 어떤 역할을 맡으면 도움이 될지, 사람이 반드시 판단해야 할 부분은 무엇인지 서비스 아이디어를 기획합니다.
-
-**PROTOTYPE**  
-완성된 서비스를 개발하는 것이 목표는 아닙니다. 원한다면 생성형 AI와 바이브 코딩을 활용해 기획한 서비스의 핵심 화면이나 기능을 간단히 표현해봅니다. 구현 결과보다 왜 그렇게 설계했는지를 설명하는 것이 중요합니다.
+<div class="journey-strip"><span>WHY</span><span>QUICK UNDERSTAND</span><span>EXPERIENCE Ⅰ · IMAGE</span><span>EXPERIENCE Ⅱ · DATA</span><span>COLLABORATE</span><span>DISCOVER</span><span>DESIGN</span><span>PROTOTYPE</span><span>REFLECT</span></div>
 
 ## 교과서 목차
 
 <div class="textbook-toc">
-	<div class="textbook-toc__section">
-		<p class="textbook-toc__part">START · WHY</p>
-		<h3>왜 AI를 배우는가?</h3>
-		<p>데미스 허사비스의 이야기를 통해 AI를 무엇을 위해 사용할지 생각합니다.</p>
-	</div>
-	<div class="textbook-toc__section">
-		<p class="textbook-toc__part">UNDERSTAND → TRY</p>
-		<h3>짧게 이해하고 바로 실험하기</h3>
-		<ol>
-			<li><a href="/hyfl-ai-lab/part1/ch1/">인공지능이란 무엇일까?</a></li>
-			<li><a href="/hyfl-ai-lab/part2/ch4/">AI를 직접 가르쳐보자</a></li>
-		</ol>
-	</div>
-	<div class="textbook-toc__section textbook-toc__section--project">
-		<p class="textbook-toc__part">MINI PROJECT 1 · EXPERIENCE</p>
-		<h3><a href="/hyfl-ai-lab/project1/">AI Learning Lab</a></h3>
-		<p>학교 속 문제를 이미지 분류 문제로 바꾸고 모델의 실패를 데이터와 연결해 개선합니다.</p>
-	</div>
-	<div class="textbook-toc__section">
-		<p class="textbook-toc__part">DATA</p>
-		<h3>데이터로 세상을 읽기</h3>
-		<ol>
-			<li><a href="/hyfl-ai-lab/data/ch1/">데이터로 세상을 읽는 법</a></li>
-			<li><a href="/hyfl-ai-lab/data-lab/">공공데이터로 질문에 답하기</a></li>
-		</ol>
-	</div>
-	<div class="textbook-toc__section">
-		<p class="textbook-toc__part">COLLABORATE</p>
-		<h3>생성형 AI와 함께 생각하기</h3>
-		<ol>
-			<li><a href="/hyfl-ai-lab/part3/ch5/">생성형 AI는 어떻게 답을 만들까?</a></li>
-			<li><a href="/hyfl-ai-lab/part3/ch6/">AI에게 일을 맡기는 방법</a></li>
-		</ol>
-	</div>
-	<div class="textbook-toc__section textbook-toc__section--project">
-		<p class="textbook-toc__part">FINAL PROJECT</p>
-		<h3><a href="/hyfl-ai-lab/project3/">AI for a Better World</a></h3>
-		<p>문제를 먼저 발견하고 사람과 AI의 역할을 나누어 책임 있는 해결책을 기획합니다.</p>
-	</div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">START · WHY</p><h3>우리는 AI를 무엇을 위해 사용할까?</h3><p>데미스 허사비스의 이야기를 보고 학기 전체 질문을 시작합니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">QUICK UNDERSTAND</p><h3><a href="/hyfl-ai-lab/part1/ch1/">1. 인공지능이란 무엇일까?</a></h3><p>AI·머신러닝·딥러닝의 큰 지도만 짧게 확인합니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">EXPERIENCE Ⅰ · IMAGE</p><h3><a href="/hyfl-ai-lab/part2/ch4/">2. AI를 직접 가르쳐보자</a></h3><p>개인 이미지 분류 모델을 만들고 새로운 조건에서 일부러 실패시킵니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">LEARN FROM FAILURE</p><h3><a href="/hyfl-ai-lab/part2/failure/">3. 실패에 개념 이름 붙이기</a></h3><p>학습·테스트·일반화·과대적합·편향을 실험 결과와 연결합니다.</p></div>
+	<div class="textbook-toc__section textbook-toc__section--project"><p class="textbook-toc__part">MINI PROJECT 1</p><h3><a href="/hyfl-ai-lab/project1/">4. School Image Lab</a></h3><p>학교 안의 작은 문제를 발견하고 이미지 분류 실험을 반복합니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">EXPERIENCE Ⅱ · DATA</p><h3><a href="/hyfl-ai-lab/data/ch1/">5. 이미지에서 표 데이터로</a></h3><p>AI를 판단하게 한 데이터에서 현실을 해석하는 데이터로 시야를 넓힙니다.</p></div>
+	<div class="textbook-toc__section textbook-toc__section--project"><p class="textbook-toc__part">DATA LAB</p><h3><a href="/hyfl-ai-lab/data-lab/">6. 서울의 기온은 어떻게 변했을까?</a></h3><p>공공데이터를 함께 찾고 정리·시각화·해석·검증합니다.</p></div>
+	<div class="textbook-toc__section textbook-toc__section--project"><p class="textbook-toc__part">MINI PROJECT 2</p><h3><a href="/hyfl-ai-lab/data-project/">7. My Data Question</a></h3><p>관심 분야의 질문을 공공데이터로 탐구합니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">COLLABORATE</p><h3><a href="/hyfl-ai-lab/part3/ch5/">8. 생성형 AI는 어떻게 답을 만들까?</a></h3><p>생성 원리와 도구 결합을 이해하고 검증이 필요한 이유를 찾습니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">COLLABORATE</p><h3><a href="/hyfl-ai-lab/part3/ch6/">9. AI와 함께 생각하는 법</a></h3><p>내 생각에서 시작해 AI로 확장하고 다시 내 판단으로 돌아옵니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">DISCOVER</p><h3><a href="/hyfl-ai-lab/part6/">10. 해결할 가치가 있는 문제 발견하기</a></h3><p>AI보다 먼저 사람·상황·원인·기존 해결의 빈틈을 살펴봅니다.</p></div>
+	<div class="textbook-toc__section textbook-toc__section--project"><p class="textbook-toc__part">FINAL PROJECT · DESIGN</p><h3><a href="/hyfl-ai-lab/project3/">11. AI for a Better World</a></h3><p>AI와 사람의 역할을 나누고 책임 있는 서비스를 기획합니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">OPTION · PROTOTYPE</p><h3><a href="/hyfl-ai-lab/project2/">12. 핵심 아이디어 표현하기</a></h3><p>필요한 경우 화면 설계나 바이브 코딩으로 핵심 장면을 보여줍니다.</p></div>
+	<div class="textbook-toc__section"><p class="textbook-toc__part">FINAL REFLECTION</p><h3><a href="/hyfl-ai-lab/part7/">13. 처음의 질문으로 돌아가기</a></h3><p>기술적으로 가능한 것과 실제로 해야 하는 것을 구분합니다.</p></div>
 </div>
 
-<div class="textbook-question-link">
-	<a href="/hyfl-ai-lab/question/">선생님께 질문하기</a>
-</div>
-
-## 수업의 기본 Learning Loop
-
-이 과목에서는 다음 세 단계를 반복하며 AI와 함께 사고합니다.
-
-### 1. 중심 잡기 — 내가 먼저 질문한다
-문제를 관찰하고, 무엇이 궁금한지, 무엇을 해결하고 싶은지 학생이 먼저 정합니다.
-
-### 2. 융합하기 — AI와 함께 확장한다
-AI의 속도와 생성 능력을 활용해 설명, 대안, 반론, 아이디어와 초안을 폭넓게 탐색합니다.
-
-### 3. 성찰하기 — 다시 내가 판단한다
-AI의 결과를 그대로 받아들이지 않습니다. 근거, 오류, 편향, 맥락, 가치와 영향을 검토하고 최종 판단은 사람이 합니다.
-
-> **AI는 학습 과정을 대신하는 것이 아니라, 학생의 사고를 확장하는 협력자로 사용합니다.**
-
-## 수업에서 중요한 것은 결과물보다 사고 과정입니다
-
-이 과목은 교양 과목이며 Pass/Non-pass 방식으로 운영됩니다. 어려운 코드를 많이 작성하거나 완성도 높은 앱을 만드는 것이 목표가 아닙니다.
-
-수업에서 더 중요하게 보는 것은 다음과 같습니다.
-
-- 해결할 가치가 있는 문제를 발견했는가?
-- AI를 사용하기 전에 자신의 질문과 목적을 세웠는가?
-- AI와 머신러닝의 기본 원리와 한계를 이해하는가?
-- 이 문제에 정말 AI가 필요한지 판단했는가?
-- AI에게 맡길 일과 사람이 판단할 일을 구분했는가?
-- AI가 만든 결과의 근거·오류·누락·편향을 확인했는가?
-- 다른 관점과 맥락을 고려하여 결과를 수정했는가?
-- 자신의 최종 판단을 설명하고 책임질 수 있는가?
-- 기술이 사람과 사회에 미칠 영향까지 생각했는가?
-
-## 세 번의 학습 경험
+## 세 번의 긴 프로젝트
 
 <div class="lab-card-grid">
-	<ProjectCard
-		number={1}
-		tag="EXPERIENCE · 머신러닝"
-		title="AI Learning Lab"
-		description="직접 이미지 데이터를 모으고 모델을 학습시킨 뒤 새로운 조건에서 실패를 찾아봅니다. 오분류의 원인을 데이터와 연결해 생각하고 개선하며 AI 학습의 원리와 한계를 경험합니다."
-		href="/hyfl-ai-lab/project1/"
-	/>
-	<ProjectCard
-		number={2}
-		tag="DATA · 공공데이터"
-		title="Data Lab"
-		description="공공데이터를 생성형 AI와 함께 정리·시각화·분석하고, 과정과 결과를 검증해 근거 있는 인사이트를 만듭니다."
-		href="/hyfl-ai-lab/data-lab/"
-	/>
-	<ProjectCard
-		number={3}
-		tag="DESIGN · 문제 해결"
-		title="AI for a Better World"
-		description="해결할 가치가 있는 문제를 발견하고 AI의 역할과 사람의 판단을 나누어 책임 있는 서비스를 기획합니다."
-		href="/hyfl-ai-lab/project3/"
-	/>
+	<ProjectCard number={1} title="School Image Lab" description="학교 속 문제를 이미지 분류 문제로 바꾸고, 실패 원인을 데이터와 연결해 개선합니다." href="/hyfl-ai-lab/project1/" tag="EXPERIENCE · 4~5차시" />
+	<ProjectCard number={2} title="My Data Question" description="관심 분야의 공공데이터를 탐색하고 시각화해 근거의 범위 안에서 해석합니다." href="/hyfl-ai-lab/data-project/" tag="DATA · 4~5차시" />
+	<ProjectCard number={3} title="AI for a Better World" description="누구의 어떤 문제인지부터 출발해 사람과 AI의 역할을 나눈 해결책을 설계합니다." href="/hyfl-ai-lab/project3/" tag="DESIGN · 6~7차시" />
 </div>
 
-프로젝트의 목표는 멋진 웹앱을 완성하는 것이 아닙니다.
+## 수업과 Pass 기준
 
-> **기술을 작동시키는 데서 멈추지 않고, 어떤 질문과 데이터를 사용했는지 확인하며 결과를 해석하고 책임 있게 판단합니다.**
+이 과목은 Pass/Non-pass 방식의 교양 과목입니다. 어려운 코드나 화려한 앱보다 다음 과정이 중요합니다.
 
-## Final Project · AI for a Better World
+- 먼저 자신의 질문과 목적을 세웠는가?
+- 데이터와 AI 결과의 오류·누락·편향을 확인했는가?
+- 다른 관점과 영향을 고려해 결과를 수정했는가?
+- AI가 할 일과 사람이 판단할 일을 구분했는가?
+- 자신의 최종 판단을 설명하고 책임질 수 있는가?
 
-한 학기의 마지막에는 **더 나은 세상을 위한 AI 서비스**를 기획합니다.
+매 차시의 형성평가·개념 정리·실험 기록·성찰은 별도의 활동지에 남깁니다. 웹 교과서는 개념과 프로젝트 절차를 다시 확인하는 자료입니다.
 
-완성된 서비스를 실제로 개발할 필요는 없습니다. 좋은 문제 정의와 책임 있는 서비스 기획만으로도 충분히 훌륭한 프로젝트가 될 수 있습니다.
-
-**문제 발견 → 대상 사용자 → 원인과 맥락 탐색 → 기존 해결 방법 → 한계 → AI가 필요한 이유 → AI의 역할 → 사람의 역할 → 이용 시나리오 → 기대 효과 → 위험·공정성·안전 → 최종 판단**
-
-이 흐름을 따라 자신의 아이디어를 구체화합니다.
-
-외국어, 교육, 진로, 경제, 환경, 문화, 접근성, 정보 격차, 학교생활 등 자신의 관심 분야에서 출발할 수 있습니다.
-
-<Callout kind="caution" title="AI부터 시작하지 않습니다">
-"AI로 뭘 만들지?"보다 먼저 **"누구의 어떤 문제를 해결하고 싶은가?"**를 묻습니다.
-
-AI를 사용하지 않는 편이 더 좋은 문제라면 AI를 사용하지 않는 판단도 좋은 문제 해결입니다.
-</Callout>
-
-## Vibe Coding은 선택입니다
-
-서비스 기획이 충분히 구체화되었다면 마지막에 생성형 AI와 함께 아주 간단한 프로토타입을 만들어볼 수 있습니다.
-
-필수는 **서비스 기획**, 권장은 **화면 설계**, 선택은 **바이브 코딩을 통한 간단한 구현**입니다.
-
-코딩 실력이 프로젝트의 수준을 결정하지 않습니다. 바이브 코딩은 내가 생각한 해결책을 다른 사람에게 보여주기 위한 하나의 표현 도구입니다. AI가 코드를 만들어주더라도 무엇을 만들지, 어떤 기능을 남기고 뺄지, 결과가 문제 해결에 적절한지는 학생이 판단합니다.
-
-## 한 학기가 끝나면
-
-한 학기 뒤에는 적어도 다음 질문에 자신의 말로 답할 수 있기를 바랍니다.
-
-- 왜 얼굴 인식, 추천 알고리즘, 이미지 분류, 생성형 AI를 모두 인공지능이라고 부를까?
-- AI와 머신러닝, 딥러닝, LLM은 어떤 관계일까?
-- AI가 학습한다는 것은 무슨 뜻이며, 왜 새로운 데이터에서 테스트해야 할까?
-- 왜 AI는 틀리거나 편향된 결과를 만들 수 있을까?
-- AI를 사용하기 전에 사람이 먼저 정해야 할 것은 무엇일까?
-- AI의 결과를 어떻게 검증하고 내 판단으로 다시 가져올 수 있을까?
-- AI가 할 일과 사람이 판단해야 할 일은 어떻게 나눌까?
-- 내가 관심 있는 분야에서 해결할 가치가 있는 문제는 무엇일까?
-- 그 문제를 해결하는 데 AI는 어떤 도움을 줄 수 있을까?
-- 기술적으로 가능한 것과 실제로 해야 하는 것은 언제 다를까?
-
-<Callout kind="reflect" title="한 학기를 시작하며">
-**AI가 점점 더 강력해지는 시대, 우리는 AI를 무엇을 위해 사용할 것인가?**
-
-AI가 답을 대신하는 수업이 아니라, AI와 함께 더 깊게 질문하고 생각하는 한 학기를 시작합니다.
-</Callout>
-
-## 자료 확인 원칙
-
-기술 변화가 빠른 내용은 수업 시점의 공식 문서와 원자료를 확인합니다. 특정 서비스의 기능이나 사용 경향을 인공지능 전체의 특징으로 일반화하지 않습니다.
-
-<div class="ef-publish-footer">
-한영외국어고등학교 2학년 「인공지능 원리탐구」 · AI for a Better World
-</div>
+<div class="textbook-question-link"><a href="/hyfl-ai-lab/question/">선생님께 질문하기</a></div>
