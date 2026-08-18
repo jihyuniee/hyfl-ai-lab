@@ -1,0 +1,9 @@
+---
+interface Props { prev?: { label: string; href: string }; next?: { label: string; href: string }; }
+const { prev, next } = Astro.props;
+---
+<nav class="page-nav" aria-label="단원 이동">
+	{prev ? <a href={prev.href}>← {prev.label}</a> : <span />}
+	<a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a>
+	{next ? <a href={next.href}>{next.label} →</a> : <span />}
+</nav>

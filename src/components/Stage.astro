@@ -1,0 +1,6 @@
+---
+interface Props { label: string; question: string; }
+const { label, question } = Astro.props;
+---
+<div class="stage-label">{label}</div>
+<div class="stage-question"><span>오늘의 질문</span><strong>{question}</strong></div>
