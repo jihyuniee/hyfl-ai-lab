@@ -1,48 +1,32 @@
 ---
 title: "교육과정·개념 연결표"
-description: 참고 교과서의 핵심 개념 중 이번 교재에 실제로 반영된 항목만 골라 어느 챕터에서 다루는지 정리했습니다.
+description: 이번 교재의 핵심 개념과 프로젝트 반영 위치를 정리했습니다.
 ---
 
 import Callout from '../../../components/Callout.astro';
 
-<Callout kind="caution" title="이 페이지는 교사용입니다">
-참고 교과서의 모든 내용을 옮기지 않았습니다. 우리 수업 흐름에 필요한 핵심 개념만 선택적으로 가져와 재구성했다는 점을 기록해둡니다. (스마트홈·IoT처럼 이번 수업 흐름과 맞지 않는 단원은 반영하지 않았습니다.)
-</Callout>
+<Callout kind="caution" title="이 페이지는 교사용입니다">개념을 독립 이론 단원으로 모두 설명하지 않고, 학생이 미션을 수행하며 필요해지는 순간에 연결합니다.</Callout>
 
-## 개념 → 챕터 연결표
-
-| 참고 교과서 개념 | 반영된 위치 |
+| 핵심 개념·역량 | 반영된 위치 |
 | --- | --- |
-| 인공지능의 개념과 지능적 판단 | [Part 1 · Ch1](/hyfl-ai-lab/part1/ch1/) |
-| 튜링 테스트 | [Part 1 · Ch1](/hyfl-ai-lab/part1/ch1/) |
-| 인식·학습·추론·문제 해결 | [Part 1 · Ch1](/hyfl-ai-lab/part1/ch1/), [Ch2](/hyfl-ai-lab/part1/ch2/) |
-| 약인공지능·강인공지능 | [Part 1 · Ch1](/hyfl-ai-lab/part1/ch1/) |
-| AI·머신러닝·딥러닝의 관계 | [Part 1 · Ch3](/hyfl-ai-lab/part1/ch3/) |
-| 지도학습·비지도학습·강화학습 | [Part 2 · Ch4](/hyfl-ai-lab/part2/ch4/) |
-| 분류·회귀·군집화 | [Part 2 · Ch4](/hyfl-ai-lab/part2/ch4/) |
-| 훈련 데이터·테스트 데이터 | [🧪 Project 1](/hyfl-ai-lab/project1/) |
-| 모델 생성·성능 평가 | [🧪 Project 1](/hyfl-ai-lab/project1/) |
-| 일반화·과적합·데이터 편향 | [🧪 Project 1](/hyfl-ai-lab/project1/) |
-| 생성형 AI의 원리 (LLM·토큰·확률·할루시네이션) | [Part 3 · Ch5](/hyfl-ai-lab/part3/ch5/) |
-| AI와의 협업과 검증 | [Part 3 · Ch6](/hyfl-ai-lab/part3/ch6/) |
-| 데이터 구조와 품질 (행/열/속성/변수/결측치/이상치/표본) | [DATA 1](/hyfl-ai-lab/data/ch1/), [DATA LAB](/hyfl-ai-lab/data-lab/) |
-| 공공데이터 탐색·정리·시각화·인사이트 | [DATA LAB](/hyfl-ai-lab/data-lab/) |
-| 상관관계와 인과관계의 구분, 데이터 근거와 주장 | [DATA 1](/hyfl-ai-lab/data/ch1/), [DATA LAB](/hyfl-ai-lab/data-lab/) |
-| 생성형 AI를 활용한 데이터 분석과 인간의 검증 | [DATA LAB](/hyfl-ai-lab/data-lab/) |
-| AI 윤리 (편향·개인정보·저작권·딥페이크·의존) | [Part 7](/hyfl-ai-lab/part7/) |
+| AI·머신러닝·딥러닝, 지도학습·분류 | [1단원](/hyfl-ai-lab/part1/ch1/), [2단원](/hyfl-ai-lab/part2/ch4/) |
+| 훈련·테스트 데이터, 일반화, 과적합, 데이터 편향 | [School Image Lab](/hyfl-ai-lab/project1/) |
+| 정형·비정형 데이터, CSV·XLSX | [데이터 파일 미션](/hyfl-ai-lab/data/ch1/) |
+| 행·열·변수·자료형·단위·결측·중복·이상치 | [데이터 파일 미션](/hyfl-ai-lab/data/ch1/), [공공데이터 분석 미션](/hyfl-ai-lab/data-lab/) |
+| 공공데이터의 의미·출처·수집 맥락·이용 조건 | [공공데이터 분석 미션](/hyfl-ai-lab/data-lab/), [최종 프로젝트](/hyfl-ai-lab/data-project/) |
+| 전처리·기초 통계·시각화·추이·분포 | [공공데이터 분석 미션](/hyfl-ai-lab/data-lab/) |
+| 산점도·상관계수·히트맵, 상관과 인과 | [공공데이터 분석 미션](/hyfl-ai-lab/data-lab/), [최종 프로젝트](/hyfl-ai-lab/data-project/) |
+| 사실·해석·원인 가설·인사이트·한계 | [최종 프로젝트](/hyfl-ai-lab/data-project/) |
+| 생성형 AI의 컨텍스트·확률적 생성·할루시네이션 | 각 데이터 실습의 AI 활용 상자, [책임 있는 AI](/hyfl-ai-lab/ethics/) |
+| AI가 만든 코드와 분석 결과의 검증 | [공공데이터 분석 미션](/hyfl-ai-lab/data-lab/), [최종 프로젝트](/hyfl-ai-lab/data-project/) |
+| 문제 확인·학습·입력·운영·평가 데이터 | [최종 프로젝트](/hyfl-ai-lab/data-project/) |
+| 분류·예측·추천·생성·번역·요약·대화 | [최종 프로젝트](/hyfl-ai-lab/data-project/) |
+| 인간 중심 설계, AI와 인간의 역할, 가치와 책임 | [최종 프로젝트](/hyfl-ai-lab/data-project/), [책임 있는 AI](/hyfl-ai-lab/ethics/), [성찰](/hyfl-ai-lab/part7/) |
 
-### DATA LAB과 Project 3 설계 메모
+## 통합 프로젝트 설계 메모
 
-DATA LAB에서는 먼저 학급 전체가 같은 공공데이터를 사용해 **질문 → 구조·품질 확인 → 전처리 → 시각화 → 사실과 해석 구분 → 검증 → 인사이트**의 전 과정을 함께 경험합니다. 이후 학생이 관심 분야의 질문으로 확장합니다. 예측 모델은 질문과 데이터가 적절할 때만 선택적으로 사용합니다.
+기존의 공공데이터 탐구와 AI 서비스 기획을 `DATA TO AI SERVICE` 하나로 통합했습니다. 학생은 원하는 서비스 아이디어를 증명하기 위해 데이터를 고르는 것이 아니라, 공공데이터로 문제 가설을 확인하거나 수정합니다. 분석 결과가 처음 생각과 다르면 문제 정의와 서비스 방향도 바꿉니다.
 
-Project 3는 데이터 분석 결과를 억지로 서비스 아이디어의 근거로 사용하는 활동이 아닙니다. **문제 발견 → 대상과 맥락 탐색 → AI 필요성 판단 → 사람과 AI의 역할 설계 → 책임 있는 서비스 기획**의 순서를 따릅니다. 세부 활동지는 실제 주제와 차시에 맞춰 별도 제작하고, 웹앱 구현은 선택·확장 활동으로 둡니다.
+생성형 AI 활용은 독립 단원보다 프로젝트 과정에 분산했습니다. 학생은 검색·전처리·분석·해석·설계의 각 순간에 목적과 맥락을 제공하고, 계획과 변경 내역을 먼저 요구하며, 원자료로 결과를 검증합니다.
 
-## 반영하지 않은 내용
-
-다음처럼 이번 수업 흐름(AI 원리 이해 → 생성형 AI 협업·코딩 → 나만의 AI/웹서비스 제작)에서 벗어나는 단원은 억지로 포함하지 않았습니다.
-
-- 스마트홈·IoT 등 하드웨어 중심 단원
-- AI Agent의 심화 이론 (Part 6 Playground의 **선택 활동**으로만 가볍게 다룸)
-- 특정 산업 분야별 AI 활용 사례 나열식 단원
-
-교과서의 문장과 그림을 그대로 옮기지 않고, 각 챕터에서 학생 활동과 새로운 설명으로 재구성했습니다.
+파이썬 문법 작성 능력보다 AI가 만든 분석 코드의 파일·열·처리·축·단위를 읽고 설명하는 능력을 우선합니다. 실제 모델 학습과 웹 구현은 프로젝트 질문에 필요하고 시간이 허용될 때만 선택합니다.
