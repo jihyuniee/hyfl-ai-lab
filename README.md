@@ -35,4 +35,4 @@ astro.config.mjs     # Starlight 사이드바 및 사이트 설정
 
 7개 Part + 3개 Project Lab으로 구성됩니다. 자세한 커리큘럼 설계와 차시 운영안은 사이트 내 [교사용 · 수업 운영 가이드](https://jihyuniee.github.io/hyfl-ai-lab/teacher/guide/)를 참고하세요.
 
-<!-- deploy-trigger: 2026-08-18T09:08+09:00 -->
+<!-- deploy-trigger: 2026-08-27T02:35+09:00 -->
