@@ -1,5 +1,5 @@
 ---
-title: "11. 핵심 아이디어 표현하기"
+title: "7. 핵심 아이디어 표현하기"
 description: 선택적으로 화면 설계나 바이브 코딩을 이용해 서비스의 핵심 장면을 간단히 보여줍니다.
 ---
 import Callout from '../../components/Callout.astro';
@@ -8,23 +8,23 @@ import Step from '../../components/Step.astro';
 import Stage from '../../components/Stage.astro';
 import PageNav from '../../components/PageNav.astro';
 
-<Stage label="OPTION · PROTOTYPE · 0~3차시" question="핵심 아이디어를 가장 간단하게 어떻게 보여줄 수 있을까?" />
+<Stage label="OPTION · PROTOTYPE · 0~3차시" question="데이터에서 출발한 핵심 아이디어를 가장 간단하게 어떻게 보여줄 수 있을까?" />
 
 서비스 기획이 충분히 구체화되었다면 핵심 장면을 눈에 보이는 형태로 표현할 수 있습니다. 완성된 앱을 만드는 것이 목표가 아닙니다.
 
-- **필수**: 책임 있는 서비스 기획
-- **권장**: 3~5개 핵심 화면 설계
-- **선택**: 생성형 AI와 바이브 코딩으로 핵심 기능 하나 구현
+- 필수: 데이터 분석에 근거한 책임 있는 서비스 기획
+- 권장: 3~5개 핵심 화면과 이용 흐름
+- 선택: 생성형 AI와 바이브 코딩으로 핵심 기능 하나 구현
 
 <Steps>
-<Step title="핵심 장면 하나 선택">사용자가 서비스의 가치를 가장 잘 느끼는 장면만 고릅니다.</Step>
-<Step title="사용 흐름 그리기">상황·입력·AI 처리·결과·사람의 확인을 3~5단계로 그립니다.</Step>
-<Step title="요구사항 설명">대상 사용자와 문제, 필요한 화면과 동작, 제외할 기능을 AI에게 구체적으로 설명합니다.</Step>
-<Step title="직접 실행하고 실패 찾기">첫 결과에서 작동하지 않거나 문제 해결과 어긋나는 부분을 확인합니다.</Step>
-<Step title="한 번 이상 수정">예쁘게가 아니라 무엇이 왜 불편하고 어떻게 바꿀지 설명합니다.</Step>
-<Step title="역할과 한계 밝히기">AI가 만든 것, 내가 결정한 것, 실제 서비스에 추가로 필요한 것을 구분합니다.</Step>
+<Step title="핵심 장면 하나 선택">사용자가 분석에서 발견한 문제를 해결하는 가치를 가장 잘 느끼는 장면만 고릅니다.</Step>
+<Step title="사용 흐름 그리기">상황·입력 데이터·AI 처리·결과·사람의 확인을 3~5단계로 그립니다.</Step>
+<Step title="요구사항 설명">대상 사용자와 문제, 필요한 화면과 동작, 사용할 데이터, 제외할 기능을 AI에게 설명합니다.</Step>
+<Step title="직접 실행하고 실패 찾기">첫 결과에서 작동하지 않거나 문제 정의와 어긋나는 부분을 확인합니다.</Step>
+<Step title="한 번 이상 수정">'예쁘게'가 아니라 무엇이 왜 불편하고 어떻게 바꿀지 설명합니다.</Step>
+<Step title="역할과 한계 밝히기">AI가 만든 것, 팀이 결정한 것, 실제 서비스에 추가로 필요한 데이터와 기능을 구분합니다.</Step>
 </Steps>
 
-<Callout kind="caution" title="코드가 길다고 좋은 프로젝트가 아니다">프로토타입이 핵심 문제와 사람의 판단 과정을 흐린다면 과감히 만들지 않거나 줄입니다. 화면 완성도와 코딩 실력은 프로젝트 수준을 결정하지 않습니다.</Callout>
+<Callout kind="caution" title="코드가 길다고 좋은 프로젝트가 아닙니다">프로토타입이 데이터 근거와 사람의 판단 과정을 흐린다면 만들지 않거나 줄입니다. 화면 완성도와 코딩 실력은 프로젝트의 수준을 결정하지 않습니다.</Callout>
 
-<PageNav prev={{ label: 'AI for a Better World', href: '/hyfl-ai-lab/project3/' }} next={{ label: 'AI를 책임 있게 사용한다는 것은?', href: '/hyfl-ai-lab/ethics/' }} />
+<PageNav prev={{ label: 'Data to AI Service', href: '/hyfl-ai-lab/data-project/' }} next={{ label: 'AI를 책임 있게 사용한다는 것은?', href: '/hyfl-ai-lab/ethics/' }} />
