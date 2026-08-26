@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>12. AI를 책임 있게 사용한다는 것은 무엇일까? | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/ethics/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="12. AI를 책임 있게 사용한다는 것은 무엇일까?"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/ethics/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="저작권·할루시네이션·편향·윤리적 딜레마를 살펴보고 AI 결과를 책임 있게 사용하는 판단 기준을 정리합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="저작권·할루시네이션·편향·윤리적 딜레마를 살펴보고 AI 결과를 책임 있게 사용하는 판단 기준을 정리합니다."/><script>
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>8. AI를 책임 있게 사용한다는 것은 무엇일까? | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/ethics/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="8. AI를 책임 있게 사용한다는 것은 무엇일까?"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/ethics/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="데이터 권리·할루시네이션·편향·윤리적 딜레마를 살펴보고 AI 결과를 책임 있게 사용하는 판단 기준을 정리합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="데이터 권리·할루시네이션·편향·윤리적 딜레마를 살펴보고 AI 결과를 책임 있게 사용하는 판단 기준을 정리합니다."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -71,36 +71,28 @@
 		})();
 	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on">  <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">12. AI를 책임 있게 사용한다는 것은 무엇일까?</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="stage-label">RESPONSIBLE AI</div> <div class="stage-question"><span>오늘의 질문</span><strong>AI가 만들 수 있는 결과와 우리가 실제로 사용해도 되는 결과는 어떻게 구분할까?</strong></div>
-<p>AI 윤리는 ‘AI를 사용하면 안 된다’는 금지 목록이 아닙니다. AI가 사람과 사회에 미치는 영향을 살피고, <strong>어떤 목적으로 어디까지 사용할지, 결과를 누가 확인하고 책임질지 판단하는 과정</strong>입니다.</p>
-<p>이미지 분류에서는 동의와 대표성을, 데이터 분석에서는 출처와 일반화를, 생성형 AI에서는 사실 확인과 저작권을, 서비스 설계에서는 공정성과 안전을 생각했습니다. 이 단원에서는 흩어져 있던 판단 기준을 네 가지 쟁점으로 정리합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="1-저작권--만들-수-있다는-것과-사용해도-된다는-것은-다르다">1. 저작권 — 만들 수 있다는 것과 사용해도 된다는 것은 다르다</h2><a class="sl-anchor-link" href="#1-저작권--만들-수-있다는-것과-사용해도-된다는-것은-다르다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 저작권 — 만들 수 있다는 것과 사용해도 된다는 것은 다르다”</span></a></div>
-<p>생성형 AI는 많은 자료에서 학습한 패턴을 이용해 글·이미지·음악·코드 등을 만듭니다. 결과가 새롭게 보이더라도 기존 작품의 표현과 매우 비슷하거나, 특정 작가의 특징을 강하게 모방하거나, 보호되는 자료를 허락 없이 입력·공유하는 문제가 생길 수 있습니다.</p>
-<p>AI를 사용할 때는 다음을 확인해야 합니다.</p>
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on">  <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">8. AI를 책임 있게 사용한다는 것은 무엇일까?</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="stage-label">RESPONSIBLE AI</div> <div class="stage-question"><span>오늘의 질문</span><strong>AI가 만들 수 있는 결과와 우리가 실제로 사용해도 되는 결과는 어떻게 구분할까?</strong></div>
+<p>AI 윤리는 금지 목록이 아닙니다. AI가 사람과 사회에 미치는 영향을 살피고 어떤 목적으로 어디까지 사용할지, 결과를 누가 확인하고 책임질지 판단하는 과정입니다.</p>
+<p>이미지 분류에서는 동의와 대표성을, 공공데이터 분석에서는 출처·전처리·일반화를, 서비스 설계에서는 데이터 권리·공정성·안전·사람의 개입을 생각했습니다. 이제 흩어져 있던 판단을 정리합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="1-데이터와-권리">1. 데이터와 권리</h2><a class="sl-anchor-link" href="#1-데이터와-권리"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 데이터와 권리”</span></a></div>
 <ul>
 <li>입력한 글·사진·음원·파일을 사용할 권한이 있는가?</li>
-<li>다른 사람의 작품이나 개인정보가 포함되어 있지 않은가?</li>
-<li>결과물이 특정 작품의 표현을 지나치게 닮지 않았는가?</li>
-<li>사용한 AI 서비스의 이용 조건과 결과물 사용 범위를 확인했는가?</li>
-<li>AI가 만든 부분과 내가 직접 만든 부분을 정직하게 밝힐 필요가 있는가?</li>
-<li>학교 과제, 발표, 게시물, 판매물처럼 사용 목적에 따라 추가 확인이 필요한가?</li>
+<li>개인정보·얼굴·목소리·위치·건강·학습 기록이 포함되는가?</li>
+<li>수집 목적과 보관 기간을 당사자가 알고 동의했는가?</li>
+<li>서비스에 꼭 필요한 정보만 수집하는가?</li>
+<li>공공데이터의 이용 조건과 갱신 주기를 확인했는가?</li>
+<li>AI가 만든 결과가 특정 작품을 지나치게 닮거나 권리를 침해하지 않는가?</li>
 </ul>
-<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> AI가 만들었다고 자유롭게 사용할 수 있는 것은 아니다 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>AI 서비스가 결과를 생성했다는 사실만으로 저작권·초상권·개인정보 문제가 자동으로 해결되지는 않습니다. 공개하거나 중요한 용도로 사용하기 전에는 <strong>입력 자료의 권리, 결과의 유사성, 서비스 이용 조건, 사용 목적</strong>을 함께 확인해야 합니다.</p> </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="2-할루시네이션--자연스러운-문장이-사실을-보장하지-않는다">2. 할루시네이션 — 자연스러운 문장이 사실을 보장하지 않는다</h2><a class="sl-anchor-link" href="#2-할루시네이션--자연스러운-문장이-사실을-보장하지-않는다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 할루시네이션 — 자연스러운 문장이 사실을 보장하지 않는다”</span></a></div>
-<p>할루시네이션(hallucination)은 생성형 AI가 사실이 아니거나 근거가 확인되지 않는 내용을 그럴듯하게 만들어내는 현상입니다. 존재하지 않는 책·논문·통계·인물·사건을 제시하거나, 실제 자료의 제목·저자·수치를 섞어 잘못 설명할 수 있습니다.</p>
-<p>대규모 언어 모델은 문맥에 이어질 가능성이 높은 표현을 생성합니다. 따라서 문장이 유창하고 자신감 있게 보이는 것과 내용이 사실인 것은 다릅니다. 검색이나 파일 분석 기능이 결합되어도 자료 선택이나 해석 과정에서 오류가 생길 수 있습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="검증하는-방법">검증하는 방법</h3><a class="sl-anchor-link" href="#검증하는-방법"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “검증하는 방법”</span></a></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="2-할루시네이션과-검증">2. 할루시네이션과 검증</h2><a class="sl-anchor-link" href="#2-할루시네이션과-검증"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 할루시네이션과 검증”</span></a></div>
+<p>생성형 AI는 문맥에 이어질 가능성이 높은 결과를 만들기 때문에 존재하지 않는 사실·수치·출처를 그럴듯하게 제시할 수 있습니다. 검색이나 파일 분석 기능이 있어도 자료 선택·계산·해석에서 오류가 생길 수 있습니다.</p>
 <ol>
-<li>답변에서 확인해야 할 사실·수치·인용·출처를 구분합니다.</li>
+<li>답변에서 확인해야 할 사실·수치·인용·출처를 표시합니다.</li>
 <li>링크의 존재만 보지 말고 실제 원자료를 엽니다.</li>
-<li>작성 기관, 발표 시점, 조사 대상과 방법을 확인합니다.</li>
-<li>AI의 설명과 원자료의 문장이 같은 의미인지 비교합니다.</li>
-<li>중요한 내용은 서로 독립적인 자료나 담당 기관의 공식 자료로 다시 확인합니다.</li>
-<li>확인할 수 없는 내용은 사실처럼 사용하지 않고 불확실성을 밝힙니다.</li>
+<li>작성 기관·발표 시점·대상·수집 방법·단위를 확인합니다.</li>
+<li>AI가 사용한 열·전처리·계산이 원파일과 맞는지 비교합니다.</li>
+<li>확인할 수 없는 내용은 사실처럼 사용하지 않습니다.</li>
 </ol>
-<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 출처가 있다고 검증이 끝나는 것은 아니다 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>출처가 실제로 존재하는지, 그 자료가 해당 주장을 직접 뒷받침하는지, 최신 상황에도 적용되는지를 사람이 확인해야 합니다.</p> </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="3-인공지능-편향--데이터의-패턴은-사회의-불균형도-담을-수-있다">3. 인공지능 편향 — 데이터의 패턴은 사회의 불균형도 담을 수 있다</h2><a class="sl-anchor-link" href="#3-인공지능-편향--데이터의-패턴은-사회의-불균형도-담을-수-있다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 인공지능 편향 — 데이터의 패턴은 사회의 불균형도 담을 수 있다”</span></a></div>
-<p><strong>AI 편향</strong>은 AI의 결과가 특정 집단이나 상황에 지속적으로 불리하거나 왜곡된 방식으로 나타나는 문제를 말합니다. 편향은 단순히 모델이 나쁜 의도를 가졌기 때문에 생기는 것이 아닙니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="3-편향과-빠진-사람">3. 편향과 빠진 사람</h2><a class="sl-anchor-link" href="#3-편향과-빠진-사람"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 편향과 빠진 사람”</span></a></div>
 
 
 
@@ -130,74 +122,14 @@
 
 
 
-<table><thead><tr><th>편향이 생길 수 있는 지점</th><th>예</th></tr></thead><tbody><tr><td>문제 정의</td><td>측정하기 쉬운 값만 성공의 기준으로 정함</td></tr><tr><td>데이터 수집</td><td>특정 지역·성별·연령·언어 자료가 부족함</td></tr><tr><td>정답 표시</td><td>사람의 고정관념이 라벨에 반영됨</td></tr><tr><td>모델과 평가</td><td>전체 정확도만 보고 소수 집단의 오류를 놓침</td></tr><tr><td>실제 사용</td><td>학습할 때와 다른 환경에 모델을 그대로 적용함</td></tr></tbody></table>
-<p>예를 들어 전체 정확도가 높아도 특정 피부색, 억양, 장애, 연령, 언어에서 오류가 훨씬 많다면 모두에게 공정한 시스템이라고 보기 어렵습니다. 공정성은 모든 사람에게 똑같은 결과를 주는 것만을 뜻하지 않습니다. 사람마다 다른 상황과 필요한 지원을 고려해야 할 수도 있습니다.</p>
-<p>편향을 줄이려면 데이터의 <strong>양·다양성·정확성·대표성</strong>을 확인하고, 전체 평균뿐 아니라 영향을 받는 집단과 사용 조건별 결과도 살펴야 합니다. 당사자의 의견을 듣고, 잘못된 결과에 이의를 제기하거나 사람이 다시 검토할 방법도 마련해야 합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="4-윤리적-딜레마--하나의-정답보다-선택의-근거가-중요하다">4. 윤리적 딜레마 — 하나의 정답보다 선택의 근거가 중요하다</h2><a class="sl-anchor-link" href="#4-윤리적-딜레마--하나의-정답보다-선택의-근거가-중요하다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 윤리적 딜레마 — 하나의 정답보다 선택의 근거가 중요하다”</span></a></div>
-<p><strong>윤리적 딜레마</strong>는 중요한 가치들이 서로 충돌하여 어느 한쪽을 선택해도 다른 가치나 사람에게 손해가 생길 수 있는 상황입니다.</p>
+<table><thead><tr><th>편향이 생기는 지점</th><th>확인할 질문</th></tr></thead><tbody><tr><td>문제 정의</td><td>측정하기 쉬운 값만 성공 기준으로 정하지 않았는가?</td></tr><tr><td>데이터 수집</td><td>특정 지역·성별·연령·언어·상황의 자료가 부족하지 않은가?</td></tr><tr><td>라벨과 전처리</td><td>사람의 고정관념이나 임의의 삭제 기준이 들어가지 않았는가?</td></tr><tr><td>모델 평가</td><td>전체 정확도만 보고 특정 집단의 오류를 놓치지 않았는가?</td></tr><tr><td>실제 사용</td><td>학습·분석 때와 다른 환경에 결과를 그대로 적용하지 않았는가?</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="4-가장-위험한-실패와-사람의-개입">4. 가장 위험한 실패와 사람의 개입</h2><a class="sl-anchor-link" href="#4-가장-위험한-실패와-사람의-개입"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 가장 위험한 실패와 사람의 개입”</span></a></div>
 <ul>
-<li>학생의 안전을 위해 행동을 분석하면 사고를 예방할 수 있지만 사생활 침해와 감시가 커질 수 있습니다.</li>
-<li>학습 데이터를 많이 모으면 개인 맞춤형 지원이 가능하지만 개인정보 노출 위험도 커집니다.</li>
-<li>AI 상담을 이용하면 도움을 쉽게 받을 수 있지만 잘못된 조언이나 책임 소재 문제가 생길 수 있습니다.</li>
-<li>자동 선발 시스템은 빠르고 일관되게 처리할 수 있지만 기존 데이터의 차별을 반복할 수 있습니다.</li>
-</ul>
-<p>윤리적 딜레마에는 언제나 하나의 완벽한 답이 있는 것은 아닙니다. 다음 질문을 통해 선택의 근거를 분명히 해야 합니다.</p>
-<ol>
-<li>이 기술의 목적은 무엇이며 정말 AI가 필요한가?</li>
-<li>도움을 받는 사람과 피해를 볼 수 있는 사람은 누구인가?</li>
-<li>어떤 권리와 가치가 충돌하는가?</li>
-<li>가장 심각한 실패는 무엇이며 되돌릴 수 있는가?</li>
-<li>사용자가 AI 사용 사실과 판단 기준을 알 수 있는가?</li>
-<li>결과를 거부하거나 사람에게 다시 판단받을 수 있는가?</li>
-<li>문제가 생겼을 때 누가 설명하고 책임질 것인가?</li>
+<li>AI가 틀리면 누가 어떤 피해를 입는가?</li>
+<li>사용자는 AI 사용 사실과 판단 근거를 알 수 있는가?</li>
+<li>결과를 수정·거부하거나 사람에게 다시 판단받을 수 있는가?</li>
+<li>문제가 생기면 누가 설명하고 책임지는가?</li>
 <li>AI를 사용하지 않거나 사용 범위를 줄이는 대안은 없는가?</li>
-</ol>
-<div class="sl-heading-wrapper level-h2"><h2 id="책임-있는-ai-사용을-위한-최종-점검">책임 있는 AI 사용을 위한 최종 점검</h2><a class="sl-anchor-link" href="#책임-있는-ai-사용을-위한-최종-점검"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “책임 있는 AI 사용을 위한 최종 점검”</span></a></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>확인할 영역</th><th>최종 질문</th></tr></thead><tbody><tr><td>목적</td><td>누구의 어떤 문제를 해결하려는가?</td></tr><tr><td>필요성</td><td>이 문제에 AI가 꼭 필요한가?</td></tr><tr><td>데이터</td><td>동의·권리·대표성·품질을 확인했는가?</td></tr><tr><td>사실</td><td>주장·수치·출처를 원자료로 검증했는가?</td></tr><tr><td>공정성</td><td>특정 사람이나 집단에 오류와 피해가 집중되지 않는가?</td></tr><tr><td>안전</td><td>가장 위험한 실패를 예상하고 대응 방법을 마련했는가?</td></tr><tr><td>투명성</td><td>AI가 한 일과 사람이 결정한 일을 설명할 수 있는가?</td></tr><tr><td>인간의 개입</td><td>사람이 결과를 검토·수정·거부할 수 있는가?</td></tr><tr><td>책임</td><td>최종 결정과 그 결과를 누가 책임지는가?</td></tr></tbody></table>
-<div class="lab-callout lab-callout--reflect astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🪞</span> AI 윤리의 핵심 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>기술적으로 가능하다는 사실만으로 해야 할 일이 되지는 않습니다. <strong>목적과 맥락을 살피고, 여러 사람에게 미칠 영향을 비교하며, 선택의 근거를 설명하고 책임지는 것</strong>이 사람의 역할입니다.</p> </div> </div> 
+</ul>
+<div class="lab-callout lab-callout--reflect astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🪞</span> AI 윤리의 핵심 </p> <div class="lab-callout__body astro-mrmim4ef"> 기술적으로 가능하다는 사실만으로 해야 할 일이 되지는 않습니다. 목적과 맥락을 살피고, 영향을 받는 사람들의 관점을 비교하며, 선택의 근거를 설명하고 책임지는 것이 사람의 역할입니다. </div> </div> 
 <nav class="page-nav" aria-label="단원 이동"> <a href="/hyfl-ai-lab/project2/">← 핵심 아이디어 표현하기</a> <a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a> <a href="/hyfl-ai-lab/part7/">처음의 질문으로 돌아가기 →</a> </nav> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/hyfl-ai-lab/project2/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">7. 선택: 핵심 아이디어 표현하기</span> </span> </a> <a href="/hyfl-ai-lab/part7/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">9. 처음의 질문으로 돌아가기</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
