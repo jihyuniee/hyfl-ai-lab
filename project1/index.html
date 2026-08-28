@@ -408,8 +408,41 @@
 
 <table><thead><tr><th>방문자가 바로 확인할 것</th><th>웹페이지에 보여줄 내용</th></tr></thead><tbody><tr><td>어떤 모델인가?</td><td>프로젝트명, 해결하려는 문제, 대상 사용자</td></tr><tr><td>무엇을 구분하는가?</td><td>실제 모델의 클래스 이름과 간단한 기준</td></tr><tr><td>어떻게 사용하나?</td><td>카메라·마이크 시작 버튼과 실시간 입력 화면</td></tr><tr><td>모델은 어떻게 판단했나?</td><td>클래스별 확률과 가장 높은 예측 결과</td></tr><tr><td>그대로 믿어도 되는가?</td><td>모델의 한계와 사람이 최종 확인할 부분</td></tr></tbody></table>
 <p>STEP 1~3에서 작성한 탐구 과정은 발표에서 설명합니다. 웹페이지에는 사용자가 모델을 이해하고 시험하는 데 꼭 필요한 내용만 간결하게 배치합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="웹페이지는-무엇으로-만들어질까">웹페이지는 무엇으로 만들어질까?</h3><a class="sl-anchor-link" href="#웹페이지는-무엇으로-만들어질까"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “웹페이지는 무엇으로 만들어질까?”</span></a></div>
+<p>파이썬으로 데이터 처리나 프로그램의 동작을 작성할 수 있듯이, 웹페이지도 브라우저가 해석할 수 있는 형식으로 작성해야 합니다. 기본적인 웹페이지에는 HTML·CSS·JavaScript가 서로 다른 역할로 함께 사용됩니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>구성 요소</th><th>정확한 역할</th><th>이번 페이지에서 하는 일</th></tr></thead><tbody><tr><td>HTML</td><td>제목·문단·버튼·카메라 영역처럼 웹페이지의 <strong>내용과 구조</strong>를 표시하는 마크업 언어</td><td>모델 제목, 설명, 시작 버튼, 결과가 나타날 자리를 만든다.</td></tr><tr><td>CSS</td><td>글꼴·색·간격·배치·화면 크기 대응처럼 웹페이지의 <strong>표현과 디자인</strong>을 정하는 스타일 언어</td><td>스마트폰에서도 보기 편하도록 크기와 배치를 꾸민다.</td></tr><tr><td>JavaScript</td><td>사용자의 입력과 사건에 반응하고 데이터를 처리하여 웹페이지의 <strong>동작과 상호작용</strong>을 만드는 프로그래밍 언어</td><td>버튼 클릭, 카메라·마이크 실행, 모델 불러오기, 예측 결과 갱신을 처리한다.</td></tr></tbody></table>
+<p>HTML이 ‘뼈대’, CSS가 ‘겉모습’, JavaScript가 ‘움직임’이라는 비유를 사용할 수 있지만 실제로는 위 표처럼 역할을 구분합니다. HTML도 버튼이나 입력 요소를 포함할 수 있고 CSS도 간단한 시각 효과를 만들 수 있지만, 모델을 불러오고 결과를 계속 바꾸는 핵심 동작은 JavaScript가 담당합니다.</p>
+<p>웹 서버는 주소의 끝에 파일명이 생략되었을 때 관례적으로 <code dir="auto">index.html</code>을 첫 화면으로 찾습니다. 이번 활동에서는 관리하기 쉽도록 HTML 안의 <code dir="auto">&lt;style&gt;</code> 영역에 CSS를, <code dir="auto">&lt;script&gt;</code> 영역에 JavaScript를 함께 넣어 <strong>하나의 <code dir="auto">index.html</code> 파일</strong>로 만듭니다. 실제 웹사이트에서는 기능과 규모에 따라 HTML·CSS·JavaScript 파일을 각각 나누기도 합니다.</p>
+<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 파일 이름 뒤의 확장자 </p> <div class="lab-callout__body astro-mrmim4ef"> <p><code dir="auto">index.html</code>에서 <code dir="auto">.html</code>은 이 파일이 HTML 형식의 문서임을 나타내는 확장자입니다. 브라우저는 HTML을 읽어 화면의 구조를 만들고, 그 안에 연결되거나 포함된 CSS와 JavaScript를 함께 해석하여 웹페이지를 표시하고 작동시킵니다.</p> </div> </div> 
 <div class="sl-heading-wrapper level-h3"><h3 id="바이브-코딩-ai에게-코드를-맡기는-것이-아니라-함께-만들어가기">바이브 코딩: AI에게 코드를 맡기는 것이 아니라 함께 만들어가기</h3><a class="sl-anchor-link" href="#바이브-코딩-ai에게-코드를-맡기는-것이-아니라-함께-만들어가기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “바이브 코딩: AI에게 코드를 맡기는 것이 아니라 함께 만들어가기”</span></a></div>
 <p>생성형 AI를 <strong>여러 역할을 연기할 수 있는 배우</strong>, 우리 팀을 <strong>작품의 목적과 장면을 결정하는 감독</strong>이라고 생각해 봅시다. “예쁘게 만들어줘”라고만 말하면 AI는 우리가 원하는 사용자, 기능, 상황을 알 수 없습니다. 감독이 장면과 연기의 방향을 구체적으로 설명하듯, 만들려는 결과를 충분히 디렉팅해야 합니다.</p>
+<p>대규모 언어 모델(LLM)은 사용자의 머릿속 의도를 직접 읽거나 정답 코드를 저장소에서 그대로 꺼내는 시스템이 아닙니다. 입력된 문맥을 바탕으로 다음에 이어질 가능성이 높은 토큰을 생성하며 응답을 만듭니다. 따라서 요구가 모호하거나 필요한 정보가 빠져 있으면, 모델은 여러 가능한 해석 중 하나를 선택하거나 부족한 부분을 그럴듯하게 채울 수 있습니다.</p>
+<p>프롬프트에 사용자·목적·모델 종류·주소·기능·사용 환경·파일 형식을 구체적으로 적으면 가능한 해석의 범위를 줄일 수 있습니다. 다만 자세한 프롬프트가 항상 정확한 결과를 보장하지는 않습니다. <strong>생성된 코드가 요구와 맞는지 실행하고 검증하는 과정</strong>이 반드시 필요합니다.</p>
 <p>좋은 프롬프트는 길기만 한 글이 아니라 <strong>필요한 정보를 구분하여 빠짐없이 전달하는 작업 지시서</strong>에 가깝습니다.</p>
 
 
@@ -457,10 +490,35 @@
 
 
 <table><thead><tr><th>프롬프트의 요소</th><th>AI에게 알려줄 내용</th><th>이 내용이 필요한 이유</th></tr></thead><tbody><tr><td>역할</td><td>“웹 개발자처럼 작성해줘”</td><td>어떤 관점과 전문성을 사용할지 정한다.</td></tr><tr><td>맥락</td><td>프로젝트의 문제, 사용자, 클래스, 모델 주소</td><td>우리 팀의 상황과 다른 내용을 지어내지 않게 한다.</td></tr><tr><td>과업</td><td>모델을 실행하는 체험 웹페이지 만들기</td><td>무엇을 완성해야 하는지 분명히 한다.</td></tr><tr><td>기능 조건</td><td>카메라·마이크, 확률 표시, 오류 안내</td><td>반드시 작동해야 할 기능을 빠뜨리지 않게 한다.</td></tr><tr><td>디자인 조건</td><td>스마트폰 반응형, 간결한 화면</td><td>사용 환경과 화면의 방향을 정한다.</td></tr><tr><td>출력 형식</td><td>하나의 완성된 <code dir="auto">index.html</code></td><td>GitHub에 올릴 수 있는 형태로 결과를 받는다.</td></tr><tr><td>검증 기준</td><td>모델 링크·클래스·권한·모바일 작동 확인</td><td>그럴듯하지만 실행되지 않는 결과를 줄인다.</td></tr></tbody></table>
-<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 좋은 프롬프트는 첫 번째 디렉팅입니다 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>첫 결과가 마음에 들지 않거나 작동하지 않는다고 해서 바로 포기하지 않습니다. <strong>실행 → 관찰 → 문제를 구체적으로 설명 → 수정 요청 → 다시 확인</strong>의 과정을 반복합니다. “안 돼요”보다 “카메라 시작 버튼을 눌러도 권한 요청이 나타나지 않아요”처럼 관찰한 현상을 알려주어야 AI도 더 정확하게 수정할 수 있습니다.</p> </div> </div> 
+<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 좋은 프롬프트는 첫 번째 디렉팅입니다 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>첫 결과가 마음에 들지 않거나 작동하지 않는다고 해서 바로 포기하지 않습니다. <strong>실행 → 관찰 → 문제를 구체적으로 설명 → 수정 요청 → 다시 확인</strong>의 과정을 반복합니다. “안 돼요”보다 “카메라 시작 버튼을 눌러도 권한 요청이 나타나지 않아요”처럼 관찰한 현상을 알려주어야 AI도 원인이 될 수 있는 코드의 범위를 좁혀 수정안을 제시할 수 있습니다.</p> </div> </div> 
+<div class="sl-heading-wrapper level-h3"><h3 id="수정-요청도-관찰한-사실에서-시작하기">수정 요청도 관찰한 사실에서 시작하기</h3><a class="sl-anchor-link" href="#수정-요청도-관찰한-사실에서-시작하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “수정 요청도 관찰한 사실에서 시작하기”</span></a></div>
+<p>LLM은 학생의 화면을 자동으로 보고 있지 않으며, 어떤 기기와 브라우저에서 무엇이 일어났는지도 전달받지 않으면 알 수 없습니다. 수정할 때는 막연한 평가 대신 <strong>현재 현상·원하는 결과·유지할 조건</strong>을 알려줍니다. 오류 메시지가 있다면 개인정보를 제외하고 그대로 전달합니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>모호한 요청</th><th>더 구체적인 수정 요청</th></tr></thead><tbody><tr><td>“카메라가 안 돼요.”</td><td>“GitHub Pages에서 시작 버튼을 눌러도 카메라 권한 요청이 나타나지 않습니다. Chrome 콘솔에는 ○○ 오류가 표시됩니다. 원인을 확인하고 기존 디자인은 유지한 채 수정해주세요.”</td></tr><tr><td>“모바일에서 이상해요.”</td><td>“스마트폰 세로 화면에서 카메라가 화면 너비를 넘어 가로 스크롤이 생깁니다. 카메라 비율은 유지하면서 화면 너비 안에 들어오게 수정해주세요.”</td></tr><tr><td>“결과를 더 예쁘게 해주세요.”</td><td>“가장 높은 클래스는 큰 글자로 표시하고, 모든 클래스의 확률은 같은 위치의 가로 막대로 보여주세요. 확률이 바뀌어도 화면 요소가 움직이지 않게 해주세요.”</td></tr></tbody></table>
+<p>구체적인 요청은 AI에게 정답을 알려주는 일이 아닙니다. <strong>우리가 확인한 문제와 성공 조건을 공유하여 다음 수정의 방향을 정하는 일</strong>입니다. 수정 후에는 요청한 부분이 고쳐졌는지, 원래 잘 되던 기능이 망가지지 않았는지 다시 시험합니다.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="생성형-ai가-만든-코드를-우리-결과물로-바꾸기">생성형 AI가 만든 코드를 우리 결과물로 바꾸기</h3><a class="sl-anchor-link" href="#생성형-ai가-만든-코드를-우리-결과물로-바꾸기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “생성형 AI가 만든 코드를 우리 결과물로 바꾸기”</span></a></div>
 <p>구글 클래스룸에 제공된 프롬프트에서 표시된 부분을 팀의 내용으로 바꾼 뒤 생성형 AI에 입력합니다. 생성된 코드는 완성품이 아니라 <strong>첫 번째 초안</strong>입니다.</p>
-<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">팀 정보로 프롬프트 수정</p> <div class="lab-steps__body astro-5vkjc2f4"> 문제, 사용자, 클래스, 티처블 머신 모델 주소, 한계를 정확히 넣습니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">index.html 생성</p> <div class="lab-steps__body astro-5vkjc2f4"> CSS와 JavaScript가 포함된 하나의 HTML 파일로 요청합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">직접 실행하고 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> 모델 연결, 입력 권한, 클래스 이름, 확률 표시를 실제 기기에서 시험합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">구체적으로 수정 요청</p> <div class="lab-steps__body astro-5vkjc2f4"> 발견한 오류나 바꾸고 싶은 화면을 근거와 함께 다시 요청합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">GitHub Pages로 배포</p> <div class="lab-steps__body astro-5vkjc2f4"> 완성한 파일을 GitHub에 올리고 공개된 주소를 확인합니다. </div> </div> </li>  </ol> </div> 
+<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">팀 정보로 프롬프트 수정</p> <div class="lab-steps__body astro-5vkjc2f4"> 문제, 사용자, 클래스, 티처블 머신 모델 주소, 한계를 정확히 넣습니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">index.html 생성</p> <div class="lab-steps__body astro-5vkjc2f4"> 웹페이지의 구조를 만드는 HTML 안에 디자인을 담당하는 CSS와 동작을 담당하는 JavaScript를 포함하여 하나의 파일로 요청합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">직접 실행하고 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> 모델 연결, 입력 권한, 클래스 이름, 확률 표시를 실제 기기에서 시험합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">구체적으로 수정 요청</p> <div class="lab-steps__body astro-5vkjc2f4"> 발견한 오류나 바꾸고 싶은 화면을 근거와 함께 다시 요청합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">GitHub Pages로 배포</p> <div class="lab-steps__body astro-5vkjc2f4"> 완성한 파일을 GitHub에 올리고 공개된 주소를 확인합니다. </div> </div> </li>  </ol> </div> 
 <div class="sl-heading-wrapper level-h3"><h3 id="모델에서-컴퓨팅-시스템으로-확장하기">모델에서 컴퓨팅 시스템으로 확장하기</h3><a class="sl-anchor-link" href="#모델에서-컴퓨팅-시스템으로-확장하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “모델에서 컴퓨팅 시스템으로 확장하기”</span></a></div>
 <p>지금 만든 웹페이지에서는 카메라나 마이크가 입력 장치가 되고, 화면이 결과를 보여주는 출력 장치가 됩니다. 그러나 같은 모델도 다른 장치와 연결하면 실제 공간에서 작동하는 <strong>피지컬 컴퓨팅 시스템</strong>으로 확장할 수 있습니다.</p>
 <div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">입력 장치가 데이터를 받는다</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ AI 모델이 분류한다</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 프로그램이 결과에 따른 동작을 결정한다</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 출력 장치가 사람에게 알리거나 실제 환경을 움직인다</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="입력 장치가 데이터를 받는다→ AI 모델이 분류한다→ 프로그램이 결과에 따른 동작을 결정한다→ 출력 장치가 사람에게 알리거나 실제 환경을 움직인다"><div></div></button></div></figure></div>
