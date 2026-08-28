@@ -1,0 +1,53 @@
+---
+interface Props {
+	title?: string;
+	content: string;
+}
+
+const { title = '학생용 웹페이지 제작 프롬프트', content } = Astro.props;
+const parts = content.split(/(\{\{[\s\S]*?\}\})/g);
+---
+
+<section class="copy-prompt" data-copy-prompt data-copy-value={content}>
+	<div class="copy-prompt__header">
+		<div>
+			<strong>{title}</strong>
+			<span><b>{'{{빨간 부분}}'}</b>을 우리 팀의 내용으로 바꾸세요.</span>
+		</div>
+		<button type="button" data-copy-button>전체 프롬프트 복사</button>
+	</div>
+	<pre aria-label={title}><code>{parts.map((part) => part.startsWith('{{') && part.endsWith('}}') ? <mark>{part}</mark> : part)}</code></pre>
+</section>
+
+<script>
+	document.querySelectorAll('[data-copy-prompt]').forEach((box) => {
+		const button = box.querySelector('[data-copy-button]');
+		if (!(button instanceof HTMLButtonElement) || !(box instanceof HTMLElement)) return;
+		button.addEventListener('click', async () => {
+			const value = box.dataset.copyValue ?? '';
+			try {
+				await navigator.clipboard.writeText(value);
+				button.textContent = '복사 완료!';
+				setTimeout(() => { button.textContent = '전체 프롬프트 복사'; }, 1800);
+			} catch {
+				button.textContent = '복사하지 못했습니다';
+				setTimeout(() => { button.textContent = '전체 프롬프트 복사'; }, 2200);
+			}
+		});
+	});
+</script>
+
+<style>
+	.copy-prompt { margin: 1.5rem 0; border: 1px solid var(--sl-color-gray-5); border-radius: 0.9rem; overflow: hidden; background: var(--sl-color-gray-7); }
+	.copy-prompt__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 1rem; border-bottom: 1px solid var(--sl-color-gray-5); }
+	.copy-prompt__header div { display: grid; gap: 0.15rem; }
+	.copy-prompt__header span { color: var(--sl-color-gray-2); font-size: 0.82rem; }
+	.copy-prompt__header span b { color: #dc2626; }
+	.copy-prompt button { flex: none; border: 0; border-radius: 0.55rem; padding: 0.6rem 0.85rem; background: var(--sl-color-accent-high); color: var(--sl-color-black); font-weight: 700; cursor: pointer; }
+	.copy-prompt pre { max-height: 38rem; margin: 0; padding: 1rem; overflow: auto; border: 0; border-radius: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.82rem; line-height: 1.65; }
+	.copy-prompt mark { padding: 0.05em 0.15em; border-radius: 0.2rem; background: color-mix(in srgb, #ef4444 14%, transparent); color: #dc2626; font-weight: 800; }
+	@media (max-width: 36rem) {
+		.copy-prompt__header { align-items: stretch; flex-direction: column; }
+		.copy-prompt button { width: 100%; }
+	}
+</style>
