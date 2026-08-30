@@ -19,7 +19,7 @@
   <section class="card footer-card"><h2>사용 전에 확인하세요</h2><dl><dt>모델의 한계</dt><dd id="limits"></dd><dt>사람이 확인할 부분</dt><dd id="humanCheck"></dd></dl></section>
 </main>
 <script>
-// ===== 여기부터 학생이 수정 =====
+// ===== 여기부터 우리 팀이 수정 =====
 const CONFIG = {
   modelUrl: "https://teachablemachine.withgoogle.com/models/여기에-모델-ID/",
   projectTitle: "우리 팀 이미지 분류 AI",
@@ -31,7 +31,7 @@ const CONFIG = {
   limits: "STEP 3에서 확인한 모델의 한계",
   humanCheck: "결과를 사용하기 전에 사람이 최종 확인할 내용"
 };
-// ===== 여기까지 학생이 수정 =====
+// ===== 여기까지 우리 팀이 수정 =====
 
 const $=id=>document.getElementById(id); let model=null,webcam=null,raf=0,running=false;
 function fill(){['projectTitle','summary','team','members','problem','user','limits','humanCheck'].forEach(k=>$(k).textContent=CONFIG[k]);document.title=CONFIG.projectTitle}
