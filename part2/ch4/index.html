@@ -142,6 +142,33 @@
 <div class="sl-heading-wrapper level-h2"><h2 id="컴퓨터는-어떻게-학습할까">컴퓨터는 어떻게 ‘학습’할까?</h2><a class="sl-anchor-link" href="#컴퓨터는-어떻게-학습할까"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “컴퓨터는 어떻게 ‘학습’할까?”</span></a></div>
 <div class="ai-function-map" aria-label="이미지 분류 모델의 학습 흐름"><div><span>1</span><strong>이미지와 라벨</strong><p>두 클래스의 사례를 제공한다</p></div><div><span>2</span><strong>예측</strong><p>현재 모델이 어느 클래스인지 추측한다</p></div><div><span>3</span><strong>비교·조정</strong><p>예측과 라벨의 차이가 줄도록 내부 값을 조정한다</p></div><div><span>4</span><strong>학습된 모델</strong><p>새 이미지에 예측 결과를 낸다</p></div></div>
 <p>학습은 이미지를 통째로 외워 두는 과정이 아닙니다. 모델은 많은 이미지에서 색·선·모양·질감·배치처럼 분류에 도움이 되는 특징의 조합을 계산합니다. 학습 뒤에는 처음 보는 이미지에도 그 패턴을 적용해 결과를 만들 수 있습니다. 그러나 배경이나 촬영한 사람처럼 우리가 의도하지 않은 단서를 배울 수도 있습니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="학습과-추론은-다른-단계입니다">학습과 추론은 다른 단계입니다</h3><a class="sl-anchor-link" href="#학습과-추론은-다른-단계입니다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “학습과 추론은 다른 단계입니다”</span></a></div>
+<p>티처블 머신에서 <strong>Train Model</strong>을 눌러 내부 값을 조정하는 과정과, 카메라에 새 이미지를 보여 주어 결과를 받는 과정은 구분해야 합니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>구분</th><th>입력</th><th>모델에서 일어나는 일</th><th>결과</th></tr></thead><tbody><tr><td>학습 Training</td><td>학습 데이터와 정답 라벨</td><td>예측과 라벨의 차이가 줄도록 내부 값을 반복해서 조정</td><td>학습된 모델</td></tr><tr><td>추론 Inference</td><td>학습에 사용하지 않은 새로운 입력</td><td>학습된 내부 값을 사용하여 클래스별 결과를 계산</td><td>예측 클래스와 클래스별 값</td></tr></tbody></table>
+<p>테스트 중에 모델이 새 사진을 본다고 해서 자동으로 다시 학습하는 것은 아닙니다. 데이터를 추가하거나 수정한 뒤 모델을 다시 학습시켜야 모델의 내부 값이 바뀝니다.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="딥러닝은-이-과정에서-어떤-역할을-할까">딥러닝은 이 과정에서 어떤 역할을 할까?</h3><a class="sl-anchor-link" href="#딥러닝은-이-과정에서-어떤-역할을-할까"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “딥러닝은 이 과정에서 어떤 역할을 할까?”</span></a></div>
 <p>많은 이미지 분류 모델은 <strong>딥러닝</strong>을 사용합니다. 딥러닝은 여러 층의 인공신경망이 이미지의 단순한 특징부터 더 복잡한 특징의 조합까지 학습하는 머신러닝 방법입니다.</p>
 <div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">이미지 → 여러 층의 계산 → 클래스별 점수 → 가장 높은 클래스 예측</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="이미지 → 여러 층의 계산 → 클래스별 점수 → 가장 높은 클래스 예측"><div></div></button></div></figure></div>
@@ -192,6 +219,8 @@
 
 <table><thead><tr><th>데이터에서 확인할 것</th><th>질문</th><th>이미지 분류 실험의 예</th></tr></thead><tbody><tr><td><strong>양</strong></td><td>패턴을 찾기에 사례가 충분한가?</td><td>각 클래스에 너무 적은 사진만 있지 않은가?</td></tr><tr><td><strong>정확성</strong></td><td>사진과 라벨이 기준에 맞고 일관적인가?</td><td><code dir="auto">열림</code>과 <code dir="auto">닫힘</code>의 기준이 팀원마다 다른 것은 아닌가?</td></tr><tr><td><strong>다양성</strong></td><td>실제로 만날 여러 조건을 담았는가?</td><td>사람·배경·거리·각도·조명·물체 상태가 다양하게 포함되었는가?</td></tr><tr><td><strong>대표성</strong></td><td>실제 사용 대상과 상황을 고르게 반영하는가?</td><td>특정 교실·특정 물체·특정 사람의 사진만 반복되지는 않았는가?</td></tr></tbody></table>
 <div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 많을수록 무조건 좋은 것은 아니다 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>같은 조건의 사진을 수백 장 더 모으는 것보다, 모델이 틀린 조건의 사진을 정확한 라벨과 함께 추가하는 편이 더 도움이 될 수 있습니다. 데이터의 양·정확성·다양성·대표성을 함께 살펴야 합니다.</p> </div> </div> 
+<p>클래스별 사진 수를 비슷하게 맞추는 것은 한쪽 클래스에 지나치게 치우치는 것을 줄이는 한 방법입니다. 그러나 <strong>개수의 균형만으로 데이터 편향이 사라지는 것은 아닙니다.</strong> 특정 사람·장소·조명·기기에서만 수집했다면 수가 같아도 실제 사용 환경을 대표하지 못할 수 있습니다.</p>
+<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 테스트 사진을 그대로 학습에 넣지 않습니다 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>실패한 조건을 개선할 때에는 그 조건을 대표하는 <strong>새로운 학습 사진</strong>을 추가합니다. 평가에 사용한 바로 그 사진을 학습 데이터에 넣으면 모델이 그 사진을 본 상태가 되어 공정한 전후 비교가 어려워집니다. 여러 번 개선한 뒤에는 학습과 개선에 사용하지 않은 새로운 자료로 최종 확인합니다.</p> </div> </div> 
 <div class="sl-heading-wrapper level-h2"><h2 id="실험-기록에서-꼭-남길-것">실험 기록에서 꼭 남길 것</h2><a class="sl-anchor-link" href="#실험-기록에서-꼭-남길-것"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실험 기록에서 꼭 남길 것”</span></a></div>
 
 
