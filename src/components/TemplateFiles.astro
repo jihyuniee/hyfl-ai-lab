@@ -1,0 +1,86 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const files = [
+	{ id: 'image', label: '이미지 분류', file: 'index-image.html', input: '카메라 이미지' },
+	{ id: 'audio', label: '음성 분류', file: 'index-audio.html', input: '마이크 소리' },
+	{ id: 'pose', label: '포즈 분류', file: 'index-pose.html', input: '웹캠 영상과 자세' },
+];
+---
+
+<section class="template-files" data-template-files>
+	<div class="template-files__tabs" role="tablist" aria-label="티처블 머신 모델 종류">
+		{files.map((item, index) => (
+			<button type="button" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-template-tab={item.id}>
+				{item.label}<small>{item.input}</small>
+			</button>
+		))}
+	</div>
+	{files.map((item, index) => (
+		<section class="template-files__panel" role="tabpanel" data-template-panel={item.id} hidden={index !== 0}>
+			<div class="template-files__header">
+				<div><strong>{item.file}</strong><span>내려받은 뒤 파일 이름을 <code>index.html</code>로 바꾸세요.</span></div>
+				<div class="template-files__actions">
+					<button type="button" data-view-button data-url={`${base}/templates/${item.file}`}>전체 코드 보기</button>
+					<button type="button" data-copy-template data-url={`${base}/templates/${item.file}`}>코드 복사</button>
+					<a href={`${base}/templates/${item.file}`} download="index.html">파일 다운로드</a>
+				</div>
+			</div>
+			<pre data-code-view hidden aria-label={`${item.label} 기본 코드`}><code>‘전체 코드 보기’를 누르면 코드가 표시됩니다.</code></pre>
+		</section>
+	))}
+</section>
+
+<script>
+	async function getCode(url) {
+		const response = await fetch(url);
+		if (!response.ok) throw new Error('파일을 불러오지 못했습니다.');
+		return response.text();
+	}
+
+	document.querySelectorAll('[data-template-files]').forEach((root) => {
+		if (!(root instanceof HTMLElement)) return;
+		const tabs = [...root.querySelectorAll('[data-template-tab]')];
+		const panels = [...root.querySelectorAll('[data-template-panel]')];
+		tabs.forEach((tab) => tab.addEventListener('click', () => {
+			const id = tab.getAttribute('data-template-tab');
+			tabs.forEach((item) => item.setAttribute('aria-selected', String(item === tab)));
+			panels.forEach((panel) => { if (panel instanceof HTMLElement) panel.hidden = panel.dataset.templatePanel !== id; });
+		}));
+
+		root.querySelectorAll('[data-view-button]').forEach((button) => button.addEventListener('click', async () => {
+			if (!(button instanceof HTMLButtonElement)) return;
+			const panel = button.closest('[data-template-panel]');
+			const pre = panel?.querySelector('[data-code-view]');
+			const code = pre?.querySelector('code');
+			if (!(pre instanceof HTMLElement) || !(code instanceof HTMLElement)) return;
+			if (pre.hidden) {
+				try { code.textContent = await getCode(button.dataset.url ?? ''); pre.hidden = false; button.textContent = '코드 접기'; }
+				catch { code.textContent = '파일을 불러오지 못했습니다. 잠시 후 다시 시도하세요.'; pre.hidden = false; }
+			} else { pre.hidden = true; button.textContent = '전체 코드 보기'; }
+		}));
+
+		root.querySelectorAll('[data-copy-template]').forEach((button) => button.addEventListener('click', async () => {
+			if (!(button instanceof HTMLButtonElement)) return;
+			const original = button.textContent ?? '코드 복사';
+			try { await navigator.clipboard.writeText(await getCode(button.dataset.url ?? '')); button.textContent = '복사 완료!'; }
+			catch { button.textContent = '복사하지 못했습니다'; }
+			setTimeout(() => { button.textContent = original; }, 1800);
+		}));
+	});
+</script>
+
+<style>
+	.template-files { margin: 1.5rem 0 2rem; border: 1px solid var(--sl-color-gray-5); border-radius: .9rem; overflow: hidden; background: var(--sl-color-gray-7); }
+	.template-files__tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--sl-color-gray-5); }
+	.template-files__tabs button { border: 0; padding: .85rem .6rem; background: var(--sl-color-gray-7); color: var(--sl-color-gray-2); font-weight: 800; cursor: pointer; }
+	.template-files__tabs button[aria-selected='true'] { box-shadow: inset 0 -3px 0 var(--sl-color-accent); background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); }
+	.template-files__tabs small { display: block; margin-top: .2rem; font-size: .7rem; font-weight: 600; }
+	.template-files__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; }
+	.template-files__header > div:first-child { display: grid; gap: .2rem; }
+	.template-files__header span { color: var(--sl-color-gray-2); font-size: .8rem; }
+	.template-files__actions { display: flex; flex-wrap: wrap; gap: .45rem; }
+	.template-files__actions button, .template-files__actions a { border: 1px solid var(--sl-color-accent); border-radius: .5rem; padding: .55rem .7rem; background: transparent; color: var(--sl-color-accent-high); font: inherit; font-size: .8rem; font-weight: 800; text-decoration: none; cursor: pointer; }
+	.template-files__actions a { background: var(--sl-color-accent); color: white; }
+	.template-files pre { max-height: 36rem; margin: 0; border: 0; border-top: 1px solid var(--sl-color-gray-5); border-radius: 0; white-space: pre; font-size: .76rem; }
+	@media (max-width: 42rem) { .template-files__tabs { grid-template-columns: 1fr; } .template-files__header { align-items: stretch; flex-direction: column; } .template-files__actions > * { flex: 1; text-align: center; } }
+</style>

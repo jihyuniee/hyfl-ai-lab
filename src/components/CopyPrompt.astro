@@ -16,6 +16,15 @@ const parts = content.split(/(\{\{[\s\S]*?\}\})/g);
 		</div>
 		<button type="button" data-copy-button>전체 프롬프트 복사</button>
 	</div>
+	<details class="copy-prompt__guide">
+		<summary>프롬프트 구조와 각 부분이 필요한 이유 보기</summary>
+		<div>
+			<p><b>역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p>
+			<p><b>과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p>
+			<p><b>화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p>
+			<p><b>오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p>
+		</div>
+	</details>
 	<pre aria-label={title}><code>{parts.map((part) => part.startsWith('{{') && part.endsWith('}}') ? <mark>{part}</mark> : part)}</code></pre>
 </section>
 
@@ -44,10 +53,15 @@ const parts = content.split(/(\{\{[\s\S]*?\}\})/g);
 	.copy-prompt__header span { color: var(--sl-color-gray-2); font-size: 0.82rem; }
 	.copy-prompt__header span b { color: #dc2626; }
 	.copy-prompt button { flex: none; border: 0; border-radius: 0.55rem; padding: 0.6rem 0.85rem; background: var(--sl-color-accent-high); color: var(--sl-color-black); font-weight: 700; cursor: pointer; }
+	.copy-prompt__guide { padding: .75rem 1rem; border-bottom: 1px solid var(--sl-color-gray-5); }
+	.copy-prompt__guide summary { color: var(--sl-color-accent-high); font-size: .86rem; font-weight: 800; cursor: pointer; }
+	.copy-prompt__guide div { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem 1rem; padding-top: .6rem; }
+	.copy-prompt__guide p { margin: 0; color: var(--sl-color-gray-2); font-size: .78rem; line-height: 1.5; }
 	.copy-prompt pre { max-height: 38rem; margin: 0; padding: 1rem; overflow: auto; border: 0; border-radius: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.82rem; line-height: 1.65; }
 	.copy-prompt mark { padding: 0.05em 0.15em; border-radius: 0.2rem; background: color-mix(in srgb, #ef4444 14%, transparent); color: #dc2626; font-weight: 800; }
 	@media (max-width: 36rem) {
 		.copy-prompt__header { align-items: stretch; flex-direction: column; }
 		.copy-prompt button { width: 100%; }
+		.copy-prompt__guide div { grid-template-columns: 1fr; }
 	}
 </style>

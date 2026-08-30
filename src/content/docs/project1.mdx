@@ -7,9 +7,7 @@ import Steps from '../../components/Steps.astro';
 import Step from '../../components/Step.astro';
 import Stage from '../../components/Stage.astro';
 import PageNav from '../../components/PageNav.astro';
-import CopyPrompt from '../../components/CopyPrompt.astro';
-import FlowDiagram from '../../components/FlowDiagram.astro';
-import { schoolImageLabWebPrompt } from '../prompts/school-image-lab-web.js';
+import ProjectStepFour from '../../components/ProjectStepFour.mdx';
 
 <Stage label="MINI PROJECT 1 · TEAM LAB · 5~7차시" question="학교 안에서 사진으로 상태를 구분하면 도움이 될 문제는 무엇일까?" />
 
@@ -233,6 +231,10 @@ import { schoolImageLabWebPrompt } from '../prompts/school-image-lab-web.js';
 4. 개선하지 않았다면 시험한 조건과 가장 까다로운 조건
 5. 현재 모델의 한계 한 가지
 
+<ProjectStepFour />
+
+{/* 이전 STEP 4 원고: 개편 내용을 검토하는 동안만 소스에 보존합니다.
+
 ## STEP 4 · 결과를 보여주고 AI 사용의 가치를 판단하기
 
 ### 웹페이지에서 모델을 직접 사용하게 하기
@@ -338,7 +340,7 @@ GitHub Pages로 공개한 웹사이트는 인터넷에서 누구나 볼 수 있�
 <Step title="1. 새 저장소 만들기">GitHub에 로그인하고 오른쪽 위의 **+ → New repository**를 선택합니다. 저장소 이름은 영문·숫자·하이픈을 사용해 정하고, GitHub 무료 계정에서는 Pages를 사용하기 쉽도록 **Public**을 선택합니다. **Add a README file**을 켠 뒤 저장소를 만듭니다.</Step>
 <Step title="2. index.html 올리기">저장소의 파일 목록 위에서 **Add file → Upload files**를 선택합니다. `index.html`을 올리고 **Commit changes**를 누릅니다. 파일은 폴더 안이 아니라 저장소의 맨 위에 있어야 합니다.</Step>
 <Step title="3. Pages 켜기">저장소 위쪽의 **Settings**로 이동합니다. 보이지 않으면 더보기 메뉴에서 찾습니다. 왼쪽 **Pages**를 선택하고, **Build and deployment → Source**에서 **Deploy from a branch**를 선택합니다.</Step>
-<Step title="4. 공개할 위치 정하기">Branch를 **main**, 폴더를 **/(root)**로 선택하고 **Save**를 누릅니다. GitHub가 자동으로 사이트를 빌드하고 배포합니다.</Step>
+<Step title="4. 공개할 위치 정하기">Branch를 **main**, 폴더를 `/(root)`로 선택하고 **Save**를 누릅니다. GitHub가 자동으로 사이트를 빌드하고 배포합니다.</Step>
 <Step title="5. 주소 확인하기">배포가 끝난 뒤 같은 Pages 화면의 **Visit site**를 누릅니다. 프로젝트 사이트의 기본 주소는 보통 `https://깃허브아이디.github.io/저장소이름/` 형식입니다.</Step>
 </Steps>
 
@@ -396,6 +398,8 @@ GitHub Pages로 공개한 웹사이트는 인터넷에서 누구나 볼 수 있�
 > **한 문장으로 정리하기:** 우리 팀의 모델에 **________ 센서·입력 장치**와 **________ 출력 장치·액추에이터**를 연결하면, **________________________________ 시스템**으로 확장할 수 있다.
 
 <small>개념 확인 자료: [Isaac Computer Science — Input devices](https://isaaccomputerscience.org/concepts/sys_hard_input), [Output devices](https://isaaccomputerscience.org/concepts/sys_hard_output), [UC Berkeley CS188 — Agents](https://inst.eecs.berkeley.edu/~cs188/textbook/search/agents.html)</small>
+
+*/}
 
 ### AI와 함께 코딩할 때도 판단은 팀이 합니다
 
