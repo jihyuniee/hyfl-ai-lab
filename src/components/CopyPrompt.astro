@@ -4,7 +4,7 @@ interface Props {
 	content: string;
 }
 
-const { title = '학생용 웹페이지 제작 프롬프트', content } = Astro.props;
+const { title = '웹페이지 제작 프롬프트', content } = Astro.props;
 const parts = content.split(/(\{\{[\s\S]*?\}\})/g);
 ---
 
