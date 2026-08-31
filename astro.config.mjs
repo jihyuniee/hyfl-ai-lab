@@ -59,11 +59,11 @@ export default defineConfig({
 			description: '한영외국어고등학교 2학년 「인공지능 원리탐구」 웹교과서',
 			sidebar: [
 				{
-					label: '전체 과목 목차',
+					label: '교과서 목차',
 					items: [
-						{ label: '과목 첫 화면', link: '/' },
+						{ label: '교과서 안내', link: '/' },
 						{
-							label: 'AI를 직접 경험하기',
+							label: 'Ⅰ단원. 인공지능과 기계학습',
 							collapsed: false,
 							items: [
 								{ label: '1. 인공지능이란 무엇일까?', link: '/part1/ch1/' },
@@ -72,7 +72,7 @@ export default defineConfig({
 							],
 						},
 						{
-							label: '데이터에서 서비스까지',
+							label: 'Ⅱ단원. 데이터와 AI 서비스',
 							collapsed: false,
 							items: [
 								{ label: '4. 데이터 파일을 직접 열어보자 · 다음에 공개', link: '/data/ch1/' },
@@ -81,7 +81,7 @@ export default defineConfig({
 							],
 						},
 						{
-							label: '표현하고 책임 있게 판단하기',
+							label: 'Ⅲ단원. 책임 있는 AI와 성찰',
 							collapsed: false,
 							items: [
 								{ label: '7. 선택: 핵심 아이디어 표현하기 · 다음에 공개', link: '/project2/' },
