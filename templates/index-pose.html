@@ -1,16 +1,503 @@
 <!doctype html>
 <html lang="ko">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>포즈 분류 AI 체험</title><script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-<style>:root{font-family:Pretendard,"Noto Sans KR",system-ui,sans-serif;color:#172033;background:#f4f7fb;line-height:1.6}*{box-sizing:border-box}body{margin:0}main{width:min(980px,100%);margin:auto;padding:24px 16px 56px}.hero,.card{background:#fff;border:1px solid #dce3ed;border-radius:18px;box-shadow:0 8px 30px #1d35570d}.hero{padding:clamp(24px,5vw,48px);background:linear-gradient(135deg,#eefbf6,#fff)}.eyebrow{margin:0;color:#087f5b;font-size:.78rem;font-weight:800;letter-spacing:.08em}.hero h1{margin:.35rem 0 .5rem;font-size:clamp(1.75rem,5vw,3rem);line-height:1.2}.hero p{margin:.3rem 0;color:#526074}.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}.card{padding:20px}.card h2{margin:0 0 12px;font-size:1.12rem}.lab{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:16px}.viewer{display:grid;place-items:center;min-height:310px;overflow:hidden;border-radius:14px;background:#0f172a;color:#cbd5e1}.viewer canvas{display:block;width:100%;height:auto;max-height:520px;object-fit:contain}.controls{display:flex;gap:8px;margin:14px 0}.controls button{flex:1;min-height:46px;border:0;border-radius:10px;background:#0c8c65;color:#fff;font:inherit;font-weight:750}.controls button.secondary{background:#e8eef6;color:#27364d}.controls button:disabled{opacity:.45}.status{min-height:48px;padding:11px 13px;border-radius:10px;background:#eaf8f3;color:#285d4e}.status.error{background:#fff0f0;color:#a32727}.winner{min-height:100px;padding:18px;border-radius:14px;background:#eafaf4;text-align:center}.winner small{display:block;color:#526074}.winner strong{display:block;margin-top:4px;color:#087f5b;font-size:1.65rem}.bars{display:grid;gap:10px;margin-top:16px}.bar-head{display:flex;justify-content:space-between}.bar-track{height:10px;overflow:hidden;border-radius:99px;background:#e6ebf2}.bar-fill{height:100%;background:#18a979}.notice{color:#5e6878;font-size:.86rem}.footer-card{margin-top:16px}.footer-card dl{display:grid;grid-template-columns:max-content 1fr;gap:7px 14px}.footer-card dt{font-weight:800}.footer-card dd{margin:0;color:#526074}@media(max-width:720px){main{padding:12px}.meta,.lab{grid-template-columns:1fr}.hero,.card{border-radius:14px}.viewer{min-height:240px}.footer-card dl{grid-template-columns:1fr}.footer-card dd{margin-bottom:8px}}</style></head>
-<body><main><header class="hero"><p class="eyebrow">TEACHABLE MACHINE · POSE</p><h1 id="projectTitle"></h1><p id="summary"></p><p><b id="team"></b> · <span id="members"></span></p></header><section class="meta"><article class="card"><h2>해결하려는 문제</h2><p id="problem"></p></article><article class="card"><h2>주요 사용자</h2><p id="user"></p></article></section><section class="lab"><article class="card"><h2>모델 직접 시험하기</h2><div class="viewer" id="viewer">시작 버튼을 누르면 카메라가 열립니다.</div><p class="notice">몸 전체 또는 분류에 필요한 관절이 화면 안에 충분히 들어오게 서세요.</p><div class="controls"><button id="start">시작</button><button id="stop" class="secondary" disabled>중지</button></div><div id="status" class="status" role="status" aria-live="polite">모델을 시작할 준비가 되었습니다.</div></article><article class="card"><h2>분류 결과</h2><div class="winner"><small>가장 높은 예측</small><strong id="winner">아직 예측하지 않았습니다</strong></div><div id="bars" class="bars"></div><p class="notice">가장 높은 확률이 반드시 올바른 자세라는 뜻은 아닙니다. 사람이 실제 자세와 안전을 확인하세요.</p></article></section><section class="card footer-card"><h2>사용 전에 확인하세요</h2><dl><dt>모델의 한계</dt><dd id="limits"></dd><dt>사람이 확인할 부분</dt><dd id="humanCheck"></dd></dl></section></main>
-<script>
-// ===== 여기부터 우리 팀이 수정 =====
-const CONFIG={modelUrl:"https://teachablemachine.withgoogle.com/models/여기에-모델-ID/",projectTitle:"우리 팀 포즈 분류 AI",summary:"카메라에 자세를 보여주면 모델이 포즈를 분류합니다.",team:"팀명",members:"팀원 이름",problem:"STEP 1에서 정한 해결하려는 문제",user:"이 모델이 필요한 주요 사용자",limits:"STEP 3에서 확인한 모델의 한계",humanCheck:"결과를 사용하기 전에 사람이 최종 확인할 내용"};
-// ===== 여기까지 우리 팀이 수정 =====
-const $=id=>document.getElementById(id);let model=null,webcam=null,canvas=null,ctx=null,raf=0,running=false;
-function fill(){['projectTitle','summary','team','members','problem','user','limits','humanCheck'].forEach(k=>$(k).textContent=CONFIG[k]);document.title=CONFIG.projectTitle}function baseUrl(){const u=CONFIG.modelUrl.trim();if(!/^https:\/\/teachablemachine\.withgoogle\.com\/models\/[^/]+\/?$/.test(u)||u.includes('여기에-'))throw new Error('티처블 머신 모델 공유 주소를 정확히 입력하세요.');return u.endsWith('/')?u:u+'/'}function status(m,e=false){$('status').textContent=m;$('status').classList.toggle('error',e)}
-function render(pred){$('bars').innerHTML='';let best=pred[0];pred.forEach(p=>{if(p.probability>best.probability)best=p;const row=document.createElement('div');row.innerHTML=`<div class="bar-head"><span></span><b>${(p.probability*100).toFixed(1)}%</b></div><div class="bar-track"><div class="bar-fill" style="width:${p.probability*100}%"></div></div>`;row.querySelector('span').textContent=p.className;$('bars').append(row)});$('winner').textContent=`${best.className} · ${(best.probability*100).toFixed(1)}%`}
-async function loop(){if(!running)return;webcam.update();const {pose,posenetOutput}=await model.estimatePose(webcam.canvas);render(await model.predict(posenetOutput));ctx.drawImage(webcam.canvas,0,0,canvas.width,canvas.height);if(pose){tmPose.drawKeypoints(pose.keypoints,.5,ctx);tmPose.drawSkeleton(pose.keypoints,.5,ctx)}raf=requestAnimationFrame(loop)}
-async function start(){if(running)return;try{$('start').disabled=true;status('포즈 모델을 불러오는 중입니다…');const u=baseUrl();model=await tmPose.load(u+'model.json',u+'metadata.json');status('카메라 권한을 요청하는 중입니다…');webcam=new tmPose.Webcam(420,420,true);await webcam.setup();await webcam.play();canvas=document.createElement('canvas');canvas.width=420;canvas.height=420;ctx=canvas.getContext('2d');$('viewer').replaceChildren(canvas);running=true;$('stop').disabled=false;status('카메라가 실행 중입니다. 화면 안에서 자세를 취해 보세요.');loop()}catch(e){console.error(e);status(e?.name==='NotAllowedError'?'카메라 권한이 거부되었습니다. 주소창의 사이트 설정에서 카메라를 허용하세요.':`시작하지 못했습니다. ${e?.message||'모델 주소와 카메라를 확인하세요.'}`,true);$('start').disabled=false}}
-function stop(){running=false;cancelAnimationFrame(raf);if(webcam){webcam.stop();webcam=null}$('viewer').textContent='카메라가 중지되었습니다.';$('start').disabled=false;$('stop').disabled=true;status('중지되었습니다. 다시 시작할 수 있습니다.')}$('start').addEventListener('click',start);$('stop').addEventListener('click',stop);window.addEventListener('pagehide',stop);fill();
-</script></body></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>포즈 분류 AI 체험</title>
+
+    <!-- 티처블 머신 포즈 모델을 실행하는 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+
+    <style>
+      /* ===== 1. 전체 화면 기본 설정 ===== */
+      :root {
+        font-family: Pretendard, "Noto Sans KR", system-ui, sans-serif;
+        color: #172033;
+        background: #f4f7fb;
+        line-height: 1.6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      main {
+        width: min(980px, 100%);
+        margin: auto;
+        padding: 24px 16px 56px;
+      }
+
+      /* ===== 2. 공통 카드와 첫 화면 ===== */
+      .hero,
+      .card {
+        background: #fff;
+        border: 1px solid #dce3ed;
+        border-radius: 18px;
+        box-shadow: 0 8px 30px #1d35570d;
+      }
+
+      .hero {
+        padding: clamp(24px, 5vw, 48px);
+        background: linear-gradient(135deg, #eefbf6, #fff);
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: #087f5b;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
+
+      .hero h1 {
+        margin: 0.35rem 0 0.5rem;
+        font-size: clamp(1.75rem, 5vw, 3rem);
+        line-height: 1.2;
+      }
+
+      .hero p {
+        margin: 0.3rem 0;
+        color: #526074;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 18px 0;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: 1.12rem;
+      }
+
+      /* ===== 3. 카메라와 분류 결과 영역 ===== */
+      .lab {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+        gap: 16px;
+      }
+
+      .viewer {
+        display: grid;
+        place-items: center;
+        min-height: 310px;
+        overflow: hidden;
+        border-radius: 14px;
+        background: #0f172a;
+        color: #cbd5e1;
+      }
+
+      .viewer canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 520px;
+        object-fit: contain;
+      }
+
+      .controls {
+        display: flex;
+        gap: 8px;
+        margin: 14px 0;
+      }
+
+      .controls button {
+        flex: 1;
+        min-height: 46px;
+        border: 0;
+        border-radius: 10px;
+        background: #0c8c65;
+        color: #fff;
+        font: inherit;
+        font-weight: 750;
+      }
+
+      .controls button.secondary {
+        background: #e8eef6;
+        color: #27364d;
+      }
+
+      .controls button:disabled {
+        opacity: 0.45;
+      }
+
+      .status {
+        min-height: 48px;
+        padding: 11px 13px;
+        border-radius: 10px;
+        background: #eaf8f3;
+        color: #285d4e;
+      }
+
+      .status.error {
+        background: #fff0f0;
+        color: #a32727;
+      }
+
+      .winner {
+        min-height: 100px;
+        padding: 18px;
+        border-radius: 14px;
+        background: #eafaf4;
+        text-align: center;
+      }
+
+      .winner small {
+        display: block;
+        color: #526074;
+      }
+
+      .winner strong {
+        display: block;
+        margin-top: 4px;
+        color: #087f5b;
+        font-size: 1.65rem;
+      }
+
+      .bars {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .bar-head {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .bar-track {
+        height: 10px;
+        overflow: hidden;
+        border-radius: 99px;
+        background: #e6ebf2;
+      }
+
+      .bar-fill {
+        height: 100%;
+        background: #18a979;
+      }
+
+      .notice {
+        color: #5e6878;
+        font-size: 0.86rem;
+      }
+
+      .footer-card {
+        margin-top: 16px;
+      }
+
+      .footer-card dl {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 7px 14px;
+      }
+
+      .footer-card dt {
+        font-weight: 800;
+      }
+
+      .footer-card dd {
+        margin: 0;
+        color: #526074;
+      }
+
+      /* ===== 4. 스마트폰 화면 설정 ===== */
+      @media (max-width: 720px) {
+        main {
+          padding: 12px;
+        }
+
+        .meta,
+        .lab {
+          grid-template-columns: 1fr;
+        }
+
+        .hero,
+        .card {
+          border-radius: 14px;
+        }
+
+        .viewer {
+          min-height: 240px;
+        }
+
+        .footer-card dl {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-card dd {
+          margin-bottom: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <!-- 프로젝트 소개 -->
+      <header class="hero">
+        <p class="eyebrow">TEACHABLE MACHINE · POSE</p>
+        <h1 id="projectTitle"></h1>
+        <p id="summary"></p>
+        <p><b id="team"></b> · <span id="members"></span></p>
+      </header>
+
+      <!-- 문제와 사용자 -->
+      <section class="meta">
+        <article class="card">
+          <h2>해결하려는 문제</h2>
+          <p id="problem"></p>
+        </article>
+
+        <article class="card">
+          <h2>주요 사용자</h2>
+          <p id="user"></p>
+        </article>
+      </section>
+
+      <!-- 카메라 실행과 분류 결과 -->
+      <section class="lab">
+        <article class="card">
+          <h2>모델 직접 시험하기</h2>
+          <div class="viewer" id="viewer">
+            시작 버튼을 누르면 카메라가 열립니다.
+          </div>
+          <p class="notice">
+            몸 전체 또는 분류에 필요한 관절이 화면 안에 충분히 들어오게 서세요.
+          </p>
+
+          <div class="controls">
+            <button id="start">시작</button>
+            <button id="stop" class="secondary" disabled>중지</button>
+          </div>
+
+          <div id="status" class="status" role="status" aria-live="polite">
+            모델을 시작할 준비가 되었습니다.
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>분류 결과</h2>
+          <div class="winner">
+            <small>가장 높은 예측</small>
+            <strong id="winner">아직 예측하지 않았습니다</strong>
+          </div>
+          <div id="bars" class="bars"></div>
+          <p class="notice">
+            가장 높은 확률이 반드시 올바른 자세라는 뜻은 아닙니다.
+            사람이 실제 자세와 안전을 확인하세요.
+          </p>
+        </article>
+      </section>
+
+      <!-- 모델의 한계와 사람의 판단 -->
+      <section class="card footer-card">
+        <h2>사용 전에 확인하세요</h2>
+        <dl>
+          <dt>모델의 한계</dt>
+          <dd id="limits"></dd>
+          <dt>사람이 확인할 부분</dt>
+          <dd id="humanCheck"></dd>
+        </dl>
+      </section>
+    </main>
+
+    <script>
+      // ================================================================
+      // 우리 팀은 아래 CONFIG 안의 내용만 먼저 수정합니다.
+      // 따옴표 안의 글을 우리 팀의 실제 내용으로 바꾸세요.
+      // ================================================================
+      const CONFIG = {
+        modelUrl:
+          "https://teachablemachine.withgoogle.com/models/여기에-모델-ID/",
+        projectTitle: "우리 팀 포즈 분류 AI",
+        summary: "카메라에 자세를 보여주면 모델이 포즈를 분류합니다.",
+        team: "팀명",
+        members: "팀원 이름",
+        problem: "STEP 1에서 정한 해결하려는 문제",
+        user: "이 모델이 필요한 주요 사용자",
+        limits: "STEP 3에서 확인한 모델의 한계",
+        humanCheck: "결과를 사용하기 전에 사람이 최종 확인할 내용",
+      };
+      // ======================= CONFIG 수정 끝 =========================
+
+      // id로 화면 요소를 찾는 짧은 함수
+      const $ = (id) => document.getElementById(id);
+
+      // 모델과 카메라 실행에 사용하는 변수
+      let model = null;
+      let webcam = null;
+      let canvas = null;
+      let ctx = null;
+      let raf = 0;
+      let running = false;
+
+      // CONFIG의 내용을 웹페이지에 표시합니다.
+      function fill() {
+        const textItems = [
+          "projectTitle",
+          "summary",
+          "team",
+          "members",
+          "problem",
+          "user",
+          "limits",
+          "humanCheck",
+        ];
+
+        textItems.forEach((key) => {
+          $(key).textContent = CONFIG[key];
+        });
+
+        document.title = CONFIG.projectTitle;
+      }
+
+      // 티처블 머신 모델 주소가 올바른지 확인합니다.
+      function baseUrl() {
+        const url = CONFIG.modelUrl.trim();
+        const modelUrlPattern =
+          /^https:\/\/teachablemachine\.withgoogle\.com\/models\/[^/]+\/?$/;
+
+        if (!modelUrlPattern.test(url) || url.includes("여기에-")) {
+          throw new Error("티처블 머신 모델 공유 주소를 정확히 입력하세요.");
+        }
+
+        return url.endsWith("/") ? url : url + "/";
+      }
+
+      // 실행 상태나 오류 메시지를 화면에 표시합니다.
+      function showStatus(message, isError = false) {
+        $("status").textContent = message;
+        $("status").classList.toggle("error", isError);
+      }
+
+      // 클래스별 예측 확률을 막대로 표시합니다.
+      function render(predictions) {
+        $("bars").innerHTML = "";
+        let best = predictions[0];
+
+        predictions.forEach((prediction) => {
+          if (prediction.probability > best.probability) {
+            best = prediction;
+          }
+
+          const percent = (prediction.probability * 100).toFixed(1);
+          const row = document.createElement("div");
+
+          row.innerHTML = `
+            <div class="bar-head">
+              <span></span>
+              <b>${percent}%</b>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${percent}%"></div>
+            </div>
+          `;
+
+          row.querySelector("span").textContent = prediction.className;
+          $("bars").append(row);
+        });
+
+        const bestPercent = (best.probability * 100).toFixed(1);
+        $("winner").textContent = `${best.className} · ${bestPercent}%`;
+      }
+
+      // 카메라 화면을 모델에 반복해서 입력하고 결과를 그립니다.
+      async function loop() {
+        if (!running) return;
+
+        webcam.update();
+
+        const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+        const predictions = await model.predict(posenetOutput);
+        render(predictions);
+
+        ctx.drawImage(webcam.canvas, 0, 0, canvas.width, canvas.height);
+
+        if (pose) {
+          tmPose.drawKeypoints(pose.keypoints, 0.5, ctx);
+          tmPose.drawSkeleton(pose.keypoints, 0.5, ctx);
+        }
+
+        raf = requestAnimationFrame(loop);
+      }
+
+      // 시작 버튼을 누르면 모델과 카메라를 실행합니다.
+      async function start() {
+        if (running) return;
+
+        try {
+          $("start").disabled = true;
+          showStatus("포즈 모델을 불러오는 중입니다…");
+
+          const url = baseUrl();
+          model = await tmPose.load(url + "model.json", url + "metadata.json");
+
+          showStatus("카메라 권한을 요청하는 중입니다…");
+          webcam = new tmPose.Webcam(420, 420, true);
+          await webcam.setup();
+          await webcam.play();
+
+          canvas = document.createElement("canvas");
+          canvas.width = 420;
+          canvas.height = 420;
+          ctx = canvas.getContext("2d");
+          $("viewer").replaceChildren(canvas);
+
+          running = true;
+          $("stop").disabled = false;
+          showStatus("카메라가 실행 중입니다. 화면 안에서 자세를 취해 보세요.");
+
+          loop();
+        } catch (error) {
+          console.error(error);
+
+          const message =
+            error?.name === "NotAllowedError"
+              ? "카메라 권한이 거부되었습니다. 주소창의 사이트 설정에서 카메라를 허용하세요."
+              : `시작하지 못했습니다. ${
+                  error?.message || "모델 주소와 카메라를 확인하세요."
+                }`;
+
+          showStatus(message, true);
+          $("start").disabled = false;
+        }
+      }
+
+      // 중지 버튼을 누르면 카메라와 반복 실행을 멈춥니다.
+      function stop() {
+        running = false;
+        cancelAnimationFrame(raf);
+
+        if (webcam) {
+          webcam.stop();
+          webcam = null;
+        }
+
+        $("viewer").textContent = "카메라가 중지되었습니다.";
+        $("start").disabled = false;
+        $("stop").disabled = true;
+        showStatus("중지되었습니다. 다시 시작할 수 있습니다.");
+      }
+
+      // 버튼과 함수 연결
+      $("start").addEventListener("click", start);
+      $("stop").addEventListener("click", stop);
+      window.addEventListener("pagehide", stop);
+
+      // 페이지를 열면 CONFIG 내용을 먼저 표시합니다.
+      fill();
+    </script>
+  </body>
+</html>
