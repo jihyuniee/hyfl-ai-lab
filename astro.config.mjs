@@ -15,9 +15,6 @@ function stripLiteralDoubleAsterisks() {
 }
 
 const lockedLessonPaths = [
-	'/src/content/docs/data/ch1.mdx',
-	'/src/content/docs/data-lab.mdx',
-	'/src/content/docs/data-project.mdx',
 	'/src/content/docs/project2.mdx',
 	'/src/content/docs/project3.mdx',
 	'/src/content/docs/ethics/index.mdx',
@@ -75,9 +72,9 @@ export default defineConfig({
 							label: 'Ⅱ단원. 데이터와 AI 서비스',
 							collapsed: false,
 							items: [
-								{ label: '4. 데이터에서 공공데이터까지 · 다음에 공개', link: '/data/ch1/' },
-								{ label: '5. 데이터 탐정 미션 · 다음에 공개', link: '/data-lab/' },
-								{ label: '6. Data to AI Service · 다음에 공개', link: '/data-project/' },
+								{ label: '4. 데이터에서 공공데이터까지', link: '/data/ch1/' },
+								{ label: '5. 데이터 탐정 미션', link: '/data-lab/' },
+								{ label: '6. Data to AI Service', link: '/data-project/' },
 							],
 						},
 						{
