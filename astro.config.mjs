@@ -34,12 +34,12 @@ function lockFutureLessons() {
 			{ type: 'heading', depth: 2, children: [{ type: 'text', value: '다음 수업에서 공개됩니다' }] },
 			{
 				type: 'paragraph',
-				children: [{ type: 'text', value: '이 단원은 아직 수업 전입니다. 지금은 School Image Lab까지 학습합니다.' }],
+				children: [{ type: 'text', value: '이 단원은 아직 수업 전입니다. 지금은 DATA TO AI SERVICE 프로젝트까지 학습합니다.' }],
 			},
 			{
 				type: 'paragraph',
 				children: [
-					{ type: 'link', url: '/hyfl-ai-lab/project1/', children: [{ type: 'text', value: 'School Image Lab으로 돌아가기' }] },
+					{ type: 'link', url: '/hyfl-ai-lab/data-project/', children: [{ type: 'text', value: 'DATA TO AI SERVICE로 돌아가기' }] },
 				],
 			},
 		];
@@ -73,8 +73,8 @@ export default defineConfig({
 							collapsed: false,
 							items: [
 								{ label: '4. 데이터에서 공공데이터까지', link: '/data/ch1/' },
-								{ label: '5. 데이터 탐정 미션', link: '/data-lab/' },
-								{ label: '6. Data to AI Service', link: '/data-project/' },
+								{ label: '5. Data to AI Service', link: '/data-project/' },
+								{ label: '6. 데이터 탐정 미션', link: '/data-lab/' },
 							],
 						},
 						{
