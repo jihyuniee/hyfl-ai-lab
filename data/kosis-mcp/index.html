@@ -124,14 +124,134 @@
 
 
 
-<table><thead><tr><th>구분</th><th>의미</th></tr></thead><tbody><tr><td>KOSIS</td><td>국가통계포털</td></tr><tr><td>MCP</td><td>AI가 외부 데이터나 도구와 연결될 수 있도록 돕는 방식</td></tr><tr><td>KOSIS MCP</td><td>생성형 AI가 KOSIS 통계 도구를 활용해 관련 통계를 찾아볼 수 있게 하는 시범서비스</td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>구분</th><th>영문 이름</th><th>의미</th></tr></thead><tbody><tr><td>KOSIS</td><td>Korean Statistical Information Service</td><td>국가통계포털</td></tr><tr><td>API</td><td>Application Programming Interface</td><td>서로 다른 프로그램이 데이터나 기능을 요청하고 주고받도록 만든 연결 창구</td></tr><tr><td>MCP</td><td>Model Context Protocol</td><td>생성형 AI가 외부 데이터나 도구를 공통된 방식으로 연결하여 활용하도록 돕는 표준 규약</td></tr><tr><td>KOSIS MCP</td><td>KOSIS + Model Context Protocol</td><td>생성형 AI가 KOSIS 통계 도구를 활용해 관련 통계를 찾아볼 수 있게 하는 시범서비스</td></tr></tbody></table>
 <div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> AI 답변은 원자료와 비교합니다 </p> <div class="lab-callout__body astro-mrmim4ef"> KOSIS MCP를 사용해도 생성형 AI 답변에는 오류나 부정확한 내용이 포함될 수 있습니다. 중요한 판단을 하기 전에는 반드시 KOSIS 원자료에서 통계표 이름, 기간, 지역, 단위, 수치를 다시 확인합니다. AI의 분석이나 해석은 참고용입니다. </div> </div> 
 <div class="sl-heading-wrapper level-h2"><h2 id="2-claude에-kosis-mcp-연결하기">2. Claude에 KOSIS MCP 연결하기</h2><a class="sl-anchor-link" href="#2-claude에-kosis-mcp-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. Claude에 KOSIS MCP 연결하기”</span></a></div>
-<p>선생님 안내에 따라 Claude에서 커스텀 커넥터를 추가합니다. 화면 이름이나 메뉴 위치는 서비스 업데이트에 따라 달라질 수 있습니다.</p>
-<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">Claude 로그인</p> <div class="lab-steps__body astro-5vkjc2f4"> Claude 웹 또는 앱에 로그인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">설정 열기</p> <div class="lab-steps__body astro-5vkjc2f4"> 설정에서 커넥터 또는 맞춤 설정 메뉴를 엽니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">커스텀 커넥터 추가</p> <div class="lab-steps__body astro-5vkjc2f4"> 새 커스텀 커넥터를 추가합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">이름과 URL 입력</p> <div class="lab-steps__body astro-5vkjc2f4"> 이름은 자유롭게 정하고, 원격 MCP 서버 URL을 입력합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">권한 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> 도구 사용 권한을 선생님 안내에 따라 설정합니다. </div> </div> </li>  </ol> </div> 
-<p>설정 가이드에 제시된 원격 MCP 서버 URL은 다음과 같습니다.</p>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">https://kosismcp2026.vercel.app/api/mcp</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="https://kosismcp2026.vercel.app/api/mcp"><div></div></button></div></figure></div>
+<p>이번 실습은 <strong>Claude에 KOSIS MCP를 직접 연결한 뒤 질문하는 방식</strong>으로 진행합니다. 아래 순서는 KOSIS 공식 설정 가이드의 Claude 연결 절차를 학생용으로 풀어 쓴 것입니다. 화면 이름이나 메뉴 위치는 서비스 업데이트에 따라 조금 달라질 수 있습니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="실습-전-준비">실습 전 준비</h3><a class="sl-anchor-link" href="#실습-전-준비"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실습 전 준비”</span></a></div>
+<ul>
+<li>PC에서 Claude 웹 또는 앱을 엽니다.</li>
+<li>Claude에 로그인할 Google 계정 또는 이메일 계정을 준비합니다.</li>
+<li>아래 KOSIS MCP 서버 주소를 복사해 둡니다.</li>
+</ul>
+<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 입력할 KOSIS MCP 서버 주소 </p> <div class="lab-callout__body astro-mrmim4ef"> <code><a href="https://kosismcp2026.vercel.app/api/mcp">https://kosismcp2026.vercel.app/api/mcp</a></code> </div> </div> 
+<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">Claude에 로그인하기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>Claude 초기 화면에서 <strong>Google로 계속하기</strong> 또는 <strong>이메일로 계속하기</strong>를 선택하여 로그인합니다. 처음 이용하는 학생은 화면의 안내에 따라 회원가입을 먼저 완료합니다.</p> </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">설정 메뉴 열기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>로그인한 뒤 화면 <strong>왼쪽 아래의 계정 아이콘</strong>을 누릅니다. 이름, 이니셜 또는 프로필 그림으로 표시될 수 있습니다. 펼쳐진 메뉴에서 <strong>설정</strong>을 클릭합니다.</p> </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">커넥터 맞춤 설정 열기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>설정 창의 왼쪽 메뉴에서 <strong>커넥터</strong>를 선택한 뒤 <strong>맞춤 설정</strong>을 클릭합니다.</p> </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">더하기 버튼 누르기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>맞춤 설정 화면에 있는 <strong>+ 버튼</strong>을 클릭합니다. + 버튼이 보이지 않으면 현재 화면이 <strong>설정 → 커넥터 → 맞춤 설정</strong>인지 다시 확인합니다.</p> </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">커스텀 커넥터 추가 선택하기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>나타난 메뉴에서 <strong>커스텀 커넥터 추가</strong>를 클릭합니다.</p> </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">이름과 서버 URL 입력하기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>커스텀 커넥터 추가 창에 다음 내용을 입력합니다.</p><ul>
+<li><strong>이름:</strong> KOSIS MCP 또는 kosismcp</li>
+<li><strong>원격 MCP 서버 URL:</strong> <code><a href="https://kosismcp2026.vercel.app/api/mcp">https://kosismcp2026.vercel.app/api/mcp</a></code></li>
+</ul><p>주소 앞뒤에 공백이나 줄바꿈이 들어가지 않았는지 확인한 뒤 <strong>추가</strong> 버튼을 클릭합니다. 이 주소는 채팅창이 아니라 커넥터 설정 창에 입력해야 합니다.</p> </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">사용 권한을 항상 허용으로 바꾸기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>추가된 KOSIS MCP 커넥터에서 <strong>승인 필요</strong>를 클릭하고 <strong>항상 허용</strong>으로 변경합니다. 이렇게 설정하면 통계 도구를 사용할 때마다 승인 버튼을 반복해서 누르지 않아도 됩니다.</p> </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">채팅 화면으로 돌아가기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>화면 왼쪽 위의 <strong>← 뒤로 가기</strong>를 눌러 Claude 채팅 화면으로 돌아갑니다. 필요한 경우 새 채팅을 엽니다.</p> </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">KOSIS MCP로 첫 질문하기</p> <div class="lab-steps__body astro-5vkjc2f4"> <p>질문 첫 문장에 “KOSIS MCP를 사용하여”라고 명확히 적습니다. 아래 연결 확인용 프롬프트를 복사하여 입력합니다.</p> </div> </div> </li>  </ol> </div> 
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="KOSIS MCP를 사용하여 2020년부터 2025년까지 우리나라의 소비자물가지수를 찾아줘.
+
+답변에는 다음 항목을 포함해줘.
+
+1. 사용한 KOSIS 통계표 이름
+2. 제공 기관 또는 출처
+3. 조회 기간
+4. 단위
+5. 연도별 값
+6. KOSIS 원자료에서 다시 확인해야 할 것
+
+확인할 수 없는 내용은 추측하지 말고 &#34;확인 필요&#34;라고 표시해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">KOSIS MCP 연결 확인 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="KOSIS MCP 연결 확인 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">KOSIS MCP를 사용하여 2020년부터 2025년까지 우리나라의 소비자물가지수를 찾아줘.
+
+답변에는 다음 항목을 포함해줘.
+
+1. 사용한 KOSIS 통계표 이름
+2. 제공 기관 또는 출처
+3. 조회 기간
+4. 단위
+5. 연도별 값
+6. KOSIS 원자료에서 다시 확인해야 할 것
+
+확인할 수 없는 내용은 추측하지 말고 &quot;확인 필요&quot;라고 표시해줘.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
+<div class="sl-heading-wrapper level-h3"><h3 id="연결이-잘되었는지-확인하기">연결이 잘되었는지 확인하기</h3><a class="sl-anchor-link" href="#연결이-잘되었는지-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “연결이 잘되었는지 확인하기”</span></a></div>
+<p>답변이 나왔다고 바로 연결에 성공한 것은 아닙니다. Claude가 일반 지식으로 답한 것이 아니라 KOSIS 통계 도구를 사용했는지 다음 항목을 확인합니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>확인할 것</th><th>확인 방법</th></tr></thead><tbody><tr><td>MCP 도구 사용</td><td>답변을 만드는 과정에 KOSIS MCP 도구 사용이 표시되는지 확인한다</td></tr><tr><td>통계표 이름</td><td>어떤 KOSIS 통계표를 사용했는지 답변에 포함되어 있는지 확인한다</td></tr><tr><td>기간</td><td>요청한 2020년부터 2025년까지의 값이 있는지 확인한다</td></tr><tr><td>단위</td><td>지수, %, 명, 원 등 값의 단위를 확인한다</td></tr><tr><td>출처</td><td>통계를 작성하거나 제공한 기관을 확인한다</td></tr><tr><td>원자료</td><td>KOSIS 원자료에서 통계표와 수치를 다시 확인한다</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="연결이-잘되지-않을-때">연결이 잘되지 않을 때</h3><a class="sl-anchor-link" href="#연결이-잘되지-않을-때"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “연결이 잘되지 않을 때”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>문제 상황</th><th>해결 방법</th></tr></thead><tbody><tr><td>설정 메뉴를 찾기 어렵다</td><td>화면 왼쪽 아래의 계정 아이콘을 다시 확인하고, 가능하면 PC 웹 화면에서 진행한다</td></tr><tr><td>+ 버튼이 보이지 않는다</td><td><strong>설정 → 커넥터 → 맞춤 설정</strong> 순서로 이동했는지 확인한다</td></tr><tr><td>추가 버튼이 활성화되지 않는다</td><td>이름과 원격 MCP 서버 URL을 모두 입력했는지 확인한다</td></tr><tr><td>연결 오류가 나타난다</td><td>URL의 공백, 오탈자, 줄바꿈을 확인한 뒤 주소를 다시 붙여 넣는다</td></tr><tr><td>질문해도 일반적인 설명만 나온다</td><td>질문 첫 문장에 “KOSIS MCP를 사용하여”라고 적고, 커넥터가 추가되어 있는지 확인한다</td></tr><tr><td>사용할 때마다 승인을 요구한다</td><td>커넥터 설정에서 <strong>승인 필요 → 항상 허용</strong>으로 변경한다</td></tr><tr><td>원하는 통계를 찾지 못한다</td><td>주제, 지역, 기간, 연령 조건을 한 번에 하나씩 더 구체적으로 적는다</td></tr><tr><td>결과가 예상과 다르다</td><td>통계표 이름, 기간, 지역, 단위를 KOSIS 원자료와 비교한다</td></tr></tbody></table>
 <div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 개인정보는 입력하지 않습니다 </p> <div class="lab-callout__body astro-mrmim4ef"> 통계 탐색에는 이름, 주민등록번호, 전화번호, 주소 같은 개인정보가 필요하지 않습니다. 개인을 식별할 수 있는 정보는 AI 채팅창에 입력하지 않습니다. </div> </div> 
+<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> AI의 답이 곧 국가통계는 아닙니다 </p> <div class="lab-callout__body astro-mrmim4ef"> KOSIS MCP와 연결되어 있어도 Claude가 자료를 잘못 선택하거나 내용을 부정확하게 해석할 수 있습니다. 답변을 그대로 믿지 말고 <strong>통계표 이름·기간·지역·단위·수치</strong>를 KOSIS 원자료에서 다시 확인합니다. </div> </div> 
 <div class="sl-heading-wrapper level-h2"><h2 id="3-선생님과-함께-유의미한-통계-찾기">3. 선생님과 함께: 유의미한 통계 찾기</h2><a class="sl-anchor-link" href="#3-선생님과-함께-유의미한-통계-찾기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 선생님과 함께: 유의미한 통계 찾기”</span></a></div>
 <p>먼저 모두 같은 질문으로 연습합니다. 처음부터 완벽한 질문을 만들기보다, 통계로 확인 가능한 질문인지 함께 점검합니다.</p>
 <div class="lab-callout lab-callout--think astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">✏️</span> 공통 실습 질문 </p> <div class="lab-callout__body astro-mrmim4ef"> 최근 10년간 서울의 15~19세 인구는 어떻게 변했을까? </div> </div> 
@@ -168,7 +288,7 @@
 10. 이 데이터만으로는 알 수 없는 것
 11. KOSIS 원자료에서 다시 확인해야 할 것
 
-확실하지 않은 내용은 단정하지 말고 &quot;확인 필요&quot;라고 표시해줘.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
+확실하지 않은 내용은 단정하지 말고 &quot;확인 필요&quot;라고 표시해줘.</code></pre> </section>  
 <p>AI가 답변하면 바로 결론을 쓰지 않고, 아래 순서로 확인합니다.</p>
 <div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">통계표 이름 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> AI가 어떤 통계표를 사용했는지 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">조건 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> 기간, 지역, 연령 또는 집단 조건이 질문과 맞는지 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">단위 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> 값의 단위가 명, %, 건, 원 중 무엇인지 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">그래프 선택</p> <div class="lab-steps__body astro-5vkjc2f4"> 연도별 변화라면 선그래프가 적절한지 판단합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">말할 수 있는 것 구분</p> <div class="lab-steps__body astro-5vkjc2f4"> 감소·증가 같은 사실과 원인 추측을 구분합니다. </div> </div> </li>  </ol> </div> 
 <div class="sl-heading-wrapper level-h3"><h3 id="함께-찾아보기-좋은-질문-후보">함께 찾아보기 좋은 질문 후보</h3><a class="sl-anchor-link" href="#함께-찾아보기-좋은-질문-후보"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “함께 찾아보기 좋은 질문 후보”</span></a></div>
