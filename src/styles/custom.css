@@ -149,9 +149,9 @@ summary:focus-visible,
 }
 
 .sl-markdown-content table {
-	display: block;
+	display: table;
+	width: 100%;
 	max-width: 100%;
-	overflow-x: auto;
 	border-collapse: separate;
 	border-spacing: 0;
 	border: 1px solid var(--lab-border);
@@ -169,6 +169,8 @@ summary:focus-visible,
 .sl-markdown-content td {
 	padding: 0.7rem 0.9rem;
 	border-bottom: 1px solid var(--lab-border);
+	vertical-align: top;
+	overflow-wrap: anywhere;
 }
 
 .sl-markdown-content tr:last-child td {
