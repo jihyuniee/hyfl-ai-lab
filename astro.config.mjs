@@ -73,7 +73,7 @@ export default defineConfig({
 							collapsed: false,
 							items: [
 								{ label: '4. 데이터에서 공공데이터까지', link: '/data/ch1/' },
-								{ label: '5. KOSIS MCP 통계 탐색', link: '/data/kosis-mcp/' },
+								{ label: '5. AI와 함께 통계 질문하기', link: '/data/kosis-mcp/' },
 								{ label: '6. Data to AI Service', link: '/data-project/' },
 								{ label: '7. 데이터 탐정 미션', link: '/data-lab/' },
 							],
