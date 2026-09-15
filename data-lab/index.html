@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>6. 공공데이터로 첫 웹앱 만들기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data-lab/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="6. 공공데이터로 첫 웹앱 만들기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data-lab/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="급식 데이터를 확인·분석하고 생성형 AI와 메뉴 탐색기를 만든 뒤, 기능 수정과 원자료 대조를 거쳐 팀 프로젝트를 준비합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="급식 데이터를 확인·분석하고 생성형 AI와 메뉴 탐색기를 만든 뒤, 기능 수정과 원자료 대조를 거쳐 팀 프로젝트를 준비합니다."/><script>
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>6. 공공데이터로 첫 웹앱 만들기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data-lab/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="6. 공공데이터로 첫 웹앱 만들기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data-lab/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="12차시 프로젝트의 첫 2차시. 급식 자료를 분석하고 발견을 기능으로 연결하여, 생성형 AI와 웹앱을 제작·검증·수정합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="12차시 프로젝트의 첫 2차시. 급식 자료를 분석하고 발견을 기능으로 연결하여, 생성형 AI와 웹앱을 제작·검증·수정합니다."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -74,15 +74,16 @@
 		})();
 	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on">  <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">6. 공공데이터로 첫 웹앱 만들기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="stage-label">COMMON LAB · DATA × GENERATIVE AI × WEB APP</div> <div class="stage-question"><span>오늘의 질문</span><strong>공공데이터를 읽고, 다른 사람이 직접 써 볼 수 있는 작은 웹앱으로 만들 수 있을까?</strong></div>
-<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 이번 실습의 미션 </p> <div class="lab-callout__body astro-mrmim4ef"> 같은 급식 데이터로 메뉴 탐색기를 만들어 봅니다. 데이터를 먼저 확인하고, 생성형 AI로 코드를 작성한 뒤, 결과를 원자료와 대조합니다. 마지막에는 기능 하나를 바꾸고 그 경험을 팀 프로젝트에 적용합니다. </div> </div> 
-<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">공통 데이터 확인 → 질문과 간단한 분석 → 작은 기능 설계</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ AI와 웹앱 제작 → 실행·원자료 대조</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 개인·짝별 기능 하나 수정 → 팀 프로젝트로 확장</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="공통 데이터 확인 → 질문과 간단한 분석 → 작은 기능 설계→ AI와 웹앱 제작 → 실행·원자료 대조→ 개인·짝별 기능 하나 수정 → 팀 프로젝트로 확장"><div></div></button></div></figure></div>
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on">  <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">6. 공공데이터로 첫 웹앱 만들기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="stage-label">COMMON LAB · 프로젝트 1~2차시</div> <div class="stage-question"><span>오늘의 질문</span><strong>급식 자료에서 확인한 내용을, 직접 검색하고 비교할 수 있는 웹앱으로 만들 수 있을까?</strong></div>
+<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 이번 실습의 미션 </p> <div class="lab-callout__body astro-mrmim4ef"> 같은 급식 자료로 질문을 정하고 데이터를 분석합니다. 발견한 내용을 기능으로 연결하여 생성형 AI와 메뉴 탐색기를 만든 뒤, 원자료와 결과를 대조하고 기능 하나를 수정합니다. </div> </div> 
+<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">문제·질문 확인 → 데이터 탐색·분석 → 인사이트 도출</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 기능 기획 → 생성형 AI와 제작 → 검증·수정</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="문제·질문 확인 → 데이터 탐색·분석 → 인사이트 도출→ 기능 기획 → 생성형 AI와 제작 → 검증·수정"><div></div></button></div></figure></div>
 <div class="sl-heading-wrapper level-h2"><h2 id="1-우리가-만들-웹앱">1. 우리가 만들 웹앱</h2><a class="sl-anchor-link" href="#1-우리가-만들-웹앱"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 우리가 만들 웹앱”</span></a></div>
 <blockquote>
-<p><strong>사용자:</strong> 지난 식단에서 특정 메뉴가 나온 날을 찾아보고 싶은 학생.<br/>
-<strong>핵심 기능:</strong> 학교·월·검색어를 선택하면 해당 메뉴가 포함된 중식 날짜와 일수를 보여 준다.</p>
+<p><strong>사용자:</strong> 식단 기록에서 특정 메뉴가 나온 날을 찾아보고 싶은 학생.<br/>
+<strong>문제:</strong> 긴 식단표에서 조건에 맞는 날짜를 찾아 비교하기 번거롭다.<br/>
+<strong>첫 기능:</strong> 학교·월·검색어를 선택하면 해당 메뉴가 포함된 중식 날짜와 일수를 보여 준다.</p>
 </blockquote>
-<p>먼저 메뉴 검색과 날짜·일수 표시 기능을 구현합니다. 이후 기능 하나를 추가하고 결과가 정확한지 확인합니다.</p>
+<p>먼저 메뉴 검색과 날짜·일수 표시 기능을 구현합니다. 이후 분석에서 발견한 점을 바탕으로 비교 기능 등을 추가합니다.</p>
 
 
 
@@ -103,20 +104,17 @@
 
 
 
-
-
-
-
-
-<table><thead><tr><th>단계</th><th>학생이 정할 것</th></tr></thead><tbody><tr><td>입력</td><td>실제 급식 CSV, 학교, 월, 메뉴 검색어</td></tr><tr><td>처리</td><td>중식만 선택 → 같은 학교·날짜 묶기 → 문자열 포함 여부 확인</td></tr><tr><td>출력</td><td>일수, 해당 날짜, 메뉴 원문, 자료 출처와 범위</td></tr><tr><td>확인</td><td>원자료에서 같은 조건으로 직접 센 날짜와 일수가 맞는가?</td></tr></tbody></table>
-<div class="sl-heading-wrapper level-h3"><h3 id="실습-도구">실습 도구</h3><a class="sl-anchor-link" href="#실습-도구"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실습 도구”</span></a></div>
+<table><thead><tr><th>차시</th><th>공통 실습</th><th>남길 기록</th></tr></thead><tbody><tr><td>1차시</td><td>실제 자료 확인, 직접 계산, 발견을 기능으로 연결, 첫 버전 실행</td><td>계산 근거와 기능 설계, 실행본</td></tr><tr><td>2차시</td><td>원자료 대조, 예외 테스트, 기능 하나 수정, 짝과 바꾸어 사용</td><td>수정 이유와 재검증, 짝의 의견</td></tr></tbody></table>
+<p>6번과 7번을 합해 총 12차시로 진행합니다. 공통 실습에서는 같은 질문·자료로 제작 과정을 익히고, 7번에서는 팀이 질문과 기능을 결정하여 서비스를 개발합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="실습-준비">실습 준비</h3><a class="sl-anchor-link" href="#실습-준비"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실습 준비”</span></a></div>
+<p>수업에서 안내한 실제 급식 CSV와 원자료 주소를 준비하고, 사용할 AI 도구와 파일 실행 환경에 접속할 수 있는지 확인합니다. 첫 실습은 같은 학교·기간의 파일로 진행합니다. 공개 배포가 지연되면 파일 실행과 짝 테스트를 먼저 마치고, 배포는 팀 프로젝트에서 이어 갈 수 있습니다.</p>
 <p><a href="/hyfl-ai-lab/templates/meal-explorer/" target="_blank" rel="noopener noreferrer">급식 메뉴 탐색기 기본 예시 열기</a> · <a href="/hyfl-ai-lab/templates/meal-explorer/index.html" download="index.html">기본 index.html 받기</a> · <a href="/hyfl-ai-lab/templates/meal-explorer/check-data.csv" download="check-data.csv">가상 점검 CSV 받기</a></p>
-<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 실제 분석 자료와 기능 점검 자료를 구분합니다 </p> <div class="lab-callout__body astro-mrmim4ef"> 기본 예시는 실제 급식 자료를 내장하지 않습니다. ‘가상 점검 데이터’는 정답을 알 수 있도록 만든 6개 기록이며 공공데이터가 아닙니다. 먼저 조작을 연습할 수 있지만, 실제 분석과 실습 완료에는 NEIS 등에서 출처를 확인한 실제 자료를 사용합니다. </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="2-실제-공공데이터를-준비하고-읽기">2. 실제 공공데이터를 준비하고 읽기</h2><a class="sl-anchor-link" href="#2-실제-공공데이터를-준비하고-읽기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 실제 공공데이터를 준비하고 읽기”</span></a></div>
+<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 실제 분석 자료와 기능 점검 자료 </p> <div class="lab-callout__body astro-mrmim4ef"> 기본 예시에는 실제 급식 자료가 내장되어 있지 않습니다. ‘가상 점검 데이터’는 정답을 확인하도록 만든 6개 기록이며 공공데이터가 아닙니다. 조작과 테스트를 연습한 뒤, 실제 분석에는 출처를 확인한 공공데이터를 사용합니다. </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="2-데이터에서-인사이트까지">2. 데이터에서 인사이트까지</h2><a class="sl-anchor-link" href="#2-데이터에서-인사이트까지"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 데이터에서 인사이트까지”</span></a></div>
 <div class="sl-heading-wrapper level-h3"><h3 id="2-1-출처와-조회-조건-확인">2-1. 출처와 조회 조건 확인</h3><a class="sl-anchor-link" href="#2-1-출처와-조회-조건-확인"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2-1. 출처와 조회 조건 확인”</span></a></div>
-<p><a href="https://open.neis.go.kr/">NEIS 교육정보개방포털</a>에서 <strong>급식식단정보</strong>를 검색합니다. 학교와 분석할 기간을 정하고, 조회 화면이나 제공 파일에 필요한 항목이 실제로 있는지 확인합니다. 화면에 표시된 일부 결과나 API 샘플 응답을 전체 기간의 자료로 착각하지 않습니다.</p>
-<p>첫 실습은 같은 학교와 같은 기간의 공통 파일을 사용합니다. 직접 내려받거나 수업에서 배부한 원파일을 사용할 수 있지만, 어느 경우든 출처 페이지와 조회 조건을 직접 확인합니다. 인증키 발급과 API 자동 연결은 첫 실습의 필수가 아닙니다.</p>
-<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">원자료와 사본 분리</p> <div class="lab-steps__body astro-5vkjc2f4"> 내려받은 원본은 그대로 보존하고, 분석용 사본을 만듭니다. 제공 형식은 데이터 화면에서 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">필요한 열 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> 급식일자·학교명·식사명·요리명에 해당하는 열을 찾습니다. 없는 항목은 AI에게 만들게 하지 않습니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">CSV로 정리</p> <div class="lab-steps__body astro-5vkjc2f4"> 스프레드시트 프로그램에서 사본의 열 이름을 아래 기준에 맞춥니다. XLSX 파일이라면 CSV UTF-8로 내보내거나 다운로드합니다. 확장자만 바꾸지 않습니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">정리 전후 대조</p> <div class="lab-steps__body astro-5vkjc2f4"> 날짜·메뉴가 바뀌지 않았는지 일부 기록을 원본과 비교합니다. 삭제·필터·변환 기준과 변경한 기록 수를 남깁니다. </div> </div> </li>  </ol> </div> 
+<p><a href="https://open.neis.go.kr/">NEIS 교육정보개방포털</a>에서 <strong>급식식단정보</strong>를 검색합니다. 원하는 학교·기간의 자료인지, 필요한 항목이 있는지 확인합니다. 화면에 표시된 일부 결과나 API 샘플 응답을 전체 자료로 착각하지 않습니다.</p>
+<p>직접 확보하거나 수업에서 배부한 파일을 사용하되 출처 페이지와 조회 조건을 직접 확인합니다. 인증키 발급과 API 자동 연결은 첫 실습에 요구하지 않습니다.</p>
+<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">원자료와 사본 분리</p> <div class="lab-steps__body astro-5vkjc2f4"> 원본은 그대로 보존하고 분석용 사본을 만듭니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">필요한 열 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> 급식일자·학교명·식사명·요리명에 해당하는 열을 찾습니다. 없는 항목은 만들지 않습니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">CSV로 정리</p> <div class="lab-steps__body astro-5vkjc2f4"> 필요한 경우 사본의 열 이름을 아래 기준에 맞춥니다. XLSX라면 CSV UTF-8로 내보내거나 다운로드합니다. 확장자만 바꾸지 않습니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">정리 전후 대조</p> <div class="lab-steps__body astro-5vkjc2f4"> 일부 기록의 날짜·메뉴를 원본과 비교합니다. 필터·변환·삭제 기준과 변경한 기록 수를 남깁니다. </div> </div> </li>  </ol> </div> 
 
 
 
@@ -148,13 +146,13 @@
 
 
 <table><thead><tr><th>분석용 열</th><th>NEIS에서 대응할 수 있는 항목</th><th>확인할 것</th></tr></thead><tbody><tr><td>날짜</td><td>급식일자 / MLSV_YMD</td><td>YYYYMMDD 또는 YYYY-MM-DD. 없는 날짜를 채우지 않는다.</td></tr><tr><td>학교명</td><td>학교명 / SCHUL_NM</td><td>원하는 학교가 맞는가?</td></tr><tr><td>식사명</td><td>식사명 / MMEAL_SC_NM</td><td>조식·중식·석식을 구분한다.</td></tr><tr><td>메뉴</td><td>요리명 / DDISH_NM</td><td>한 행에 여러 메뉴가 포함될 수 있다. 원문과 알레르기 표시는 보존한다.</td></tr></tbody></table>
-<p>학교에 따라 자료가 없거나 필요한 기간이 내려받아지지 않으면 기간을 조정합니다. 실제 자료를 확보하지 못한 상태를 ‘수집 완료’로 표시하지 않습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="2-2-데이터를-보기-전에-예상하기">2-2. 데이터를 보기 전에 예상하기</h3><a class="sl-anchor-link" href="#2-2-데이터를-보기-전에-예상하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2-2. 데이터를 보기 전에 예상하기”</span></a></div>
+<p>원하는 기간을 확보하지 못하면 분석 범위를 조정합니다. 실제 자료를 열지 못한 상태를 ‘수집 완료’로 표시하지 않습니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="2-2-질문을-정하고-직접-분석하기">2-2. 질문을 정하고 직접 분석하기</h3><a class="sl-anchor-link" href="#2-2-질문을-정하고-직접-분석하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2-2. 질문을 정하고 직접 분석하기”</span></a></div>
 <p>“카레가 자주 나오는 것 같다”를 다음처럼 바꿉니다.</p>
 <blockquote>
 <p><strong>확보한 [학교·기간]의 중식에서 메뉴에 ‘카레’라는 문자열이 포함된 날짜는 며칠일까?</strong></p>
 </blockquote>
-<p>먼저 예상한 일수와 이유를 적습니다. 한 행이 하루인지, 학교별 한 끼인지 확인합니다. 같은 날 기록이 여러 줄이라면 <strong>행 수와 날짜 수가 다를 수 있습니다.</strong></p>
+<p>예상한 일수와 이유를 적습니다. 한 행이 하루인지 학교별 한 끼인지 확인합니다. 같은 날 기록이 여러 줄이라면 행 수와 날짜 수가 다를 수 있습니다.</p>
 <section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="첨부한 급식 CSV를 이해하려고 해. 아직 앱 코드는 만들지 마.
 1. 실제 열 이름, 한 행의 의미, 학교와 기간, 식사 종류를 확인해줘.
 2. 중복·결측·잘못된 날짜가 있는지 확인하고 원자료의 어느 기록인지 보여줘.
@@ -170,8 +168,7 @@
 5. 내가 직접 대조할 원자료 기록을 짚어줘. 자료에 없는 수치나 메뉴는 만들지 마.
 6. 이 데이터로 알 수 없는 내용도 설명해줘.
 실제 파일을 읽을 수 없다면 읽었다고 하지 말고 그 사실을 먼저 알려줘.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
-<div class="sl-heading-wrapper level-h3"><h3 id="2-3-앱을-만들기-전에-작은-분석-하기">2-3. 앱을 만들기 전에 작은 분석 하기</h3><a class="sl-anchor-link" href="#2-3-앱을-만들기-전에-작은-분석-하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2-3. 앱을 만들기 전에 작은 분석 하기”</span></a></div>
-<p>원자료의 일부 기간을 정해 직접 셉니다. 선택한 전체 중식일과 ‘카레’가 포함된 중식일을 각각 기록하고, 해당 날짜도 적습니다. 필요한 경우 필터나 간단한 표를 사용합니다.</p>
+<p>일부 기간을 정해 전체 중식일과 검색어가 포함된 중식일을 직접 셉니다. 해당 날짜도 기록합니다. 필요한 경우 필터와 간단한 표를 사용합니다.</p>
 
 
 
@@ -205,9 +202,11 @@
 
 
 
-<table><thead><tr><th>확인 내용</th><th>나의 기록</th></tr></thead><tbody><tr><td>학교·기간·식사 조건</td><td></td></tr><tr><td>원자료의 전체 중식일 수</td><td></td></tr><tr><td>검색어가 포함된 날짜와 일수</td><td></td></tr><tr><td>중복·누락을 처리한 기준</td><td></td></tr><tr><td>처음 예상과 달랐던 점</td><td></td></tr><tr><td>자료만으로 알 수 없는 것</td><td></td></tr></tbody></table>
-<p>‘카레’를 포함하는 메뉴가 나온 일수이지, 같은 메뉴의 정확한 반복 횟수나 학생의 선호도가 아닙니다. 자료에 없는 날짜도 ‘급식이 없었다’고 바로 결론 내리지 않습니다.</p>
-<details><summary>데이터 탐정 · 질문에 맞는 표와 그래프 선택하기</summary>
+<table><thead><tr><th>확인 내용</th><th>나의 기록</th></tr></thead><tbody><tr><td>출처·학교·기간·식사 조건</td><td></td></tr><tr><td>전체 중식일 수</td><td></td></tr><tr><td>검색어가 포함된 날짜와 일수</td><td></td></tr><tr><td>중복·누락 처리 기준</td><td></td></tr><tr><td>처음 예상과 달랐던 점</td><td></td></tr><tr><td>자료만으로 알 수 없는 것</td><td></td></tr></tbody></table>
+<p>‘카레’를 포함한 메뉴가 나온 일수이지, 학생의 선호도가 아닙니다. 자료에 없는 날짜도 ‘급식이 없었다’고 단정하지 않습니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="2-3-발견한-내용을-기능으로-연결하기">2-3. 발견한 내용을 기능으로 연결하기</h3><a class="sl-anchor-link" href="#2-3-발견한-내용을-기능으로-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2-3. 발견한 내용을 기능으로 연결하기”</span></a></div>
+<p>이 실습에서 <strong>인사이트는 분석을 통해 사용자에게 필요한 정보나 처리 기준을 더 정확하게 판단한 내용</strong>입니다. 숫자를 읽은 뒤 “그래서 앱에서는 무엇을 다르게 해야 할까?”를 묻습니다.</p>
+<p>아래는 설계 예시입니다. 실제 자료에서 해당 상황을 확인한 뒤 우리 앱에 적용할지 결정합니다.</p>
 
 
 
@@ -228,6 +227,10 @@
 
 
 
+<table><thead><tr><th>자료에서 확인한 내용</th><th>사용자에게 갖는 의미</th><th>기능으로 연결하기</th></tr></thead><tbody><tr><td>같은 날짜의 중식이 여러 기록으로 나뉘어 있다.</td><td>행 수를 세면 메뉴가 나온 일수를 잘못 이해할 수 있다.</td><td>같은 학교·날짜를 묶어 하루로 계산하고 날짜 목록을 보여 준다.</td></tr><tr><td>월마다 전체 중식일 수가 다르다.</td><td>등장 횟수만으로는 월별 반복 정도를 비교하기 어렵다.</td><td>전체 중식일 수와 검색된 일수의 비율을 함께 보여 준다.</td></tr></tbody></table>
+<blockquote>
+<p>우리는 [확인한 사실]을 발견했다. 사용자가 [정보를 찾거나 비교하는 상황]에서 [주의할 점·필요]이 있다고 판단했다. 그래서 [처리 기준·기능]을 적용한다.</p>
+</blockquote>
 
 
 
@@ -242,10 +245,47 @@
 
 
 
-<table><thead><tr><th>질문</th><th>표현 후보</th><th>확인할 기준</th></tr></thead><tbody><tr><td>언제 나왔는가?</td><td>날짜 목록·달력형 표</td><td>자료에 있는 날짜 범위</td></tr><tr><td>월별로 얼마나 다른가?</td><td>막대그래프</td><td>월별 전체 중식일 수의 차이</td></tr><tr><td>시간에 따라 어떻게 변했는가?</td><td>선그래프</td><td>간격과 단위가 일관적인가?</td></tr><tr><td>전체에서 어느 정도인가?</td><td>비율 표·막대그래프</td><td>분모가 무엇인가?</td></tr><tr><td>두 수치가 함께 움직이는가?</td><td>산점도</td><td>상관관계를 원인으로 단정하지 않았는가?</td></tr></tbody></table><p>그래프에서도 여섯 질문을 반복합니다. 나는 무엇을 예상했는가? 직접 확인한 사실은 무엇인가? 예외는 있는가? 가능한 해석과 원인 가설은 무엇인가? 이 자료만으로 단정할 수 없는 것은 무엇인가? 다음에 어떤 데이터가 필요한가?</p></details>
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>설계 단계</th><th>이번 앱에 적용할 내용</th></tr></thead><tbody><tr><td>입력</td><td>실제 급식 CSV, 학교, 월, 메뉴 검색어</td></tr><tr><td>처리</td><td>중식 선택 → 같은 학교·날짜 묶기 → 문자열 포함 여부 확인</td></tr><tr><td>출력</td><td>일수, 날짜, 메뉴 원문, 출처와 자료 범위</td></tr><tr><td>검증</td><td>직접 센 날짜·일수와 일치하는가?</td></tr></tbody></table>
+<details><summary>분석을 확장할 때 · 표와 그래프 선택하기</summary>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>질문</th><th>표현 후보</th><th>확인할 기준</th></tr></thead><tbody><tr><td>언제 나왔는가?</td><td>날짜 목록·달력형 표</td><td>실제 확보한 날짜 범위</td></tr><tr><td>월별로 얼마나 다른가?</td><td>막대그래프</td><td>월별 전체 중식일 수</td></tr><tr><td>전체에서 어느 정도인가?</td><td>비율 표·막대그래프</td><td>분모의 의미와 0인 경우</td></tr></tbody></table><p>그래프의 모양뿐 아니라 수치·예외·해석·한계를 설명합니다. 자료에서 직접 확인한 사실과 아직 확인하지 않은 원인 가설을 구분합니다.</p></details>
 <div class="sl-heading-wrapper level-h2"><h2 id="3-생성형-ai와-첫-버전-만들기">3. 생성형 AI와 첫 버전 만들기</h2><a class="sl-anchor-link" href="#3-생성형-ai와-첫-버전-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 생성형 AI와 첫 버전 만들기”</span></a></div>
-<div class="sl-heading-wrapper level-h3"><h3 id="3-1-요구사항부터-설명하기">3-1. 요구사항부터 설명하기</h3><a class="sl-anchor-link" href="#3-1-요구사항부터-설명하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3-1. 요구사항부터 설명하기”</span></a></div>
-<p>AI에게 “급식 앱을 예쁘게 만들어 줘”라고만 요청하지 않습니다. <strong>실제 데이터의 구조, 사용자의 입력, 계산 기준, 결과, 예외 상황</strong>을 함께 설명합니다. 사용할 수 있도록 승인된 AI 도구를 이용하며, 개인정보와 인증키는 입력하지 않습니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="3-1-요구사항-설명하기">3-1. 요구사항 설명하기</h3><a class="sl-anchor-link" href="#3-1-요구사항-설명하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3-1. 요구사항 설명하기”</span></a></div>
+<p>실제 데이터의 구조, 사용자의 입력, 계산 기준, 결과, 예외 상황을 함께 설명합니다. 아래 프롬프트를 읽고 우리가 확인한 자료·기준과 맞는지 점검한 뒤 사용합니다. 사용할 수 있도록 승인된 AI 도구를 이용하고 개인정보와 인증키는 입력하지 않습니다.</p>
 <section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="급식 CSV를 읽는 한국어 웹앱을 만들어줘. HTML·CSS·JavaScript를 index.html 한 파일에 넣어줘.
 외부 라이브러리, 서버, 로그인, 유료 API는 사용하지 마.
 
@@ -300,14 +340,14 @@ CSV 파일 선택으로 읽고 데이터는 브라우저에서만 처리한다. 
 코드에서 데이터 읽기·조건 처리·계산·결과 표시 부분에 주석을 달아줘.
 전체 코드와 함께 실행 방법, 내가 원자료와 대조할 테스트를 설명해줘.</code></pre> </section>  
 <div class="sl-heading-wrapper level-h3"><h3 id="3-2-코드-받아-실행하기">3-2. 코드 받아 실행하기</h3><a class="sl-anchor-link" href="#3-2-코드-받아-실행하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3-2. 코드 받아 실행하기”</span></a></div>
-<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">첫 파일 저장</p> <div class="lab-steps__body astro-5vkjc2f4"> 생성된 전체 HTML 코드를 일반 텍스트 파일로 저장합니다. 코드 블록 표시인 세 개의 백틱은 넣지 않습니다. 파일 이름은 index.html, 인코딩은 UTF-8로 정합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">확장자 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> 파일이 index.html.txt로 저장되지 않았는지 확인합니다. PC에서는 파일을 웹브라우저로 열어 실행합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">실제 CSV 선택</p> <div class="lab-steps__body astro-5vkjc2f4"> 앱의 파일 선택에서 준비한 CSV를 불러옵니다. 출처·조회 조건·확인일을 입력합니다. 출처 칸을 채웠다고 자동으로 검증되는 것은 아닙니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">같은 질문으로 실행</p> <div class="lab-steps__body astro-5vkjc2f4"> 앞서 직접 센 것과 같은 학교·월·검색어를 선택합니다. 일수뿐 아니라 날짜와 메뉴 원문을 대조합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">코드의 네 부분 찾기</p> <div class="lab-steps__body astro-5vkjc2f4"> AI에게 데이터 읽기·조건 처리·계산·결과 표시 부분을 설명하게 한 뒤, 내가 바꿔 볼 위치를 표시합니다. </div> </div> </li>  </ol> </div> 
-<p>실행이 막히면 기본 index.html을 사용해 같은 CSV로 다시 시도합니다. AI가 작성한 첫 버전은 별도로 남기고, 기본 예시로 돌아온 이유를 적습니다. 코드를 전부 외우는 것이 아니라 <strong>어떤 데이터가 어떤 기준을 거쳐 어떤 결과가 되는지</strong> 설명하는 것이 목표입니다.</p>
+<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">첫 파일 저장</p> <div class="lab-steps__body astro-5vkjc2f4"> 생성된 전체 HTML 코드를 일반 텍스트 파일로 저장합니다. 코드 블록 표시인 세 개의 백틱은 넣지 않습니다. 이름은 index.html, 인코딩은 UTF-8로 정합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">확장자 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> index.html.txt로 저장되지 않았는지 확인합니다. PC에서는 웹브라우저로 파일을 엽니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">실제 CSV 선택</p> <div class="lab-steps__body astro-5vkjc2f4"> 준비한 CSV를 불러오고 출처·조회 조건·확인일을 입력합니다. 출처 칸을 채웠다고 자동으로 검증되는 것은 아닙니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">같은 질문으로 실행</p> <div class="lab-steps__body astro-5vkjc2f4"> 직접 센 것과 같은 학교·월·검색어를 선택합니다. 일수뿐 아니라 날짜와 메뉴 원문을 대조합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">코드의 네 부분 찾기</p> <div class="lab-steps__body astro-5vkjc2f4"> 데이터 읽기·조건 처리·계산·결과 표시 부분을 AI에게 설명하게 한 뒤, 각각의 역할을 내 말로 정리합니다. </div> </div> </li>  </ol> </div> 
+<p>실행이 막히면 기본 index.html로 같은 CSV를 사용해 봅니다. AI가 작성한 첫 버전은 보존하고, 기본 예시로 돌아온 이유를 적습니다. 모든 코드를 외우기보다 데이터가 어떤 처리를 거쳐 결과가 되는지 설명합니다.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="3-3-github-pages로-공유하기">3-3. GitHub Pages로 공유하기</h3><a class="sl-anchor-link" href="#3-3-github-pages로-공유하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3-3. GitHub Pages로 공유하기”</span></a></div>
-<p>완성한 웹앱을 GitHub Pages에 게시해 공유합니다. 기존 작업을 덮어쓰지 않도록 이번 실습용 저장소를 새로 만듭니다.</p>
-<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">새 저장소 만들기</p> <div class="lab-steps__body astro-5vkjc2f4"> GitHub의 New repository에서 meal-data-lab 같은 이름으로 저장소를 만듭니다. 학교가 허용한 계정을 사용하고 공개 범위를 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">index.html 올리기</p> <div class="lab-steps__body astro-5vkjc2f4"> Add file → Upload files 또는 Create new file로 index.html을 저장소 최상위에 저장하고 Commit changes를 누릅니다. 파일 선택 방식이면 실제 CSV는 저장소에 올리지 않아도 됩니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">게시 위치 설정</p> <div class="lab-steps__body astro-5vkjc2f4"> Settings → Pages → Build and deployment에서 Source를 Deploy from a branch로 정합니다. Branch는 main, 폴더는 /(root)를 선택하고 Save를 누릅니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">배포 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> Actions에서 배포 상태를 확인한 뒤 Pages에 표시된 주소를 엽니다. iPad에서는 파일 미리보기 대신 배포된 주소를 Safari에서 열어 확인합니다. </div> </div> </li>  </ol> </div> 
-<p>GitHub Pages의 사이트와 공개 저장소에는 누구나 접근할 수 있습니다. 개인정보, 인증키, 이용 조건상 재배포할 수 없는 파일은 올리지 않습니다. 학교 네트워크에서 로그인이 막히면 임의로 우회하지 않고 수업에서 정한 실행 방식으로 테스트 기록을 먼저 완성합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="4-작동한다와-맞는다를-구분하기">4. ‘작동한다’와 ‘맞는다’를 구분하기</h2><a class="sl-anchor-link" href="#4-작동한다와-맞는다를-구분하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. ‘작동한다’와 ‘맞는다’를 구분하기”</span></a></div>
-<p>실제 CSV에서 직접 센 결과를 정답 기준으로 삼습니다. 첫 번째 정상 사례만 통과해도 검증이 끝난 것은 아닙니다.</p>
+<p>기존 작업을 덮어쓰지 않도록 이번 실습용 저장소를 새로 만듭니다. 배포가 지연되어도 파일 실행과 데이터 검증은 이어 갑니다.</p>
+<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">새 저장소 만들기</p> <div class="lab-steps__body astro-5vkjc2f4"> GitHub의 New repository에서 meal-data-lab 같은 이름으로 저장소를 만듭니다. 학교가 허용한 계정과 공개 범위를 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">index.html 올리기</p> <div class="lab-steps__body astro-5vkjc2f4"> Add file → Upload files 또는 Create new file로 최상위에 index.html을 저장하고 Commit changes를 누릅니다. 파일 선택 방식이면 실제 CSV를 저장소에 올리지 않아도 됩니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">게시 위치 설정</p> <div class="lab-steps__body astro-5vkjc2f4"> Settings → Pages → Build and deployment에서 Source를 Deploy from a branch로 정합니다. Branch는 main, 폴더는 /(root)를 선택하고 Save를 누릅니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">배포 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> Actions에서 배포 상태를 확인한 뒤 Pages에 표시된 주소를 엽니다. iPad에서는 배포된 주소를 Safari에서 열어 확인합니다. </div> </div> </li>  </ol> </div> 
+<p>공개되는 사이트와 저장소에는 개인정보·인증키·재배포할 수 없는 파일을 올리지 않습니다. 학교 네트워크에서 로그인이 막히면 임의로 우회하지 않고 수업에서 정한 실행 방식으로 테스트합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="4-결과-검증하기">4. 결과 검증하기</h2><a class="sl-anchor-link" href="#4-결과-검증하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 결과 검증하기”</span></a></div>
+<p>실제 CSV에서 직접 센 결과를 기준으로 삼습니다. 정상 사례와 예외 상황을 모두 확인합니다.</p>
 
 
 
@@ -348,8 +388,8 @@ CSV 파일 선택으로 읽고 데이터는 브라우저에서만 처리한다. 
 
 
 
-<table><thead><tr><th>테스트</th><th>입력·상황</th><th>확인할 것</th></tr></thead><tbody><tr><td>정상 검색</td><td>실제 자료에 있는 메뉴</td><td>날짜·일수가 원자료와 일치하는가?</td></tr><tr><td>빈 검색어</td><td>검색어를 지운다</td><td>선택 범위의 전체 중식일을 보여 주는가?</td></tr><tr><td>없는 메뉴</td><td>자료에 없는 문자열</td><td>0일과 검색 결과 없음 안내가 나오는가?</td></tr><tr><td>월 변경</td><td>다른 월을 선택한다</td><td>선택한 월의 기록만 남는가?</td></tr><tr><td>중복·잘못된 기록</td><td>같은 날짜 중복, 누락, 잘못된 날짜</td><td>중복을 하루로 세고 제외 이유를 알리는가?</td></tr><tr><td>잘못된 파일</td><td>필수 열이 없는 CSV</td><td>오류를 안내하고 이전 결과를 남기지 않는가?</td></tr></tbody></table>
-<details><summary>가상 점검 데이터의 정답 · 먼저 직접 세고 확인하기</summary><p>이 정답은 교과서의 <strong>가상학교 6개 기록</strong>에만 해당합니다. 실제 학교의 급식 결과가 아닙니다.</p>
+<table><thead><tr><th>테스트</th><th>입력·상황</th><th>확인할 것</th></tr></thead><tbody><tr><td>정상 검색</td><td>실제 자료에 있는 메뉴</td><td>날짜·일수가 원자료와 일치하는가?</td></tr><tr><td>빈 검색어</td><td>검색어를 지운다.</td><td>선택 범위의 전체 중식일을 보여 주는가?</td></tr><tr><td>없는 메뉴</td><td>자료에 없는 문자열</td><td>0일과 검색 결과 없음 안내가 나오는가?</td></tr><tr><td>월 변경</td><td>다른 월을 선택한다.</td><td>해당 월의 기록만 남는가?</td></tr><tr><td>중복·잘못된 기록</td><td>중복 날짜, 누락, 잘못된 날짜</td><td>하루로 묶고 제외 이유를 알리는가?</td></tr><tr><td>잘못된 파일</td><td>필수 열이 없는 CSV</td><td>오류를 안내하고 이전 결과를 지우는가?</td></tr></tbody></table>
+<details><summary>가상 점검 데이터의 정답 · 먼저 직접 세고 확인하기</summary><p>이 정답은 가상학교 6개 기록에만 해당하며 실제 학교의 급식 결과가 아닙니다.</p>
 
 
 
@@ -374,10 +414,10 @@ CSV 파일 선택으로 읽고 데이터는 브라우저에서만 처리한다. 
 
 
 
-<table><thead><tr><th>조건</th><th>전체 중식일</th><th>‘카레’ 포함 중식일</th></tr></thead><tbody><tr><td>전체 월</td><td>5일</td><td>3일</td></tr><tr><td>2025-09</td><td>3일</td><td>2일</td></tr><tr><td>2025-10</td><td>2일</td><td>1일</td></tr></tbody></table><p>2025-09-01의 두 기록을 하루로 묶습니다. 없는 문자열을 검색하면 0일이어야 합니다. 앱 안의 점검 버튼 또는 check-data.csv로 이 기준을 확인한 뒤 실제 공공데이터로 바꿉니다.</p></details>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[오류 수정 요청]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">지금 코드와 재현 조건은 다음과 같아: [파일·학교·월·검색어]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">기대 결과: [원자료에서 직접 확인한 날짜·일수]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">실제 결과: [화면에 나온 결과 또는 오류 메시지]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">기대 결과의 근거: [원자료의 기록·계산 기준]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">가능한 원인부터 설명하고 해당 부분만 수정해줘.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">다른 정상 기능은 유지하고, 같은 문제가 해결됐는지 확인할 테스트를 알려줘.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="[오류 수정 요청]지금 코드와 재현 조건은 다음과 같아: [파일·학교·월·검색어]기대 결과: [원자료에서 직접 확인한 날짜·일수]실제 결과: [화면에 나온 결과 또는 오류 메시지]기대 결과의 근거: [원자료의 기록·계산 기준]가능한 원인부터 설명하고 해당 부분만 수정해줘.다른 정상 기능은 유지하고, 같은 문제가 해결됐는지 확인할 테스트를 알려줘."><div></div></button></div></figure></div>
+<table><thead><tr><th>조건</th><th>전체 중식일</th><th>‘카레’ 포함 중식일</th></tr></thead><tbody><tr><td>전체 월</td><td>5일</td><td>3일</td></tr><tr><td>2025-09</td><td>3일</td><td>2일</td></tr><tr><td>2025-10</td><td>2일</td><td>1일</td></tr></tbody></table><p>2025-09-01의 두 기록은 하루로 묶습니다. 없는 문자열을 검색하면 0일이어야 합니다. 기능을 점검한 뒤 실제 공공데이터로 다시 확인합니다.</p></details>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[오류 수정 요청]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">현재 코드와 재현 조건: [파일·학교·월·검색어]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">기대 결과: [직접 확인한 날짜·일수]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">실제 결과: [화면 결과 또는 오류 메시지]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">근거: [원자료 기록·계산 기준]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">가능한 원인부터 설명하고 해당 부분을 수정해줘.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">다른 정상 기능은 유지하고 재검증할 테스트를 알려줘.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="[오류 수정 요청]현재 코드와 재현 조건: [파일·학교·월·검색어]기대 결과: [직접 확인한 날짜·일수]실제 결과: [화면 결과 또는 오류 메시지]근거: [원자료 기록·계산 기준]가능한 원인부터 설명하고 해당 부분을 수정해줘.다른 정상 기능은 유지하고 재검증할 테스트를 알려줘."><div></div></button></div></figure></div>
 <div class="sl-heading-wrapper level-h2"><h2 id="5-개인짝-미션--기능-하나-바꾸기">5. 개인·짝 미션 · 기능 하나 바꾸기</h2><a class="sl-anchor-link" href="#5-개인짝-미션--기능-하나-바꾸기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 개인·짝 미션 · 기능 하나 바꾸기”</span></a></div>
-<p>정상 실행본을 먼저 별도 파일로 보관합니다. 다음 중 하나처럼 <strong>사용자의 행동이나 결과가 달라지는 수정</strong>을 선택합니다. 제목·색상 변경만으로는 이 미션을 완료한 것이 아닙니다.</p>
+<p>정상 실행본을 별도 파일로 보관합니다. 분석이나 사용 과정에서 발견한 점을 근거로 기능 하나를 수정합니다.</p>
 
 
 
@@ -399,24 +439,25 @@ CSV 파일 선택으로 읽고 데이터는 브라우저에서만 처리한다. 
 
 
 
-<table><thead><tr><th>수정 후보</th><th>추가로 결정할 기준</th></tr></thead><tbody><tr><td>검색된 중식일의 비율 표시</td><td>분모는 검색 전 선택 범위의 전체 중식일. 0으로 나누지 않는다.</td></tr><tr><td>월별 비교 표 또는 막대그래프</td><td>월별 전체 중식일을 함께 보여 주고, 빈도가 선호도는 아님을 표시한다.</td></tr><tr><td>내가 발견한 불편 개선</td><td>왜 필요한지, 입력·처리·출력이 어떻게 바뀌는지 설명한다.</td></tr></tbody></table>
+<table><thead><tr><th>수정 후보</th><th>결정할 기준</th></tr></thead><tbody><tr><td>검색된 중식일의 비율</td><td>분모는 검색 전 선택 범위의 전체 중식일. 분모가 0이면 자료 없음으로 표시한다.</td></tr><tr><td>월별 비교 표·막대그래프</td><td>월별 전체 중식일 수를 함께 보여 준다.</td></tr><tr><td>사용 중 발견한 불편 개선</td><td>불편한 장면과 입력·처리·출력의 변화를 설명한다.</td></tr></tbody></table>
 <section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="현재 정상 작동하는 index.html과 검증 기록을 바탕으로 기능 하나만 추가해줘.
 바꿀 기능: [월별 비교 표 / 검색된 중식일의 비율 / 그 밖의 기능 하나]
-바꾸는 이유: [사용자가 겪는 불편]
+바꾸는 이유와 데이터에서 확인한 근거: [내용]
 유지할 것: 파일 읽기, 중식 필터, 중복 날짜 처리, 출처 표시, 오류 안내.
 먼저 변경 계획과 계산 기준을 설명하고, 수정 후 전체 파일을 제공해줘.
 비율을 추가한다면 분모는 검색 전 선택한 학교·월의 유효한 전체 중식일 수로 해줘.
 분모가 0이면 비율을 계산하지 말고 자료 없음으로 표시해줘.
 수정한 곳과 다시 점검할 테스트를 설명해줘. 확인하지 않은 결과를 성공했다고 단정하지 마."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">기능 하나 수정하는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="기능 하나 수정하는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">현재 정상 작동하는 index.html과 검증 기록을 바탕으로 기능 하나만 추가해줘.
 바꿀 기능: [월별 비교 표 / 검색된 중식일의 비율 / 그 밖의 기능 하나]
-바꾸는 이유: [사용자가 겪는 불편]
+바꾸는 이유와 데이터에서 확인한 근거: [내용]
 유지할 것: 파일 읽기, 중식 필터, 중복 날짜 처리, 출처 표시, 오류 안내.
 먼저 변경 계획과 계산 기준을 설명하고, 수정 후 전체 파일을 제공해줘.
 비율을 추가한다면 분모는 검색 전 선택한 학교·월의 유효한 전체 중식일 수로 해줘.
 분모가 0이면 비율을 계산하지 말고 자료 없음으로 표시해줘.
 수정한 곳과 다시 점검할 테스트를 설명해줘. 확인하지 않은 결과를 성공했다고 단정하지 마.</code></pre> </section>  
-<p>수정 뒤에는 새 기능뿐 아니라 앞서 통과한 검색·중복·오류 테스트도 다시 실행합니다. 두 버전을 비교하며 ‘바뀐 이유 → 바뀐 기능 → 확인한 근거’를 기록합니다.</p>
+<p>새 기능과 기존의 검색·중복·오류 테스트를 다시 실행합니다. 짝에게 검색 조건 하나를 정해 주고 앱으로 결과를 찾게 합니다. 짝이 설명 없이 할 수 있었던 일과 막혔던 장면을 기록합니다.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="6-실습-기록과-팀-프로젝트-준비">6. 실습 기록과 팀 프로젝트 준비</h2><a class="sl-anchor-link" href="#6-실습-기록과-팀-프로젝트-준비"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 실습 기록과 팀 프로젝트 준비”</span></a></div>
+<p>실행본·계산 근거·테스트 결과를 한곳에 모으고 다음 세 가지를 기록합니다.</p>
 
 
 
@@ -438,39 +479,19 @@ CSV 파일 선택으로 읽고 데이터는 브라우저에서만 처리한다. 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>기록 항목</th><th>작성</th></tr></thead><tbody><tr><td>실제 데이터의 출처·조회 조건·확인일</td><td></td></tr><tr><td>직접 분석한 질문과 결과</td><td></td></tr><tr><td>AI에게 요청한 일</td><td></td></tr><tr><td>AI 제안 중 내가 채택·수정·거절한 것과 이유</td><td></td></tr><tr><td>원자료와 대조한 결과 및 예외 테스트</td><td></td></tr><tr><td>수정 전후 달라진 기능</td><td></td></tr><tr><td>이 앱으로 알 수 없는 것</td><td></td></tr><tr><td>팀 프로젝트에서 재사용할 구조</td><td>데이터 읽기 / 조건 / 계산 / 출력 중 설명</td></tr></tbody></table>
+<table><thead><tr><th>역량</th><th>내가 남길 설명</th></tr></thead><tbody><tr><td>문제 해결력</td><td>어떤 발견이나 불편 때문에 기능을 바꾸었고, 바꾼 뒤 무엇을 확인했는가?</td></tr><tr><td>데이터 리터러시</td><td>어떤 출처·기간·항목을 사용했고, 어떤 기준으로 계산하여 원자료와 대조했는가?</td></tr><tr><td>AI 활용 역량</td><td>AI에게 어떤 조건을 주었고, 제안 중 무엇을 채택·수정·거절했으며 이유는 무엇인가?</td></tr></tbody></table>
 <div class="lab-callout lab-callout--checklist astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">☑️</span> 공통 실습 완료 기준 </p> <div class="lab-callout__body astro-mrmim4ef"> <ul>
-<li>실제 공공데이터의 출처와 기간, 한 행과 열의 의미를 설명했다.</li>
-<li>앱 제작 전에 일부 기록을 직접 분석했다.</li>
-<li>실제 CSV로 핵심 검색 기능을 실행했다.</li>
-<li>원자료 대조와 예외 상황 테스트를 수행했다.</li>
-<li>기능 하나를 수정하고 정상 기능도 다시 확인했다.</li>
-<li>데이터 읽기·조건 처리·계산·결과 표시 과정을 내 말로 설명했다.</li>
+<li>실제 자료의 출처·기간과 한 행·열의 의미를 설명했다.</li>
+<li>일부 기록을 직접 분석하고 발견을 기능으로 연결했다.</li>
+<li>실제 CSV로 앱을 실행하고 원자료와 결과를 대조했다.</li>
+<li>예외 상황을 테스트하고 기능 하나를 수정·재검증했다.</li>
+<li>AI의 제안을 그대로 사용하지 않고 내가 확인한 근거를 남겼다.</li>
+<li>데이터 읽기·처리·계산·출력 과정을 내 말로 설명했다.</li>
 </ul> </div> </div> 
-<p>다음 프로젝트에서는 제작 도구와 기본 구조를 재사용하되, <strong>누구를 돕는지·어떤 데이터를 쓰는지·무엇을 계산해 보여 줄지</strong>를 팀이 결정합니다. 공공데이터를 단순히 배경 통계로 붙이지 않고 앱의 실제 기능에 사용합니다.</p>
+<p>다음 3~12차시에는 팀 프로젝트를 진행합니다. 데이터 읽기·처리·출력 구조는 재사용할 수 있습니다. 팀은 학교·동네 생활의 자료에서 질문을 정하고, 분석에서 얻은 인사이트를 근거로 필요한 기능을 연결·확장합니다.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="참고-자료">참고 자료</h2><a class="sl-anchor-link" href="#참고-자료"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “참고 자료”</span></a></div>
 <ul>
-<li><a href="https://open.neis.go.kr/">NEIS 교육정보개방포털</a>: 급식식단정보의 항목·기간·이용 조건을 원자료에서 확인합니다.</li>
-<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Pages 게시 위치 설정 공식 안내</a>: 배포 메뉴와 공개 범위를 확인합니다. 화면 명칭은 업데이트에 따라 달라질 수 있습니다.</li>
+<li><a href="https://open.neis.go.kr/">NEIS 교육정보개방포털</a>: 급식식단정보의 항목·조회 범위·이용 조건 확인.</li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Pages 게시 위치 설정 공식 안내</a>: 배포 메뉴와 공개 범위 확인. 화면 명칭은 업데이트에 따라 달라질 수 있습니다.</li>
 </ul>
 <nav class="page-nav" aria-label="단원 이동"> <a href="/hyfl-ai-lab/data/kosis-mcp/">← AI와 함께 통계 질문하기</a> <a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a> <a href="/hyfl-ai-lab/data-project/">7. DATA TO WEB APP →</a> </nav> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/hyfl-ai-lab/data/kosis-mcp/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">5. AI와 함께 통계 질문하기</span> </span> </a> <a href="/hyfl-ai-lab/data-project/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">7. DATA TO WEB APP</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
