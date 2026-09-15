@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>급식 메뉴 탐색기 · HYFL Data Lab</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17312b;background:#f3f6f4;line-height:1.65}*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:36px 20px 64px}header{margin-bottom:28px}.eyebrow{font-size:.78rem;letter-spacing:.14em;font-weight:700;color:#457564}h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:8px 0}h2{font-size:1.2rem;margin:0 0 16px}p{margin:8px 0}.card{background:white;border:1px solid #d8e2dc;border-radius:16px;padding:24px;margin:18px 0}.muted{color:#566b63;font-size:.92rem}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.filters{display:grid;grid-template-columns:1fr 1fr 1.3fr auto;gap:12px;align-items:end}label{display:block;font-size:.9rem;font-weight:650}input,select,button{font:inherit;width:100%;padding:10px;border:1px solid #98b0a3;border-radius:8px;background:white;color:inherit}input[type=file]{margin-top:8px}input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #bf820c;outline-offset:3px}button{background:#215743;color:white;cursor:pointer;font-weight:650}button:disabled{opacity:.5;cursor:not-allowed}button.secondary{background:white;color:#215743;width:auto;margin-top:10px}.metrics{display:flex;flex-wrap:wrap;gap:32px;margin:20px 0}.metrics strong{font-size:2rem;display:block}.notice{background:#f1f5f2;padding:12px 16px;border-left:4px solid #477d62;border-radius:4px;margin-top:12px}.error{background:#fff0ed;border-left-color:#b73621}.demo{background:#fff6df;border-left-color:#a96b03}details{margin-top:16px}summary{cursor:pointer;font-weight:650}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.94rem}caption{text-align:left;padding:8px 0;font-weight:650}th,td{text-align:left;padding:12px;border-bottom:1px solid #dce5df;vertical-align:top}th{background:#eff4f0}td:first-child{white-space:nowrap}a{color:#1d6451}code{font-size:.9em}#source-summary{overflow-wrap:anywhere}footer{padding-top:12px}fieldset{border:0;padding:0;margin:0}legend{font-weight:650;margin-bottom:10px}@media(max-width:700px){.grid,.filters{grid-template-columns:1fr}.card{padding:18px}main{padding:24px 14px 48px}th,td{padding:10px}}
+</style>
+</head>
+<body><main>
+<header><div class="eyebrow">HYFL AI LAB · DATA TO WEB APP</div><h1>급식 메뉴 탐색기</h1><p>식단 기록에서 메뉴를 찾아, 언제 나왔는지 확인합니다.</p><p class="muted">파일 기반 수업용 앱입니다. 실시간 급식표·선호도 예측·알레르기 안전 판정 서비스가 아닙니다.</p></header>
+<section class="card" aria-labelledby="upload-heading"><h2 id="upload-heading">1. 데이터와 출처 준비하기</h2>
+<label for="csv">급식 CSV 파일 불러오기</label><input id="csv" type="file" accept=".csv,text/csv"><p class="muted">필수 열: 날짜, 학교명, 식사명, 메뉴. UTF-8 CSV를 권장합니다. 최대 2MB, 20,000개 기록입니다. 이 기본 앱은 선택한 파일을 브라우저에서만 처리하며 서버에 전송하거나 저장하지 않습니다.</p>
+<details><summary>파일 형식과 계산 기준</summary><p>날짜는 <code>20250901</code> 또는 <code>2025-09-01</code> 형식을 사용합니다. NEIS의 급식일자·요리명 열이나 MLSV_YMD·SCHUL_NM·MMEAL_SC_NM·DDISH_NM 열도 인식합니다.</p><p>중식 기록만 사용합니다. 같은 학교·날짜의 중복 기록은 메뉴를 모아 하루로 셉니다. 날짜·학교명·식사명·메뉴가 없거나 잘못된 기록은 제외 이유를 표시합니다. 메뉴는 입력한 문자열의 포함 여부로 검색하며, 비슷한 음식 이름을 자동 분류하지 않습니다. 알레르기 표시는 원문에 남겨 둡니다.</p></details>
+<div class="grid" style="margin-top:18px"><label for="provider">제공 기관·데이터 이름<input id="provider" placeholder="예: NEIS 교육정보개방포털 · 급식식단정보"></label><label for="source-url">원자료 페이지 주소<input id="source-url" type="url" placeholder="https://"></label><label for="retrieved">원자료를 확인한 날짜<input id="retrieved" type="date"></label><label for="scope">다운로드 때 선택한 학교·기간<input id="scope" placeholder="조회 조건을 기록하세요"></label></div>
+<div id="load-status" class="notice" role="status">아직 데이터가 없습니다. 실제 공공데이터 파일을 선택하세요.</div>
+<details><summary>먼저 기능만 점검하기 · 실제 공공데이터 아님</summary><p>아래 자료는 정답을 확인하기 위해 만든 가상의 6개 기록입니다. 실제 학교 급식 분석이나 프로젝트 제출 근거로 사용할 수 없습니다.</p><button id="demo" class="secondary" type="button">가상 점검 데이터 불러오기</button></details>
+</section>
+<section class="card" aria-labelledby="search-heading"><h2 id="search-heading">2. 조건을 선택하고 검색하기</h2><form id="search"><div class="filters"><label for="school">학교<select id="school" disabled></select></label><label for="month">월<select id="month" disabled></select></label><label for="keyword">메뉴 검색어<input id="keyword" placeholder="예: 카레" maxlength="100" disabled></label><button id="submit" disabled>검색</button></div></form><p class="muted">검색어가 비어 있으면 선택한 학교·월의 모든 유효한 중식일을 보여 줍니다.</p><div class="metrics" aria-live="polite"><div>선택 범위의 전체 중식일<strong id="total">—</strong></div><div>검색어가 포함된 중식일<strong id="matches">—</strong></div></div><p id="result-note" role="status">데이터를 불러오면 결과가 표시됩니다.</p><div class="table-wrap"><table><caption>검색 결과 · 같은 날짜는 한 번만 계산</caption><thead><tr><th scope="col">날짜</th><th scope="col">학교</th><th scope="col">중식 메뉴 원문</th></tr></thead><tbody id="results"></tbody></table></div><details id="issues-box" hidden><summary id="issues-title">제외한 기록 확인</summary><ul id="issues"></ul></details></section>
+<footer class="card"><h2>3. 결과의 근거 확인하기</h2><p id="source-summary">출처 정보를 입력하고 원자료와 결과를 대조하세요.</p><p class="muted">자료에 없는 날짜는 ‘급식 없음’으로 단정하지 않습니다. 일부 기간을 내려받았다면 그 범위 밖으로 일반화할 수 없습니다. 메뉴가 자주 등장했다는 사실만으로 선호도나 잔반량을 알 수 없습니다.</p><p><a href="https://open.neis.go.kr/" target="_blank" rel="noopener noreferrer">NEIS 교육정보개방포털</a>에서 원자료를 확인합니다.</p></footer>
+</main>
+<script>
+'use strict';
+// 1. 데이터 읽기: CSV의 따옴표·쉼표·줄바꿈을 함께 처리합니다.
+const $=id=>document.getElementById(id);
+const DEMO=`날짜,학교명,식사명,메뉴\n2025-09-01,가상학교,중식,카레라이스; 배추김치\n2025-09-01,가상학교,중식,카레소스; 우유\n2025-09-02,가상학교,중식,비빔밥; 미역국\n2025-09-03,가상학교,중식,카레우동; 깍두기\n2025-10-01,가상학교,중식,볶음밥; 카레소스\n2025-10-02,가상학교,중식,잔치국수; 배추김치`;
+let days=[],issues=[],isDemo=false,filename='';
+function parseCSV(text){
+ text=text.replace(/^\uFEFF/,'').replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+ const rows=[];let row=[],cell='',quoted=false,closed=false;
+ for(let i=0;i<text.length;i++){
+  const c=text[i];
+  if(quoted){if(c==='"'){if(text[i+1]==='"'){cell+='"';i++;}else{quoted=false;closed=true;}}else cell+=c;continue;}
+  if(c==='"'){if(cell.length||closed)throw Error('CSV 따옴표 형식을 확인하세요.');quoted=true;}
+  else if(c===','||c==='\n'){row.push(cell);cell='';closed=false;if(c==='\n'){if(row.some(v=>v.trim()))rows.push(row);row=[];}}
+  else{if(closed&&c.trim())throw Error('닫는 따옴표 뒤의 CSV 형식을 확인하세요.');if(!closed)cell+=c;}
+ }
+ if(quoted)throw Error('닫히지 않은 따옴표가 있습니다. CSV로 다시 저장하세요.');
+ row.push(cell);if(row.some(v=>v.trim()))rows.push(row);
+ if(rows.length>20001)throw Error('20,000개 이하의 기록으로 범위를 줄이세요.');
+ return rows;
+}
+function dateISO(value){
+ const m=String(value).trim().match(/^(\d{4})-?(\d{2})-?(\d{2})$/);if(!m)return null;
+ const y=+m[1],mo=+m[2],d=+m[3];if(y<1900||y>2200)return null;
+ const x=new Date(Date.UTC(y,mo-1,d));return x.getUTCFullYear()===y&&x.getUTCMonth()===mo-1&&x.getUTCDate()===d?`${m[1]}-${m[2]}-${m[3]}`:null;
+}
+function normalise(rows){
+ if(rows.length<2)throw Error('열 이름과 데이터 기록이 함께 있는 CSV가 필요합니다.');
+ const header=rows[0].map(v=>v.trim());
+ const names={date:['날짜','급식일자','MLSV_YMD'],school:['학교명','SCHUL_NM'],meal:['식사명','MMEAL_SC_NM'],menu:['메뉴','요리명','DDISH_NM']};
+ const cols={};for(const [key,aliases] of Object.entries(names)){cols[key]=header.findIndex(h=>aliases.includes(h));if(cols[key]<0)throw Error(`필수 열이 없습니다: ${aliases[0]}`);}
+ const groups=new Map(),skipped=[];
+ rows.slice(1).forEach((r,i)=>{
+  const reject=reason=>skipped.push(`기록 ${i+1}: ${reason}`);
+  if(r.length!==header.length){reject('열 개수 불일치');return;}
+  const date=dateISO(r[cols.date]),school=r[cols.school].trim(),meal=r[cols.meal].trim(),raw=r[cols.menu].trim();
+  if(!date||!school||!meal||!raw){reject('날짜·학교·식사명·메뉴 누락 또는 잘못된 날짜');return;}
+  if(!['중식','점심','2'].includes(meal)){reject(`중식이 아닌 기록 (${meal})`);return;}
+  const menu=raw.replace(/<br\s*\/?\s*>/gi,'; ');const key=JSON.stringify([school,date]);
+  if(!groups.has(key))groups.set(key,{date,school,menus:new Set()});groups.get(key).menus.add(menu);
+ });
+ return {days:[...groups.values()].map(x=>({...x,menu:[...x.menus].join(' / ')})).sort((a,b)=>a.date.localeCompare(b.date)||a.school.localeCompare(b.school)),issues:skipped};
+}
+function options(id,values,all){const select=$(id);select.replaceChildren();if(all)select.add(new Option(all,''));for(const v of values)select.add(new Option(v,v));}
+function populateMonths(){const previous=$('month').value;options('month',[...new Set(days.filter(d=>d.school===$('school').value).map(d=>d.date.slice(0,7)))].sort(),'전체 월');if([...$('month').options].some(o=>o.value===previous))$('month').value=previous;}
+function load(text,name,demo=false){
+ const result=normalise(parseCSV(text));days=result.days;issues=result.issues;isDemo=demo||days.some(d=>d.school==='가상학교');filename=name;
+ for(const id of ['provider','source-url','retrieved','scope'])$(id).value='';
+ options('school',[...new Set(days.map(d=>d.school))].sort());populateMonths();$('keyword').value='';
+ for(const id of ['school','month','keyword','submit'])$(id).disabled=!days.length;
+ const status=$('load-status');status.className='notice'+(isDemo?' demo':'');status.textContent=(isDemo?'가상 점검 데이터 · 실제 공공데이터 아님. ':'업로드 파일 · 출처는 직접 대조해야 합니다. ')+`${name} · 유효한 학교별 중식일 ${days.length}개 · 제외 기록 ${issues.length}개`;
+ $('issues-box').hidden=!issues.length;$('issues-title').textContent=`제외한 기록 ${issues.length}개 확인`;$('issues').replaceChildren();for(const issue of issues.slice(0,100)){const li=document.createElement('li');li.textContent=issue;$('issues').append(li);}if(issues.length>100){const li=document.createElement('li');li.textContent='앞의 100개 사유만 표시합니다. 원자료를 정리해 다시 불러오세요.';$('issues').append(li);}
+ render();
+}
+// 2. 조건과 계산: 학교·월을 먼저 선택하고 중복 없는 날짜를 셉니다.
+function render(){
+ const school=$('school').value,month=$('month').value,q=$('keyword').value.trim().toLocaleLowerCase('ko');
+ const selected=days.filter(d=>d.school===school&&(!month||d.date.startsWith(month)));
+ const found=selected.filter(d=>!q||d.menu.toLocaleLowerCase('ko').includes(q));
+ $('total').textContent=`${selected.length}일`;$('matches').textContent=`${found.length}일`;
+ $('result-note').textContent=!selected.length?'선택 범위에 유효한 중식 자료가 없습니다. 실제 급식 미실시 여부는 원자료에서 확인하세요.':!found.length?'검색 결과가 없습니다. 검색어나 월을 바꾸어 보세요.':`${school} · ${month||'파일에 있는 전체 월'} · ${found.length}일의 기록입니다.`;
+ // 3. 출력: 외부 데이터는 HTML이 아니라 텍스트로 넣습니다.
+ $('results').replaceChildren();for(const d of found.slice(0,500)){const tr=document.createElement('tr');for(const v of [d.date,d.school,d.menu]){const td=document.createElement('td');td.textContent=v;tr.append(td);}$('results').append(tr);}if(found.length>500)$('result-note').textContent+=' 표는 앞의 500일만 표시합니다. 월 조건을 좁히세요.';
+ showSource();
+}
+function showSource(){const period=days.length?`${days[0].date} ~ ${days[days.length-1].date}`:'없음';$('source-summary').textContent=`자료 구분: ${isDemo?'가상 점검 데이터 (분석 근거 사용 불가)':'업로드 자료 (원자료 확인 필요)'} / 파일: ${filename||'미선택'} / 파일에 포함된 전체 날짜 범위: ${period} / 제공 기관·이름: ${$('provider').value.trim()||'미입력'} / 원자료 주소: ${$('source-url').value.trim()||'미입력'} / 확인일: ${$('retrieved').value||'미입력'} / 조회 조건: ${$('scope').value.trim()||'미입력'} / 자동 갱신: 없음. 출처 정보는 사용자가 입력한 기록이며 자동으로 검증되지 않습니다.`;}
+$('csv').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{if(file.size>2*1024*1024)throw Error('파일이 2MB를 넘습니다. 기간이나 학교 범위를 줄이세요.');const bytes=await file.arrayBuffer();let text=new TextDecoder('utf-8').decode(bytes);if(text.includes('\uFFFD'))text=new TextDecoder('euc-kr').decode(bytes);if(text.includes('\uFFFD'))throw Error('한글을 읽지 못했습니다. UTF-8 CSV로 저장해 주세요.');load(text,file.name);}catch(error){days=[];issues=[];filename='';isDemo=false;for(const id of ['school','month','keyword','submit'])$(id).disabled=true;$('issues-box').hidden=true;$('load-status').className='notice error';$('load-status').textContent=`파일을 읽지 못했습니다: ${error.message}`;render();}finally{event.target.value='';}});
+$('demo').addEventListener('click',()=>load(DEMO,'check-data.csv',true));$('search').addEventListener('submit',e=>{e.preventDefault();render();});$('school').addEventListener('change',()=>{populateMonths();render();});$('month').addEventListener('change',render);for(const id of ['provider','source-url','retrieved','scope'])$(id).addEventListener('input',showSource);
+</script></body></html>
