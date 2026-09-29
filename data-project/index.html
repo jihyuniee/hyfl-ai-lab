@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>7. DATA TO WEB APP | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data-project/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="7. DATA TO WEB APP"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data-project/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="문제 정의, 데이터 수집·분석, 인사이트, AI 서비스 설계와 구현까지 하나의 산출물로 완성합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="문제 정의, 데이터 수집·분석, 인사이트, AI 서비스 설계와 구현까지 하나의 산출물로 완성합니다."/><script>
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>7. DATA TO WEB APP | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data-project/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="7. DATA TO WEB APP"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data-project/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="공공데이터를 근거로 문제를 정의하고, 분석·인사이트·AI 서비스 설계·구현까지 연결합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="공공데이터를 근거로 문제를 정의하고, 분석·인사이트·AI 서비스 설계·구현까지 연결합니다."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -72,15 +72,13 @@
 		})();
 	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-프로젝트-산출물-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 프로젝트 산출물 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-재미있는-문제에서-출발하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 재미있는 문제에서 출발하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-도메인-지식-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 도메인 지식 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-문제를-발견하고-구체화하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 문제를 발견하고 구체화하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-데이터를-수집하고-선택하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 데이터를 수집하고 선택하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-ai와-데이터-분석하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. AI와 데이터 분석하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-인사이트-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 인사이트 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-ai-서비스와-화면-설계하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. AI 서비스와 화면 설계하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#9-구현하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">9. 구현하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#10-검증하고-개선하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">10. 검증하고 개선하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#11-ai-활용과-협업-기록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">11. AI 활용과 협업 기록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#12-공유하고-발표하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">12. 공유하고 발표하기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-프로젝트-산출물-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 프로젝트 산출물 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-재미있는-문제에서-출발하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 재미있는 문제에서 출발하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-도메인-지식-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 도메인 지식 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-문제를-발견하고-구체화하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 문제를 발견하고 구체화하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-데이터를-수집하고-선택하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 데이터를 수집하고 선택하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-ai와-데이터-분석하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. AI와 데이터 분석하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-인사이트-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 인사이트 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-ai-서비스와-화면-설계하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. AI 서비스와 화면 설계하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#9-구현하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">9. 구현하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#10-검증하고-개선하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">10. 검증하고 개선하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#11-ai-활용과-협업-기록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">11. AI 활용과 협업 기록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#12-공유하고-발표하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">12. 공유하고 발표하기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">7. DATA TO WEB APP</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>데이터를 살펴보면 익숙한 상황에서도 새로운 질문이 생깁니다. 이 프로젝트에서는 우리 팀이 해결하고 싶은 문제를 찾고, 자료에서 얻은 발견을 사람들이 직접 활용할 수 있는 웹 서비스로 만들어 갑니다.</p>
-<p>이 프로젝트의 목표는 아이디어를 말로만 발표하는 것이 아닙니다. 수업이 끝났을 때 다음 여섯 가지가 남아야 합니다.</p>
-<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">1. 문제 정의</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">2. 데이터 수집</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">3. 데이터 분석</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">4. 인사이트</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">5. AI 서비스 설계</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">6. 구현</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="1. 문제 정의2. 데이터 수집3. 데이터 분석4. 인사이트5. AI 서비스 설계6. 구현"><div></div></button></div></figure></div>
-<p>문제 정의를 하면서 데이터를 찾을 수도 있고, 분석을 하다가 새로운 인사이트를 얻어 문제 정의를 바꿀 수도 있습니다. 탐구는 직선이 아니라 여러 번 되돌아가는 과정입니다.</p>
-<p><strong>문제 정의 ↔ 도메인 지식 탐색 ↔ 데이터 수집 ↔ 분석 → 인사이트 → AI 서비스 설계 → 구현 → 검증·발표</strong></p>
-<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 이번 프로젝트의 미션 </p> <div class="lab-callout__body astro-mrmim4ef"> 재미있고 흥미로운 문제에서 출발하되, 실제 데이터와 AI 활용을 통해 근거 있는 인사이트를 만들고, 최소 하나의 작동하는 웹 서비스로 구현합니다. </div> </div> 
-<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 한 학습지에 이어 쓰기 </p> <div class="lab-callout__body astro-mrmim4ef"> 공통 실습에서 시작한 <a href="/hyfl-ai-lab/worksheets/data-to-web-app.html" target="_blank" rel="noopener noreferrer">프로젝트 통합 학습지</a>를 끝까지 사용합니다. 팀이 이야기하고 시도한 뒤, 중요한 발견과 결정만 해당 부분에 기록합니다. 생각이 달라진 곳에는 날짜와 이유를 덧붙입니다. </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="1-프로젝트-산출물-확인하기">1. 프로젝트 산출물 확인하기</h2><a class="sl-anchor-link" href="#1-프로젝트-산출물-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 프로젝트 산출물 확인하기”</span></a></div>
-<p>완성된 프로젝트는 멋진 화면 하나만으로 판단하지 않습니다. 문제를 이해하고, 데이터를 확인하고, AI를 활용해 분석·설계·구현을 반복한 과정이 함께 보여야 합니다.</p>
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-이미-가진-관심을-탐구-질문으로-바꾸기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 이미 가진 관심을 탐구 질문으로 바꾸기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-도메인-지식-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 도메인 지식 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-문제-정의하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 문제 정의하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-데이터-수집-계획-세우기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 데이터 수집 계획 세우기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-데이터-읽기와-분석하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 데이터 읽기와 분석하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-인사이트-도출하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 인사이트 도출하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-ai-서비스-설계하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. AI 서비스 설계하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-바이브코딩으로-구현하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. 바이브코딩으로 구현하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#9-협업과-토론" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">9. 협업과 토론</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#10-검증하고-개선하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">10. 검증하고 개선하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#11-발표하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">11. 발표하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#12-최종-확인-기준" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">12. 최종 확인 기준</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-이미-가진-관심을-탐구-질문으로-바꾸기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 이미 가진 관심을 탐구 질문으로 바꾸기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-도메인-지식-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 도메인 지식 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-문제-정의하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 문제 정의하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-데이터-수집-계획-세우기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 데이터 수집 계획 세우기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-데이터-읽기와-분석하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 데이터 읽기와 분석하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-인사이트-도출하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 인사이트 도출하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-ai-서비스-설계하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. AI 서비스 설계하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-바이브코딩으로-구현하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. 바이브코딩으로 구현하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#9-협업과-토론" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">9. 협업과 토론</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#10-검증하고-개선하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">10. 검증하고 개선하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#11-발표하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">11. 발표하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#12-최종-확인-기준" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">12. 최종 확인 기준</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">7. DATA TO WEB APP</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>이 단원은 이미 배운 내용을 하나로 연결하는 팀 프로젝트입니다. 여러분은 인공지능의 기본 원리, 머신러닝의 학습 과정, Teachable Machine 실습, 공공데이터 탐색을 경험했습니다. 이제부터는 각자의 관심 분야를 공공데이터로 검토하고, 분석에서 얻은 인사이트를 실제 웹앱 또는 AI 서비스 프로토타입으로 구현합니다.</p>
+<p>최종 산출물은 보고서가 아니라 <strong>데이터 근거가 있는 작동 결과물</strong>입니다.</p>
+<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">문제 정의 → 데이터 수집 → 데이터 분석 → 인사이트 → AI 서비스 설계 → 구현</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="문제 정의 → 데이터 수집 → 데이터 분석 → 인사이트 → AI 서비스 설계 → 구현"><div></div></button></div></figure></div>
+<p>이 순서는 고정된 직선이 아닙니다. 데이터를 찾다가 문제를 좁힐 수 있고, 분석 결과가 예상과 다르면 질문을 바꿀 수 있습니다. 좋은 탐구는 처음 생각을 끝까지 고집하는 것이 아니라, 확인한 사실 때문에 더 정확해지는 과정입니다.</p>
+<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 이번 프로젝트의 미션 </p> <div class="lab-callout__body astro-mrmim4ef"> 각자의 관심 분야에서 출발해 공공데이터로 확인 가능한 질문을 만들고, 분석 결과를 바탕으로 사람들이 사용할 수 있는 웹앱 또는 AI 서비스 프로토타입을 구현합니다. </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="1-이미-가진-관심을-탐구-질문으로-바꾸기">1. 이미 가진 관심을 탐구 질문으로 바꾸기</h2><a class="sl-anchor-link" href="#1-이미-가진-관심을-탐구-질문으로-바꾸기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 이미 가진 관심을 탐구 질문으로 바꾸기”</span></a></div>
+<p>여러분은 이미 관심 분야가 있습니다. 진로, 사회 문제, 문화, 환경, 학교생활, 기술, 언어, 미디어, 경제, 복지, 교통처럼 출발점은 다양할 수 있습니다. 중요한 것은 관심 자체가 아니라 그 관심을 <strong>확인 가능한 질문</strong>으로 바꾸는 일입니다.</p>
 
 
 
@@ -110,119 +108,44 @@
 
 
 
+<table><thead><tr><th>출발점</th><th>탐구 질문으로 바꾸는 기준</th></tr></thead><tbody><tr><td>내가 관심 있는 분야</td><td>어떤 현상이나 문제가 실제로 있는가?</td></tr><tr><td>내가 중요하다고 생각하는 주장</td><td>어떤 자료로 확인하거나 반박할 수 있는가?</td></tr><tr><td>내가 만들고 싶은 서비스</td><td>어떤 사용자에게 어떤 정보가 필요한가?</td></tr><tr><td>내가 예상한 원인</td><td>데이터만으로 확인 가능한가, 추가 조사가 필요한가?</td></tr><tr><td>내가 바꾸고 싶은 상황</td><td>현재 상태와 목표 상태를 어떻게 비교할 수 있는가?</td></tr></tbody></table>
+<p>처음부터 완벽한 문제를 찾으려 하지 않습니다. 관심 분야를 말로 설명한 뒤, 공공데이터와 공식 자료로 확인할 수 있는 부분을 찾습니다.</p>
+<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> AI는 출처가 아닙니다 </p> <div class="lab-callout__body astro-mrmim4ef"> 생성형 AI의 답변은 탐색과 정리를 돕는 초안입니다. 통계 수치, 정책명, 기관명, 사례, 데이터 항목은 반드시 원자료나 공식 출처에서 다시 확인해야 합니다. </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="2-도메인-지식-만들기">2. 도메인 지식 만들기</h2><a class="sl-anchor-link" href="#2-도메인-지식-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 도메인 지식 만들기”</span></a></div>
+<p>도메인 지식은 어떤 분야를 이해하는 데 필요한 배경지식입니다. 전문가 수준의 지식을 요구하는 것이 아니라, 그 분야에서 사용하는 말, 관련된 사람, 공식 자료, 판단 기준, 쉽게 생기는 오해를 먼저 확인하는 과정입니다.</p>
+<p>도메인 지식이 부족하면 주제가 가벼운 감상으로 끝나거나, 데이터가 있어도 의미를 해석하지 못합니다. 그래서 이 프로젝트는 관심 분야를 바로 앱 아이디어로 바꾸지 않고, 먼저 문제의 맥락을 읽습니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="나는 다음 관심 분야를 공공데이터 기반 프로젝트로 발전시키려고 한다.
+관심 분야: [내용]
+내가 이미 알고 있거나 중요하다고 생각하는 점: [내용]
+궁금한 사회 현상 또는 생활 속 문제: [내용]
 
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>산출물</th><th>반드시 드러날 내용</th></tr></thead><tbody><tr><td>문제 정의</td><td>누가 어떤 상황에서 무엇을 어려워하는지, 왜 볼 만한 문제인지</td></tr><tr><td>도메인 지식 기록</td><td>주제와 관련된 용어, 이해관계자, 공식 자료, 조심할 오해</td></tr><tr><td>데이터 수집 기록</td><td>출처, 기간, 지역, 단위, 행의 의미, 수집 또는 조회 방법</td></tr><tr><td>분석 결과</td><td>표·그래프·계산 기준, 원자료 대조, 사실과 해석의 구분</td></tr><tr><td>인사이트</td><td>분석 결과가 사용자 문제와 서비스 기능으로 이어지는 이유</td></tr><tr><td>AI 서비스 설계</td><td>AI가 필요한 부분, 사람이 확인할 부분, 입력·처리·출력 흐름</td></tr><tr><td>구현 결과</td><td>실제로 실행되는 최소 웹앱 또는 핵심 기능 프로토타입</td></tr><tr><td>발표와 성찰</td><td>팀의 판단, 검증, 한계, AI 활용 후 성장한 점</td></tr></tbody></table>
-<div class="lab-callout lab-callout--checklist astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">☑️</span> 최소 완성 기준 </p> <div class="lab-callout__body astro-mrmim4ef"> 최소 기능 하나는 실제로 작동해야 합니다. 예를 들어 파일을 읽고 조건에 맞는 결과를 보여 주거나, 사용자의 선택에 따라 데이터 근거를 보여 주는 기능이 있어야 합니다. 더 복잡한 AI 모델이나 API 연결은 선택 확장입니다. </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="2-재미있는-문제에서-출발하기">2. 재미있는 문제에서 출발하기</h2><a class="sl-anchor-link" href="#2-재미있는-문제에서-출발하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 재미있는 문제에서 출발하기”</span></a></div>
-<p>재미는 가벼움이 아니라 계속 알아보고 싶게 만드는 힘입니다. 좋은 주제는 학생이 궁금해하고, 팀이 이야기하고 싶고, 데이터를 열어 보면 예상과 다른 점이 나올 가능성이 있습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="주제-선택의-세-기준">주제 선택의 세 기준</h3><a class="sl-anchor-link" href="#주제-선택의-세-기준"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “주제 선택의 세 기준”</span></a></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>기준</th><th>질문</th></tr></thead><tbody><tr><td>흥미</td><td>우리 팀이 진짜 궁금해하거나 사용해 보고 싶은가?</td></tr><tr><td>현실성</td><td>실제 사용자나 상황을 설명할 수 있는가?</td></tr><tr><td>데이터 가능성</td><td>확인할 수 있는 공식 자료, 기록, 관찰, 설문이 있는가?</td></tr></tbody></table>
-<p>처음부터 거창한 사회 문제를 고를 필요는 없습니다. 다만 질문이 너무 얕게 끝나지 않도록 한 번 더 깊게 바꿉니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>너무 가벼운 질문</th><th>더 깊은 탐구 질문</th><th>서비스로 이어지는 방향</th></tr></thead><tbody><tr><td>급식에 카레가 몇 번 나왔을까?</td><td>메뉴 반복성, 영양 기준, 선호도 자료를 함께 보면 급식 선택에 어떤 정보가 필요할까?</td><td>급식 메뉴 탐색·피드백 도구</td></tr><tr><td>우리 지역 청소년이 줄었을까?</td><td>청소년 인구 변화와 문화·체육 시설 수는 지역별로 균형이 맞을까?</td><td>청소년 시설 탐색·정책 제안 앱</td></tr><tr><td>날씨가 더워졌을까?</td><td>폭염일 변화가 등하교·야외활동 안전과 어떻게 연결될까?</td><td>학교생활 안전 알림 앱</td></tr><tr><td>영화는 어떤 장르가 인기일까?</td><td>장르·개봉 시기·관람 등급에 따라 흥행 패턴은 어떻게 달라질까?</td><td>영화 추천·상영 전략 탐색 앱</td></tr><tr><td>버스가 불편할까?</td><td>특정 시간대와 정류장의 이용량·대기 경험은 어떻게 다를까?</td><td>통학 교통 정보 도우미</td></tr></tbody></table>
-<div class="sl-heading-wrapper level-h2"><h2 id="3-도메인-지식-만들기">3. 도메인 지식 만들기</h2><a class="sl-anchor-link" href="#3-도메인-지식-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 도메인 지식 만들기”</span></a></div>
-<p>어떤 분야를 잘 모르면 좋은 질문을 만들기 어렵습니다. 그래서 프로젝트 초반에는 주제를 바로 확정하지 않고, 그 분야의 기본 배경지식을 빠르게 만듭니다.</p>
-<p>도메인 지식은 전문가가 되는 것이 아닙니다. <strong>그 분야의 말, 사람, 자료, 기준, 오해</strong>를 알아가며 질문을 더 정확하게 만드는 과정입니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀은 다음 주제를 탐구하려고 해.
-주제 또는 관심 분야: [내용]
-사용자 또는 관련 사람: [내용]
-처음 떠오른 문제: [내용]
-
-나는 아직 이 분야의 배경지식이 부족해.
-고등학생 수준에서 이 문제를 이해하기 위해 먼저 알아야 할 도메인 지식을 정리해줘.
-
+고등학생 수준에서 이 분야를 정확히 이해하기 위해 필요한 도메인 지식을 정리해줘.
 다음 형식으로 답해줘.
-1. 이 분야에서 자주 쓰는 핵심 용어 5개
-2. 이 문제와 관련된 이해관계자
-3. 공식 자료나 공공데이터를 찾을 때 사용할 검색어
-4. 문제를 너무 단순하게 보면 생길 수 있는 오해
-5. 데이터로 확인할 수 있는 질문과 데이터만으로는 알 수 없는 질문
-6. 더 깊이 탐구하려면 읽어볼 공식 자료나 기관 후보
+1. 핵심 용어와 쉬운 설명
+2. 관련된 이해관계자: 영향을 받는 사람, 관리하는 기관, 서비스를 사용할 사람
+3. 실제 문제 상황 또는 정책·사회적 맥락
+4. 공공데이터나 공식 자료를 찾을 때 사용할 검색어
+5. 데이터로 확인 가능한 질문과 데이터만으로 단정할 수 없는 질문
+6. 쉽게 생길 수 있는 오해나 편견
+7. 반드시 공식 출처로 다시 확인해야 할 내용
 
-확실하지 않은 내용은 단정하지 말고 확인 필요라고 표시해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">도메인 지식 빠르게 만들기 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="도메인 지식 빠르게 만들기 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀은 다음 주제를 탐구하려고 해.
-주제 또는 관심 분야: [내용]
-사용자 또는 관련 사람: [내용]
-처음 떠오른 문제: [내용]
+확실하지 않은 내용은 단정하지 말고 확인 필요라고 표시해줘. AI의 답변은 출처가 아니라 탐색을 돕는 초안이라는 점을 지켜줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">도메인 지식 탐색 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="도메인 지식 탐색 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">나는 다음 관심 분야를 공공데이터 기반 프로젝트로 발전시키려고 한다.
+관심 분야: [내용]
+내가 이미 알고 있거나 중요하다고 생각하는 점: [내용]
+궁금한 사회 현상 또는 생활 속 문제: [내용]
 
-나는 아직 이 분야의 배경지식이 부족해.
-고등학생 수준에서 이 문제를 이해하기 위해 먼저 알아야 할 도메인 지식을 정리해줘.
-
+고등학생 수준에서 이 분야를 정확히 이해하기 위해 필요한 도메인 지식을 정리해줘.
 다음 형식으로 답해줘.
-1. 이 분야에서 자주 쓰는 핵심 용어 5개
-2. 이 문제와 관련된 이해관계자
-3. 공식 자료나 공공데이터를 찾을 때 사용할 검색어
-4. 문제를 너무 단순하게 보면 생길 수 있는 오해
-5. 데이터로 확인할 수 있는 질문과 데이터만으로는 알 수 없는 질문
-6. 더 깊이 탐구하려면 읽어볼 공식 자료나 기관 후보
+1. 핵심 용어와 쉬운 설명
+2. 관련된 이해관계자: 영향을 받는 사람, 관리하는 기관, 서비스를 사용할 사람
+3. 실제 문제 상황 또는 정책·사회적 맥락
+4. 공공데이터나 공식 자료를 찾을 때 사용할 검색어
+5. 데이터로 확인 가능한 질문과 데이터만으로 단정할 수 없는 질문
+6. 쉽게 생길 수 있는 오해나 편견
+7. 반드시 공식 출처로 다시 확인해야 할 내용
 
-확실하지 않은 내용은 단정하지 말고 확인 필요라고 표시해줘.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
-<div class="sl-heading-wrapper level-h3"><h3 id="도메인-지식-탐색-카드">도메인 지식 탐색 카드</h3><a class="sl-anchor-link" href="#도메인-지식-탐색-카드"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “도메인 지식 탐색 카드”</span></a></div>
+확실하지 않은 내용은 단정하지 말고 확인 필요라고 표시해줘. AI의 답변은 출처가 아니라 탐색을 돕는 초안이라는 점을 지켜줘.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
+<div class="sl-heading-wrapper level-h3"><h3 id="도메인-탐색에서-확인할-것">도메인 탐색에서 확인할 것</h3><a class="sl-anchor-link" href="#도메인-탐색에서-확인할-것"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “도메인 탐색에서 확인할 것”</span></a></div>
 
 
 
@@ -256,81 +179,14 @@
 
 
 
-<table><thead><tr><th>항목</th><th>작성할 내용</th></tr></thead><tbody><tr><td>핵심 용어</td><td>이 주제를 이해하려면 알아야 할 말</td></tr><tr><td>관련 사람</td><td>영향을 받는 사람, 사용하는 사람, 관리하는 사람</td></tr><tr><td>공식 자료</td><td>기관, 공공데이터, 통계표, 보고서, 안내문</td></tr><tr><td>조심할 오해</td><td>데이터만 보고 쉽게 단정하면 안 되는 것</td></tr><tr><td>확인 가능한 질문</td><td>데이터로 비교하거나 계산할 수 있는 질문</td></tr><tr><td>확인하기 어려운 질문</td><td>인터뷰·관찰·추가 자료가 필요한 질문</td></tr></tbody></table>
-<p>도메인 지식을 만들면 문제 정의가 바뀔 수 있습니다. 그것은 실패가 아니라 문제를 더 정확히 이해했다는 뜻입니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="4-문제를-발견하고-구체화하기">4. 문제를 발견하고 구체화하기</h2><a class="sl-anchor-link" href="#4-문제를-발견하고-구체화하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 문제를 발견하고 구체화하기”</span></a></div>
-<p>프로젝트의 출발점은 사용자의 상황을 이해하는 일입니다. 어떤 앱을 만들지보다 <strong>누가 무엇을 하려고 하며, 어느 순간에 어려움을 겪는지</strong>부터 살펴봅시다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="실제-장면에서-시작하기">실제 장면에서 시작하기</h3><a class="sl-anchor-link" href="#실제-장면에서-시작하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실제 장면에서 시작하기”</span></a></div>
-<p>팀원 각자가 떠올린 상황을 이야기하고, 함께 더 알아보고 싶은 문제를 고릅니다. 사용자가 지금 하는 일을 직접 따라가 보거나, 그 일을 해 본 사람에게 경험을 물어봅니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>생각할 질문</th><th>살펴볼 내용</th></tr></thead><tbody><tr><td>누구의 상황인가?</td><td>사용할 사람과 이용하는 장소·시간</td></tr><tr><td>무엇을 하려는가?</td><td>사용자가 이루려는 목적과 필요한 정보</td></tr><tr><td>지금은 어떻게 하는가?</td><td>현재 방법과 순서, 이미 도움을 주는 도구</td></tr><tr><td>어디에서 불편한가?</td><td>반복하는 일, 찾기 어려운 정보, 혼동하는 지점</td></tr><tr><td>무엇이 달라지면 좋을까?</td><td>사용자가 더 쉽게 할 수 있기를 바라는 행동</td></tr><tr><td>무엇이 재미있는가?</td><td>팀이 끝까지 궁금해할 만한 지점</td></tr></tbody></table>
-<p>대화에서 들은 말과 직접 관찰한 내용은 확인한 사실로 적습니다. 팀이 추측한 이유는 더 살펴볼 가정으로 남깁니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="문제를-한-문장으로-쓰기">문제를 한 문장으로 쓰기</h3><a class="sl-anchor-link" href="#문제를-한-문장으로-쓰기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “문제를 한 문장으로 쓰기”</span></a></div>
+<table><thead><tr><th>항목</th><th>확인할 내용</th></tr></thead><tbody><tr><td>핵심 용어</td><td>이 분야에서 자주 쓰는 말과 정확한 의미</td></tr><tr><td>이해관계자</td><td>문제의 영향을 받는 사람, 관리하는 기관, 서비스를 사용할 사람</td></tr><tr><td>실제 상황</td><td>생활 속 사례, 정책, 제도, 현장의 불편</td></tr><tr><td>공식 자료</td><td>공공기관 자료, 통계표, 보고서, 안내문, 원문 링크</td></tr><tr><td>조심할 오해</td><td>데이터 하나만 보고 쉽게 단정하면 안 되는 것</td></tr><tr><td>확인 가능한 질문</td><td>자료로 비교하거나 계산할 수 있는 질문</td></tr></tbody></table>
+<p>팀 토론에서는 AI가 정리한 내용을 그대로 받아들이지 않습니다. 이해가 되지 않는 용어, 출처가 없는 설명, 너무 넓은 주장, 검증이 필요한 수치를 표시하고 다시 확인합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="3-문제-정의하기">3. 문제 정의하기</h2><a class="sl-anchor-link" href="#3-문제-정의하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 문제 정의하기”</span></a></div>
+<p>문제 정의는 “무엇을 만들까?”보다 앞에 옵니다. 먼저 누가 어떤 상황에서 어떤 어려움이나 정보 부족을 겪는지 설명해야 합니다.</p>
 <blockquote>
-<p>[사용자]는 [상황]에서 [하려는 일]을 하고 싶지만 [현재의 어려움]을 겪는다. 우리는 [데이터로 확인할 부분]을 살펴보고 [도울 방법]을 만들어 보려고 한다.</p>
+<p>[사용자 또는 영향을 받는 사람]은 [상황]에서 [하려는 일]을 하고 싶지만 [현재의 어려움]을 겪는다. 우리는 [공공데이터로 확인할 부분]을 분석하여 [도울 방법]을 설계하려고 한다.</p>
 </blockquote>
-<p>이 문장은 탐구의 첫 출발점입니다. 모든 내용을 처음부터 확정하려 하기보다 지금 이해한 상황을 표현해 봅시다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀이 살펴보는 상황은 다음과 같아.
-사용자와 상황: [내용]
-현재 사용하는 방법과 불편: [내용]
-도메인 지식 탐색에서 새롭게 알게 된 점: [내용]
-직접 관찰하거나 물어본 사실: [내용]
-아직 확인할 가정: [내용]
-
-지금은 문제 정의와 탐구 질문을 다듬는 단계야.
-1. 우리 설명에서 더 알아볼 점을 질문해줘.
-2. 너무 가볍거나 막연한 질문을 더 깊은 질문으로 바꿔줘.
-3. 데이터로 확인 가능한 질문을 제안하고 필요한 항목과 비교 기준을 설명해줘.
-4. 문제 정의가 바뀔 수 있는 다른 해석도 함께 제안해줘.
-5. 최종 문제 정의와 질문은 우리가 정할 수 있도록 선택지를 나눠줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">문제와 질문을 다듬는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="문제와 질문을 다듬는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀이 살펴보는 상황은 다음과 같아.
-사용자와 상황: [내용]
-현재 사용하는 방법과 불편: [내용]
-도메인 지식 탐색에서 새롭게 알게 된 점: [내용]
-직접 관찰하거나 물어본 사실: [내용]
-아직 확인할 가정: [내용]
-
-지금은 문제 정의와 탐구 질문을 다듬는 단계야.
-1. 우리 설명에서 더 알아볼 점을 질문해줘.
-2. 너무 가볍거나 막연한 질문을 더 깊은 질문으로 바꿔줘.
-3. 데이터로 확인 가능한 질문을 제안하고 필요한 항목과 비교 기준을 설명해줘.
-4. 문제 정의가 바뀔 수 있는 다른 해석도 함께 제안해줘.
-5. 최종 문제 정의와 질문은 우리가 정할 수 있도록 선택지를 나눠줘.</code></pre> </section>  
-<p><strong>학습지 1</strong>에 현재의 문제 정의와 확인할 질문을 기록하고, 자료를 살펴보며 계속 보완합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="5-데이터를-수집하고-선택하기">5. 데이터를 수집하고 선택하기</h2><a class="sl-anchor-link" href="#5-데이터를-수집하고-선택하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 데이터를 수집하고 선택하기”</span></a></div>
-<p>문제를 정의하면서 자료를 함께 찾아봅니다. <a href="/hyfl-ai-lab/data/ch1/">공공데이터 탐색에서 살펴본 포털</a>을 출발점으로 삼고, 문제에 더 적합한 학습 자료나 직접 기록한 자료도 검토할 수 있습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="데이터-수집-방법-고르기">데이터 수집 방법 고르기</h3><a class="sl-anchor-link" href="#데이터-수집-방법-고르기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “데이터 수집 방법 고르기”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="좋은-문제-정의의-조건">좋은 문제 정의의 조건</h3><a class="sl-anchor-link" href="#좋은-문제-정의의-조건"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “좋은 문제 정의의 조건”</span></a></div>
 
 
 
@@ -360,42 +216,103 @@
 
 
 
+<table><thead><tr><th>조건</th><th>질문</th></tr></thead><tbody><tr><td>구체성</td><td>사용자가 누구이고 어떤 상황인지 설명할 수 있는가?</td></tr><tr><td>확인 가능성</td><td>데이터로 살펴볼 수 있는 부분이 있는가?</td></tr><tr><td>의미</td><td>단순 호기심을 넘어 사용자나 공동체와 연결되는가?</td></tr><tr><td>구현 가능성</td><td>수업 시간 안에 최소 기능으로 표현할 수 있는가?</td></tr><tr><td>수정 가능성</td><td>데이터와 피드백에 따라 방향을 바꿀 수 있는가?</td></tr></tbody></table>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀은 다음 관심 분야를 탐구하고 있다.
+관심 분야: [내용]
+사용자 또는 영향을 받는 사람: [내용]
+현재 문제라고 생각하는 상황: [내용]
+도메인 탐색에서 확인한 사실: [내용]
+아직 가정이거나 더 확인해야 할 점: [내용]
+
+이 내용을 바탕으로 문제 정의를 다듬어줘.
+1. 문제를 너무 넓거나 가볍게 만든 부분을 짚어줘.
+2. 데이터로 확인 가능한 탐구 질문 3개를 제안해줘.
+3. 각 질문에 필요한 데이터 항목, 비교 기준, 기간 또는 지역 범위를 제안해줘.
+4. 사용자의 실제 상황을 더 잘 이해하기 위해 묻거나 관찰할 질문을 제안해줘.
+5. 최종 문제 정의 문장을 2~3개 버전으로 만들어줘.
+
+단, 확인되지 않은 사회적 원인이나 통계 수치를 만들어내지 말고, 확인 필요라고 표시해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">문제 정의 다듬기 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="문제 정의 다듬기 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀은 다음 관심 분야를 탐구하고 있다.
+관심 분야: [내용]
+사용자 또는 영향을 받는 사람: [내용]
+현재 문제라고 생각하는 상황: [내용]
+도메인 탐색에서 확인한 사실: [내용]
+아직 가정이거나 더 확인해야 할 점: [내용]
+
+이 내용을 바탕으로 문제 정의를 다듬어줘.
+1. 문제를 너무 넓거나 가볍게 만든 부분을 짚어줘.
+2. 데이터로 확인 가능한 탐구 질문 3개를 제안해줘.
+3. 각 질문에 필요한 데이터 항목, 비교 기준, 기간 또는 지역 범위를 제안해줘.
+4. 사용자의 실제 상황을 더 잘 이해하기 위해 묻거나 관찰할 질문을 제안해줘.
+5. 최종 문제 정의 문장을 2~3개 버전으로 만들어줘.
+
+단, 확인되지 않은 사회적 원인이나 통계 수치를 만들어내지 말고, 확인 필요라고 표시해줘.</code></pre> </section>  
+<div class="sl-heading-wrapper level-h3"><h3 id="팀-토론">팀 토론</h3><a class="sl-anchor-link" href="#팀-토론"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “팀 토론”</span></a></div>
+<p>문제 정의를 정한 뒤 다음 질문으로 서로 점검합니다.</p>
 
 
 
 
 
 
-<table><thead><tr><th>방법</th><th>어울리는 상황</th><th>조심할 점</th></tr></thead><tbody><tr><td>파일 데이터</td><td>CSV·XLSX로 제공되는 공공자료를 분석할 때</td><td>열 이름, 단위, 기준 시점, 갱신일 확인</td></tr><tr><td>API</td><td>조건을 바꿔 반복 조회하거나 최신 자료가 필요할 때</td><td>인증키, 호출 제한, 공개 코드에 키를 올리지 않기</td></tr><tr><td>MCP</td><td>AI와 연결된 통계 도구로 자료 후보를 찾을 때</td><td>AI 답변을 원자료와 교차 확인</td></tr><tr><td>설문</td><td>선호도·경험·의견처럼 공공데이터에 없는 정보를 볼 때</td><td>문항 편향, 개인정보, 응답자 수와 대표성</td></tr><tr><td>인터뷰·관찰</td><td>사용자의 실제 상황과 불편을 이해할 때</td><td>개인을 식별할 수 있는 기록 공개 금지</td></tr></tbody></table>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="다음 탐구 질문에 맞는 데이터를 찾고 싶어.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>토론 질문</th><th>목적</th></tr></thead><tbody><tr><td>이 문제는 누구에게 실제로 의미가 있는가?</td><td>사용자를 분명히 하기</td></tr><tr><td>우리가 지금 사실이라고 말한 것은 확인된 내용인가?</td><td>사실과 가정 구분하기</td></tr><tr><td>공공데이터로 확인할 수 있는 부분은 어디까지인가?</td><td>분석 범위 정하기</td></tr><tr><td>데이터만으로 알 수 없는 것은 무엇인가?</td><td>추가 조사 필요성 찾기</td></tr><tr><td>예상 결과가 틀리면 문제를 어떻게 바꿀 수 있는가?</td><td>탐구의 유연성 확보하기</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="4-데이터-수집-계획-세우기">4. 데이터 수집 계획 세우기</h2><a class="sl-anchor-link" href="#4-데이터-수집-계획-세우기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 데이터 수집 계획 세우기”</span></a></div>
+<p>공공데이터는 공공기관이 생성하거나 관리하고 공개하는 자료입니다. 프로젝트에서는 공식 자료를 우선 사용하고, 필요한 경우 설문·인터뷰·관찰 기록을 보조 자료로 활용할 수 있습니다.</p>
+<p>대표적인 공공데이터 탐색 출발점은 공공데이터포털, KOSIS 국가통계포털, 지방자치단체 열린데이터, 기상자료개방포털, 교육·문화·교통 관련 공공기관의 공개 자료입니다. 단, 실제 프로젝트에서는 항상 원문 페이지의 제공 기관, 갱신일, 이용 조건을 확인해야 합니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="다음 탐구 질문에 맞는 공공데이터를 찾고 싶다.
 탐구 질문: [내용]
 사용자와 문제 상황: [내용]
-필요하다고 생각하는 항목: [내용]
+필요하다고 생각하는 데이터 항목: [내용]
+비교하고 싶은 기준: [기간, 지역, 집단, 유형 등]
 
-다음 기준으로 데이터 수집 계획을 세워줘.
-1. 찾아볼 만한 공공데이터 사이트와 검색어
-2. 파일, API, MCP, 설문, 인터뷰, 관찰 중 어떤 방법이 어울리는지
-3. 각 자료에서 확인해야 할 출처, 기간, 지역, 단위, 행의 의미
-4. 자료 후보를 비교하는 기준
-5. 개인정보나 공개 범위에서 조심할 점
-6. 데이터가 부족할 때 질문을 어떻게 조정할 수 있는지
+데이터 수집 계획을 세워줘.
+1. 우선 확인할 공식 자료와 공공데이터 사이트 후보
+2. 사용할 검색어와 검색어를 바꾸는 방법
+3. 파일, API, MCP, 설문, 인터뷰, 관찰 중 적절한 방법
+4. 자료를 고를 때 확인할 출처, 작성 기관, 갱신일, 기간, 지역, 단위, 행의 의미
+5. 자료 후보를 비교하는 기준
+6. 개인정보, 저작권, 공개 범위, API 키 보안에서 조심할 점
+7. 데이터가 부족할 때 질문을 어떻게 좁히거나 바꿀 수 있는지
 
-공식 출처가 필요한 내용은 확인 필요라고 표시해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">데이터 수집 계획 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="데이터 수집 계획 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">다음 탐구 질문에 맞는 데이터를 찾고 싶어.
+공식 출처가 필요한 내용은 확인 필요라고 표시해줘. AI가 임의로 만든 데이터나 출처는 사용하지 않게 안내해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">데이터 수집 계획 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="데이터 수집 계획 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">다음 탐구 질문에 맞는 공공데이터를 찾고 싶다.
 탐구 질문: [내용]
 사용자와 문제 상황: [내용]
-필요하다고 생각하는 항목: [내용]
+필요하다고 생각하는 데이터 항목: [내용]
+비교하고 싶은 기준: [기간, 지역, 집단, 유형 등]
 
-다음 기준으로 데이터 수집 계획을 세워줘.
-1. 찾아볼 만한 공공데이터 사이트와 검색어
-2. 파일, API, MCP, 설문, 인터뷰, 관찰 중 어떤 방법이 어울리는지
-3. 각 자료에서 확인해야 할 출처, 기간, 지역, 단위, 행의 의미
-4. 자료 후보를 비교하는 기준
-5. 개인정보나 공개 범위에서 조심할 점
-6. 데이터가 부족할 때 질문을 어떻게 조정할 수 있는지
+데이터 수집 계획을 세워줘.
+1. 우선 확인할 공식 자료와 공공데이터 사이트 후보
+2. 사용할 검색어와 검색어를 바꾸는 방법
+3. 파일, API, MCP, 설문, 인터뷰, 관찰 중 적절한 방법
+4. 자료를 고를 때 확인할 출처, 작성 기관, 갱신일, 기간, 지역, 단위, 행의 의미
+5. 자료 후보를 비교하는 기준
+6. 개인정보, 저작권, 공개 범위, API 키 보안에서 조심할 점
+7. 데이터가 부족할 때 질문을 어떻게 좁히거나 바꿀 수 있는지
 
-공식 출처가 필요한 내용은 확인 필요라고 표시해줘.</code></pre> </section>  
-<div class="sl-heading-wrapper level-h3"><h3 id="실제-내용을-열어-보기">실제 내용을 열어 보기</h3><a class="sl-anchor-link" href="#실제-내용을-열어-보기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “실제 내용을 열어 보기”</span></a></div>
-<p>자료 후보를 찾으면 일부 기록을 직접 읽어 봅니다. 제목뿐 아니라 한 행이나 문장이 무엇을 뜻하는지, 어떤 항목이 들어 있는지, 어떤 기간과 대상을 다루는지 확인합니다.</p>
+공식 출처가 필요한 내용은 확인 필요라고 표시해줘. AI가 임의로 만든 데이터나 출처는 사용하지 않게 안내해줘.</code></pre> </section>  
+<div class="sl-heading-wrapper level-h3"><h3 id="자료를-고를-때-확인할-기준">자료를 고를 때 확인할 기준</h3><a class="sl-anchor-link" href="#자료를-고를-때-확인할-기준"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “자료를 고를 때 확인할 기준”</span></a></div>
 
 
 
@@ -425,31 +342,6 @@
 
 
 
-<table><thead><tr><th>확인할 내용</th><th>선택에 도움이 되는 질문</th></tr></thead><tbody><tr><td>출처와 작성 방식</td><td>누가 어떤 목적으로 만들었을까?</td></tr><tr><td>범위와 기준 시점</td><td>우리 질문의 대상·기간과 맞을까?</td></tr><tr><td>항목과 단위</td><td>무엇을 비교하거나 계산할 수 있을까?</td></tr><tr><td>자료의 상태</td><td>빈 값·중복·표기 차이는 어떻게 살펴볼까?</td></tr><tr><td>이용 조건</td><td>수업, AI 입력, 온라인 공유에 각각 어느 범위까지 사용할 수 있을까?</td></tr></tbody></table>
-<p>질문에 맞는 자료를 선택한 뒤 원본과 분석용 사본을 구분해 보관합니다. 파일명, 원문 주소, 확인일과 조회 조건을 함께 적어 두면 결과를 다시 확인하기 쉽습니다.</p>
-<p><strong>학습지 2</strong>에 자료의 선택 이유와 분석 범위를 적습니다. 탐구 질문이 달라졌다면 <strong>학습지 1</strong>의 문제 정의도 함께 고칩니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="6-ai와-데이터-분석하기">6. AI와 데이터 분석하기</h2><a class="sl-anchor-link" href="#6-ai와-데이터-분석하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. AI와 데이터 분석하기”</span></a></div>
-<p>데이터 분석은 질문에 답하기 위해 자료를 정리하고 비교하는 과정입니다. 개수를 세거나 비율을 비교할 수도 있고, 시간 변화·지역 차이·집단 차이·관계·분포를 볼 수도 있습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="분석-기준-세우기">분석 기준 세우기</h3><a class="sl-anchor-link" href="#분석-기준-세우기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “분석 기준 세우기”</span></a></div>
-<p>먼저 사용할 범위를 정하고, 날짜·단위·표기 차이와 중복을 살펴봅니다. 빈 값은 확인이 필요한 항목으로 표시하고, 분석에 포함하거나 제외한 기준을 남깁니다.</p>
-<p>같은 조건에서 비교하고 있는지 확인한 뒤 질문에 맞는 표나 그래프를 만듭니다. 비율은 분자와 분모를, 평균은 포함한 기록을, 범주 비교는 분류 기준과 근거 문장을 설명할 수 있어야 합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="첨부한 실제 자료로 [탐구 질문]을 살펴보려고 해.
-1. 읽은 파일, 한 기록의 의미, 사용할 항목과 단위를 먼저 확인해줘.
-2. 범위·분류·비교 기준과 빈 값·중복을 처리할 방법을 설명해줘.
-3. 질문에 맞는 표나 그래프를 만들고, 원자료와 계산·분류 결과를 구분해줘.
-4. 내가 다시 확인할 수 있도록 계산식 또는 근거 문장을 보여줘.
-5. 확인한 사실, 가능한 해석, 원인 가설, 반례, 추가로 필요한 자료를 나눠 설명해줘.
-6. 이 분석이 처음의 문제 정의를 유지하게 하는지, 수정하게 하는지 제안해줘.
-자료를 읽기 어렵거나 정보가 부족한 부분은 확인 필요로 표시해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">분석 기준과 결과를 확인하는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="분석 기준과 결과를 확인하는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">첨부한 실제 자료로 [탐구 질문]을 살펴보려고 해.
-1. 읽은 파일, 한 기록의 의미, 사용할 항목과 단위를 먼저 확인해줘.
-2. 범위·분류·비교 기준과 빈 값·중복을 처리할 방법을 설명해줘.
-3. 질문에 맞는 표나 그래프를 만들고, 원자료와 계산·분류 결과를 구분해줘.
-4. 내가 다시 확인할 수 있도록 계산식 또는 근거 문장을 보여줘.
-5. 확인한 사실, 가능한 해석, 원인 가설, 반례, 추가로 필요한 자료를 나눠 설명해줘.
-6. 이 분석이 처음의 문제 정의를 유지하게 하는지, 수정하게 하는지 제안해줘.
-자료를 읽기 어렵거나 정보가 부족한 부분은 확인 필요로 표시해줘.</code></pre> </section>  
-<p>AI가 만든 결과에서 대표적인 값이나 문장을 골라 원자료와 직접 대조합니다. 어떤 기록과 계산을 사용했는지 설명하면서 결과를 읽어 봅시다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="그래프가-답해야-하는-질문">그래프가 답해야 하는 질문</h3><a class="sl-anchor-link" href="#그래프가-답해야-하는-질문"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “그래프가 답해야 하는 질문”</span></a></div>
 
 
 
@@ -462,10 +354,41 @@
 
 
 
+<table><thead><tr><th>기준</th><th>확인 질문</th></tr></thead><tbody><tr><td>출처</td><td>누가 만든 자료인가? 공식 기관 또는 원자료인가?</td></tr><tr><td>기준 시점</td><td>어느 날짜 또는 어느 기간의 자료인가?</td></tr><tr><td>범위</td><td>어느 지역, 집단, 대상을 포함하는가?</td></tr><tr><td>단위</td><td>명, 건, %, 원, 회, 지점 등 단위가 무엇인가?</td></tr><tr><td>행의 의미</td><td>한 줄이 한 사람, 한 지역, 한 날짜, 한 사건 중 무엇을 뜻하는가?</td></tr><tr><td>항목</td><td>탐구 질문에 필요한 열이 실제로 있는가?</td></tr><tr><td>이용 조건</td><td>수업, 발표, 웹 공개에 사용할 수 있는가?</td></tr><tr><td>한계</td><td>누락, 지연, 표본, 집계 방식의 제한이 있는가?</td></tr></tbody></table>
+<p>파일, API, MCP, 설문, 인터뷰는 서로 경쟁하는 방법이 아닙니다. 탐구 질문에 맞게 선택합니다. API 키가 필요한 자료는 공개 저장소나 화면에 키를 노출하지 않습니다. 개인정보가 포함될 수 있는 자료는 수집하지 않거나 익명화하고, 공개 범위를 제한합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="5-데이터-읽기와-분석하기">5. 데이터 읽기와 분석하기</h2><a class="sl-anchor-link" href="#5-데이터-읽기와-분석하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 데이터 읽기와 분석하기”</span></a></div>
+<p>분석은 그래프를 많이 만드는 일이 아닙니다. 탐구 질문에 답하기 위해 자료를 정리하고 비교하는 과정입니다.</p>
+<p>분석 전에 먼저 데이터의 구조를 읽습니다. 한 행이 무엇을 뜻하는지, 어떤 열을 사용할지, 단위가 무엇인지, 비교 기준이 공정한지 확인합니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="첨부하거나 제공한 실제 데이터로 다음 탐구 질문을 분석하려고 한다.
+탐구 질문: [내용]
+데이터 출처와 파일 또는 표 이름: [내용]
+분석에 사용할 기간, 지역, 집단, 항목: [내용]
 
+다음 순서로 도와줘.
+1. 데이터의 한 행이 무엇을 의미하는지, 주요 열과 단위를 먼저 확인해줘.
+2. 결측치, 중복, 표기 차이, 이상값을 확인할 방법을 제안해줘.
+3. 탐구 질문에 맞는 표와 그래프를 추천하고 이유를 설명해줘.
+4. 필요한 계산식, 분류 기준, 필터 기준을 보여줘.
+5. 데이터에서 직접 확인한 사실과 가능한 해석을 구분해줘.
+6. 원인이라고 단정할 수 없는 부분, 반례, 추가로 필요한 자료를 알려줘.
+7. 분석 결과 때문에 문제 정의나 서비스 방향을 수정해야 할 가능성을 제안해줘.
 
+확인하지 못한 값이나 출처는 추측하지 말고 확인 필요라고 표시해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">데이터 분석 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="데이터 분석 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">첨부하거나 제공한 실제 데이터로 다음 탐구 질문을 분석하려고 한다.
+탐구 질문: [내용]
+데이터 출처와 파일 또는 표 이름: [내용]
+분석에 사용할 기간, 지역, 집단, 항목: [내용]
 
+다음 순서로 도와줘.
+1. 데이터의 한 행이 무엇을 의미하는지, 주요 열과 단위를 먼저 확인해줘.
+2. 결측치, 중복, 표기 차이, 이상값을 확인할 방법을 제안해줘.
+3. 탐구 질문에 맞는 표와 그래프를 추천하고 이유를 설명해줘.
+4. 필요한 계산식, 분류 기준, 필터 기준을 보여줘.
+5. 데이터에서 직접 확인한 사실과 가능한 해석을 구분해줘.
+6. 원인이라고 단정할 수 없는 부분, 반례, 추가로 필요한 자료를 알려줘.
+7. 분석 결과 때문에 문제 정의나 서비스 방향을 수정해야 할 가능성을 제안해줘.
 
+확인하지 못한 값이나 출처는 추측하지 말고 확인 필요라고 표시해줘.</code></pre> </section>  
+<div class="sl-heading-wrapper level-h3"><h3 id="분석-관점-고르기">분석 관점 고르기</h3><a class="sl-anchor-link" href="#분석-관점-고르기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “분석 관점 고르기”</span></a></div>
 
 
 
@@ -490,18 +413,39 @@
 
 
 
-<table><thead><tr><th>보고 싶은 것</th><th>그래프 또는 표</th><th>예</th></tr></thead><tbody><tr><td>시간에 따른 변화</td><td>선그래프</td><td>연도별 청소년 인구 변화</td></tr><tr><td>집단·지역 비교</td><td>막대그래프</td><td>지역별 시설 수 비교</td></tr><tr><td>전체 중 비율</td><td>누적 막대그래프, 원그래프</td><td>유형별 비율</td></tr><tr><td>두 값의 관계</td><td>산점도</td><td>시설 수와 이용자 수의 관계</td></tr><tr><td>순위와 집중</td><td>막대그래프, 표</td><td>많이 반복되는 메뉴 TOP 10</td></tr><tr><td>지도·공간 차이</td><td>지도, 지역별 표</td><td>구별 사고 건수 또는 시설 접근성</td></tr></tbody></table>
-<p><strong>학습지 3</strong>에 핵심 표·그래프와 계산 기준을 남깁니다. 분석 때문에 달라진 문제나 기능이 있다면 앞의 기록에 연결합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="7-인사이트-만들기">7. 인사이트 만들기</h2><a class="sl-anchor-link" href="#7-인사이트-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “7. 인사이트 만들기”</span></a></div>
-<p>인사이트는 단순한 결과 요약이 아닙니다. <strong>데이터에서 확인한 사실이 사용자 상황에서 어떤 의미를 가지며, 어떤 기능으로 이어질 수 있는지 판단한 것</strong>입니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>보고 싶은 것</th><th>적절한 방법</th><th>확인할 점</th></tr></thead><tbody><tr><td>시간 변화</td><td>연도별·월별 변화 표와 선그래프</td><td>기간이 충분한가? 기준이 바뀌지 않았는가?</td></tr><tr><td>지역 차이</td><td>지역별 비교 표와 막대그래프</td><td>인구나 규모 차이를 고려해야 하는가?</td></tr><tr><td>집단 차이</td><td>유형·연령·성별·분류별 비교</td><td>분류 기준이 명확한가?</td></tr><tr><td>비율</td><td>전체 대비 비율 계산</td><td>분모가 무엇인지 설명할 수 있는가?</td></tr><tr><td>순위</td><td>상위·하위 항목 비교</td><td>값이 큰 이유를 단정하지 않는가?</td></tr><tr><td>관계</td><td>두 변수의 산점도 또는 교차표</td><td>상관을 원인으로 해석하지 않는가?</td></tr><tr><td>이상값</td><td>평균에서 크게 벗어난 값 확인</td><td>오류인지 의미 있는 사례인지 확인했는가?</td></tr></tbody></table>
+<p>AI에게 분석을 맡길 때도 원자료와 비교합니다. AI가 만든 표나 그래프가 실제 파일의 어떤 열과 어떤 계산에서 나온 것인지 확인해야 합니다.</p>
+<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 상관관계와 인과관계 </p> <div class="lab-callout__body astro-mrmim4ef"> 두 값이 함께 움직인다고 해서 하나가 다른 하나의 원인이라고 말할 수는 없습니다. 원인을 주장하려면 추가 자료, 비교 조건, 다른 설명 가능성을 함께 검토해야 합니다. </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="6-인사이트-도출하기">6. 인사이트 도출하기</h2><a class="sl-anchor-link" href="#6-인사이트-도출하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 인사이트 도출하기”</span></a></div>
+<p>인사이트는 “그래프가 이렇게 나왔다”가 아닙니다. 데이터에서 확인한 사실을 사용자 상황과 연결하여, 어떤 서비스 기능이나 판단으로 이어질 수 있는지 설명하는 것입니다.</p>
 <blockquote>
-<p>자료에서 [확인한 사실]을 발견했다.<br/>
-이 사실은 [사용자 상황]에서 [의미]가 있다고 생각한다.<br/>
-그래서 [필요한 정보·기능·처리 기준]을 설계하려고 한다.</p>
+<p>자료에서 [확인한 사실]을 발견했다. 이 사실은 [사용자 상황]에서 [의미]가 있다. 그래서 우리 서비스는 [필요한 정보 또는 기능]을 제공해야 한다.</p>
 </blockquote>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="분석 결과를 바탕으로 인사이트를 정리하려고 해.
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="분석 결과를 바탕으로 인사이트를 정리하려고 한다.
 사용자와 문제: [내용]
-분석에서 확인한 사실: [내용]
+데이터에서 확인한 사실: [내용]
+그래프나 계산으로 확인한 근거: [내용]
 예상과 달랐던 점: [내용]
 데이터의 한계: [내용]
 
@@ -510,12 +454,13 @@
 2. 그 사실이 사용자 상황에서 갖는 의미
 3. 가능한 원인 가설과 반례
 4. 데이터만으로 단정하면 안 되는 내용
-5. 문제 정의나 서비스 방향을 바꿔야 할 점
+5. 문제 정의나 서비스 방향을 수정해야 할 점
 6. 웹 서비스 기능으로 연결할 수 있는 인사이트 3가지
 
-사실, 해석, 제안을 구분해서 써줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">분석 결과를 인사이트로 바꾸는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="분석 결과를 인사이트로 바꾸는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">분석 결과를 바탕으로 인사이트를 정리하려고 해.
+사실, 해석, 제안을 명확히 구분해줘. 근거 없는 과장 표현은 쓰지 말아줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">인사이트 도출 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="인사이트 도출 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">분석 결과를 바탕으로 인사이트를 정리하려고 한다.
 사용자와 문제: [내용]
-분석에서 확인한 사실: [내용]
+데이터에서 확인한 사실: [내용]
+그래프나 계산으로 확인한 근거: [내용]
 예상과 달랐던 점: [내용]
 데이터의 한계: [내용]
 
@@ -524,17 +469,11 @@
 2. 그 사실이 사용자 상황에서 갖는 의미
 3. 가능한 원인 가설과 반례
 4. 데이터만으로 단정하면 안 되는 내용
-5. 문제 정의나 서비스 방향을 바꿔야 할 점
+5. 문제 정의나 서비스 방향을 수정해야 할 점
 6. 웹 서비스 기능으로 연결할 수 있는 인사이트 3가지
 
-사실, 해석, 제안을 구분해서 써줘.</code></pre> </section>  
-<p>확인한 사실, 가능한 해석, 원인 가설, 반례, 추가로 확인할 내용을 나누어 적습니다. 처음의 예상과 다른 결과나 예외에도 주목합니다. 차이가 생긴 이유와 서비스의 효과는 추가 자료나 사용 경험으로 더 살펴볼 수 있습니다.</p>
-<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 인사이트는 과장하지 않습니다 </p> <div class="lab-callout__body astro-mrmim4ef"> 데이터가 보여 준 사실과 팀의 해석을 구분합니다. 그래프가 변화를 보여 줄 수는 있어도 원인을 자동으로 증명하지는 않습니다. </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="8-ai-서비스와-화면-설계하기">8. AI 서비스와 화면 설계하기</h2><a class="sl-anchor-link" href="#8-ai-서비스와-화면-설계하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “8. AI 서비스와 화면 설계하기”</span></a></div>
-<p>인사이트를 바탕으로 사용자가 실제로 할 일을 설계합니다. 먼저 앱을 열어 원하는 결과를 얻기까지의 흐름을 말로 설명하고, 종이나 화면에 배치해 봅시다.</p>
-<p><strong>시작 → 입력·조건 선택 → 처리 → 결과 확인 → 다음 행동</strong></p>
-<div class="sl-heading-wrapper level-h3"><h3 id="ai가-꼭-필요한지-판단하기">AI가 꼭 필요한지 판단하기</h3><a class="sl-anchor-link" href="#ai가-꼭-필요한지-판단하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “AI가 꼭 필요한지 판단하기”</span></a></div>
-<p>모든 기능에 AI가 필요한 것은 아닙니다. 때로는 검색, 필터, 계산, 시각화만으로 더 정확하고 안전하게 해결할 수 있습니다.</p>
+사실, 해석, 제안을 명확히 구분해줘. 근거 없는 과장 표현은 쓰지 말아줘.</code></pre> </section>  
+<div class="sl-heading-wrapper level-h3"><h3 id="인사이트-점검-질문">인사이트 점검 질문</h3><a class="sl-anchor-link" href="#인사이트-점검-질문"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “인사이트 점검 질문”</span></a></div>
 
 
 
@@ -564,119 +503,198 @@
 
 
 
-<table><thead><tr><th>기능 후보</th><th>먼저 물어볼 질문</th></tr></thead><tbody><tr><td>AI 추천</td><td>추천 기준과 데이터가 충분한가? 틀렸을 때 누가 확인하는가?</td></tr><tr><td>AI 요약</td><td>원자료와 다른 말을 만들지 않도록 확인할 방법이 있는가?</td></tr><tr><td>위험도 예측</td><td>예측에 필요한 자료와 검증 기준이 있는가?</td></tr><tr><td>분류·판단</td><td>사람에게 불이익을 줄 수 있는 판단은 아닌가?</td></tr><tr><td>검색·필터</td><td>AI 없이도 규칙과 조건 선택으로 충분하지 않은가?</td></tr></tbody></table>
-<div class="sl-heading-wrapper level-h3"><h3 id="기능을-데이터와-연결하기">기능을 데이터와 연결하기</h3><a class="sl-anchor-link" href="#기능을-데이터와-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “기능을 데이터와 연결하기”</span></a></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>설계 요소</th><th>정할 내용</th></tr></thead><tbody><tr><td>기능의 목적</td><td>어떤 불편을 줄이며, 어떤 인사이트와 연결되는가?</td></tr><tr><td>입력</td><td>사용자가 입력·선택하는 값과 불러올 자료</td></tr><tr><td>처리</td><td>필터·검색·분류·계산에 적용할 기준</td></tr><tr><td>출력</td><td>보여 줄 결과, 단위, 근거, 다음 행동</td></tr><tr><td>사람의 확인</td><td>AI 결과를 수정·거부·다시 확인할 수 있는가?</td></tr><tr><td>확인 방법</td><td>어떤 입력에서 어떤 결과가 나와야 하는가?</td></tr></tbody></table>
-<p>가장 먼저 완성할 사용 흐름을 정하고 필요한 기능을 순서대로 연결합니다. 프로젝트가 발전하면 범위도 넓힐 수 있습니다. 기능을 추가할 때는 사용자에게 필요한 이유와 사용할 자료를 함께 확인합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="다음 탐구 내용을 바탕으로 AI 서비스의 설계를 도와줘.
+<table><thead><tr><th>질문</th><th>이유</th></tr></thead><tbody><tr><td>이것은 데이터에서 확인한 사실인가, 우리의 해석인가?</td><td>사실과 해석 구분</td></tr><tr><td>다른 설명이나 반례가 가능한가?</td><td>성급한 결론 방지</td></tr><tr><td>사용자에게 어떤 의미가 있는가?</td><td>서비스 연결</td></tr><tr><td>이 인사이트 때문에 문제 정의가 바뀌는가?</td><td>탐구 순환</td></tr><tr><td>어떤 기능으로 구현할 수 있는가?</td><td>산출물 연결</td></tr></tbody></table>
+<p>인사이트가 약하면 앱은 단순 정보 게시판이 되기 쉽습니다. 반대로 인사이트가 분명하면 작은 기능 하나도 설득력이 생깁니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="7-ai-서비스-설계하기">7. AI 서비스 설계하기</h2><a class="sl-anchor-link" href="#7-ai-서비스-설계하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “7. AI 서비스 설계하기”</span></a></div>
+<p>AI 서비스라고 해서 모든 기능에 AI가 들어가야 하는 것은 아닙니다. 어떤 기능은 검색, 필터, 계산, 시각화만으로 더 정확하고 안전합니다. AI는 요약, 질문 응답, 설명, 추천, 분류, 코드 작성 보조처럼 필요한 순간에 사용합니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="다음 탐구 내용을 바탕으로 AI 서비스 또는 웹앱을 설계하려고 한다.
 사용자와 문제: [내용]
 도메인 지식에서 중요하다고 본 점: [내용]
-자료에서 확인한 사실: [내용]
-우리 팀의 해석과 인사이트: [내용]
-실제로 확보한 데이터와 항목: [내용]
+데이터에서 확인한 사실: [내용]
+우리 팀의 인사이트: [내용]
+확보한 데이터와 사용할 항목: [내용]
 
-사용자가 처음 들어와 원하는 결과를 확인할 때까지의 흐름을 제안해줘.
-각 기능에 필요한 이유, 데이터, 입력·처리·출력, 확인 방법을 정리해줘.
-AI가 꼭 필요한 기능과 규칙·검색·표시만으로 충분한 기능을 구분해줘.
-현재 자료로 가능한 부분과 추가 준비가 필요한 부분을 나눠줘.
-먼저 구현할 최소 기능과 이후 발전시킬 기능을 구분해줘. 이번에는 설계까지만 함께 검토하자."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">인사이트를 AI 서비스 설계로 바꾸는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="인사이트를 AI 서비스 설계로 바꾸는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">다음 탐구 내용을 바탕으로 AI 서비스의 설계를 도와줘.
+다음 항목으로 설계를 도와줘.
+1. 사용자가 앱에 들어와 원하는 결과를 확인하기까지의 흐름
+2. 핵심 기능 3개와 각 기능이 필요한 이유
+3. 각 기능의 입력, 처리, 출력
+4. 어떤 기능은 AI가 필요하고, 어떤 기능은 검색·필터·계산·시각화로 충분한지
+5. AI 결과를 사람이 확인하거나 수정할 수 있는 장치
+6. 현재 데이터로 구현 가능한 최소 기능
+7. 시간이 더 있을 때 확장할 기능
+8. 테스트해야 할 입력과 기대 결과
+
+AI가 꼭 필요하지 않은 기능에 억지로 AI를 붙이지 말고, 데이터와 사용자 문제를 기준으로 판단해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">AI 서비스 설계 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="AI 서비스 설계 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">다음 탐구 내용을 바탕으로 AI 서비스 또는 웹앱을 설계하려고 한다.
 사용자와 문제: [내용]
 도메인 지식에서 중요하다고 본 점: [내용]
-자료에서 확인한 사실: [내용]
-우리 팀의 해석과 인사이트: [내용]
-실제로 확보한 데이터와 항목: [내용]
+데이터에서 확인한 사실: [내용]
+우리 팀의 인사이트: [내용]
+확보한 데이터와 사용할 항목: [내용]
 
-사용자가 처음 들어와 원하는 결과를 확인할 때까지의 흐름을 제안해줘.
-각 기능에 필요한 이유, 데이터, 입력·처리·출력, 확인 방법을 정리해줘.
-AI가 꼭 필요한 기능과 규칙·검색·표시만으로 충분한 기능을 구분해줘.
-현재 자료로 가능한 부분과 추가 준비가 필요한 부분을 나눠줘.
-먼저 구현할 최소 기능과 이후 발전시킬 기능을 구분해줘. 이번에는 설계까지만 함께 검토하자.</code></pre> </section>  
-<p><strong>학습지 4</strong>의 화면 초안과 기능 설계가 우리 팀의 기획서입니다. 제작하면서 같은 내용을 보완해 갑니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="9-구현하기">9. 구현하기</h2><a class="sl-anchor-link" href="#9-구현하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “9. 구현하기”</span></a></div>
-<p>설계한 전체 앱을 한 번에 요청하기보다, 이번에 만들 최소 기능을 정해 AI와 작업합니다. 먼저 데이터가 들어와 결과로 나가는 흐름을 실행하고, 화면과 관련 기능을 차례로 다듬습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="작업-폴더-준비하기">작업 폴더 준비하기</h3><a class="sl-anchor-link" href="#작업-폴더-준비하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “작업 폴더 준비하기”</span></a></div>
-<p>코드, 원본 자료, 분석용 자료, 실행 결과를 구분해 보관합니다. 파일 하나로 시작할 때는 <code dir="auto">index.html</code>에 화면·스타일·동작을 담을 수 있습니다. 파일을 나누는 경우에는 각 파일의 이름과 연결 위치를 확인합니다.</p>
-<p>정상적으로 실행된 버전은 별도 이름이나 GitHub의 변경 기록으로 보관합니다. 수정 전후를 비교할 수 있도록 바꾼 이유와 결과를 남깁니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀의 설계에 맞는 웹 서비스를 만들려고 해.
+다음 항목으로 설계를 도와줘.
+1. 사용자가 앱에 들어와 원하는 결과를 확인하기까지의 흐름
+2. 핵심 기능 3개와 각 기능이 필요한 이유
+3. 각 기능의 입력, 처리, 출력
+4. 어떤 기능은 AI가 필요하고, 어떤 기능은 검색·필터·계산·시각화로 충분한지
+5. AI 결과를 사람이 확인하거나 수정할 수 있는 장치
+6. 현재 데이터로 구현 가능한 최소 기능
+7. 시간이 더 있을 때 확장할 기능
+8. 테스트해야 할 입력과 기대 결과
+
+AI가 꼭 필요하지 않은 기능에 억지로 AI를 붙이지 말고, 데이터와 사용자 문제를 기준으로 판단해줘.</code></pre> </section>  
+<div class="sl-heading-wrapper level-h3"><h3 id="기능을-설계할-때-구분할-것">기능을 설계할 때 구분할 것</h3><a class="sl-anchor-link" href="#기능을-설계할-때-구분할-것"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “기능을 설계할 때 구분할 것”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>구분</th><th>설명</th><th>예</th></tr></thead><tbody><tr><td>데이터 기반 기능</td><td>실제 데이터에서 계산하거나 필터링한 결과</td><td>지역별 변화, 조건별 검색, 순위 표시</td></tr><tr><td>AI 보조 기능</td><td>사용자의 질문을 정리하거나 결과를 설명</td><td>그래프 해석 문장 생성, 탐색 질문 추천</td></tr><tr><td>사람의 판단</td><td>AI 결과를 확인하고 수정하거나 선택</td><td>추천 결과 검토, 발표 내용 검증</td></tr><tr><td>구현 보류 기능</td><td>현재 자료나 시간으로는 무리인 기능</td><td>실시간 예측, 개인 맞춤 판단, 민감 정보 처리</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="화면-흐름-설계">화면 흐름 설계</h3><a class="sl-anchor-link" href="#화면-흐름-설계"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “화면 흐름 설계”</span></a></div>
+<p>사용자가 앱을 열었을 때 무엇을 먼저 보고, 어떤 값을 입력하거나 선택하며, 어떤 결과를 확인하는지 순서대로 설계합니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">첫 화면 → 조건 선택 또는 입력 → 데이터 처리 → 결과 표시 → 근거 확인 → 다음 행동</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="첫 화면 → 조건 선택 또는 입력 → 데이터 처리 → 결과 표시 → 근거 확인 → 다음 행동"><div></div></button></div></figure></div>
+<p>화면에는 데이터 출처, 기준 시점, 결과가 비어 있을 때의 안내, 오류가 났을 때의 안내가 들어가야 합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="8-바이브코딩으로-구현하기">8. 바이브코딩으로 구현하기</h2><a class="sl-anchor-link" href="#8-바이브코딩으로-구현하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “8. 바이브코딩으로 구현하기”</span></a></div>
+<p>바이브코딩은 “AI에게 알아서 만들어 달라”가 아닙니다. 사람이 문제, 데이터, 기능, 테스트 조건을 명확히 주고, AI가 만든 코드를 실행·검증·수정하며 결과물을 완성하는 방식입니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀은 다음 설계를 바탕으로 웹앱 프로토타입을 만들려고 한다.
 문제와 사용자: [내용]
-데이터 출처·항목·형식·범위: [내용]
-데이터를 불러오는 방법: [파일 선택 / 공개 자료 포함 / 준비된 API]
-화면 배치와 사용 흐름: [내용]
+데이터 출처, 항목, 형식, 범위: [내용]
+데이터를 불러오는 방법: [파일 선택 / 준비된 JSON 또는 CSV / 공개 API / 교사가 제공한 예시]
+화면 구성: [내용]
 이번에 구현할 최소 기능: [내용]
-입력·처리·출력 기준: [내용]
+입력, 처리, 출력 기준: [내용]
 테스트 입력과 기대 결과: [내용]
 
 먼저 구현 계획과 파일 구성을 설명해줘.
-공통 실습의 HTML·CSS·JavaScript 방식을 바탕으로 실행 가능한 전체 코드를 제공해줘.
-기존 코드가 있으면 정상 작동하는 기능을 유지하며 수정해줘.
-화면에는 데이터 출처·기준 시점·빈 결과·오류 안내를 포함해줘.
-기본 버전은 준비한 파일을 브라우저에서 처리해줘. 외부 전송·로그인·유료 기능은 별도 협의 대상으로 남겨줘.
-각 파일의 저장 위치와 실행 방법, 수정한 부분, 확인할 테스트를 설명해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">설계를 전달하고 코드를 요청하는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="설계를 전달하고 코드를 요청하는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀의 설계에 맞는 웹 서비스를 만들려고 해.
+그다음 HTML, CSS, JavaScript를 사용한 실행 가능한 코드를 제공해줘.
+기존 코드가 있으면 정상 작동하는 기능을 유지하면서 수정해줘.
+화면에는 데이터 출처, 기준 시점, 빈 결과 안내, 오류 안내를 포함해줘.
+AI가 만든 분석 결과를 그대로 저장하지 말고, 실제 데이터에서 계산하거나 필터링한 결과를 보여줘.
+API 키나 개인정보는 코드에 직접 넣지 않도록 안내해줘.
+수정한 부분과 확인할 테스트도 함께 정리해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">바이브코딩 구현 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="바이브코딩 구현 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀은 다음 설계를 바탕으로 웹앱 프로토타입을 만들려고 한다.
 문제와 사용자: [내용]
-데이터 출처·항목·형식·범위: [내용]
-데이터를 불러오는 방법: [파일 선택 / 공개 자료 포함 / 준비된 API]
-화면 배치와 사용 흐름: [내용]
+데이터 출처, 항목, 형식, 범위: [내용]
+데이터를 불러오는 방법: [파일 선택 / 준비된 JSON 또는 CSV / 공개 API / 교사가 제공한 예시]
+화면 구성: [내용]
 이번에 구현할 최소 기능: [내용]
-입력·처리·출력 기준: [내용]
+입력, 처리, 출력 기준: [내용]
 테스트 입력과 기대 결과: [내용]
 
 먼저 구현 계획과 파일 구성을 설명해줘.
-공통 실습의 HTML·CSS·JavaScript 방식을 바탕으로 실행 가능한 전체 코드를 제공해줘.
-기존 코드가 있으면 정상 작동하는 기능을 유지하며 수정해줘.
-화면에는 데이터 출처·기준 시점·빈 결과·오류 안내를 포함해줘.
-기본 버전은 준비한 파일을 브라우저에서 처리해줘. 외부 전송·로그인·유료 기능은 별도 협의 대상으로 남겨줘.
-각 파일의 저장 위치와 실행 방법, 수정한 부분, 확인할 테스트를 설명해줘.</code></pre> </section>  
-<div class="sl-heading-wrapper level-h3"><h3 id="한-부분씩-만들고-실행하기">한 부분씩 만들고 실행하기</h3><a class="sl-anchor-link" href="#한-부분씩-만들고-실행하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “한 부분씩 만들고 실행하기”</span></a></div>
-<p>코드를 받으면 파일 이름과 저장 위치를 확인하고, 설계한 입력으로 실행합니다. 데이터 읽기·조건 처리·계산·결과 표시 부분을 AI에게 설명하게 한 뒤 우리 말로 정리합니다.</p>
-<p>작동한 흐름 위에 비교, 시각화, 상세 정보 등 필요한 기능을 연결합니다. 화면의 변화와 함께 데이터 결과도 다시 확인합니다. 외부 서비스가 필요한 기능은 이용 조건·비용·인증 방식과 실행 환경을 준비한 뒤 확장합니다. 인증 정보는 공개 코드와 분리해 관리합니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="오류를-구체적으로-설명하기">오류를 구체적으로 설명하기</h3><a class="sl-anchor-link" href="#오류를-구체적으로-설명하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “오류를 구체적으로 설명하기”</span></a></div>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">현재 파일과 실행 환경: [내용]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">입력한 값과 실행 순서: [내용]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">원자료에서 확인한 기대 결과: [내용]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">화면에 나온 결과 또는 오류 메시지: [내용]</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">가능한 원인을 설명하고 수정할 부분을 제안해줘.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">기존 정상 기능을 유지하면서 수정한 전체 파일과 변경 이유를 알려줘.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">같은 조건으로 다시 확인할 테스트도 정리해줘.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="현재 파일과 실행 환경: [내용]입력한 값과 실행 순서: [내용]원자료에서 확인한 기대 결과: [내용]화면에 나온 결과 또는 오류 메시지: [내용]가능한 원인을 설명하고 수정할 부분을 제안해줘.기존 정상 기능을 유지하면서 수정한 전체 파일과 변경 이유를 알려줘.같은 조건으로 다시 확인할 테스트도 정리해줘."><div></div></button></div></figure></div>
-<p><strong>학습지 5</strong>에 대표적인 제작·수정 장면을 이어 기록합니다. AI에게 준 조건, 우리 팀의 판단, 실행 결과가 연결되면 충분합니다.</p>
+그다음 HTML, CSS, JavaScript를 사용한 실행 가능한 코드를 제공해줘.
+기존 코드가 있으면 정상 작동하는 기능을 유지하면서 수정해줘.
+화면에는 데이터 출처, 기준 시점, 빈 결과 안내, 오류 안내를 포함해줘.
+AI가 만든 분석 결과를 그대로 저장하지 말고, 실제 데이터에서 계산하거나 필터링한 결과를 보여줘.
+API 키나 개인정보는 코드에 직접 넣지 않도록 안내해줘.
+수정한 부분과 확인할 테스트도 함께 정리해줘.</code></pre> </section>  
+<div class="sl-heading-wrapper level-h3"><h3 id="구현-순서">구현 순서</h3><a class="sl-anchor-link" href="#구현-순서"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “구현 순서”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>단계</th><th>할 일</th></tr></thead><tbody><tr><td>1. 최소 기능 정하기</td><td>이번 시간에 반드시 작동해야 하는 기능 하나를 정한다.</td></tr><tr><td>2. 데이터 연결하기</td><td>파일, JSON, CSV, 예시 데이터 중 사용할 방법을 정한다.</td></tr><tr><td>3. 화면 만들기</td><td>사용자가 입력하고 결과를 볼 수 있는 구조를 만든다.</td></tr><tr><td>4. 처리 로직 만들기</td><td>필터, 계산, 검색, 분류 기준을 코드로 표현한다.</td></tr><tr><td>5. 원자료와 비교하기</td><td>같은 조건에서 원자료의 값과 앱 결과를 대조한다.</td></tr><tr><td>6. 오류와 빈 결과 처리</td><td>잘못된 입력, 데이터 없음, 파일 오류를 안내한다.</td></tr><tr><td>7. UI 다듬기</td><td>사용자가 이해하기 쉬운 문장과 배치를 적용한다.</td></tr></tbody></table>
+<p>기본 구현은 HTML, CSS, JavaScript로 시작합니다. 팀의 질문에 필요하고 실행 환경이 준비되어 있다면 Streamlit, API, 지도, 차트 라이브러리 등을 선택 확장할 수 있습니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="오류를-ai에게-설명하는-방법">오류를 AI에게 설명하는 방법</h3><a class="sl-anchor-link" href="#오류를-ai에게-설명하는-방법"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “오류를 AI에게 설명하는 방법”</span></a></div>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">현재 파일과 실행 환경: [내용]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">입력한 값과 실행 순서: [내용]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">원자료에서 기대한 결과: [내용]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">화면에 나온 결과 또는 오류 메시지: [내용]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">정상 작동해야 하는 기능: [내용]</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">기존 정상 기능을 유지하면서 원인을 설명하고 수정할 부분을 제안해줘.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">수정한 전체 코드와 다시 확인할 테스트를 함께 알려줘.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="현재 파일과 실행 환경: [내용]입력한 값과 실행 순서: [내용]원자료에서 기대한 결과: [내용]화면에 나온 결과 또는 오류 메시지: [내용]정상 작동해야 하는 기능: [내용]기존 정상 기능을 유지하면서 원인을 설명하고 수정할 부분을 제안해줘.수정한 전체 코드와 다시 확인할 테스트를 함께 알려줘."><div></div></button></div></figure></div>
+<p>코드를 공개 저장소에 올릴 때는 API 키, 개인 식별 정보, 비공개 자료가 포함되지 않았는지 확인합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="9-협업과-토론">9. 협업과 토론</h2><a class="sl-anchor-link" href="#9-협업과-토론"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “9. 협업과 토론”</span></a></div>
+<p>이 프로젝트는 역할을 나누되 중요한 판단은 함께 해야 합니다. 도메인 탐색 담당, 데이터 담당, 분석 담당, 구현 담당, 발표 담당이 따로 있어도 문제 정의와 인사이트, 서비스 방향은 팀 전체가 설명할 수 있어야 합니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>협업 장면</th><th>함께 결정할 것</th></tr></thead><tbody><tr><td>도메인 탐색 후</td><td>어떤 문제를 볼 만한가? 어떤 오해를 피해야 하는가?</td></tr><tr><td>데이터 선택 후</td><td>이 자료로 우리의 질문에 답할 수 있는가?</td></tr><tr><td>분석 후</td><td>결과가 예상과 같았는가? 문제를 수정해야 하는가?</td></tr><tr><td>설계 후</td><td>사용자가 실제로 쓸 이유가 있는가?</td></tr><tr><td>구현 후</td><td>원자료와 결과가 맞는가? 화면이 이해하기 쉬운가?</td></tr><tr><td>발표 전</td><td>사실, 해석, 제안이 구분되어 있는가?</td></tr></tbody></table>
+<p>팀 회의에서는 AI에게 바로 결론을 묻기 전에 각자 먼저 판단을 말합니다. 그다음 AI를 사용해 빠진 관점, 반례, 검증 방법을 찾습니다.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="10-검증하고-개선하기">10. 검증하고 개선하기</h2><a class="sl-anchor-link" href="#10-검증하고-개선하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “10. 검증하고 개선하기”</span></a></div>
-<p>앱의 결과를 두 방향으로 확인합니다. 하나는 자료와 계산이 맞는지, 다른 하나는 사용자가 원하는 일을 편하게 할 수 있는지입니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="원자료와-결과-대조하기">원자료와 결과 대조하기</h3><a class="sl-anchor-link" href="#원자료와-결과-대조하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “원자료와 결과 대조하기”</span></a></div>
-<p>원자료에서 먼저 기대 결과를 구한 뒤 앱에 같은 조건을 입력합니다. 정상 사례, 결과가 비어 있는 조건, 누락·중복·잘못된 입력을 확인합니다. 기능을 연결한 뒤에는 처음부터 끝까지 사용 흐름도 실행해 봅니다.</p>
-<p><strong>입력과 조건 → 기대 결과와 근거 → 실제 결과 → 수정 → 같은 조건으로 재확인</strong></p>
-<div class="sl-heading-wrapper level-h3"><h3 id="다른-사람이-사용해-보기">다른 사람이 사용해 보기</h3><a class="sl-anchor-link" href="#다른-사람이-사용해-보기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “다른 사람이 사용해 보기”</span></a></div>
-<p>다른 팀에게 앱으로 수행할 과제를 제시합니다. 사용자가 어디를 누르고, 어느 지점에서 머뭇거리는지 관찰합니다. 과제 완료 여부, 막힌 장면, 의견을 기록하고 개선할 부분을 고릅니다.</p>
-<p>수정한 뒤 같은 과제로 다시 사용해 봅니다. 설명이나 배치를 바꾼 경우에도 결과의 정확성을 함께 확인합니다. 직접 확인한 변화와 앞으로 더 검증할 효과를 나누어 정리합니다.</p>
-<p><strong>학습지 6</strong>에 테스트와 개선 결과를 기록합니다. 더 필요한 자료가 보이면 데이터 탐색으로, 사용자와 문제가 달라졌다면 문제 정의로 돌아가 보완합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="11-ai-활용과-협업-기록하기">11. AI 활용과 협업 기록하기</h2><a class="sl-anchor-link" href="#11-ai-활용과-협업-기록하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “11. AI 활용과 협업 기록하기”</span></a></div>
-<p>이 프로젝트에서는 AI 활용 역량, 데이터 리터러시, 문제 해결 역량, 협업 역량이 함께 드러나야 합니다. 결과물만 보지 않고 팀이 어떻게 판단했는지를 남깁니다.</p>
+<p>완성도는 화면의 화려함보다 검증에서 드러납니다. 앱이 실제 데이터와 맞는지, 사용자가 원하는 일을 할 수 있는지 확인합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="데이터-검증">데이터 검증</h3><a class="sl-anchor-link" href="#데이터-검증"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “데이터 검증”</span></a></div>
 
 
 
@@ -702,42 +720,122 @@ AI가 꼭 필요한 기능과 규칙·검색·표시만으로 충분한 기능�
 
 
 
-
-
-
-
-<table><thead><tr><th>역량</th><th>기록으로 보여 줄 것</th></tr></thead><tbody><tr><td>AI 활용 역량</td><td>AI에게 준 맥락, 결과 검증, 수정 요청, 채택하지 않은 제안</td></tr><tr><td>데이터 리터러시</td><td>출처·단위·행의 의미·전처리·그래프 선택·한계 설명</td></tr><tr><td>문제 해결 역량</td><td>큰 문제를 작은 질문으로 나누고, 결과에 따라 방향을 수정한 과정</td></tr><tr><td>공동체 역량</td><td>실제 사용자와 영향을 받는 사람을 고려한 설계</td></tr><tr><td>협업 역량</td><td>팀원별 기여, 서로의 의견을 반영해 바뀐 결정</td></tr></tbody></table>
-<p>팀원 역할은 고정 직업처럼 나누기보다 함께 판단해야 합니다. 다만 각자 더 책임지는 부분은 분명히 남깁니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="12-공유하고-발표하기">12. 공유하고 발표하기</h2><a class="sl-anchor-link" href="#12-공유하고-발표하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “12. 공유하고 발표하기”</span></a></div>
-<p>완성한 앱과 통합 학습지를 함께 보며 프로젝트의 이야기를 정리합니다. 사용 장면을 직접 시연하고, 데이터와 사용 경험 때문에 어떤 판단이 달라졌는지 설명해 봅시다.</p>
-<blockquote>
-<p>우리는 [사용자·문제]에서 출발했다. [자료]를 수집하고 분석하여 [발견과 인사이트]를 얻었다. 이를 바탕으로 [AI 서비스 기능]을 설계하고 [최소 기능]을 구현했다. [입력]으로 실행하면 [결과]를 확인할 수 있다. [근거·테스트]로 점검한 뒤 [내용]을 개선했다. 앞으로 [추가로 살펴볼 점]을 발전시키고 싶다.</p>
-</blockquote>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀의 프로젝트 발표를 준비하려고 해.
+<table><thead><tr><th>확인 항목</th><th>방법</th></tr></thead><tbody><tr><td>원자료 대조</td><td>원자료에서 직접 계산한 값과 앱 결과를 비교한다.</td></tr><tr><td>기준 확인</td><td>기간, 지역, 단위, 필터 기준이 화면과 코드에서 일치하는지 본다.</td></tr><tr><td>예외 입력</td><td>결과 없음, 잘못된 입력, 빠진 데이터 상황을 확인한다.</td></tr><tr><td>반복 실행</td><td>같은 조건에서 같은 결과가 나오는지 본다.</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="사용자-검증">사용자 검증</h3><a class="sl-anchor-link" href="#사용자-검증"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “사용자 검증”</span></a></div>
+<p>다른 팀에게 앱을 사용하게 하고, 어디에서 막히는지 관찰합니다. 설명이 부족한 부분, 결과를 오해할 수 있는 부분, 더 필요한 기능을 기록한 뒤 수정합니다.</p>
+<p>검증 결과 때문에 문제 정의, 데이터 범위, 기능이 바뀔 수 있습니다. 그것은 프로젝트가 흔들린 것이 아니라 더 정확해진 것입니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="11-발표하기">11. 발표하기</h2><a class="sl-anchor-link" href="#11-발표하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “11. 발표하기”</span></a></div>
+<p>발표는 앱 소개가 아니라 탐구의 흐름을 설명하는 시간입니다. 문제, 데이터, 분석, 인사이트, 설계, 구현, 검증이 하나로 이어져야 합니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀의 프로젝트 발표를 준비하려고 한다.
 프로젝트 내용: [문제 정의, 데이터, 분석, 인사이트, 서비스 설계, 구현, 검증]
 발표 시간: 3분
 
 다음 흐름으로 발표 대본과 슬라이드 구성을 제안해줘.
-1. 문제를 발견한 장면
-2. 도메인 지식과 데이터 수집
-3. 분석 결과와 인사이트
-4. AI 서비스 설계와 구현 화면
-5. 검증·개선·한계
-6. AI를 활용하며 팀이 새롭게 할 수 있게 된 것
+1. 우리 팀의 관심 분야와 문제를 발견한 이유
+2. 도메인 지식과 공공데이터 수집 과정
+3. 분석 결과와 핵심 인사이트
+4. 인사이트가 서비스 기능으로 연결된 과정
+5. 구현 화면과 실제 시연 순서
+6. 원자료 대조 또는 사용자 테스트로 확인한 내용
+7. 한계와 다음 개선 방향
+8. AI를 활용하며 팀이 새롭게 할 수 있게 된 것
 
-근거 없이 과장하지 말고, 데이터로 확인한 사실과 팀의 해석을 구분해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">3분 발표 구성 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="3분 발표 구성 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀의 프로젝트 발표를 준비하려고 해.
+데이터로 확인한 사실, 팀의 해석, 앞으로 확인해야 할 내용을 구분해줘. 근거 없이 효과를 과장하지 말아줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">3분 발표 구성 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="3분 발표 구성 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀의 프로젝트 발표를 준비하려고 한다.
 프로젝트 내용: [문제 정의, 데이터, 분석, 인사이트, 서비스 설계, 구현, 검증]
 발표 시간: 3분
 
 다음 흐름으로 발표 대본과 슬라이드 구성을 제안해줘.
-1. 문제를 발견한 장면
-2. 도메인 지식과 데이터 수집
-3. 분석 결과와 인사이트
-4. AI 서비스 설계와 구현 화면
-5. 검증·개선·한계
-6. AI를 활용하며 팀이 새롭게 할 수 있게 된 것
+1. 우리 팀의 관심 분야와 문제를 발견한 이유
+2. 도메인 지식과 공공데이터 수집 과정
+3. 분석 결과와 핵심 인사이트
+4. 인사이트가 서비스 기능으로 연결된 과정
+5. 구현 화면과 실제 시연 순서
+6. 원자료 대조 또는 사용자 테스트로 확인한 내용
+7. 한계와 다음 개선 방향
+8. AI를 활용하며 팀이 새롭게 할 수 있게 된 것
 
-근거 없이 과장하지 말고, 데이터로 확인한 사실과 팀의 해석을 구분해줘.</code></pre> </section>  
-<p>공유할 때는 앱 주소 또는 실행 파일, 데이터 준비와 사용 순서를 함께 제공합니다. 원자료의 이용 조건과 공개 범위를 확인하고, 공개 가능한 자료와 수업 내 기록을 구분합니다.</p>
-<p><strong>학습지 7</strong>에 최종 실행 안내와 팀원별 기록을 남깁니다. 내가 직접 확인한 것, 스스로 해결한 것, 다음에 다르게 시도하고 싶은 것을 실제 경험과 연결해 돌아봅니다.</p>
+데이터로 확인한 사실, 팀의 해석, 앞으로 확인해야 할 내용을 구분해줘. 근거 없이 효과를 과장하지 말아줘.</code></pre> </section>  
+<div class="sl-heading-wrapper level-h3"><h3 id="발표에서-반드시-구분할-것">발표에서 반드시 구분할 것</h3><a class="sl-anchor-link" href="#발표에서-반드시-구분할-것"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “발표에서 반드시 구분할 것”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>구분</th><th>발표 문장 예시</th></tr></thead><tbody><tr><td>사실</td><td>이 자료에서는 2024년 기준으로 이러한 값이 확인되었습니다.</td></tr><tr><td>해석</td><td>우리는 이 결과가 사용자 상황에서 이런 의미를 가진다고 보았습니다.</td></tr><tr><td>한계</td><td>이 자료만으로 원인을 단정할 수는 없습니다.</td></tr><tr><td>구현</td><td>그래서 앱에서는 이 조건을 선택하면 이 결과를 보여 주도록 만들었습니다.</td></tr><tr><td>개선</td><td>사용자 테스트 후 이 부분을 더 쉽게 바꾸었습니다.</td></tr></tbody></table>
+<p>최종 발표에는 실제 화면 시연이 포함되어야 합니다. 실행이 어려운 경우에도 코드, 화면, 데이터, 테스트 결과를 통해 최소 기능이 어떻게 작동하는지 설명할 수 있어야 합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="12-최종-확인-기준">12. 최종 확인 기준</h2><a class="sl-anchor-link" href="#12-최종-확인-기준"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “12. 최종 확인 기준”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>기준</th><th>확인할 내용</th></tr></thead><tbody><tr><td>문제 정의</td><td>사용자, 상황, 어려움, 데이터로 확인할 부분이 분명한가?</td></tr><tr><td>도메인 지식</td><td>핵심 용어, 이해관계자, 공식 자료, 조심할 오해를 확인했는가?</td></tr><tr><td>데이터 수집</td><td>출처, 기준 시점, 범위, 단위, 행의 의미, 이용 조건을 기록했는가?</td></tr><tr><td>분석</td><td>질문에 맞는 표·그래프·계산 기준을 사용했는가?</td></tr><tr><td>인사이트</td><td>사실과 해석을 구분하고 서비스 기능으로 연결했는가?</td></tr><tr><td>AI 서비스 설계</td><td>AI가 필요한 부분과 사람이 확인할 부분을 구분했는가?</td></tr><tr><td>구현</td><td>최소 기능이 실제 데이터로 작동하는가?</td></tr><tr><td>검증</td><td>원자료 대조와 사용자 테스트를 통해 수정했는가?</td></tr><tr><td>협업</td><td>팀원 모두 핵심 판단과 자신의 기여를 설명할 수 있는가?</td></tr><tr><td>발표</td><td>근거 없이 과장하지 않고 한계와 개선 방향을 말하는가?</td></tr></tbody></table>
 <nav class="page-nav" aria-label="단원 이동"> <a href="/hyfl-ai-lab/data-lab/">← 6. 공공데이터로 첫 웹앱 만들기</a> <a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a> <span></span> </nav> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/hyfl-ai-lab/data-lab/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">6. 공공데이터로 첫 웹앱 만들기</span> </span> </a> <a href="/hyfl-ai-lab/project2/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 페이지 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">8. 선택: 핵심 아이디어 표현하기 · 다음에 공개</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
