@@ -8,7 +8,7 @@ import Callout from '../../components/Callout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import PageNav from '../../components/PageNav.astro';
 
-<div class="course-intro"><p class="course-intro__eyebrow">HYFL AI LAB · 한영외국어고등학교 2학년 교양 과목</p><p class="course-intro__lead">AI의 원리를 이해하고, 직접 실험하며, AI와 함께 문제를 해결하는 힘을 기릅니다.</p></div>
+<div class="course-intro"><p class="course-intro__eyebrow">HYFL AI LAB · 한영외국어고등학교 2학년 교양 과목</p><p class="course-intro__lead">AI의 원리를 이해하고, 데이터와 AI를 활용해 실제 문제 해결 산출물을 만듭니다.</p></div>
 
 <Callout kind="mission" title="Semester Question">**AI가 더 똑똑해질수록 인간에게 필요한 능력은 무엇일까?**</Callout>
 
@@ -36,6 +36,8 @@ AI가 글을 쓰고 코드를 만드는 시대에도 사람은 문제를 이해�
 
 공공데이터로 앱을 만들어 본 뒤, 우리 팀의 문제를 찾아 웹 서비스를 개발합니다. 데이터를 살펴보며 질문을 다듬고, 분석에서 얻은 발견을 기능으로 연결합니다.
 
+최종 프로젝트에서는 **문제 정의 → 데이터 수집 → 데이터 분석 → 인사이트 → AI 서비스 설계 → 구현**이 하나의 흐름으로 이어집니다. 재미있고 흥미로운 문제에서 출발하되, 도메인 지식과 데이터 근거를 통해 깊이를 만들어 갑니다.
+
 공통 실습부터 팀 프로젝트까지 하나의 통합 학습지에 중요한 발견과 수정 과정을 이어 기록합니다. 필요한 단계로 돌아가 자료와 기능을 보완하며 결과물을 완성해 갑니다.
 
 ## 교과서 목차
@@ -47,7 +49,7 @@ AI가 글을 쓰고 코드를 만드는 시대에도 사람은 문제를 이해�
 	<div class="textbook-toc__section"><p class="textbook-toc__part">DATA EXPLORATION</p><h3><a href="/hyfl-ai-lab/data/ch1/">4. 데이터에서 공공데이터까지</a></h3><p>공공데이터가 무엇인지 이해하고, 관심 분야와 관련된 공식 자료를 직접 찾아 출처·형식·기준을 기록합니다.</p></div>
 	<div class="textbook-toc__section"><p class="textbook-toc__part">AI × STATISTICS</p><h3><a href="/hyfl-ai-lab/data/kosis-mcp/">5. AI와 함께 통계 질문하기</a></h3><p>Claude와 KOSIS MCP로 국가통계를 살펴보고, 급식·날씨·영화처럼 생활과 가까운 데이터 질문을 그래프로 연결합니다.</p></div>
 	<div class="textbook-toc__section textbook-toc__section--project"><p class="textbook-toc__part">COMMON WEB APP LAB</p><h3><a href="/hyfl-ai-lab/data-lab/">6. 공공데이터로 첫 웹앱 만들기</a></h3><p>급식 데이터를 확인·분석하고 AI와 메뉴 탐색기를 만듭니다. 원자료 대조와 기능 하나 수정까지 경험합니다.</p></div>
-	<div class="textbook-toc__section textbook-toc__section--project"><p class="textbook-toc__part">TEAM PROJECT</p><h3><a href="/hyfl-ai-lab/data-project/">7. DATA TO WEB APP</a></h3><p>해결할 문제에 맞는 자료를 탐색·분석하고, 인사이트를 바탕으로 웹 서비스를 기획·개발·검증·개선합니다.</p></div>
+	<div class="textbook-toc__section textbook-toc__section--project"><p class="textbook-toc__part">TEAM PROJECT</p><h3><a href="/hyfl-ai-lab/data-project/">7. DATA TO WEB APP</a></h3><p>문제 정의, 데이터 수집·분석, 인사이트, AI 서비스 설계와 구현까지 하나의 산출물로 완성합니다.</p></div>
 	<div class="textbook-toc__section"><p class="textbook-toc__part">OPTION · PROTOTYPE · 다음에 공개</p><h3><a href="/hyfl-ai-lab/project2/">8. 핵심 아이디어 표현하기</a></h3><p>다음 수업에서 공개됩니다.</p></div>
 	<div class="textbook-toc__section"><p class="textbook-toc__part">RESPONSIBLE AI · 다음에 공개</p><h3><a href="/hyfl-ai-lab/ethics/">9. AI를 책임 있게 사용한다는 것은?</a></h3><p>다음 수업에서 공개됩니다.</p></div>
 	<div class="textbook-toc__section"><p class="textbook-toc__part">FINAL REFLECTION · 다음에 공개</p><h3><a href="/hyfl-ai-lab/part7/">10. 처음의 질문으로 돌아가기</a></h3><p>다음 수업에서 공개됩니다.</p></div>
@@ -57,17 +59,20 @@ AI가 글을 쓰고 코드를 만드는 시대에도 사람은 문제를 이해�
 
 <div class="lab-card-grid">
 	<ProjectCard number={1} title="School Image Lab" description="학교 속 문제를 이미지·음성·포즈 분류 문제로 바꾸고, 데이터가 모델의 판단을 어떻게 바꾸는지 경험합니다." href="/hyfl-ai-lab/project1/" tag="MINI PROJECT · TEAM" />
-	<ProjectCard number={2} title="DATA TO WEB APP" description="해결할 문제를 정의하고, 자료 분석·인사이트·개발·검증을 거쳐 웹 서비스를 완성합니다." href="/hyfl-ai-lab/data-project/" tag="TEAM PROJECT" />
+	<ProjectCard number={2} title="DATA TO WEB APP" description="해결할 문제를 정의하고, 자료 분석·인사이트·AI 서비스 설계·구현·검증을 거쳐 웹 서비스를 완성합니다." href="/hyfl-ai-lab/data-project/" tag="TEAM PROJECT" />
 </div>
 
 ## 수업과 Pass 기준
 
 이 과목은 Pass/Non-pass 방식의 교양 과목입니다. 어려운 코드나 화려한 앱보다 다음 과정이 중요합니다.
 
+- 재미있고 실제적인 문제를 찾고, 사용자와 상황을 설명했는가?
+- 주제와 관련된 도메인 지식, 공식 자료, 조심할 오해를 확인했는가?
 - 자신의 관심에서 확인 가능한 질문을 세웠는가?
 - 실제 데이터의 출처·기간·단위·한계를 설명했는가?
 - 데이터와 AI의 결과를 그대로 믿지 않고 확인했는가?
 - 예상과 다른 결과에서 원인을 찾고 생각을 수정했는가?
+- 분석 결과를 인사이트와 서비스 기능으로 연결했는가?
 - 핵심 기능을 실제 데이터로 구현하고 원자료·사용자 테스트로 검증했는가?
 - AI가 한 일과 사람이 판단하고 책임질 일을 구분했는가?
 - AI를 사용한 뒤 새롭게 이해하거나 스스로 할 수 있게 된 것이 있는가?
