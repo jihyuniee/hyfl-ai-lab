@@ -74,17 +74,18 @@ export default defineConfig({
 							items: [
 								{ label: '4. 데이터에서 공공데이터까지', link: '/data/ch1/' },
 								{ label: '5. AI와 함께 데이터 질문 만들기', link: '/data/kosis-mcp/' },
-								{ label: '6. 공공데이터로 첫 웹앱 만들기', link: '/data-lab/' },
-								{ label: '7. DATA TO WEB APP', link: '/data-project/' },
+								{ label: '6. Open API 맛보기', link: '/data/open-api/' },
+								{ label: '7. 공공데이터로 첫 웹앱 만들기', link: '/data-lab/' },
+								{ label: '8. DATA TO WEB APP', link: '/data-project/' },
 							],
 						},
 						{
 							label: 'Ⅲ단원. 책임 있는 AI와 성찰',
 							collapsed: false,
 							items: [
-								{ label: '8. 선택: 핵심 아이디어 표현하기 · 다음에 공개', link: '/project2/' },
-								{ label: '9. AI를 책임 있게 사용한다는 것은? · 다음에 공개', link: '/ethics/' },
-								{ label: '10. 처음의 질문으로 돌아가기 · 다음에 공개', link: '/part7/' },
+								{ label: '9. 선택: 핵심 아이디어 표현하기 · 다음에 공개', link: '/project2/' },
+								{ label: '10. AI를 책임 있게 사용한다는 것은? · 다음에 공개', link: '/ethics/' },
+								{ label: '11. 처음의 질문으로 돌아가기 · 다음에 공개', link: '/part7/' },
 							],
 						},
 					],
