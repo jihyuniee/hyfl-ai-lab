@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>선택 실습. 공공데이터로 첫 웹앱 만들기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data-lab/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="선택 실습. 공공데이터로 첫 웹앱 만들기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data-lab/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="급식 자료를 읽고 질문을 다듬어, 화면 설계부터 앱 제작·실행·검증·개선까지 선택적으로 경험합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="급식 자료를 읽고 질문을 다듬어, 화면 설계부터 앱 제작·실행·검증·개선까지 선택적으로 경험합니다."/><script>
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>7. API 키로 바이브코딩하기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data-lab/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="7. API 키로 바이브코딩하기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data-lab/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="NEIS 급식 API 키를 사용해 작은 HTML 웹앱을 만들고, 생성형 AI와 실행·수정·검증을 반복합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="NEIS 급식 API 키를 사용해 작은 HTML 웹앱을 만들고, 생성형 AI와 실행·수정·검증을 반복합니다."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -25,8 +25,6 @@
 		};
 	})();
 </script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/hyfl-ai-lab/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/index.dP4mPt2B.css"><script type="module" src="/hyfl-ai-lab/_astro/page.B1D-nYk3.js"></script><style>.lab-callout:where(.astro-mrmim4ef){margin:1.75rem 0;padding:1.1rem 1.3rem 1.3rem;border-radius:var(--lab-radius-md);background:var(--lab-card-bg);border:1px solid var(--lab-border);border-left-width:4px;box-shadow:var(--lab-shadow-sm)}.lab-callout__title:where(.astro-mrmim4ef){display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;margin:0 0 .6rem;color:var(--sl-color-white)}.lab-callout__icon:where(.astro-mrmim4ef){font-size:1.1rem;line-height:1}.lab-callout__body:where(.astro-mrmim4ef){font-size:.95rem}.lab-callout__body:where(.astro-mrmim4ef)>*:first-child{margin-top:0}.lab-callout__body:where(.astro-mrmim4ef)>*:last-child{margin-bottom:0}.lab-callout__body:where(.astro-mrmim4ef) ul,.lab-callout__body:where(.astro-mrmim4ef) ol{padding-left:1.3rem}.lab-callout--checklist:where(.astro-mrmim4ef) .lab-callout__body:where(.astro-mrmim4ef) li{list-style:none;position:relative;padding-left:1.6rem}.lab-callout--checklist:where(.astro-mrmim4ef) .lab-callout__body:where(.astro-mrmim4ef) ul{padding-left:0}.lab-callout--checklist:where(.astro-mrmim4ef) .lab-callout__body:where(.astro-mrmim4ef) li:before{content:"";position:absolute;left:0;top:.35rem;width:1.05rem;height:1.05rem;border-radius:5px;border:2px solid var(--lab-mint)}.lab-callout--question:where(.astro-mrmim4ef){border-left-color:var(--lab-blue)}.lab-callout--think:where(.astro-mrmim4ef){border-left-color:var(--lab-violet)}.lab-callout--concept:where(.astro-mrmim4ef){border-left-color:var(--sl-color-accent);background:linear-gradient(180deg,var(--sl-color-accent-low) 0%,var(--lab-card-bg) 18%)}.lab-callout--lab:where(.astro-mrmim4ef){border-left-color:var(--lab-mint)}.lab-callout--mission:where(.astro-mrmim4ef){border-left-color:var(--lab-amber);background:linear-gradient(135deg,rgba(245,185,66,.1),var(--lab-card-bg) 40%)}.lab-callout--fail:where(.astro-mrmim4ef){border-left-color:var(--lab-rose)}.lab-callout--discuss:where(.astro-mrmim4ef){border-left-color:var(--lab-blue)}.lab-callout--caution:where(.astro-mrmim4ef){border-left-color:var(--lab-rose);background:linear-gradient(135deg,rgba(251,113,133,.08),var(--lab-card-bg) 40%)}.lab-callout--teacher:where(.astro-mrmim4ef){border-left-color:var(--lab-amber);border-style:dashed}.lab-callout--exit:where(.astro-mrmim4ef){border-left-color:var(--lab-violet);background:linear-gradient(135deg,rgba(139,92,246,.1),var(--lab-card-bg) 40%)}.lab-callout--reflect:where(.astro-mrmim4ef){border-left-color:var(--sl-color-accent)}.lab-callout--checklist:where(.astro-mrmim4ef){border-left-color:var(--lab-mint)}.lab-callout--rubric:where(.astro-mrmim4ef){border-left-color:var(--lab-blue)}
-</style><style>.lab-steps:where(.astro-cx7gdanv){margin:1.75rem 0}.lab-steps__title:where(.astro-cx7gdanv){font-weight:700;margin-bottom:.75rem}.lab-steps__list:where(.astro-cx7gdanv){list-style:none;margin:0;padding:0;counter-reset:lab-step;display:flex;flex-direction:column;gap:0}
-</style><style>.lab-steps__item:where(.astro-5vkjc2f4){counter-increment:lab-step;display:grid;grid-template-columns:2.25rem 1fr;gap:0 1rem}.lab-steps__marker:where(.astro-5vkjc2f4){position:relative;display:flex;align-items:flex-start;justify-content:center}.lab-steps__marker:where(.astro-5vkjc2f4):before{content:counter(lab-step);display:flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:50%;background:var(--lab-gradient-accent);color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0}.lab-steps__item:where(.astro-5vkjc2f4):not(:last-child) .lab-steps__marker:where(.astro-5vkjc2f4):after{content:"";position:absolute;top:2.25rem;bottom:-.75rem;left:50%;width:2px;background:var(--lab-border);transform:translate(-50%)}.lab-steps__content:where(.astro-5vkjc2f4){padding-bottom:1.75rem}.lab-steps__heading:where(.astro-5vkjc2f4){font-weight:700;margin:.2rem 0 .35rem}.lab-steps__body:where(.astro-5vkjc2f4){font-size:.93rem;color:var(--sl-color-gray-2)}.lab-steps__body:where(.astro-5vkjc2f4)>*:first-child{margin-top:0}.lab-steps__body:where(.astro-5vkjc2f4)>*:last-child{margin-bottom:0}
 </style><style>.copy-prompt:where(.astro-voatq4dp){margin:1.5rem 0;border:1px solid var(--sl-color-gray-5);border-radius:.9rem;overflow:hidden;background:var(--sl-color-gray-7)}.copy-prompt__header:where(.astro-voatq4dp){display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border-bottom:1px solid var(--sl-color-gray-5)}.copy-prompt__header:where(.astro-voatq4dp) div:where(.astro-voatq4dp){display:grid;gap:.15rem}.copy-prompt__header:where(.astro-voatq4dp) span:where(.astro-voatq4dp){color:var(--sl-color-gray-2);font-size:.82rem}.copy-prompt__header:where(.astro-voatq4dp) span:where(.astro-voatq4dp) b:where(.astro-voatq4dp){color:#dc2626}.copy-prompt:where(.astro-voatq4dp) button:where(.astro-voatq4dp){flex:none;border:0;border-radius:.55rem;padding:.6rem .85rem;background:var(--sl-color-accent-high);color:var(--sl-color-black);font-weight:700;cursor:pointer}.copy-prompt__guide:where(.astro-voatq4dp){padding:.75rem 1rem;border-bottom:1px solid var(--sl-color-gray-5)}.copy-prompt__guide:where(.astro-voatq4dp) summary:where(.astro-voatq4dp){color:var(--sl-color-accent-high);font-size:.86rem;font-weight:800;cursor:pointer}.copy-prompt__guide:where(.astro-voatq4dp) div:where(.astro-voatq4dp){display:grid;grid-template-columns:1fr 1fr;gap:.35rem 1rem;padding-top:.6rem}.copy-prompt__guide:where(.astro-voatq4dp) p:where(.astro-voatq4dp){margin:0;color:var(--sl-color-gray-2);font-size:.78rem;line-height:1.5}.copy-prompt:where(.astro-voatq4dp) pre:where(.astro-voatq4dp){max-height:38rem;margin:0;padding:1rem;overflow:auto;border:0;border-radius:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.82rem;line-height:1.65}.copy-prompt:where(.astro-voatq4dp) mark:where(.astro-voatq4dp){padding:.05em .15em;border-radius:.2rem;background:color-mix(in srgb,#ef4444 14%,transparent);color:#dc2626;font-weight:800}@media(max-width:36rem){.copy-prompt__header:where(.astro-voatq4dp){align-items:stretch;flex-direction:column}.copy-prompt:where(.astro-voatq4dp) button:where(.astro-voatq4dp){width:100%}.copy-prompt__guide:where(.astro-voatq4dp) div:where(.astro-voatq4dp){grid-template-columns:1fr}}
 </style></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">콘텐츠로 이동</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/hyfl-ai-lab/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> 인공지능 원리탐구 </span> </a>  </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;검색&#34;}"> <button data-open-modal disabled aria-label="검색" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">검색</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="검색" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> 취소 </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
 	(() => {
@@ -74,19 +72,12 @@
 		})();
 	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-만들-앱과-사용-장면-살펴보기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 만들 앱과 사용 장면 살펴보기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-급식-데이터-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 급식 데이터 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-데이터를-읽고-질문-다듬기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 데이터를 읽고 질문 다듬기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-화면과-기능-설계하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 화면과 기능 설계하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-ai와-첫-버전-제작하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. AI와 첫 버전 제작하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-원자료와-실행-결과-대조하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 원자료와 실행 결과 대조하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-화면을-다듬고-기능-확장하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 화면을 다듬고 기능 확장하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-공유하고-다음-프로젝트로-이어가기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. 공유하고 다음 프로젝트로 이어가기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-만들-앱과-사용-장면-살펴보기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 만들 앱과 사용 장면 살펴보기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-급식-데이터-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 급식 데이터 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-데이터를-읽고-질문-다듬기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 데이터를 읽고 질문 다듬기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-화면과-기능-설계하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 화면과 기능 설계하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-ai와-첫-버전-제작하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. AI와 첫 버전 제작하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-원자료와-실행-결과-대조하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 원자료와 실행 결과 대조하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-화면을-다듬고-기능-확장하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 화면을 다듬고 기능 확장하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-공유하고-다음-프로젝트로-이어가기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. 공유하고 다음 프로젝트로 이어가기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">선택 실습. 공공데이터로 첫 웹앱 만들기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>이 실습은 팀 프로젝트 전에 작은 웹앱 제작 흐름을 먼저 경험하고 싶은 팀을 위한 선택 활동입니다. 식단표에서 좋아하는 메뉴가 나온 날을 찾으려면 날짜마다 내용을 읽어야 합니다. 조건을 선택하면 필요한 기록을 모아 보여 주는 앱을 만들어 봅시다. 실제 자료를 읽고 질문을 다듬은 뒤, 화면과 기능을 설계하고 생성형 AI와 함께 제작합니다.</p>
-<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 선택형 실습 안내 </p> <div class="lab-callout__body astro-mrmim4ef"> 수업의 기본 흐름은 6차시 API 실습 후 바로 8차시 DATA TO WEB APP 팀 프로젝트로 이어집니다. 이 페이지는 웹앱 제작 과정을 한 번 더 연습하거나, 팀 프로젝트에서 급식 데이터와 CSV 파일 방식을 선택한 경우 참고 자료로 사용합니다. </div> </div> 
-<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 학습지 한 부로 시작하기 </p> <div class="lab-callout__body astro-mrmim4ef"> <a href="/hyfl-ai-lab/worksheets/data-to-web-app.html" target="_blank" rel="noopener noreferrer">프로젝트 통합 학습지</a>의 ‘시작 · 공통 실습 기록’을 사용합니다. 이후 팀 프로젝트도 같은 학습지에 이어 씁니다. 먼저 해 보고, 중요한 발견과 수정 이유를 짧게 남깁니다. </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="1-만들-앱과-사용-장면-살펴보기">1. 만들 앱과 사용 장면 살펴보기</h2><a class="sl-anchor-link" href="#1-만들-앱과-사용-장면-살펴보기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 만들 앱과 사용 장면 살펴보기”</span></a></div>
-<p><strong>만들 앱: 급식 메뉴 탐색기</strong></p>
-<p>학생이 학교·월·검색어를 선택하면, 해당 메뉴가 포함된 중식 날짜와 일수를 보여 줍니다. 첫 사용 흐름을 만든 뒤 비교와 화면 기능을 발전시켜 봅니다.</p>
-<p><strong>CSV 선택 → 조건 선택 → 검색 → 날짜·식단 확인 → 다른 조건으로 비교</strong></p>
-<p><a href="/hyfl-ai-lab/templates/meal-explorer/">기본 앱 열기</a>에서 화면을 살펴봅니다. 처음에는 ‘가상 점검 데이터 불러오기’로 조작해 볼 수 있습니다. 이 6개 기록은 기능 확인용으로 만든 자료입니다. 실제 학교의 식단 분석에는 다음 단계에서 확보한 공공데이터를 사용합니다.</p>
-<p>앱을 만져 보며 ‘어떤 정보가 먼저 보여야 할까?’, ‘검색한 결과를 어떻게 확인하면 좋을까?’를 생각해 봅시다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="2-급식-데이터-준비하기">2. 급식 데이터 준비하기</h2><a class="sl-anchor-link" href="#2-급식-데이터-준비하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 급식 데이터 준비하기”</span></a></div>
-<div class="sl-heading-wrapper level-h3"><h3 id="원자료에서-csv-받기">원자료에서 CSV 받기</h3><a class="sl-anchor-link" href="#원자료에서-csv-받기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “원자료에서 CSV 받기”</span></a></div>
-<p>나이스의 <a href="https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17320190722180924242823&infSeq=1">급식식단정보 Sheet 화면</a>을 엽니다. 이 화면에는 조회 결과를 파일로 저장하는 기능이 있습니다.</p>
-<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">학교와 기간 정하기</p> <div class="lab-steps__body astro-5vkjc2f4"> 조회 조건에서 사용할 학교와 급식일자 범위를 정합니다. 수업에서 정한 공통 학교·기간을 기준으로 조회하고, 결과의 학교명·날짜·식사명을 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">자료의 범위 확인하기</p> <div class="lab-steps__body astro-5vkjc2f4"> 검색된 건수와 실제 날짜를 살펴봅니다. 화면 일부와 전체 조회 결과 중 어느 범위를 저장하는지 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">CSV 저장하기</p> <div class="lab-steps__body astro-5vkjc2f4"> ‘파일변환저장’의 CSV를 선택해 저장합니다. 화면이나 다운로드 방식이 달라졌다면 같은 출처에서 준비한 공통 파일을 사용하고 조회 조건을 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">원본과 사본 나누기</p> <div class="lab-steps__body astro-5vkjc2f4"> 원본 파일은 보관하고 사본을 만들어 분석합니다. 사본을 스프레드시트로 열어 아래 네 항목을 확인합니다. </div> </div> </li>  </ol> </div> 
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-오늘-만들-수-있는-작은-앱" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 오늘 만들 수 있는 작은 앱</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-api-키가-코드에서-쓰이는-위치" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. API 키가 코드에서 쓰이는 위치</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-첫-html-앱-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 첫 HTML 앱 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-실행하며-관찰하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 실행하며 관찰하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-바이브코딩-수정-요청하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 바이브코딩 수정 요청하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-오류가-날-때-설명하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 오류가 날 때 설명하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-작업-방식-선택하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 작업 방식 선택하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-제출과-기록" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. 제출과 기록</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#9-팀-프로젝트로-이어가기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">9. 팀 프로젝트로 이어가기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-오늘-만들-수-있는-작은-앱" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 오늘 만들 수 있는 작은 앱</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-api-키가-코드에서-쓰이는-위치" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. API 키가 코드에서 쓰이는 위치</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-첫-html-앱-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 첫 HTML 앱 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-실행하며-관찰하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 실행하며 관찰하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-바이브코딩-수정-요청하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 바이브코딩 수정 요청하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-오류가-날-때-설명하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 오류가 날 때 설명하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-작업-방식-선택하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 작업 방식 선택하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#8-제출과-기록" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">8. 제출과 기록</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#9-팀-프로젝트로-이어가기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">9. 팀 프로젝트로 이어가기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">7. API 키로 바이브코딩하기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="stage-label">VIBE CODING · OPEN API</div> <div class="stage-question"><span>오늘의 질문</span><strong>API 키로 받은 데이터를 웹앱으로 어떻게 바꿀까?</strong></div>
+<p>지난 시간에는 NEIS 급식 API 요청 주소를 만들고 JSON 응답에서 필요한 값을 찾았습니다. 이번 시간에는 그 값을 사용해 작은 HTML 웹앱을 만들고, 실행하면서 생성형 AI와 함께 수정합니다.</p>
+<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 오늘의 미션 </p> <div class="lab-callout__body astro-mrmim4ef"> NEIS 급식 API 키를 사용해 각자 원하는 기능의 작은 HTML 앱을 만듭니다. 앱을 실행해 본 뒤 결과를 확인하고, 생성형 AI에게 한 번에 하나씩 수정 요청하며 개선합니다. </div> </div> 
+<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">기능 하나 고르기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 첫 HTML 코드 만들기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 브라우저에서 실행하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 문제나 개선점 찾기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ AI에게 수정 요청하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 다시 테스트하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ index.html 제출하기</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="기능 하나 고르기→ 첫 HTML 코드 만들기→ 브라우저에서 실행하기→ 문제나 개선점 찾기→ AI에게 수정 요청하기→ 다시 테스트하기→ index.html 제출하기"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="1-오늘-만들-수-있는-작은-앱">1. 오늘 만들 수 있는 작은 앱</h2><a class="sl-anchor-link" href="#1-오늘-만들-수-있는-작은-앱"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 오늘 만들 수 있는 작은 앱”</span></a></div>
+<p>급식 API에서 받는 값은 같아도 앱의 기능은 다르게 만들 수 있습니다. 오늘은 작게 시작하고, 실행 결과를 보며 필요한 부분만 고칩니다.</p>
 
 
 
@@ -117,65 +108,115 @@
 
 
 
-<table><thead><tr><th>분석용 열</th><th>원자료에서 찾을 항목</th><th>앱에서 하는 일</th></tr></thead><tbody><tr><td>날짜</td><td>급식일자 또는 MLSV_YMD</td><td>날짜·월 선택과 일수 계산</td></tr><tr><td>학교명</td><td>학교명 또는 SCHUL_NM</td><td>학교 구분</td></tr><tr><td>식사명</td><td>식사명 또는 MMEAL_SC_NM</td><td>중식 기록 선택</td></tr><tr><td>메뉴</td><td>요리명 또는 DDISH_NM</td><td>검색과 식단 원문 표시</td></tr></tbody></table>
-<p>사본의 열 이름을 <code dir="auto">날짜, 학교명, 식사명, 메뉴</code>로 맞춥니다. 날짜는 <code dir="auto">YYYY-MM-DD</code> 또는 <code dir="auto">YYYYMMDD</code> 형태로 준비하고, 메뉴 원문과 알레르기 표시는 함께 보존합니다. 이 기본 앱은 표에 적힌 NEIS 열 이름도 읽을 수 있습니다.</p>
-<p>Google 스프레드시트에서는 <strong>파일 → 다운로드 → 쉼표로 구분된 값(.csv)</strong>, Excel에서는 <strong>다른 이름으로 저장 → CSV UTF-8</strong> 형식으로 저장할 수 있습니다. 원본이 XLSX일 때도 이 과정을 거쳐 CSV를 만듭니다. 화면 명칭은 사용 중인 버전에 따라 조금 다를 수 있습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="작업-폴더-만들기">작업 폴더 만들기</h3><a class="sl-anchor-link" href="#작업-폴더-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “작업 폴더 만들기”</span></a></div>
-<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">meal-project/</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">source/          원본 자료와 출처 메모</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">meals.csv        분석용 사본</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">index.html       우리가 만들 앱</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">versions/        정상 실행본과 수정 기록</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="meal-project/  source/          원본 자료와 출처 메모  meals.csv        분석용 사본  index.html       우리가 만들 앱  versions/        정상 실행본과 수정 기록"><div></div></button></div></figure></div>
-<p>파일명과 저장 위치를 알아두면 AI에게 오류를 설명하거나 다른 기기에서 다시 실행할 때 도움이 됩니다. 우선은 파일 선택 방식으로 시작하고, API를 이용한 자동 갱신은 이후 확장 단계에서 살펴볼 수 있습니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="3-데이터를-읽고-질문-다듬기">3. 데이터를 읽고 질문 다듬기</h2><a class="sl-anchor-link" href="#3-데이터를-읽고-질문-다듬기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 데이터를 읽고 질문 다듬기”</span></a></div>
-<p>자료의 일부를 직접 읽고, 한 행이 무엇을 뜻하는지 확인합니다. 같은 학교·날짜에 조식과 중식이 함께 있거나 같은 날짜의 기록이 여러 줄인지도 살펴봅니다.</p>
-<blockquote>
-<p><strong>[학교·기간]의 중식에서 ‘카레’라는 문자열이 포함된 메뉴가 나온 날짜는 며칠일까?</strong></p>
-</blockquote>
-<p>예상한 결과를 적은 뒤 짧은 기간을 골라 직접 셉니다. 전체 중식일 수, 검색어가 포함된 날짜, 중복을 처리한 기준을 기록합니다. 이 결과를 나중에 앱의 계산과 대조합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="첨부한 급식 파일을 읽고 아래 질문을 살펴보려고 해.
-질문: [학교·기간]의 중식에서 [검색어]가 포함된 메뉴가 나온 날짜는 며칠일까?
+<table><thead><tr><th>만들 기능</th><th>사용자가 입력할 값</th><th>화면에 보여 줄 결과</th></tr></thead><tbody><tr><td>메뉴 이름 검색</td><td>메뉴 이름</td><td>해당 메뉴가 나온 날짜, 식사명, 메뉴</td></tr><tr><td>칼로리 기준으로 찾기</td><td>칼로리 기준값</td><td>기준보다 높은 날짜, 칼로리, 메뉴</td></tr><tr><td>알레르기 번호 찾기</td><td>알레르기 번호</td><td>해당 번호가 들어간 메뉴와 날짜</td></tr><tr><td>날짜별 영양정보 보기</td><td>날짜 또는 기간</td><td>날짜, 식사명, 영양정보</td></tr></tbody></table>
+<p>예를 들어 “급식에 카레가 언제 나왔는지 찾고 싶다”, “칼로리가 높은 날을 보고 싶다”, “땅콩 알레르기 번호가 들어간 메뉴를 확인하고 싶다”처럼 시작할 수 있습니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="2-api-키가-코드에서-쓰이는-위치">2. API 키가 코드에서 쓰이는 위치</h2><a class="sl-anchor-link" href="#2-api-키가-코드에서-쓰이는-위치"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. API 키가 코드에서 쓰이는 위치”</span></a></div>
+<p>HTML 앱은 JavaScript 코드 안에서 API 주소를 만들고 데이터를 요청합니다. 지난 시간에 확인한 값이 코드의 재료가 됩니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="js"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">const </span><span style="--0:#82AAFF;--1:#3B61B0">API_KEY</span><span style="--0:#C792EA;--1:#8844AE"> = </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">수업용_인증키</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">const </span><span style="--0:#82AAFF;--1:#3B61B0">OFFICE_CODE</span><span style="--0:#C792EA;--1:#8844AE"> = </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">B10</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">const </span><span style="--0:#82AAFF;--1:#3B61B0">SCHOOL_CODE</span><span style="--0:#C792EA;--1:#8844AE"> = </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">7010259</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">const </span><span style="--0:#82AAFF;--1:#3B61B0">API_URL</span><span style="--0:#C792EA;--1:#8844AE"> = </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">https://open.neis.go.kr/hub/mealServiceDietInfo</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="const API_KEY = &#34;수업용_인증키&#34;;const OFFICE_CODE = &#34;B10&#34;;const SCHOOL_CODE = &#34;7010259&#34;;const API_URL = &#34;https://open.neis.go.kr/hub/mealServiceDietInfo&#34;;"><div></div></button></div></figure></div>
+<p>사용자가 화면에서 날짜나 검색어를 입력하면, 앱은 그 값을 API 요청 주소에 넣습니다. 서버가 JSON 응답을 보내면 앱은 <code>row</code> 안에서 <code>MLSV_YMD</code>, <code>DDISH_NM</code>, <code>CAL_INFO</code> 같은 값을 찾아 화면에 표시합니다.</p>
+<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 수업용 API 키 사용 범위 </p> <div class="lab-callout__body astro-mrmim4ef"> 수업용 API 키는 교사가 안내한 범위에서 사용합니다. 오늘 제출 파일은 교실 안에서 확인하고, 공개 GitHub Pages나 공개 저장소에 올릴 때는 실제 키를 가리거나 다른 방식을 사용합니다. </div> </div> 
+<div class="sl-heading-wrapper level-h2"><h2 id="3-첫-html-앱-만들기">3. 첫 HTML 앱 만들기</h2><a class="sl-anchor-link" href="#3-첫-html-앱-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 첫 HTML 앱 만들기”</span></a></div>
+<p>아래 프롬프트를 복사한 뒤 빨간 부분을 자신의 기능에 맞게 바꿉니다. 처음부터 큰 앱을 요청하기보다, 작동하는 첫 버전을 먼저 만듭니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="NEIS 급식 API를 사용해서 간단한 급식 데이터 웹페이지를 만들고 싶어.
 
-실제 열 이름, 한 행의 의미, 학교·기간·식사 종류를 먼저 확인해줘.
-중복·빈 값·날짜 표기와 메뉴의 줄바꿈을 어떻게 처리하면 좋을지 설명해줘.
-같은 학교·날짜의 중식 기록은 하루로 묶는 기준으로 계산해줘.
-내가 직접 대조할 날짜와 원문을 보여줘.
-확인한 사실과 추가로 알아볼 내용을 나누고, 자료를 읽기 어려우면 알려줘.
-지금은 데이터와 계산 기준을 이해하는 단계야."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">급식 자료를 읽고 계산 기준을 정하는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="급식 자료를 읽고 계산 기준을 정하는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">첨부한 급식 파일을 읽고 아래 질문을 살펴보려고 해.
-질문: [학교·기간]의 중식에서 [검색어]가 포함된 메뉴가 나온 날짜는 며칠일까?
+아래 값을 사용해줘.
 
-실제 열 이름, 한 행의 의미, 학교·기간·식사 종류를 먼저 확인해줘.
-중복·빈 값·날짜 표기와 메뉴의 줄바꿈을 어떻게 처리하면 좋을지 설명해줘.
-같은 학교·날짜의 중식 기록은 하루로 묶는 기준으로 계산해줘.
-내가 직접 대조할 날짜와 원문을 보여줘.
-확인한 사실과 추가로 알아볼 내용을 나누고, 자료를 읽기 어려우면 알려줘.
-지금은 데이터와 계산 기준을 이해하는 단계야.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
-<div class="sl-heading-wrapper level-h3"><h3 id="발견에서-기능으로-연결하기">발견에서 기능으로 연결하기</h3><a class="sl-anchor-link" href="#발견에서-기능으로-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “발견에서 기능으로 연결하기”</span></a></div>
-<p>같은 날짜가 여러 행에 있다면 행 수와 급식일 수가 달라질 수 있습니다. 월별 전체 급식일 수가 다르면 횟수와 비율을 함께 보아야 비교가 쉬울 수 있습니다. 우리 자료에서 실제로 확인한 점을 골라 기능으로 연결합니다.</p>
-<p><strong>확인한 사실 → 사용자에게 필요한 정보 → 앱의 처리·표시 방법</strong></p>
-<p>자료에 들어 있는 것은 편성된 식단 기록입니다. 학생의 선호도나 만족도까지 알아보려면 그에 맞는 추가 자료가 필요합니다. 찾은 자료가 처음 질문과 다르면 기간·대상·검색 기준을 바꾸어 봅시다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="4-화면과-기능-설계하기">4. 화면과 기능 설계하기</h2><a class="sl-anchor-link" href="#4-화면과-기능-설계하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 화면과 기능 설계하기”</span></a></div>
-<p>앱을 열었을 때 사용자가 무엇을 할지 떠올리며 화면을 다섯 영역으로 나눕니다.</p>
+API 기본 주소:
+https://open.neis.go.kr/hub/mealServiceDietInfo
 
+인증키:
+{{수업용 인증키}}
 
+시도교육청코드:
+{{예: B10}}
 
+학교코드:
+{{예: 7010259}}
 
+조회 시작일:
+{{예: 20210201}}
 
+조회 종료일:
+{{예: 20210228}}
 
+내가 만들고 싶은 기능:
+{{예: 메뉴 이름 검색 / 칼로리 기준으로 찾기 / 특정 알레르기 번호가 들어간 메뉴 찾기 / 날짜별 영양정보 보기}}
 
+사용자가 화면에서 입력할 값:
+{{예: 메뉴 이름 / 알레르기 번호 / 칼로리 기준 / 날짜 또는 기간}}
 
+화면에 보여 줄 결과:
+{{예: 날짜, 식사명, 메뉴, 칼로리정보}}
 
+사용할 수 있는 응답 항목:
+- MLSV_YMD: 급식일자
+- MMEAL_SC_NM: 식사명
+- DDISH_NM: 메뉴와 알레르기 번호
+- CAL_INFO: 칼로리정보
+- NTR_INFO: 영양정보
 
+조건:
+- HTML, CSS, JavaScript를 하나의 index.html 파일로 작성해줘.
+- 초보자가 수정할 수 있도록 코드에 짧은 한국어 주석을 넣어줘.
+- fetch로 API를 요청해줘.
+- 기간 조회에는 MLSV_FROM_YMD와 MLSV_TO_YMD를 사용해줘.
+- DDISH_NM의 <br/>은 화면에서 줄바꿈으로 보여줘.
+- 결과가 없으면 안내 문구를 보여줘.
+- 모바일에서도 보기 좋게 만들어줘.
+- 화면 아래에 NEIS 급식식단정보 출처와 조회 기준을 표시해줘.
+- 공개 저장소에 실제 API 키를 올릴 때 생기는 위험을 화면 아래 안내 문구로 짧게 넣어줘.
 
+완성된 전체 HTML 코드를 하나의 코드블록으로 작성해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">급식 API 첫 HTML 앱 만들기 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="급식 API 첫 HTML 앱 만들기 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">NEIS 급식 API를 사용해서 간단한 급식 데이터 웹페이지를 만들고 싶어.
 
+아래 값을 사용해줘.
 
+API 기본 주소:
+https://open.neis.go.kr/hub/mealServiceDietInfo
 
+인증키:
+<mark class="astro-voatq4dp">{{수업용 인증키}}</mark>
 
+시도교육청코드:
+<mark class="astro-voatq4dp">{{예: B10}}</mark>
 
+학교코드:
+<mark class="astro-voatq4dp">{{예: 7010259}}</mark>
 
+조회 시작일:
+<mark class="astro-voatq4dp">{{예: 20210201}}</mark>
 
+조회 종료일:
+<mark class="astro-voatq4dp">{{예: 20210228}}</mark>
 
+내가 만들고 싶은 기능:
+<mark class="astro-voatq4dp">{{예: 메뉴 이름 검색 / 칼로리 기준으로 찾기 / 특정 알레르기 번호가 들어간 메뉴 찾기 / 날짜별 영양정보 보기}}</mark>
 
+사용자가 화면에서 입력할 값:
+<mark class="astro-voatq4dp">{{예: 메뉴 이름 / 알레르기 번호 / 칼로리 기준 / 날짜 또는 기간}}</mark>
 
+화면에 보여 줄 결과:
+<mark class="astro-voatq4dp">{{예: 날짜, 식사명, 메뉴, 칼로리정보}}</mark>
 
+사용할 수 있는 응답 항목:
+- MLSV_YMD: 급식일자
+- MMEAL_SC_NM: 식사명
+- DDISH_NM: 메뉴와 알레르기 번호
+- CAL_INFO: 칼로리정보
+- NTR_INFO: 영양정보
 
+조건:
+- HTML, CSS, JavaScript를 하나의 index.html 파일로 작성해줘.
+- 초보자가 수정할 수 있도록 코드에 짧은 한국어 주석을 넣어줘.
+- fetch로 API를 요청해줘.
+- 기간 조회에는 MLSV_FROM_YMD와 MLSV_TO_YMD를 사용해줘.
+- DDISH_NM의 &lt;br/&gt;은 화면에서 줄바꿈으로 보여줘.
+- 결과가 없으면 안내 문구를 보여줘.
+- 모바일에서도 보기 좋게 만들어줘.
+- 화면 아래에 NEIS 급식식단정보 출처와 조회 기준을 표시해줘.
+- 공개 저장소에 실제 API 키를 올릴 때 생기는 위험을 화면 아래 안내 문구로 짧게 넣어줘.
 
+완성된 전체 HTML 코드를 하나의 코드블록으로 작성해줘.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
+<p>AI가 만든 코드는 하나의 <code>index.html</code> 파일로 저장합니다. 코드블록의 백틱은 제외하고 HTML 내용만 저장합니다.</p>
 
 
 
@@ -187,98 +228,23 @@
 
 
 
-<table><thead><tr><th>화면 영역</th><th>보여 줄 내용</th><th>사용자가 하는 일</th></tr></thead><tbody><tr><td>제목과 설명</td><td>앱 이름, 찾아볼 수 있는 정보</td><td>앱의 목적 이해</td></tr><tr><td>데이터 준비</td><td>파일 선택, 출처·조회 조건·확인일</td><td>사용할 자료 확인</td></tr><tr><td>조건 선택</td><td>학교, 월, 검색어, 검색 버튼</td><td>원하는 조건 입력</td></tr><tr><td>결과</td><td>일수 요약, 날짜별 메뉴 원문</td><td>결과 읽고 원자료 대조</td></tr><tr><td>도움말과 출처</td><td>계산 기준, 자료 범위, 안내</td><td>결과의 의미 확인</td></tr></tbody></table>
-<div class="sl-heading-wrapper level-h3"><h3 id="첫-화면과-결과-화면-그려-보기">첫 화면과 결과 화면 그려 보기</h3><a class="sl-anchor-link" href="#첫-화면과-결과-화면-그려-보기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “첫 화면과 결과 화면 그려 보기”</span></a></div>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[급식 메뉴 탐색기]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">어떤 메뉴가 언제 나왔는지 찾아보세요.</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[CSV 파일 선택]       자료 출처·기간</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[학교 선택] [월 선택] [검색어 입력] [검색]</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[전체 중식일]         [검색된 중식일]</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">날짜                 메뉴 원문</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">검색 조건에 맞는 날짜와 식단이 표시됩니다.</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">출처 · 확인일 · 계산 기준</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="[급식 메뉴 탐색기]어떤 메뉴가 언제 나왔는지 찾아보세요.[CSV 파일 선택]       자료 출처·기간[학교 선택] [월 선택] [검색어 입력] [검색][전체 중식일]         [검색된 중식일]날짜                 메뉴 원문검색 조건에 맞는 날짜와 식단이 표시됩니다.출처 · 확인일 · 계산 기준"><div></div></button></div></figure></div>
-<p>아직 파일을 고르기 전에는 시작 방법을, 결과가 없을 때는 조건을 바꾸는 방법을 안내합니다. 파일을 읽기 어려울 때는 필요한 열 이름이나 파일 형식을 알려 줍니다. 이런 화면도 앱의 기능에 포함됩니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="급식 메뉴 탐색기의 화면과 기능을 설계해줘.
-사용자: 급식 기록에서 특정 메뉴가 나온 날짜를 찾고 비교하는 학생.
-데이터: [학교·기간]의 실제 급식 CSV. 확인한 열은 날짜·학교명·식사명·메뉴야.
-발견한 점과 계산 기준: [원자료에서 확인한 내용]
 
-상단 제목과 짧은 설명, 파일 선택, 학교·월·검색어, 검색 결과 요약, 날짜별 식단, 출처·기준일을 배치해줘.
-앱 첫 화면, 검색 성공, 검색 결과 없음, 파일 오류 때의 안내 문구도 제안해줘.
-사용자의 입력 → 처리 → 결과를 표로 정리하고, 먼저 구현할 기능과 이후 추가할 기능을 나눠줘.
-이번에는 화면과 기능 설계를 먼저 보여줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">화면과 기능을 먼저 설계하는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="화면과 기능을 먼저 설계하는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">급식 메뉴 탐색기의 화면과 기능을 설계해줘.
-사용자: 급식 기록에서 특정 메뉴가 나온 날짜를 찾고 비교하는 학생.
-데이터: [학교·기간]의 실제 급식 CSV. 확인한 열은 날짜·학교명·식사명·메뉴야.
-발견한 점과 계산 기준: [원자료에서 확인한 내용]
 
-상단 제목과 짧은 설명, 파일 선택, 학교·월·검색어, 검색 결과 요약, 날짜별 식단, 출처·기준일을 배치해줘.
-앱 첫 화면, 검색 성공, 검색 결과 없음, 파일 오류 때의 안내 문구도 제안해줘.
-사용자의 입력 → 처리 → 결과를 표로 정리하고, 먼저 구현할 기능과 이후 추가할 기능을 나눠줘.
-이번에는 화면과 기능 설계를 먼저 보여줘.</code></pre> </section>  
-<p>설계를 읽고 우리 자료와 질문에 맞는지 확인합니다. 제목·여백·색상은 목적에 맞게 정하고, 결과 가까이에 단위와 검색 조건을 배치합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="5-ai와-첫-버전-제작하기">5. AI와 첫 버전 제작하기</h2><a class="sl-anchor-link" href="#5-ai와-첫-버전-제작하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. AI와 첫 버전 제작하기”</span></a></div>
-<div class="sl-heading-wrapper level-h3"><h3 id="설계를-코드로-바꾸기">설계를 코드로 바꾸기</h3><a class="sl-anchor-link" href="#설계를-코드로-바꾸기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “설계를 코드로 바꾸기”</span></a></div>
-<p>확인한 자료와 화면 설계를 전달하고 첫 버전을 요청합니다. 아래 프롬프트의 학교·기간·계산 기준이 우리 자료와 맞는지 읽어 본 뒤 사용합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="검토한 설계대로 한국어 급식 메뉴 탐색기를 만들어줘.
-HTML·CSS·JavaScript를 index.html 한 파일에 작성하고 외부 라이브러리 없이 실행되게 해줘.
-자료는 사용자가 선택한 CSV를 브라우저에서만 읽어 처리해줘.
 
-[데이터 계약]
-필수 열: 날짜, 학교명, 식사명, 메뉴.
-날짜: YYYY-MM-DD 또는 YYYYMMDD. CSV는 UTF-8이며 BOM과 따옴표 안의 쉼표·줄바꿈도 처리해줘.
-실제 파일에 있는 자료로 결과를 만들고, 부족한 값은 확인이 필요한 기록으로 알려줘.
 
-[첫 기능]
-1. CSV 파일 선택 → 학교 선택 → 월 선택 → 메뉴 검색.
-2. 중식만 사용하고 같은 학교·날짜의 기록은 메뉴를 모아 하루로 계산.
-3. 검색어를 포함한 메뉴가 나온 일수와 해당 날짜·메뉴 원문 표시.
-4. 검색어가 비면 선택 범위의 전체 중식일 표시. 결과가 비면 0일과 안내 표시.
-5. 필수 열 누락·잘못된 날짜·잘못된 파일은 오류와 처리 기준 안내. 새 파일 오류 때 이전 결과는 초기화.
-6. 출처·조회 조건·확인일을 적는 칸과 파일의 날짜 범위, 파일 기준 조회 안내.
-7. 메뉴 원문과 알레르기 표시 보존. 파일 내용은 화면에 텍스트로 표시.
 
-[화면]
-제목, 설명, 조건 선택, 결과 카드, 날짜별 식단, 출처 순서로 배치해줘.
-여백과 글자 크기를 충분히 두고 휴대기기에서는 한 열로 배치해줘.
-버튼에 동작을 적고 처음 화면·빈 결과·오류 상태의 안내를 포함해줘.
 
-[결과]
-전체 코드를 제공하고 저장·실행 방법을 설명해줘.
-데이터 읽기·조건 처리·계산·결과 표시 부분에 주석을 달아줘.
-정상 검색과 예외 상황을 원자료와 대조할 테스트도 알려줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">급식 메뉴 탐색기 제작 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="급식 메뉴 탐색기 제작 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">검토한 설계대로 한국어 급식 메뉴 탐색기를 만들어줘.
-HTML·CSS·JavaScript를 index.html 한 파일에 작성하고 외부 라이브러리 없이 실행되게 해줘.
-자료는 사용자가 선택한 CSV를 브라우저에서만 읽어 처리해줘.
 
-[데이터 계약]
-필수 열: 날짜, 학교명, 식사명, 메뉴.
-날짜: YYYY-MM-DD 또는 YYYYMMDD. CSV는 UTF-8이며 BOM과 따옴표 안의 쉼표·줄바꿈도 처리해줘.
-실제 파일에 있는 자료로 결과를 만들고, 부족한 값은 확인이 필요한 기록으로 알려줘.
 
-[첫 기능]
-1. CSV 파일 선택 → 학교 선택 → 월 선택 → 메뉴 검색.
-2. 중식만 사용하고 같은 학교·날짜의 기록은 메뉴를 모아 하루로 계산.
-3. 검색어를 포함한 메뉴가 나온 일수와 해당 날짜·메뉴 원문 표시.
-4. 검색어가 비면 선택 범위의 전체 중식일 표시. 결과가 비면 0일과 안내 표시.
-5. 필수 열 누락·잘못된 날짜·잘못된 파일은 오류와 처리 기준 안내. 새 파일 오류 때 이전 결과는 초기화.
-6. 출처·조회 조건·확인일을 적는 칸과 파일의 날짜 범위, 파일 기준 조회 안내.
-7. 메뉴 원문과 알레르기 표시 보존. 파일 내용은 화면에 텍스트로 표시.
 
-[화면]
-제목, 설명, 조건 선택, 결과 카드, 날짜별 식단, 출처 순서로 배치해줘.
-여백과 글자 크기를 충분히 두고 휴대기기에서는 한 열로 배치해줘.
-버튼에 동작을 적고 처음 화면·빈 결과·오류 상태의 안내를 포함해줘.
 
-[결과]
-전체 코드를 제공하고 저장·실행 방법을 설명해줘.
-데이터 읽기·조건 처리·계산·결과 표시 부분에 주석을 달아줘.
-정상 검색과 예외 상황을 원자료와 대조할 테스트도 알려줘.</code></pre> </section>  
-<div class="sl-heading-wrapper level-h3"><h3 id="저장하고-실행하기">저장하고 실행하기</h3><a class="sl-anchor-link" href="#저장하고-실행하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “저장하고 실행하기”</span></a></div>
-<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">전체 코드 저장</p> <div class="lab-steps__body astro-5vkjc2f4"> 일반 텍스트 편집기를 열어 받은 HTML 코드를 붙여 넣습니다. 코드 블록 앞뒤의 백틱을 제외한 HTML 내용만 저장합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">파일 이름과 인코딩 확인</p> <div class="lab-steps__body astro-5vkjc2f4"> Windows 메모장에서는 ‘다른 이름으로 저장’을 선택하고 파일 이름 index.html, 파일 형식 모든 파일, 인코딩 UTF-8로 저장합니다. 실제 확장자가 .html인지 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">브라우저로 열기</p> <div class="lab-steps__body astro-5vkjc2f4"> index.html을 Chrome이나 Edge로 엽니다. 앱의 파일 선택에서 meals.csv를 불러옵니다. 이 단계는 PC의 웹브라우저에서 진행합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">같은 조건으로 검색</p> <div class="lab-steps__body astro-5vkjc2f4"> 직접 센 것과 같은 학교·월·검색어를 선택합니다. 출처와 확인일을 적고, 날짜·일수가 예상한 결과와 맞는지 확인합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">첫 실행본 보관</p> <div class="lab-steps__body astro-5vkjc2f4"> 정상 실행된 index.html을 versions 폴더에 별도 이름으로 복사합니다. 이후에는 무엇을 바꾸었는지 비교하며 수정합니다. </div> </div> </li>  </ol> </div> 
-<p>코드를 읽기 어려울 때는 AI에게 <strong>자료를 읽는 부분, 조건을 적용하는 부분, 날짜를 세는 부분, 결과를 표시하는 부분</strong>을 짚어 설명해 달라고 요청합니다. 각각이 화면의 어느 동작과 연결되는지 살펴봅니다.</p>
-<p>기본 흐름을 다시 확인할 때는 <a href="/hyfl-ai-lab/templates/meal-explorer/index.html" download="index.html">기본 index.html</a>과 <a href="/hyfl-ai-lab/templates/meal-explorer/check-data.csv" download="check-data.csv">가상 점검 CSV</a>를 사용할 수 있습니다. 기본 코드를 출발점으로 선택했다면 우리 팀이 바꾼 부분을 기록합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="6-원자료와-실행-결과-대조하기">6. 원자료와 실행 결과 대조하기</h2><a class="sl-anchor-link" href="#6-원자료와-실행-결과-대조하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 원자료와 실행 결과 대조하기”</span></a></div>
-<p>정상 검색부터 빈 결과와 파일 오류까지 조건을 바꾸어 실행합니다.</p>
 
 
 
 
+<table><thead><tr><th>할 일</th><th>확인할 내용</th></tr></thead><tbody><tr><td>파일 이름</td><td><code>index.html</code></td></tr><tr><td>저장 형식</td><td>UTF-8 텍스트 파일</td></tr><tr><td>실행 방법</td><td>파일을 브라우저로 열기</td></tr><tr><td>첫 테스트</td><td>조회 버튼을 눌러 데이터가 나오는지 확인</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="4-실행하며-관찰하기">4. 실행하며 관찰하기</h2><a class="sl-anchor-link" href="#4-실행하며-관찰하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 실행하며 관찰하기”</span></a></div>
+<p>웹앱을 실행한 뒤, 아래 항목을 직접 확인합니다.</p>
 
 
 
@@ -308,41 +274,12 @@ HTML·CSS·JavaScript를 index.html 한 파일에 작성하고 외부 라이브�
 
 
 
-<table><thead><tr><th>시험할 상황</th><th>확인할 결과</th></tr></thead><tbody><tr><td>실제 메뉴 검색</td><td>직접 확인한 날짜·일수와 일치</td></tr><tr><td>검색어를 비운 상태</td><td>선택한 범위의 전체 중식일</td></tr><tr><td>자료에 없는 검색어</td><td>0일과 검색 결과 없음 안내</td></tr><tr><td>월을 바꾼 상태</td><td>해당 월의 기록과 결과</td></tr><tr><td>중복·누락 기록</td><td>날짜를 묶는 기준과 제외·확인 안내</td></tr><tr><td>잘못된 CSV</td><td>필요한 항목 안내, 이전 결과 초기화</td></tr></tbody></table>
-<details><summary>가상 점검 CSV로 계산 확인하기</summary><p>가상학교의 6개 기록을 날짜별로 묶으면 전체 중식일은 5일입니다. ‘카레’를 검색하면 3일이 나옵니다. 2025년 9월은 전체 3일 중 2일, 10월은 전체 2일 중 1일입니다. 이 숫자는 기능 확인용이며 실제 학교의 식단 결과와 구분합니다.</p></details>
-<div class="sl-heading-wrapper level-h3"><h3 id="예상과-다를-때-수정하기">예상과 다를 때 수정하기</h3><a class="sl-anchor-link" href="#예상과-다를-때-수정하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “예상과 다를 때 수정하기”</span></a></div>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">지금 실행한 파일: [파일명]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">입력 조건: [학교·월·검색어]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">기대 결과와 원자료 근거: [내용]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">실제 화면 결과 또는 오류 메시지: [내용]</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">가능한 원인을 설명하고 해당 부분을 수정해줘.</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">기존 정상 기능을 유지하고, 수정 후 같은 조건으로 확인할 방법을 알려줘.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="지금 실행한 파일: [파일명]입력 조건: [학교·월·검색어]기대 결과와 원자료 근거: [내용]실제 화면 결과 또는 오류 메시지: [내용]가능한 원인을 설명하고 해당 부분을 수정해줘.기존 정상 기능을 유지하고, 수정 후 같은 조건으로 확인할 방법을 알려줘."><div></div></button></div></figure></div>
-<p>‘작동이 안 돼’보다 입력·기대 결과·실제 결과를 함께 보여 주면 무엇을 고칠지 분명해집니다. 수정 뒤에는 같은 입력으로 다시 확인합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="7-화면을-다듬고-기능-확장하기">7. 화면을 다듬고 기능 확장하기</h2><a class="sl-anchor-link" href="#7-화면을-다듬고-기능-확장하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “7. 화면을 다듬고 기능 확장하기”</span></a></div>
-<p>첫 흐름이 작동하면 데이터에서 발견한 점이나 직접 사용하며 느낀 불편을 바탕으로 다음 기능을 정합니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="비교-기능-발전시키기">비교 기능 발전시키기</h3><a class="sl-anchor-link" href="#비교-기능-발전시키기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “비교 기능 발전시키기”</span></a></div>
-<p>월별 비교 표, 검색된 중식일의 비율, 날짜별 보기 등 필요한 기능을 선택합니다. 비율을 표시할 때는 <strong>검색된 중식일 ÷ 선택한 범위의 전체 중식일 × 100</strong>이라는 기준과 분모를 함께 확인합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="현재 정상 작동하는 앱을 다음과 같이 개선하려고 해.
-바꿀 부분: [월별 비교 표 / 검색된 중식일의 비율 / 화면의 불편한 점]
-발견과 수정 이유: [데이터 분석 또는 사용 경험]
+<table><thead><tr><th>확인할 기능</th><th>테스트 방법</th></tr></thead><tbody><tr><td>API 요청</td><td>조회 버튼을 눌렀을 때 데이터가 불러와지는지 확인</td></tr><tr><td>입력값 반영</td><td>메뉴 이름, 알레르기 번호, 칼로리 기준이 결과에 반영되는지 확인</td></tr><tr><td>결과 표시</td><td>날짜, 식사명, 메뉴, 칼로리 등 필요한 값이 보이는지 확인</td></tr><tr><td>결과 없음</td><td>찾는 값이 없을 때 안내 문구가 나오는지 확인</td></tr><tr><td>출처 표시</td><td>화면 아래에 NEIS 급식식단정보 출처가 보이는지 확인</td></tr></tbody></table>
+<p>테스트할 때는 브라우저에서 본 JSON 원문과 앱 화면 결과를 비교합니다. 날짜와 학교명, 메뉴가 맞으면 데이터 연결이 된 것입니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="5-바이브코딩-수정-요청하기">5. 바이브코딩 수정 요청하기</h2><a class="sl-anchor-link" href="#5-바이브코딩-수정-요청하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 바이브코딩 수정 요청하기”</span></a></div>
+<p>바이브코딩은 작게 만들고, 실행하고, 고쳐 가는 반복입니다. AI에게 요청할 때는 현재 상태, 바꾸고 싶은 점, 유지할 기능, 테스트 방법을 함께 적습니다.</p>
 
-기존 파일 읽기·중식 선택·중복 처리·출처 표시를 유지하며 수정해줘.
-비율을 추가한다면 분모는 검색 전 선택한 학교·월의 전체 유효 중식일, 분자는 검색어가 포함된 중식일로 해줘.
-분모가 0이면 자료 없음으로 표시해줘. 월별 비교에서는 각 월의 전체 일수도 함께 보여줘.
-수정 계획, 바꾼 전체 파일, 변경한 부분, 다시 실행할 테스트를 설명해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">기능을 추가하고 다시 확인하는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="기능을 추가하고 다시 확인하는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">현재 정상 작동하는 앱을 다음과 같이 개선하려고 해.
-바꿀 부분: [월별 비교 표 / 검색된 중식일의 비율 / 화면의 불편한 점]
-발견과 수정 이유: [데이터 분석 또는 사용 경험]
 
-기존 파일 읽기·중식 선택·중복 처리·출처 표시를 유지하며 수정해줘.
-비율을 추가한다면 분모는 검색 전 선택한 학교·월의 전체 유효 중식일, 분자는 검색어가 포함된 중식일로 해줘.
-분모가 0이면 자료 없음으로 표시해줘. 월별 비교에서는 각 월의 전체 일수도 함께 보여줘.
-수정 계획, 바꾼 전체 파일, 변경한 부분, 다시 실행할 테스트를 설명해줘.</code></pre> </section>  
-<div class="sl-heading-wrapper level-h3"><h3 id="사용하기-편한-화면-만들기">사용하기 편한 화면 만들기</h3><a class="sl-anchor-link" href="#사용하기-편한-화면-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “사용하기 편한 화면 만들기”</span></a></div>
-<p>화면의 글자 크기와 여백을 조정하고, 자주 사용하는 조건을 찾기 쉽게 배치합니다. 표의 날짜와 메뉴는 읽기 편하게 정렬하고, 휴대기기에서는 입력 영역이 한 열로 내려오도록 구성할 수 있습니다. 색상과 함께 문구로도 상태를 설명합니다.</p>
-<p>AI에게 화면을 요청할 때는 ‘예쁘게’라는 말에 더해 <strong>누가 어떤 기기에서 쓰는지, 먼저 보여 줄 정보가 무엇인지, 현재 불편한 배치가 어디인지</strong>를 설명합니다. 기능과 계산 기준은 유지하면서 화면만 바꾸는 요청도 연습해 봅시다.</p>
-<p>짝에게 검색 과제를 주고 앱을 사용하게 합니다. 혼자 할 수 있었던 일과 머뭇거린 장면을 살펴본 뒤 한 부분을 개선합니다. 개선 후에는 검색과 계산도 다시 실행합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="8-공유하고-다음-프로젝트로-이어가기">8. 공유하고 다음 프로젝트로 이어가기</h2><a class="sl-anchor-link" href="#8-공유하고-다음-프로젝트로-이어가기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “8. 공유하고 다음 프로젝트로 이어가기”</span></a></div>
-<div class="sl-heading-wrapper level-h3"><h3 id="웹-주소로-공유하기">웹 주소로 공유하기</h3><a class="sl-anchor-link" href="#웹-주소로-공유하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “웹 주소로 공유하기”</span></a></div>
-<p>GitHub Pages에 게시하면 다른 기기에서도 주소로 앱을 열 수 있습니다. 기존 작업을 보존하며 새 저장소를 준비합니다.</p>
-<div class="lab-steps astro-cx7gdanv">  <ol class="lab-steps__list astro-cx7gdanv"> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">새 저장소 만들기</p> <div class="lab-steps__body astro-5vkjc2f4"> GitHub에서 New repository를 열어 meal-data-lab 같은 이름을 정하고 저장소를 만듭니다. 계정과 공개 범위는 수업 안내를 따릅니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">파일 올리기</p> <div class="lab-steps__body astro-5vkjc2f4"> Add file → Upload files로 index.html을 저장소 최상위에 올리고 Commit changes를 누릅니다. 파일 선택 방식에서는 사용자가 CSV를 별도로 준비합니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">Pages 설정</p> <div class="lab-steps__body astro-5vkjc2f4"> Settings → Pages의 Source에서 Deploy from a branch를 선택합니다. Branch는 main, 폴더는 /(root)를 선택하고 Save를 누릅니다. </div> </div> </li> <li class="lab-steps__item astro-5vkjc2f4"> <div class="lab-steps__marker astro-5vkjc2f4" aria-hidden="true"></div> <div class="lab-steps__content astro-5vkjc2f4"> <p class="lab-steps__heading astro-5vkjc2f4">주소로 테스트</p> <div class="lab-steps__body astro-5vkjc2f4"> Actions에서 게시 작업을 확인하고 Pages에 표시된 주소를 엽니다. iPad에서는 Safari로 주소에 접속하고 파일 앱에 저장한 CSV를 선택합니다. </div> </div> </li>  </ol> </div> 
-<p>공개할 파일은 데이터의 이용 조건을 확인해 정합니다. 개인정보와 인증 정보는 공개 파일과 분리합니다. 게시가 진행되는 동안에는 PC에서 파일 실행과 원자료 확인을 계속할 수 있습니다.</p>
-<details><summary>실행·게시가 막힐 때 확인할 곳</summary>
 
 
 
@@ -366,16 +303,198 @@ HTML·CSS·JavaScript를 index.html 한 파일에 작성하고 외부 라이브�
 
 
 
+<table><thead><tr><th>요청에 넣을 내용</th><th>예시</th></tr></thead><tbody><tr><td>현재 상태</td><td>메뉴 검색은 되지만 결과가 너무 길게 보임</td></tr><tr><td>바꾸고 싶은 점</td><td>결과를 날짜별 카드로 정리</td></tr><tr><td>유지할 기능</td><td>API 요청, 메뉴 줄바꿈, 출처 표시</td></tr><tr><td>테스트 방법</td><td>같은 기간에서 같은 검색어로 다시 확인</td></tr></tbody></table>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="방금 만든 index.html을 실행해 보니 아래 부분을 바꾸고 싶어.
 
+현재 상태:
+{{예: 메뉴 검색은 되지만 결과가 너무 길게 보임 / 칼로리 숫자 비교가 안 됨 / 모바일에서 버튼이 작음}}
 
+바꾸고 싶은 점:
+{{예: 결과를 카드 형태로 보여줘 / 칼로리 높은 순서로 정렬해줘 / 알레르기 번호 4를 강조해줘}}
 
+유지할 기능:
+{{예: API 요청, 날짜 표시, 메뉴 줄바꿈, 출처 표시}}
 
+테스트 방법:
+{{예: 20210201~20210228 기간에서 카레를 검색했을 때 날짜와 메뉴가 보이는지 확인}}
 
+기존 정상 기능을 유지하면서 수정해줘.
+수정한 전체 index.html 코드를 하나의 코드블록으로 다시 작성해줘.
+마지막에 내가 다시 확인할 테스트 항목을 3개만 적어줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">앱을 한 번 수정하는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="앱을 한 번 수정하는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">방금 만든 index.html을 실행해 보니 아래 부분을 바꾸고 싶어.
 
+현재 상태:
+<mark class="astro-voatq4dp">{{예: 메뉴 검색은 되지만 결과가 너무 길게 보임 / 칼로리 숫자 비교가 안 됨 / 모바일에서 버튼이 작음}}</mark>
 
+바꾸고 싶은 점:
+<mark class="astro-voatq4dp">{{예: 결과를 카드 형태로 보여줘 / 칼로리 높은 순서로 정렬해줘 / 알레르기 번호 4를 강조해줘}}</mark>
 
+유지할 기능:
+<mark class="astro-voatq4dp">{{예: API 요청, 날짜 표시, 메뉴 줄바꿈, 출처 표시}}</mark>
 
-<table><thead><tr><th>상황</th><th>먼저 확인할 것</th></tr></thead><tbody><tr><td>코드가 글자로 보인다</td><td>파일 이름이 index.html인지, 브라우저로 열었는지</td></tr><tr><td>파일을 골라도 결과가 없다</td><td>CSV 형식, 필수 열, 중식 기록, 실제 학교·기간</td></tr><tr><td>한글이 깨진다</td><td>UTF-8로 저장한 CSV인지</td></tr><tr><td>Pages에서 파일을 찾지 못한다</td><td>지정한 브랜치·폴더의 최상위에 index.html이 있는지</td></tr><tr><td>수정 내용이 보이지 않는다</td><td>Commit 완료, Actions 결과, 새로 고침</td></tr><tr><td>학교에서 계정 접속이 어렵다</td><td>수업에서 안내한 접속 환경을 확인하고 PC 파일 실행으로 기록 이어가기</td></tr></tbody></table></details>
-<p>통합 학습지의 공통 실습 기록을 마무리합니다. <strong>어떤 자료와 기준을 썼는지, 어떤 기능을 바꾸었는지, 무엇을 직접 확인했는지</strong>를 남깁니다. 다음 프로젝트에서는 같은 제작 방법을 활용하며 우리 팀의 문제와 자료를 탐구합니다.</p>
-<details><summary>공식 사용 안내</summary><p><a href="https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17320190722180924242823&infSeq=1">나이스 급식식단정보</a> · <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Pages 게시 위치 설정</a></p></details>
+테스트 방법:
+<mark class="astro-voatq4dp">{{예: 20210201~20210228 기간에서 카레를 검색했을 때 날짜와 메뉴가 보이는지 확인}}</mark>
+
+기존 정상 기능을 유지하면서 수정해줘.
+수정한 전체 index.html 코드를 하나의 코드블록으로 다시 작성해줘.
+마지막에 내가 다시 확인할 테스트 항목을 3개만 적어줘.</code></pre> </section>  
+<p>수정 요청은 한 번에 하나씩 하는 것이 좋습니다. 예를 들어 먼저 “결과 카드로 보여 주기”를 고치고, 그다음 “칼로리 높은 순서로 정렬하기”를 요청합니다. 수정 뒤에는 같은 조건으로 다시 실행합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="6-오류가-날-때-설명하기">6. 오류가 날 때 설명하기</h2><a class="sl-anchor-link" href="#6-오류가-날-때-설명하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 오류가 날 때 설명하기”</span></a></div>
+<p>오류가 나면 화면에 나온 메시지, 입력한 값, 기대한 결과를 함께 적습니다. “안 돼요”보다 “어떤 조건에서 어떤 결과가 나왔는지”를 알려 주면 AI가 원인을 찾기 쉽습니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="index.html을 실행했는데 오류가 나서 고치고 싶어.
+
+실행 환경:
+{{예: Chrome에서 index.html 파일을 직접 열었음 / GitHub Pages 주소에서 열었음}}
+
+내가 입력한 값:
+{{예: 메뉴 검색어, 날짜 범위, 알레르기 번호 등}}
+
+화면에 보이는 오류나 이상한 결과:
+{{오류 메시지 또는 화면 상태를 붙여 넣기}}
+
+정상이라면 보여야 하는 결과:
+{{예: 해당 기간의 날짜, 식사명, 메뉴, 칼로리}}
+
+관련 코드:
+{{전체 코드 또는 오류가 난 부분 붙여 넣기}}
+
+오류 원인을 초보자도 이해할 수 있게 설명하고, 수정한 전체 index.html 코드를 다시 작성해줘.
+수정 뒤 확인할 테스트도 알려줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">오류를 설명하고 고치는 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="오류를 설명하고 고치는 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">index.html을 실행했는데 오류가 나서 고치고 싶어.
+
+실행 환경:
+<mark class="astro-voatq4dp">{{예: Chrome에서 index.html 파일을 직접 열었음 / GitHub Pages 주소에서 열었음}}</mark>
+
+내가 입력한 값:
+<mark class="astro-voatq4dp">{{예: 메뉴 검색어, 날짜 범위, 알레르기 번호 등}}</mark>
+
+화면에 보이는 오류나 이상한 결과:
+<mark class="astro-voatq4dp">{{오류 메시지 또는 화면 상태를 붙여 넣기}}</mark>
+
+정상이라면 보여야 하는 결과:
+<mark class="astro-voatq4dp">{{예: 해당 기간의 날짜, 식사명, 메뉴, 칼로리}}</mark>
+
+관련 코드:
+<mark class="astro-voatq4dp">{{전체 코드 또는 오류가 난 부분 붙여 넣기}}</mark>
+
+오류 원인을 초보자도 이해할 수 있게 설명하고, 수정한 전체 index.html 코드를 다시 작성해줘.
+수정 뒤 확인할 테스트도 알려줘.</code></pre> </section>  
+<p>자주 만나는 상황은 다음과 같습니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>상황</th><th>먼저 확인할 것</th></tr></thead><tbody><tr><td>데이터가 안 나옴</td><td>API 키, 학교 코드, 날짜 범위, 인터넷 연결</td></tr><tr><td>결과가 비어 있음</td><td>실제로 해당 기간에 메뉴가 있는지 JSON 원문 확인</td></tr><tr><td>칼로리 비교가 이상함</td><td><code>1196.2 Kcal</code>에서 숫자만 꺼냈는지 확인</td></tr><tr><td>메뉴 줄바꿈이 안 됨</td><td><code>&lt;br/&gt;</code>를 줄바꿈으로 바꾸는 코드 확인</td></tr><tr><td>화면이 불편함</td><td>먼저 보여 줄 정보와 버튼 위치 설명</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="7-작업-방식-선택하기">7. 작업 방식 선택하기</h2><a class="sl-anchor-link" href="#7-작업-방식-선택하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “7. 작업 방식 선택하기”</span></a></div>
+<p>오늘은 누구나 할 수 있는 방식으로 시작합니다. 도구가 준비된 팀은 연결형 방식으로 확장할 수 있습니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>방식</th><th>오늘 할 일</th><th>어울리는 상황</th></tr></thead><tbody><tr><td>기본 방식</td><td>AI가 준 코드를 복사해 <code>index.html</code>에 붙여 넣고 브라우저로 실행</td><td>짧은 시간에 첫 앱을 확인할 때</td></tr><tr><td>수정 반복 방식</td><td>실행 결과를 보고 AI에게 한 부분씩 수정 요청</td><td>기능을 조금씩 바꿔 보고 싶을 때</td></tr><tr><td>연결형 방식</td><td>GitHub, Codespaces, Claude Code, Codex 같은 도구로 파일을 직접 수정</td><td>팀 프로젝트에서 여러 번 고칠 때</td></tr></tbody></table>
+<p>연결형 방식은 계정, 권한, 저장소 설정이 필요할 수 있습니다. 오늘은 <code>index.html</code> 파일을 완성하고 실행 결과를 확인하는 것을 목표로 합니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="8-제출과-기록">8. 제출과 기록</h2><a class="sl-anchor-link" href="#8-제출과-기록"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “8. 제출과 기록”</span></a></div>
+<p>오늘 만든 결과는 수업 과제로 제출합니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>제출물</th><th>내용</th></tr></thead><tbody><tr><td><code>index.html</code></td><td>실행 가능한 HTML 파일</td></tr><tr><td>실행 화면 캡처</td><td>데이터가 표시된 화면</td></tr><tr><td>수정 기록</td><td>처음 요청한 기능, 바꾼 점, 다시 테스트한 내용</td></tr></tbody></table>
+<p>수정 기록은 길게 쓰지 않아도 됩니다.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">처음 기능: 메뉴 이름 검색</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">수정한 점: 검색 결과를 날짜별 카드로 정리함</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">확인한 점: 20210201~20210228 기간에서 검색어를 바꾸며 결과 확인</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">남은 점: 공개 배포 때 API 키 처리 방법 확인 필요</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="처음 기능: 메뉴 이름 검색수정한 점: 검색 결과를 날짜별 카드로 정리함확인한 점: 20210201~20210228 기간에서 검색어를 바꾸며 결과 확인남은 점: 공개 배포 때 API 키 처리 방법 확인 필요"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="9-팀-프로젝트로-이어가기">9. 팀 프로젝트로 이어가기</h2><a class="sl-anchor-link" href="#9-팀-프로젝트로-이어가기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “9. 팀 프로젝트로 이어가기”</span></a></div>
+<p>오늘의 급식 앱은 팀 프로젝트의 작은 연습입니다. 최종 프로젝트에서는 문제를 정하고, 데이터 길을 선택하고, 사용자가 실제로 쓸 수 있는 웹앱으로 발전시킵니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>출발점</th><th>데이터 활용 방식</th><th>앱형 프로젝트 예시</th></tr></thead><tbody><tr><td>평소 불편함이 있다</td><td>KOSIS나 공공데이터로 실제 현황 확인</td><td>청소년 여가, 진로, 사교육, 지역 격차 데이터를 바탕으로 정보 안내 앱 만들기</td></tr><tr><td>KOSIS 탐색 중 문제를 발견했다</td><td>국가통계로 문제의 규모와 변화 확인</td><td>지역별 문화시설 차이를 보고 우리 지역 활동 추천 앱 만들기</td></tr><tr><td>조건별로 조회되는 생활 데이터가 필요하다</td><td>Open API로 날짜, 지역, 학교 같은 조건별 데이터 요청</td><td>급식 조회, 메뉴 검색, 알레르기 확인, 날씨 기반 추천 앱 만들기</td></tr><tr><td>공식 데이터에 없는 학교 안 문제가 있다</td><td>직접 설문조사로 우리 학교 데이터를 수집</td><td>학습 습관, 급식 만족도, 진로 관심, 학교생활 불편을 반영한 맞춤 안내 앱 만들기</td></tr></tbody></table>
+<div class="lab-callout lab-callout--exit astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎟️</span> 오늘의 정리 </p> <div class="lab-callout__body astro-mrmim4ef"> API 키와 요청 주소를 사용하면 공공데이터를 웹앱으로 불러올 수 있습니다. 바이브코딩은 첫 코드를 실행하고, 결과를 보며 필요한 기능을 하나씩 고쳐 가는 제작 방법입니다. </div> </div> 
 <nav class="page-nav" aria-label="단원 이동"> <a href="/hyfl-ai-lab/data/open-api/">← 6. 데이터가 나오는 주소 읽기</a> <a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a> <a href="/hyfl-ai-lab/data-project/">8. DATA TO WEB APP →</a> </nav> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr">   </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
