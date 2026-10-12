@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>6. 데이터가 나오는 주소 읽기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data/open-api/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="6. 데이터가 나오는 주소 읽기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data/open-api/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="NEIS 급식 API 주소를 만들어 JSON 응답을 확인하고, 받은 데이터를 간단한 HTML 앱으로 연결합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="NEIS 급식 API 주소를 만들어 JSON 응답을 확인하고, 받은 데이터를 간단한 HTML 앱으로 연결합니다."/><script>
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>6. 데이터가 나오는 주소 읽기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data/open-api/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="6. 데이터가 나오는 주소 읽기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data/open-api/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="NEIS 급식 API 키와 요청 주소를 확인하고, 브라우저에서 JSON 응답 값을 읽습니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="NEIS 급식 API 키와 요청 주소를 확인하고, 브라우저에서 JSON 응답 값을 읽습니다."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -72,10 +72,11 @@
 		})();
 	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-open-api는-데이터가-나오는-주소입니다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. Open API는 데이터가 나오는 주소입니다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-api-키와-요청값-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. API 키와 요청값 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-요청-주소-만들고-실행하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 요청 주소 만들고 실행하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-json에서-필요한-값-찾기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. JSON에서 필요한 값 찾기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-만들-기능-하나-정하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 만들 기능 하나 정하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-프롬프트를-바꿔서-html-앱-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 프롬프트를 바꿔서 HTML 앱 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-팀-프로젝트로-이어가기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 팀 프로젝트로 이어가기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-open-api는-데이터가-나오는-주소입니다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. Open API는 데이터가 나오는 주소입니다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-api-키와-요청값-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. API 키와 요청값 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-요청-주소-만들고-실행하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 요청 주소 만들고 실행하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-json에서-필요한-값-찾기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. JSON에서 필요한 값 찾기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-만들-기능-하나-정하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 만들 기능 하나 정하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-프롬프트를-바꿔서-html-앱-만들기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 프롬프트를 바꿔서 HTML 앱 만들기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-팀-프로젝트로-이어가기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 팀 프로젝트로 이어가기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">6. 데이터가 나오는 주소 읽기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="stage-label">DATA EXPLORATION · OPEN API</div> <div class="stage-question"><span>오늘의 질문</span><strong>웹앱은 공공데이터를 어떻게 직접 가져올까?</strong></div>
-<p>지난 시간에는 KOSIS MCP로 국가통계를 찾고 원자료와 비교했습니다. 이번 시간에는 Open API 주소로 생활 데이터를 요청하고, 응답으로 받은 JSON 데이터를 간단한 HTML 화면에 연결합니다.</p>
-<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 오늘의 미션 </p> <div class="lab-callout__body astro-mrmim4ef"> NEIS 급식 API 요청 주소를 만들고 브라우저에서 JSON 응답을 확인합니다. 응답에서 필요한 값을 찾은 뒤, 프롬프트를 바꿔 각자 원하는 기능의 작은 HTML 앱을 만들어 봅니다. </div> </div> 
-<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">API 주소 만들기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 브라우저에서 요청하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ JSON에서 필요한 값 찾기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 만들 기능 하나 정하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 프롬프트 바꿔 쓰기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ index.html 파일로 테스트하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 구글클래스룸에 파일 제출하기</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="API 주소 만들기→ 브라우저에서 요청하기→ JSON에서 필요한 값 찾기→ 만들 기능 하나 정하기→ 프롬프트 바꿔 쓰기→ index.html 파일로 테스트하기→ 구글클래스룸에 파일 제출하기"><div></div></button></div></figure></div>
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-open-api는-데이터가-나오는-주소입니다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. Open API는 데이터가 나오는 주소입니다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-api-키와-요청값-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. API 키와 요청값 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-요청-주소-만들고-실행하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 요청 주소 만들고 실행하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-json-응답에서-받은-값-찾기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. JSON 응답에서 받은 값 찾기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-받은-값을-앱-기능으로-연결하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 받은 값을 앱 기능으로 연결하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-다음-시간-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 다음 시간 준비하기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-open-api는-데이터가-나오는-주소입니다" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. Open API는 데이터가 나오는 주소입니다</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-api-키와-요청값-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. API 키와 요청값 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-요청-주소-만들고-실행하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 요청 주소 만들고 실행하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-json-응답에서-받은-값-찾기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. JSON 응답에서 받은 값 찾기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-받은-값을-앱-기능으로-연결하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 받은 값을 앱 기능으로 연결하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-다음-시간-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 다음 시간 준비하기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">6. 데이터가 나오는 주소 읽기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="stage-label">DATA EXPLORATION · OPEN API</div> <div class="stage-question"><span>오늘의 질문</span><strong>웹앱은 공공데이터를 어떻게 직접 가져올까?</strong></div>
+<p>지난 시간에는 KOSIS MCP로 국가통계를 찾고 원자료와 비교했습니다. 이번 시간에는 Open API 주소로 생활 데이터를 요청하고, 응답으로 받은 JSON 값이 웹앱의 화면 요소로 이어지는 과정을 살펴봅니다.</p>
+<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 오늘의 미션 </p> <div class="lab-callout__body astro-mrmim4ef"> NEIS 급식 API 요청 주소를 만들고 브라우저에서 JSON 응답을 확인합니다. 응답에서 메뉴, 날짜, 칼로리 값을 찾아 기록하고, 이 값이 어떤 앱 기능으로 이어질 수 있는지 정리합니다. </div> </div> 
+<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> 먼저 예상하기 </p> <div class="lab-callout__body astro-mrmim4ef"> 날짜를 바꾸면 어떤 값이 달라질지, 학교 코드를 바꾸면 어떤 값이 달라질지 먼저 예상합니다. 예상한 뒤 API 주소를 실행해 실제 응답과 비교합니다. </div> </div> 
+<div class="expressive-code"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/ec.v4551.css"/><script type="module" src="/hyfl-ai-lab/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">API 키와 요청값 확인하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 요청 주소 만들기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 브라우저에서 요청하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ JSON 응답 확인하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 받은 값 기록하기</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">→ 앱 기능으로 연결해 보기</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="API 키와 요청값 확인하기→ 요청 주소 만들기→ 브라우저에서 요청하기→ JSON 응답 확인하기→ 받은 값 기록하기→ 앱 기능으로 연결해 보기"><div></div></button></div></figure></div>
 <div class="sl-heading-wrapper level-h2"><h2 id="1-open-api는-데이터가-나오는-주소입니다">1. Open API는 데이터가 나오는 주소입니다</h2><a class="sl-anchor-link" href="#1-open-api는-데이터가-나오는-주소입니다"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. Open API는 데이터가 나오는 주소입니다”</span></a></div>
 <p>Open API는 기관이 정한 주소와 조건값을 사용해 데이터를 요청하는 방법입니다. 웹앱은 사용자가 입력한 값을 API 주소의 조건값으로 넣고, 서버가 보내 준 응답 데이터에서 필요한 항목을 골라 화면에 보여 줍니다.</p>
 
@@ -108,15 +109,16 @@
 
 
 
-<table><thead><tr><th>수업에서 보는 것</th><th>뜻</th><th>급식 API 예시</th></tr></thead><tbody><tr><td>요청 주소</td><td>데이터를 달라고 보내는 주소</td><td>급식식단정보 API 주소</td></tr><tr><td>조건값</td><td>어떤 데이터를 받을지 정하는 값</td><td>학교 코드, 날짜, 식사 코드</td></tr><tr><td>JSON 응답</td><td>서버가 보내 주는 데이터</td><td>학교명, 메뉴, 칼로리정보</td></tr><tr><td>웹앱 화면</td><td>필요한 값을 보기 좋게 보여 주는 곳</td><td>메뉴 검색 결과, 칼로리 확인 결과</td></tr></tbody></table>
-<p>JSON은 <strong>반정형 데이터</strong>입니다. 이름표와 값이 묶여 있어 앱이 필요한 값을 찾아 화면에 표시할 수 있습니다.</p>
+<table><thead><tr><th>수업에서 보는 것</th><th>뜻</th><th>급식 API 예시</th></tr></thead><tbody><tr><td>요청 주소</td><td>데이터를 달라고 보내는 주소</td><td>급식식단정보 API 주소</td></tr><tr><td>조건값</td><td>어떤 데이터를 받을지 정하는 값</td><td>학교 코드, 날짜, 식사 코드</td></tr><tr><td>JSON 응답</td><td>서버가 보내 주는 데이터</td><td>학교명, 메뉴, 칼로리정보</td></tr><tr><td>웹앱 화면</td><td>필요한 값을 보기 좋게 보여 주는 곳</td><td>오늘의 급식 카드, 메뉴 검색 결과</td></tr></tbody></table>
+<p>JSON은 <strong>반정형 데이터</strong>입니다. 이름표와 값이 묶여 있고, 여러 묶음이 계층적으로 들어갈 수 있습니다. 앱은 이름표를 기준으로 필요한 값을 찾아 화면에 표시합니다.</p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">SCHUL_NM</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">한영외국어고등학교</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">MMEAL_SC_NM</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">중식</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">CAL_INFO</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#ECC48D;--1:#984E4D">1196.2 Kcal</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="&#34;SCHUL_NM&#34;: &#34;한영외국어고등학교&#34;&#34;MMEAL_SC_NM&#34;: &#34;중식&#34;&#34;CAL_INFO&#34;: &#34;1196.2 Kcal&#34;"><div></div></button></div></figure></div>
 <div class="sl-heading-wrapper level-h2"><h2 id="2-api-키와-요청값-확인하기">2. API 키와 요청값 확인하기</h2><a class="sl-anchor-link" href="#2-api-키와-요청값-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. API 키와 요청값 확인하기”</span></a></div>
-<p>오늘 예시는 NEIS 교육정보 개방 포털의 <strong>급식식단정보</strong>입니다. 이 자료는 학교 급식의 요리명, 칼로리정보, 영양정보 등을 일자별로 제공합니다.</p>
+<p>오늘 예시는 NEIS 교육정보 개방 포털의 <strong>급식식단정보</strong>입니다. 이 자료는 학교 급식의 요리명, 원산지정보, 칼로리정보, 영양정보 등을 일자별로 제공합니다.</p>
 <ul>
 <li>원자료: <a href="https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17320190722180924242823&infSeq=1">NEIS 급식식단정보</a></li>
 </ul>
 <div class="lab-callout lab-callout--teacher astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🧑‍🏫</span> 수업용 인증키 </p> <div class="lab-callout__body astro-mrmim4ef"> 수업용 인증키는 교사가 안내한 비공개 공간에서 확인합니다. 공개 교과서와 공개 저장소에는 실제 인증키 대신 <code>수업용_인증키</code> 같은 자리표시자를 사용합니다. </div> </div> 
+<p>급식 API 요청에 자주 쓰는 값은 다음과 같습니다.</p>
 
 
 
@@ -152,9 +154,20 @@
 
 
 
-<table><thead><tr><th>값</th><th>의미</th><th>예시</th></tr></thead><tbody><tr><td><code>KEY</code></td><td>API 인증키</td><td>수업용 인증키</td></tr><tr><td><code>Type</code></td><td>응답 형식</td><td><code>json</code></td></tr><tr><td><code>ATPT_OFCDC_SC_CODE</code></td><td>시도교육청 코드</td><td><code>B10</code></td></tr><tr><td><code>SD_SCHUL_CODE</code></td><td>학교 코드</td><td><code>7010259</code></td></tr><tr><td><code>MLSV_YMD</code></td><td>급식일자</td><td><code>20210222</code></td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>값</th><th>의미</th><th>예시</th></tr></thead><tbody><tr><td><code>KEY</code></td><td>API 인증키</td><td>수업용 인증키</td></tr><tr><td><code>Type</code></td><td>응답 형식</td><td><code>json</code></td></tr><tr><td><code>pIndex</code></td><td>페이지 번호</td><td><code>1</code></td></tr><tr><td><code>pSize</code></td><td>한 번에 받을 개수</td><td><code>100</code></td></tr><tr><td><code>ATPT_OFCDC_SC_CODE</code></td><td>시도교육청 코드</td><td><code>B10</code></td></tr><tr><td><code>SD_SCHUL_CODE</code></td><td>학교 코드</td><td><code>7010259</code></td></tr><tr><td><code>MLSV_YMD</code></td><td>급식일자</td><td><code>20210222</code></td></tr></tbody></table>
+<p>API 키는 제공 기관이 발급하는 인증값입니다. 발급받은 키를 요청 주소의 <code>KEY=</code> 뒤에 넣으면 서버가 요청자를 확인하고 데이터를 보내 줍니다. 시도교육청 코드와 학교 코드는 NEIS 포털의 학교기본정보 서비스, 제공 기관의 코드 안내, 수업용 예시 자료에서 확인할 수 있습니다.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="3-요청-주소-만들고-실행하기">3. 요청 주소 만들고 실행하기</h2><a class="sl-anchor-link" href="#3-요청-주소-만들고-실행하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 요청 주소 만들고 실행하기”</span></a></div>
-<p>아래 프롬프트를 복사한 뒤 빨간 부분을 수업에서 사용할 값으로 바꿉니다. AI가 만들어 준 주소를 브라우저 주소창에 붙여 넣어 실행합니다.</p>
+<p>아래 프롬프트를 복사한 뒤 빨간 부분을 수업에서 사용할 값으로 바꿉니다. 생성형 AI는 입력한 값을 바탕으로 브라우저 주소창에 붙여 넣을 수 있는 API 요청 주소를 만들어 줍니다.</p>
 <section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="NEIS 급식식단정보 API 요청 주소를 만들려고 해.
 
 기본 주소:
@@ -192,11 +205,42 @@ https://open.neis.go.kr/hub/mealServiceDietInfo
 
 위 값을 사용해서 브라우저 주소창에 붙여 넣을 수 있는 전체 API 요청 주소를 만들어줘.
 그리고 내가 바꾼 값이 무엇을 의미하는지 표로 정리해줘.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
-<p>요청 주소는 다음과 같은 구조입니다.</p>
+<p>AI가 만들어 준 요청 주소는 다음과 같은 구조입니다.</p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=수업용_인증키&amp;Type=json&amp;pIndex=1&amp;pSize=100&amp;ATPT_OFCDC_SC_CODE=B10&amp;SD_SCHUL_CODE=7010259&amp;MLSV_YMD=20210222</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=수업용_인증키&Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=B10&SD_SCHUL_CODE=7010259&MLSV_YMD=20210222"><div></div></button></div></figure></div>
-<p>주소에서 <code>?</code> 뒤에는 조건값이 이어지고, 여러 조건은 <code>&amp;</code>로 연결됩니다. 날짜를 바꾸면 다른 날짜의 급식이 나오고, 학교 코드를 바꾸면 다른 학교의 급식이 나옵니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="4-json에서-필요한-값-찾기">4. JSON에서 필요한 값 찾기</h2><a class="sl-anchor-link" href="#4-json에서-필요한-값-찾기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. JSON에서 필요한 값 찾기”</span></a></div>
-<p>브라우저에 나온 JSON 응답에서 아래 값을 찾습니다.</p>
+<p>주소에서 <code>?</code> 뒤에는 조건값이 이어지고, 여러 조건은 <code>&amp;</code>로 연결됩니다. 조건은 <code>이름=값</code> 형태로 씁니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>바꿔 볼 값</th><th>예시</th><th>확인할 변화</th></tr></thead><tbody><tr><td>날짜</td><td><code>MLSV_YMD=20210223</code></td><td>다른 날짜의 메뉴가 나오는지 확인</td></tr><tr><td>페이지 크기</td><td><code>pSize=5</code>, <code>pSize=100</code></td><td>한 번에 받는 기록 수 확인</td></tr><tr><td>식사 코드</td><td><code>MMEAL_SC_CODE=2</code></td><td>중식 자료만 나오는지 확인</td></tr><tr><td>학교 코드</td><td><code>SD_SCHUL_CODE=…</code></td><td>다른 학교의 급식 자료 확인</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="4-json-응답에서-받은-값-찾기">4. JSON 응답에서 받은 값 찾기</h2><a class="sl-anchor-link" href="#4-json-응답에서-받은-값-찾기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. JSON 응답에서 받은 값 찾기”</span></a></div>
+<p>요청 주소를 브라우저 주소창에 붙여 넣고 실행하면 JSON 응답이 보입니다. 처음에는 전체 구조보다 아래 값을 먼저 찾습니다.</p>
 
 
 
@@ -237,12 +281,125 @@ https://open.neis.go.kr/hub/mealServiceDietInfo
 
 
 
-<table><thead><tr><th>확인할 값</th><th>JSON에서 찾을 이름표</th><th>내가 확인한 값</th></tr></thead><tbody><tr><td>정상 처리 여부</td><td><code>RESULT.MESSAGE</code></td><td></td></tr><tr><td>학교명</td><td><code>SCHUL_NM</code></td><td></td></tr><tr><td>급식일자</td><td><code>MLSV_YMD</code></td><td></td></tr><tr><td>식사명</td><td><code>MMEAL_SC_NM</code></td><td></td></tr><tr><td>메뉴</td><td><code>DDISH_NM</code></td><td></td></tr><tr><td>칼로리정보</td><td><code>CAL_INFO</code></td><td></td></tr></tbody></table>
+
+
+
+
+
+<table><thead><tr><th>확인할 값</th><th>JSON에서 찾을 이름표</th><th>내가 확인한 값</th></tr></thead><tbody><tr><td>정상 처리 여부</td><td><code>RESULT.MESSAGE</code></td><td></td></tr><tr><td>학교명</td><td><code>SCHUL_NM</code></td><td></td></tr><tr><td>급식일자</td><td><code>MLSV_YMD</code></td><td></td></tr><tr><td>식사명</td><td><code>MMEAL_SC_NM</code></td><td></td></tr><tr><td>메뉴</td><td><code>DDISH_NM</code></td><td></td></tr><tr><td>칼로리정보</td><td><code>CAL_INFO</code></td><td></td></tr><tr><td>영양정보</td><td><code>NTR_INFO</code></td><td></td></tr></tbody></table>
 <p>예시 응답의 일부는 다음과 같습니다.</p>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">&quot;mealServiceDietInfo&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: [</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">&quot;head&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: [</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">{ </span><span style="--0:#7FDBCA;--1:#096E72">&quot;RESULT&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: { </span><span style="--0:#7FDBCA;--1:#096E72">&quot;CODE&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">INFO-000</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#7FDBCA;--1:#096E72">&quot;MESSAGE&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">정상 처리되었습니다.</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53"> } }</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">      </span></span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">},</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">&quot;row&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: [</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;SCHUL_NM&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">한영외국어고등학교</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;MMEAL_SC_NM&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">중식</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;MLSV_YMD&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">20210222</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;DDISH_NM&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">$차조밥&lt;br/&gt;$설렁탕5.6.13.16.&lt;br/&gt;$오리훈제...</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;CAL_INFO&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">1196.2 Kcal</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">      </span></span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="{  &#34;mealServiceDietInfo&#34;: [    {      &#34;head&#34;: [        { &#34;RESULT&#34;: { &#34;CODE&#34;: &#34;INFO-000&#34;, &#34;MESSAGE&#34;: &#34;정상 처리되었습니다.&#34; } }      ]    },    {      &#34;row&#34;: [        {          &#34;SCHUL_NM&#34;: &#34;한영외국어고등학교&#34;,          &#34;MMEAL_SC_NM&#34;: &#34;중식&#34;,          &#34;MLSV_YMD&#34;: &#34;20210222&#34;,          &#34;DDISH_NM&#34;: &#34;$차조밥<br/>$설렁탕5.6.13.16.<br/>$오리훈제...&#34;,          &#34;CAL_INFO&#34;: &#34;1196.2 Kcal&#34;        }      ]    }  ]}"><div></div></button></div></figure></div>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7FDBCA;--1:#096E72">&quot;mealServiceDietInfo&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: [</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">&quot;head&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: [</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">{ </span><span style="--0:#7FDBCA;--1:#096E72">&quot;list_total_count&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53"> },</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">{ </span><span style="--0:#7FDBCA;--1:#096E72">&quot;RESULT&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: { </span><span style="--0:#7FDBCA;--1:#096E72">&quot;CODE&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">INFO-000</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#7FDBCA;--1:#096E72">&quot;MESSAGE&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">정상 처리되었습니다.</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53"> } }</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">      </span></span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">},</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#7FDBCA;--1:#096E72">&quot;row&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: [</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;SCHUL_NM&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">한영외국어고등학교</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;MMEAL_SC_NM&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">중식</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;MLSV_YMD&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">20210222</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;DDISH_NM&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">$차조밥&lt;br/&gt;$설렁탕5.6.13.16.&lt;br/&gt;$오리훈제...</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">          </span><span style="--0:#7FDBCA;--1:#096E72">&quot;CAL_INFO&quot;</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#D9F5DD;--1:#111111">&quot;</span><span style="--0:#C789D6;--1:#7C5686">1196.2 Kcal</span><span style="--0:#D9F5DD;--1:#111111">&quot;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">      </span></span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">  </span></span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="{  &#34;mealServiceDietInfo&#34;: [    {      &#34;head&#34;: [        { &#34;list_total_count&#34;: 1 },        { &#34;RESULT&#34;: { &#34;CODE&#34;: &#34;INFO-000&#34;, &#34;MESSAGE&#34;: &#34;정상 처리되었습니다.&#34; } }      ]    },    {      &#34;row&#34;: [        {          &#34;SCHUL_NM&#34;: &#34;한영외국어고등학교&#34;,          &#34;MMEAL_SC_NM&#34;: &#34;중식&#34;,          &#34;MLSV_YMD&#34;: &#34;20210222&#34;,          &#34;DDISH_NM&#34;: &#34;$차조밥<br/>$설렁탕5.6.13.16.<br/>$오리훈제...&#34;,          &#34;CAL_INFO&#34;: &#34;1196.2 Kcal&#34;        }      ]    }  ]}"><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>JSON 부분</th><th>뜻</th><th>급식 응답에서 보는 방법</th></tr></thead><tbody><tr><td><code>head</code></td><td>응답 상태 정보</td><td>전체 개수, 정상 처리 여부 확인</td></tr><tr><td><code>row</code></td><td>실제 데이터 목록</td><td>학교명, 날짜, 메뉴, 칼로리 확인</td></tr><tr><td><code></code></td><td>하나의 묶음</td><td>한 건의 급식 기록</td></tr><tr><td><code>[ ]</code></td><td>여러 개의 묶음</td><td>여러 날짜 또는 여러 식사 기록</td></tr><tr><td><code>“이름”: “값”</code></td><td>항목 이름과 실제 값</td><td><code>“SCHUL_NM”: “한영외국어고등학교”</code></td></tr></tbody></table>
 <p><code>row</code> 안에 실제 급식 데이터가 들어 있습니다. <code>DDISH_NM</code> 안의 <code>&lt;br/&gt;</code>는 줄바꿈 표시입니다. 앱은 이 표시를 기준으로 메뉴를 줄마다 나누어 보여 줄 수 있습니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="5-만들-기능-하나-정하기">5. 만들 기능 하나 정하기</h2><a class="sl-anchor-link" href="#5-만들-기능-하나-정하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 만들 기능 하나 정하기”</span></a></div>
-<p>같은 급식 API를 사용해도 만들 수 있는 앱은 달라집니다. 오늘은 아래 중 하나를 고르거나 비슷한 기능을 정합니다.</p>
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="아래 NEIS 급식 API 응답 JSON에서 실제 값을 찾아 표로 정리해줘.
+
+요청 주소:
+{{브라우저에서 실행한 API 요청 주소}}
+
+응답 JSON:
+{{브라우저에 나온 JSON 일부 붙여 넣기}}
+
+찾을 값:
+1. 정상 처리 여부
+2. 학교명
+3. 급식일자
+4. 식사명
+5. 메뉴
+6. 칼로리정보
+7. 영양정보
+
+메뉴는 <br/> 기준으로 줄을 나누어 정리해줘.
+표 아래에는 이 데이터가 웹앱 화면에서 어떻게 쓰일 수 있는지 3가지로 정리해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">응답 JSON에서 받은 값 정리하기 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="응답 JSON에서 받은 값 정리하기 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">아래 NEIS 급식 API 응답 JSON에서 실제 값을 찾아 표로 정리해줘.
+
+요청 주소:
+<mark class="astro-voatq4dp">{{브라우저에서 실행한 API 요청 주소}}</mark>
+
+응답 JSON:
+<mark class="astro-voatq4dp">{{브라우저에 나온 JSON 일부 붙여 넣기}}</mark>
+
+찾을 값:
+1. 정상 처리 여부
+2. 학교명
+3. 급식일자
+4. 식사명
+5. 메뉴
+6. 칼로리정보
+7. 영양정보
+
+메뉴는 &lt;br/&gt; 기준으로 줄을 나누어 정리해줘.
+표 아래에는 이 데이터가 웹앱 화면에서 어떻게 쓰일 수 있는지 3가지로 정리해줘.</code></pre> </section>  
+<div class="sl-heading-wrapper level-h2"><h2 id="5-받은-값을-앱-기능으로-연결하기">5. 받은 값을 앱 기능으로 연결하기</h2><a class="sl-anchor-link" href="#5-받은-값을-앱-기능으로-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 받은 값을 앱 기능으로 연결하기”</span></a></div>
+<p>API 응답에서 찾은 값은 웹앱의 화면 요소가 됩니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>JSON 항목</th><th>앱 화면에서 보이는 모습</th></tr></thead><tbody><tr><td><code>MLSV_YMD</code></td><td>급식 날짜</td></tr><tr><td><code>MMEAL_SC_NM</code></td><td>조식, 중식, 석식 표시</td></tr><tr><td><code>DDISH_NM</code></td><td>메뉴 목록과 알레르기 번호</td></tr><tr><td><code>CAL_INFO</code></td><td>칼로리 정보</td></tr><tr><td><code>NTR_INFO</code></td><td>영양정보</td></tr><tr><td><code>RESULT.CODE</code></td><td>정상 처리, 데이터 없음, 오류 안내</td></tr></tbody></table>
+<p>같은 급식 API를 사용해도 만들 수 있는 앱은 달라집니다.</p>
 
 
 
@@ -274,169 +431,34 @@ https://open.neis.go.kr/hub/mealServiceDietInfo
 
 
 <table><thead><tr><th>내가 만들고 싶은 기능</th><th>화면에서 입력할 값</th><th>주로 사용할 응답 항목</th></tr></thead><tbody><tr><td>특정 메뉴가 나온 날 찾기</td><td>메뉴 이름</td><td><code>DDISH_NM</code>, <code>MLSV_YMD</code></td></tr><tr><td>칼로리 높은 날 찾기</td><td>칼로리 기준</td><td><code>CAL_INFO</code>, <code>MLSV_YMD</code></td></tr><tr><td>알레르기 번호 찾기</td><td>알레르기 번호</td><td><code>DDISH_NM</code></td></tr><tr><td>날짜별 영양정보 보기</td><td>날짜 또는 기간</td><td><code>NTR_INFO</code>, <code>MLSV_YMD</code></td></tr></tbody></table>
-<div class="sl-heading-wrapper level-h2"><h2 id="6-프롬프트를-바꿔서-html-앱-만들기">6. 프롬프트를 바꿔서 HTML 앱 만들기</h2><a class="sl-anchor-link" href="#6-프롬프트를-바꿔서-html-앱-만들기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 프롬프트를 바꿔서 HTML 앱 만들기”</span></a></div>
-<p>아래 프롬프트를 복사한 뒤 자신이 만들 기능에 맞게 빨간 부분을 바꿉니다. 오늘은 작동하는 작은 웹페이지를 만드는 데 집중합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="NEIS 급식 API를 사용해서 간단한 급식 데이터 웹페이지를 만들고 싶어.
+<div class="sl-heading-wrapper level-h2"><h2 id="6-다음-시간-준비하기">6. 다음 시간 준비하기</h2><a class="sl-anchor-link" href="#6-다음-시간-준비하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 다음 시간 준비하기”</span></a></div>
+<p>다음 시간에는 오늘 확인한 API 키와 JSON 항목을 사용해 작은 HTML 웹앱을 만듭니다. 오늘 기록한 값 중 하나를 골라 앱 기능으로 바꿔 봅니다.</p>
 
-아래 값을 사용해줘.
 
-API 기본 주소:
-https://open.neis.go.kr/hub/mealServiceDietInfo
 
-인증키:
-{{수업용 인증키}}
 
-시도교육청코드:
-{{예: B10}}
 
-학교코드:
-{{예: 7010259}}
 
-조회 시작일:
-{{예: 20210201}}
 
-조회 종료일:
-{{예: 20210228}}
 
-내가 만들고 싶은 기능:
-{{예: 메뉴 이름 검색 / 칼로리 높은 날 찾기 / 특정 알레르기 번호가 들어간 메뉴 찾기 / 날짜별 영양정보 보기}}
 
-사용자가 화면에서 입력할 값:
-{{예: 메뉴 이름 / 알레르기 번호 / 칼로리 기준 / 날짜 또는 기간}}
 
-화면에 보여 줄 결과:
-{{예: 날짜, 식사명, 메뉴, 칼로리정보}}
 
-사용할 수 있는 응답 항목:
-- MLSV_YMD: 급식일자
-- MMEAL_SC_NM: 식사명
-- DDISH_NM: 메뉴와 알레르기 번호
-- CAL_INFO: 칼로리정보
-- NTR_INFO: 영양정보
 
-조건:
-- HTML, CSS, JavaScript를 하나의 index.html 파일로 작성해줘.
-- 초보자가 수정할 수 있도록 코드에 짧은 주석을 넣어줘.
-- fetch로 API를 요청해줘.
-- DDISH_NM의 <br/>은 화면에서 줄바꿈으로 보여줘.
-- 결과가 없으면 안내 문구를 보여줘.
-- 모바일에서도 보기 좋게 만들어줘.
-- 화면 아래에 NEIS 급식식단정보 출처를 표시해줘.
 
-완성된 전체 HTML 코드를 하나의 코드블록으로 작성해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">급식 API 미니 웹앱 만들기 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="급식 API 미니 웹앱 만들기 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">NEIS 급식 API를 사용해서 간단한 급식 데이터 웹페이지를 만들고 싶어.
 
-아래 값을 사용해줘.
 
-API 기본 주소:
-https://open.neis.go.kr/hub/mealServiceDietInfo
 
-인증키:
-<mark class="astro-voatq4dp">{{수업용 인증키}}</mark>
 
-시도교육청코드:
-<mark class="astro-voatq4dp">{{예: B10}}</mark>
 
-학교코드:
-<mark class="astro-voatq4dp">{{예: 7010259}}</mark>
 
-조회 시작일:
-<mark class="astro-voatq4dp">{{예: 20210201}}</mark>
 
-조회 종료일:
-<mark class="astro-voatq4dp">{{예: 20210228}}</mark>
 
-내가 만들고 싶은 기능:
-<mark class="astro-voatq4dp">{{예: 메뉴 이름 검색 / 칼로리 높은 날 찾기 / 특정 알레르기 번호가 들어간 메뉴 찾기 / 날짜별 영양정보 보기}}</mark>
 
-사용자가 화면에서 입력할 값:
-<mark class="astro-voatq4dp">{{예: 메뉴 이름 / 알레르기 번호 / 칼로리 기준 / 날짜 또는 기간}}</mark>
 
-화면에 보여 줄 결과:
-<mark class="astro-voatq4dp">{{예: 날짜, 식사명, 메뉴, 칼로리정보}}</mark>
 
-사용할 수 있는 응답 항목:
-- MLSV_YMD: 급식일자
-- MMEAL_SC_NM: 식사명
-- DDISH_NM: 메뉴와 알레르기 번호
-- CAL_INFO: 칼로리정보
-- NTR_INFO: 영양정보
 
-조건:
-- HTML, CSS, JavaScript를 하나의 index.html 파일로 작성해줘.
-- 초보자가 수정할 수 있도록 코드에 짧은 주석을 넣어줘.
-- fetch로 API를 요청해줘.
-- DDISH_NM의 &lt;br/&gt;은 화면에서 줄바꿈으로 보여줘.
-- 결과가 없으면 안내 문구를 보여줘.
-- 모바일에서도 보기 좋게 만들어줘.
-- 화면 아래에 NEIS 급식식단정보 출처를 표시해줘.
-
-완성된 전체 HTML 코드를 하나의 코드블록으로 작성해줘.</code></pre> </section>  
-<p>AI가 만든 코드를 <code dir="auto">index.html</code> 파일로 저장한 뒤 브라우저에서 엽니다. 다음 항목만 확인합니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>확인할 기능</th><th>테스트 방법</th></tr></thead><tbody><tr><td>API 요청</td><td>조회 버튼을 눌렀을 때 데이터가 불러와지는지 확인</td></tr><tr><td>입력값 반영</td><td>내가 입력한 메뉴, 알레르기 번호, 칼로리 기준이 결과에 반영되는지 확인</td></tr><tr><td>결과 표시</td><td>날짜, 식사명, 메뉴, 칼로리 등 필요한 값이 보이는지 확인</td></tr><tr><td>결과 없음</td><td>찾는 값이 없을 때 안내 문구가 나오는지 확인</td></tr><tr><td>출처 표시</td><td>화면 아래에 NEIS 급식식단정보 출처가 보이는지 확인</td></tr></tbody></table>
-<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> 오늘의 제출과 공유 </p> <div class="lab-callout__body astro-mrmim4ef"> 오늘 만든 파일은 <code>index.html</code>로 저장해 구글클래스룸 과제로 제출합니다. 수업 중에는 파일을 열어 화면으로 공유합니다. GitHub Pages 배포는 팀 프로젝트에서 다룹니다. </div> </div> 
-<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> HTML 파일과 API 키 </p> <div class="lab-callout__body astro-mrmim4ef"> 단일 HTML 파일 안에 실제 API 키를 넣으면 파일을 가진 사람이 키를 볼 수 있습니다. 수업 실습 파일은 교실 안에서 사용하고, 공개 GitHub Pages나 공개 저장소에는 실제 키 대신 자리표시자를 사용합니다. </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="7-팀-프로젝트로-이어가기">7. 팀 프로젝트로 이어가기</h2><a class="sl-anchor-link" href="#7-팀-프로젝트로-이어가기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “7. 팀 프로젝트로 이어가기”</span></a></div>
-<p>오늘 실습은 API 데이터를 눈으로 확인하고, 그 값을 작은 앱 화면으로 바꾸는 경험입니다. 다음 단계에서는 팀별로 문제를 정하고, 데이터 길을 선택해 웹앱 프로젝트를 시작합니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>출발점</th><th>데이터 활용 방식</th><th>앱형 프로젝트 예시</th></tr></thead><tbody><tr><td>평소 불편함이 있다</td><td>KOSIS나 공공데이터로 실제 현황 확인</td><td>청소년 여가, 진로, 사교육, 지역 격차 데이터를 바탕으로 정보 안내 앱 만들기</td></tr><tr><td>KOSIS 탐색 중 문제를 발견했다</td><td>국가통계로 문제의 규모와 변화 확인</td><td>지역별 문화시설 차이를 보고 우리 지역 활동 추천 앱 만들기</td></tr><tr><td>조건별로 조회되는 생활 데이터가 필요하다</td><td>Open API로 날짜, 지역, 학교 같은 조건별 데이터 요청</td><td>급식 조회, 메뉴 검색, 알레르기 확인, 날씨 기반 추천 앱 만들기</td></tr><tr><td>공식 데이터에 없는 학교 안 문제가 있다</td><td>직접 설문조사로 우리 학교 데이터를 수집</td><td>학습 습관, 급식 만족도, 진로 관심, 학교생활 불편을 반영한 맞춤 안내 앱 만들기</td></tr></tbody></table>
-<p>생성형 AI는 API 주소 만들기, HTML 앱 코드 초안 작성, 오류 점검에 활용합니다. 사람은 어떤 데이터를 쓸지 정하고, 응답 값이 맞는지 확인하고, 앱이 실제 사용자에게 도움이 되는지 판단합니다.</p>
+<table><thead><tr><th>준비할 것</th><th>예시</th></tr></thead><tbody><tr><td>만들고 싶은 기능</td><td>메뉴 이름 검색, 칼로리 기준 검색, 알레르기 번호 검색</td></tr><tr><td>사용자가 입력할 값</td><td>메뉴 이름, 칼로리 기준, 알레르기 번호, 날짜</td></tr><tr><td>화면에 보여 줄 값</td><td>날짜, 식사명, 메뉴, 칼로리정보, 영양정보</td></tr><tr><td>확인 방법</td><td>브라우저 JSON 원문과 앱 화면 결과 비교</td></tr></tbody></table>
+<div class="lab-callout lab-callout--caution astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">⚠️</span> API 키 관리 </p> <div class="lab-callout__body astro-mrmim4ef"> 실제 API 키가 들어간 주소와 HTML 파일은 공개 게시물, 공개 GitHub 저장소, 공개 GitHub Pages에 올리지 않습니다. 수업 실습에서는 교사가 안내한 범위에서 사용하고, 공개할 때는 키를 가리거나 서버에서 숨기는 방식을 선택합니다. </div> </div> 
 <div class="lab-callout lab-callout--exit astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎟️</span> 오늘의 정리 </p> <div class="lab-callout__body astro-mrmim4ef"> Open API는 조건값을 넣어 데이터를 요청하는 주소입니다. JSON 응답에서 필요한 값을 찾으면 날짜 선택, 메뉴 검색, 칼로리 표시, 알레르기 번호 확인 같은 웹앱 기능으로 연결할 수 있습니다. </div> </div> 
-<nav class="page-nav" aria-label="단원 이동"> <a href="/hyfl-ai-lab/data/kosis-mcp/">← 5. AI와 함께 데이터 질문 만들기</a> <a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a> <a href="/hyfl-ai-lab/data-project/">7. DATA TO WEB APP →</a> </nav> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr">   </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
+<nav class="page-nav" aria-label="단원 이동"> <a href="/hyfl-ai-lab/data/kosis-mcp/">← 5. AI와 함께 데이터 질문 만들기</a> <a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a> <a href="/hyfl-ai-lab/data-lab/">7. API 키로 바이브코딩하기 →</a> </nav> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr">   </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
