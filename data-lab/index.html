@@ -358,9 +358,9 @@ https://open.neis.go.kr/hub/mealServiceDietInfo
 
 수정 조건:
 - 기존 API 요청, 기간 선택, 식사구분 선택 기능은 유지해줘.
-- API 문서에 없는 메뉴 검색어, 알레르기 번호, 칼로리 기준값은 요청 주소에 넣지 말고 받은 row 데이터에서 필터링해줘.
+- API 문서에 없는 메뉴 검색어, 알레르기 번호, 칼로리 기준값은 요청 주소에 넣지 않는다. 받은 row 데이터에서 필터링해줘.
 - 활동지에서 체크한 JSON 이름표를 우선 화면에 반영해줘.
-- 한 번에 너무 많은 기능을 넣지 말고, 내가 쓴 기능 한 줄을 중심으로 작게 수정해줘.
+- 내가 쓴 기능 한 줄을 중심으로 작게 수정해줘.
 - 수정한 전체 index.html 코드를 하나의 코드블록으로 다시 작성해줘.
 - 마지막에 내가 다시 확인할 테스트 항목을 3개만 적어줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">활동지 STEP 6 반영 프롬프트</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="활동지 STEP 6 반영 프롬프트" class="astro-voatq4dp"><code class="astro-voatq4dp">방금 만든 기본 급식 index.html을 활동지 STEP 6에 맞게 수정하고 싶어.
 
@@ -381,9 +381,9 @@ https://open.neis.go.kr/hub/mealServiceDietInfo
 
 수정 조건:
 - 기존 API 요청, 기간 선택, 식사구분 선택 기능은 유지해줘.
-- API 문서에 없는 메뉴 검색어, 알레르기 번호, 칼로리 기준값은 요청 주소에 넣지 말고 받은 row 데이터에서 필터링해줘.
+- API 문서에 없는 메뉴 검색어, 알레르기 번호, 칼로리 기준값은 요청 주소에 넣지 않는다. 받은 row 데이터에서 필터링해줘.
 - 활동지에서 체크한 JSON 이름표를 우선 화면에 반영해줘.
-- 한 번에 너무 많은 기능을 넣지 말고, 내가 쓴 기능 한 줄을 중심으로 작게 수정해줘.
+- 내가 쓴 기능 한 줄을 중심으로 작게 수정해줘.
 - 수정한 전체 index.html 코드를 하나의 코드블록으로 다시 작성해줘.
 - 마지막에 내가 다시 확인할 테스트 항목을 3개만 적어줘.</code></pre> </section>  
 <div class="sl-heading-wrapper level-h2"><h2 id="4-요청인자와-앱-필터-구분하기">4. 요청인자와 앱 필터 구분하기</h2><a class="sl-anchor-link" href="#4-요청인자와-앱-필터-구분하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 요청인자와 앱 필터 구분하기”</span></a></div>
