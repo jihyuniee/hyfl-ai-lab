@@ -434,6 +434,7 @@ summary:focus-visible,
 .home-start-nav a { display:flex; min-height:3.25rem; align-items:center; justify-content:center; padding:.8rem 1rem; border-radius:8px; font-weight:800; text-decoration:none; }
 .home-start-nav__toc { border:1px solid var(--lab-border); background:var(--lab-card-bg); color:var(--sl-color-accent-high); }
 .home-start-nav__start { border:1px solid var(--sl-color-accent); background:var(--sl-color-accent); color:#fff !important; }
+.home-start-nav__studio { grid-column:1 / -1; }
 .home-start-nav a:hover { transform:translateY(-1px); box-shadow:var(--lab-shadow-sm); }
 .concept-nesting { margin:1.5rem 0; padding:1rem; border:2px solid var(--sl-color-accent); border-radius:12px; color:var(--sl-color-accent-high); font-weight:800; }
 .concept-nesting div div { margin-top:.8rem; padding:1rem; border:2px solid var(--lab-mint); border-radius:10px; }

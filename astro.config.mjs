@@ -77,6 +77,7 @@ export default defineConfig({
 								{ label: '6. 데이터가 나오는 주소 읽기', link: '/data/open-api/' },
 								{ label: '7. API 키로 바이브코딩하기', link: '/data-lab/' },
 								{ label: '8. DATA TO WEB APP', link: '/data-project/' },
+								{ label: '인탐 스튜디오 열기 ↗', link: 'https://hyfl-gpt.vercel.app/' },
 							],
 						},
 						{
