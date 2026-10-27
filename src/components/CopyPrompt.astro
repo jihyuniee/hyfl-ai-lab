@@ -14,7 +14,7 @@ const parts = content.split(/(\{\{[\s\S]*?\}\}|\[[^\]\n]+\])/g);
 			<strong>{title}</strong>
 			<span><b>표시된 부분</b>을 우리 팀의 내용으로 바꾸세요.</span>
 		</div>
-		<button type="button" data-copy-button>전체 프롬프트 복사</button>
+		<button type="button" data-copy-button aria-label={`${title} 전체 프롬프트 복사`}>전체 프롬프트 복사</button>
 	</div>
 	<details class="copy-prompt__guide">
 		<summary>프롬프트 구조와 각 부분이 필요한 이유 보기</summary>
@@ -25,23 +25,47 @@ const parts = content.split(/(\{\{[\s\S]*?\}\}|\[[^\]\n]+\])/g);
 			<p><b>오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p>
 		</div>
 	</details>
-	<pre aria-label={title}><code>{parts.map((part) => (part.startsWith('{{') && part.endsWith('}}')) || (part.startsWith('[') && part.endsWith(']')) ? <mark>{part}</mark> : part)}</code></pre>
+	<p class="copy-prompt__status" role="status" aria-live="polite" aria-atomic="true" data-copy-status></p>
+	<button type="button" class="copy-prompt__select" data-select-button hidden>본문 전체 선택</button>
+	<pre tabindex="0" aria-label={`${title} · 방향키로 스크롤할 수 있습니다`}><code>{parts.map((part) => (part.startsWith('{{') && part.endsWith('}}')) || (part.startsWith('[') && part.endsWith(']')) ? <mark>{part}</mark> : part)}</code></pre>
 </section>
 
 <script>
 	document.querySelectorAll('[data-copy-prompt]').forEach((box) => {
 		const button = box.querySelector('[data-copy-button]');
-		if (!(button instanceof HTMLButtonElement) || !(box instanceof HTMLElement)) return;
+		const selectButton = box.querySelector('[data-select-button]');
+		const status = box.querySelector('[data-copy-status]');
+		const pre = box.querySelector('pre');
+		if (!(button instanceof HTMLButtonElement) || !(selectButton instanceof HTMLButtonElement) || !(status instanceof HTMLElement) || !(pre instanceof HTMLElement) || !(box instanceof HTMLElement)) return;
 		button.addEventListener('click', async () => {
-			const value = box.dataset.copyValue ?? '';
+			if (button.disabled) return;
+			button.disabled = true;
+			button.setAttribute('aria-busy', 'true');
+			status.textContent = '복사 중…';
 			try {
-				await navigator.clipboard.writeText(value);
-				button.textContent = '복사 완료!';
-				setTimeout(() => { button.textContent = '전체 프롬프트 복사'; }, 1800);
+				await navigator.clipboard.writeText(box.dataset.copyValue ?? '');
+				status.textContent = '복사했습니다. 사용하는 AI에 붙여 넣고 표시된 부분을 우리 팀 내용으로 바꾸세요.';
+				selectButton.hidden = true;
 			} catch {
-				button.textContent = '복사하지 못했습니다';
-				setTimeout(() => { button.textContent = '전체 프롬프트 복사'; }, 2200);
+				status.textContent = '자동 복사가 제한되었습니다. 본문 전체 선택을 누른 뒤 복사하세요. 키보드는 Ctrl+C 또는 ⌘C, 터치는 선택 메뉴의 복사를 사용하세요.';
+				selectButton.hidden = false;
+			} finally {
+				button.disabled = false;
+				button.removeAttribute('aria-busy');
 			}
+		});
+		selectButton.addEventListener('click', () => {
+			const selection = window.getSelection();
+			if (!selection) {
+				status.textContent = '본문을 길게 누르거나 드래그하여 선택한 뒤 복사하세요.';
+				return;
+			}
+			pre.focus();
+			const range = document.createRange();
+			range.selectNodeContents(pre);
+			selection.removeAllRanges();
+			selection.addRange(range);
+			status.textContent = '본문을 선택했습니다. Ctrl+C 또는 ⌘C, 터치 선택 메뉴로 복사하세요.';
 		});
 	});
 </script>
@@ -52,7 +76,12 @@ const parts = content.split(/(\{\{[\s\S]*?\}\}|\[[^\]\n]+\])/g);
 	.copy-prompt__header div { display: grid; gap: 0.15rem; }
 	.copy-prompt__header span { color: var(--sl-color-gray-2); font-size: 0.82rem; }
 	.copy-prompt__header span b { color: #dc2626; }
-	.copy-prompt button { flex: none; border: 0; border-radius: 0.55rem; padding: 0.6rem 0.85rem; background: var(--sl-color-accent-high); color: var(--sl-color-black); font-weight: 700; cursor: pointer; }
+	.copy-prompt button { min-height: 44px; flex: none; border: 0; border-radius: 0.55rem; padding: 0.6rem 0.85rem; background: var(--sl-color-accent-high); color: var(--sl-color-black); font-weight: 700; cursor: pointer; }
+	.copy-prompt button:disabled { opacity: .65; cursor: wait; }
+	.copy-prompt [hidden] { display: none; }
+	.copy-prompt__status { margin: 0; padding: .75rem 1rem; font-size: .85rem; }
+	.copy-prompt__status:empty { display: none; }
+	.copy-prompt .copy-prompt__select { margin: 0 1rem .75rem; max-width: calc(100% - 2rem); }
 	.copy-prompt__guide { padding: .75rem 1rem; border-bottom: 1px solid var(--sl-color-gray-5); }
 	.copy-prompt__guide summary { color: var(--sl-color-accent-high); font-size: .86rem; font-weight: 800; cursor: pointer; }
 	.copy-prompt__guide div { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem 1rem; padding-top: .6rem; }

@@ -493,3 +493,8 @@ summary:focus-visible,
 .project-jump { grid-template-columns:repeat(2,minmax(0,1fr)); }
 .sl-markdown-content th, .sl-markdown-content td { padding:.55rem; font-size:.88rem; }
 }
+
+/* Respect reduced motion while retaining existing anchor navigation. */
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+}
