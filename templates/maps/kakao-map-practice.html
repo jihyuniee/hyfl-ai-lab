@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>카카오맵 · 가상 위치 연습</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, "Malgun Gothic", sans-serif; color: #25332d; background: #f7f7f3; }
+    * { box-sizing: border-box; }
+    body { max-width: 1040px; margin: 0 auto; padding: 24px; line-height: 1.7; }
+    h1 { font-size: clamp(23px, 4vw, 32px); line-height: 1.4; margin: 0 0 10px; }
+    p { margin: 10px 0; }
+    a { color: #31553e; text-underline-offset: 3px; }
+    .notice { border-left: 4px solid #375d48; background: #edf1e9; padding: 12px 16px; }
+    #status { padding: 10px 14px; border: 1px solid #d9ddd5; background: white; min-height: 48px; }
+    #map { width: 100%; height: 440px; min-height: 300px; border: 1px solid #bac4b7; background: #eef0ea; }
+    #map:empty::before { content: "위 안내를 따라 지도 실행 조건을 확인하세요."; display: block; padding: 24px; }
+    .popup { max-width: 240px; padding: 10px 24px 10px 10px; color: #25332d; font: 14px/1.6 system-ui, sans-serif; }
+    code { overflow-wrap: anywhere; }
+    @media (max-width: 520px) { body { padding: 16px; } #map { height: 380px; } }
+  </style>
+</head>
+<body>
+  <h1>카카오맵 · 지도와 마커 연습</h1>
+  <p class="notice"><strong>가상 연습 위치 3곳입니다. 실제 CCTV 자료가 아닙니다.</strong><br>먼저 지도와 마커 클릭을 확인하고, 다음 단계에서 출처가 있는 실제 데이터를 연결하세요.</p>
+  <ol>
+    <li>카카오디벨로퍼스의 내 앱에서 <strong>카카오맵 → 사용 설정 → ON</strong>을 확인하세요.</li>
+    <li><strong>앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인</strong>에 실제 웹앱 주소를 등록하세요. localhost를 쓴다면 <code>http://localhost:8080</code>처럼 실행 포트도 맞추세요.</li>
+    <li>코드의 <code>const javascriptKey = 'YOUR_JAVASCRIPT_KEY';</code> 한 줄을 본인의 JavaScript 키로 설정하세요. <strong>REST API 키·어드민 키·Client Secret은 넣지 않습니다.</strong></li>
+  </ol>
+  <p>이 시작 예제는 HTTP(S) 웹 서버에서 실행하도록 만들었습니다. 파일을 더블클릭한 <code>file://</code> 화면에서는 안내만 표시합니다. 등록한 localhost 서버나 실제 HTTPS 웹앱 주소에서 여세요.</p>
+  <p id="status" role="status" aria-live="polite">지도 실행 조건을 확인하고 있습니다.</p>
+  <div id="map" role="region" aria-label="가상 연습 위치 지도"></div>
+  <h2>연습 위치 목록</h2>
+  <ul id="point-list"></ul>
+  <p>데이터 출처: 이 예제에서 만든 가상 연습 좌표. 실제 CCTV의 존재·운영 상태·안전을 나타내지 않습니다.</p>
+  <p>지도에 표시되는 카카오 로고와 저작권 정보는 그대로 유지하세요. <a href="https://apis.map.kakao.com/web/guide/" target="_blank" rel="noopener noreferrer">카카오맵 공식 시작 안내</a> · 인터넷 연결과 계정의 이용 설정이 필요합니다.</p>
+  <noscript><p>지도를 실행하려면 JavaScript를 사용할 수 있는 브라우저가 필요합니다.</p></noscript>
+  <script>
+  (function () {
+    'use strict';
+
+    // 연습용으로 정한 가상 좌표입니다. 실제 CCTV의 존재·위치를 뜻하지 않습니다.
+    const demoPoints = [
+      { name: '가상 지점 A', lat: 37.5651, lng: 126.9821 },
+      { name: '가상 지점 B', lat: 37.5670, lng: 126.9850 },
+      { name: '가상 지점 C', lat: 37.5629, lng: 126.9843 }
+    ];
+    const status = document.getElementById('status');
+    const setStatus = (message) => { status.textContent = message; };
+    for (const point of demoPoints) {
+      const item = document.createElement('li');
+      item.textContent = point.name + ' — 가상 연습 위치·실제 CCTV 아님 (' + point.lat + ', ' + point.lng + ')';
+      document.getElementById('point-list').append(item);
+    }
+
+    if (!/^https?:$/.test(location.protocol)) {
+      setStatus('이 시작 예제는 웹 서버에서 실행하도록 구성했습니다. 파일을 더블클릭하지 말고 등록한 localhost 웹 서버 또는 실제 HTTPS 웹앱 주소에서 여세요.');
+      return;
+    }
+
+    const javascriptKey = 'YOUR_JAVASCRIPT_KEY';
+    if (!javascriptKey.trim() || /^YOUR_/i.test(javascriptKey.trim())) {
+      setStatus('아직 JavaScript 키를 넣지 않았습니다. 카카오맵 사용 설정을 ON으로 바꾸고, JavaScript 키의 SDK 도메인에 웹앱 주소를 등록한 뒤 코드의 javascriptKey 값을 설정하세요.');
+      return;
+    }
+
+    let phase = 'loading-script';
+    let sdkTimer;
+    const fail = (message) => {
+      if (phase === 'ready' || phase === 'failed') return;
+      phase = 'failed';
+      clearTimeout(sdkTimer);
+      setStatus(message);
+    };
+
+    sdkTimer = setTimeout(function () {
+      const step = phase === 'loading-script' ? '지도 SDK 스크립트' : '지도 라이브러리';
+      fail('15초 안에 ' + step + ' 준비를 확인하지 못했습니다. 인터넷 연결, 카카오맵 ON, JavaScript 키·SDK 도메인, Console 오류를 확인한 뒤 새로고침하세요. 배경 지도 표시가 확인된 것은 아닙니다.');
+    }, 15000);
+
+    const sdk = document.createElement('script');
+    sdk.async = true;
+    sdk.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=' + encodeURIComponent(javascriptKey.trim()) + '&autoload=false';
+    sdk.onerror = function () {
+      fail('카카오맵 SDK를 불러오지 못했습니다. 인터넷 연결과 Console·Network 오류, 카카오맵 ON·JavaScript 키·등록 도메인을 확인하세요.');
+    };
+    sdk.onload = function () {
+      if (phase !== 'loading-script') return;
+      try {
+        if (!window.kakao || !window.kakao.maps || typeof window.kakao.maps.load !== 'function') {
+          throw new Error('Kakao loader unavailable');
+        }
+        phase = 'loading-map';
+        setStatus('카카오맵 라이브러리가 준비되기를 기다리고 있습니다.');
+        window.kakao.maps.load(function () {
+          if (phase !== 'loading-map') return;
+          phase = 'initializing';
+          try {
+            const map = new kakao.maps.Map(document.getElementById('map'), {
+              center: new kakao.maps.LatLng(demoPoints[0].lat, demoPoints[0].lng),
+              level: 4
+            });
+            for (const point of demoPoints) {
+              const marker = new kakao.maps.Marker({
+                map: map,
+                position: new kakao.maps.LatLng(point.lat, point.lng),
+                title: point.name + ' · 가상 연습 위치·실제 CCTV 아님'
+              });
+              const content = document.createElement('div');
+              content.className = 'popup';
+              content.textContent = point.name + ' · 가상 연습 위치·실제 CCTV 아님';
+              const popup = new kakao.maps.InfoWindow({ content: content, removable: true });
+              kakao.maps.event.addListener(marker, 'click', function () { popup.open(map, marker); });
+            }
+            phase = 'ready';
+            clearTimeout(sdkTimer);
+            setStatus('지도 객체와 가상 지점 3개를 준비했습니다. 배경 지도가 실제로 보이는지, 마커를 누르면 설명이 나오는지 직접 확인하세요. SDK 준비만으로 배경 지도 표시를 확인한 것은 아닙니다.');
+          } catch {
+            fail('지도 초기화에 실패했습니다. Console 오류와 지도 영역·SDK 상태를 확인하세요. 실제 배경 지도와 마커가 보이는지는 별도로 확인해야 합니다.');
+          }
+        });
+      } catch {
+        fail('카카오맵 라이브러리를 준비하지 못했습니다. JavaScript 키, 카카오맵 ON, 등록한 SDK 도메인과 실제 실행 주소를 확인하세요.');
+      }
+    };
+    setStatus('카카오맵 SDK를 불러오는 중입니다. 최대 15초 동안 준비 상태를 확인합니다.');
+    document.head.append(sdk);
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>카카오맵 실습 화면</title>
+  <style>
+    html,body,#map{height:100%;width:100%;margin:0;padding:0;background:#edf1e6;font-family:"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}
+    #message{position:absolute;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);width:min(90%,360px);box-sizing:border-box;background:#fff;padding:20px;border-radius:12px;color:#526b46;font-size:13px;line-height:1.8;text-align:center;border:1px solid #dce4d6}
+    [hidden]{display:none!important}.point-info{padding:13px 27px 13px 13px;min-width:185px;max-width:240px;box-sizing:border-box;color:#20362e;font-size:12px;line-height:1.8;white-space:normal}.point-info strong{display:block;font-size:14px}.point-info span{display:block;color:#8a7b5b;font-size:10px}.point-info small{display:block;color:#75856b;font-size:10px}
+  </style>
+  <script src="./map-runtime.js?rev=2" defer></script>
+</head>
+<body>
+  <div id="map" aria-label="가상 연습 지점 세 곳이 표시되는 카카오맵"></div>
+  <div id="message" role="status">지도 실험실에서 키를 입력해 주세요.</div>
+</body>
+</html>
