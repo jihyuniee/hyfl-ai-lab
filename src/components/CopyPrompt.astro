@@ -5,14 +5,14 @@ interface Props {
 }
 
 const { title = '웹페이지 제작 프롬프트', content } = Astro.props;
-const parts = content.split(/(\{\{[\s\S]*?\}\})/g);
+const parts = content.split(/(\{\{[\s\S]*?\}\}|\[[^\]\n]+\])/g);
 ---
 
 <section class="copy-prompt" data-copy-prompt data-copy-value={content}>
 	<div class="copy-prompt__header">
 		<div>
 			<strong>{title}</strong>
-			<span><b>{'{{빨간 부분}}'}</b>을 우리 팀의 내용으로 바꾸세요.</span>
+			<span><b>표시된 부분</b>을 우리 팀의 내용으로 바꾸세요.</span>
 		</div>
 		<button type="button" data-copy-button>전체 프롬프트 복사</button>
 	</div>
@@ -25,7 +25,7 @@ const parts = content.split(/(\{\{[\s\S]*?\}\})/g);
 			<p><b>오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p>
 		</div>
 	</details>
-	<pre aria-label={title}><code>{parts.map((part) => part.startsWith('{{') && part.endsWith('}}') ? <mark>{part}</mark> : part)}</code></pre>
+	<pre aria-label={title}><code>{parts.map((part) => (part.startsWith('{{') && part.endsWith('}}')) || (part.startsWith('[') && part.endsWith(']')) ? <mark>{part}</mark> : part)}</code></pre>
 </section>
 
 <script>
