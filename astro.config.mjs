@@ -80,16 +80,10 @@ export default defineConfig({
 									label: '8. DATA TO WEB APP',
 									collapsed: false,
 									items: [
-										{ label: '프로젝트 진행 · 활동지 작성', link: '/data-project/' },
-										{
-											label: '프로젝트 도움말 · 필요한 기능 추가',
-											collapsed: false,
-											items: [
-												{ label: '지도 넣기', link: '/data/map-lab/' },
-												{ label: 'AI 기능 하나 연결 · 사용 신청', link: '/data/ai-chatbot/' },
-												{ label: 'GitHub 코드 수정·배포', link: '/data/github-ai/' },
-											],
-										},
+										{ label: '프로젝트 안내', link: '/data-project/' },
+										{ label: '지도 넣기', link: '/data/map-lab/' },
+										{ label: 'AI 기능(선택)', link: '/data/ai-chatbot/' },
+										{ label: '코드 수정·배포', link: '/data/github-ai/' },
 									],
 								},
 							],
