@@ -5,9 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node scripts/package-chatbot-starter.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "test:maps": "node scripts/verify-map-starters.mjs",
+    "test:chatbot": "node scripts/verify-chatbot-starter.mjs",
+    "package:chatbot": "node scripts/package-chatbot-starter.mjs",
     "astro": "astro"
   },
   "dependencies": {

@@ -5,7 +5,10 @@ dist/
 .astro/
 
 # dependencies
-node_modules/
+node_modules
+
+# generated downloadable teaching bundle
+public/templates/ai-chatbot-starter.zip
 
 # logs
 npm-debug.log*
