@@ -93,7 +93,7 @@ export default defineConfig({
 							label: '번외 · 선택 실습',
 							collapsed: false,
 							items: [
-								{ label: '카카오맵 띄우기', link: '/data/map-lab/' },
+								{ label: '내 프로젝트에 카카오맵 넣기', link: '/data/map-lab/' },
 							],
 						},
 					],

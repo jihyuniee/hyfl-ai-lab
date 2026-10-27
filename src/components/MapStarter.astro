@@ -15,8 +15,8 @@ const code = await readFile(resolve(process.cwd(), 'public/templates/maps', file
 
 <section class="map-starter" data-map-starter aria-label="지도 시작 예제">
 	<div class="map-starter__intro">
-		<strong>지도 한 장과 가상 지점 3개부터 확인하세요.</strong>
-		<p>아래 예제는 실제 CCTV 자료를 포함하지 않습니다. 지도가 보이고 지점을 눌렀을 때 설명이 열리는지 확인한 뒤, 우리 팀의 데이터를 연결합니다.</p>
+		<strong>내 프로젝트로 사용할 index.html을 내려받으세요.</strong>
+		<p>처음 만드는 팀을 위한 한 파일짜리 시작 예제입니다. 기존 프로젝트가 있다면 본문의 ‘기존 프로젝트에 추가하기’를 이용하세요. 세 지점은 실제 CCTV가 아닌 가상 연습 위치입니다.</p>
 	</div>
 		<section class="map-starter__panel" data-map-panel="kakao" aria-labelledby={`${id}-kakao-title`}>
 			<div class="map-starter__header">
@@ -30,7 +30,7 @@ const code = await readFile(resolve(process.cwd(), 'public/templates/maps', file
 				</div>
 			</div>
 			<div class="map-starter__note">
-				<p>코드의 <code>const javascriptKey = 'YOUR_JAVASCRIPT_KEY';</code> 한 줄에서 <code>YOUR_JAVASCRIPT_KEY</code>를 본인의 JavaScript 키로 바꾸세요. <strong>REST API 키·어드민 키·Client Secret은 넣지 않습니다.</strong></p>
+				<p>처음 배포할 때는 키 자리표시자를 그대로 둡니다. 본문 순서대로 자기 웹앱 주소와 카카오 설정을 준비한 뒤, 파일 아래 <code>&lt;script&gt;</code> 안의 <code>const javascriptKey = 'YOUR_JAVASCRIPT_KEY';</code>에서 따옴표 안만 본인의 JavaScript 키로 바꾸고 다시 배포하세요. <strong>REST API 키·어드민 키·Client Secret은 넣지 않습니다.</strong></p>
 				<p>카카오디벨로퍼스에서 <strong>카카오맵 → 사용 설정 → ON</strong>을 확인하고, <strong>앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인</strong>에 실행할 웹앱 주소를 등록하세요. localhost는 포트까지 맞춥니다.</p>
 				<p>내려받은 <code>index.html</code>을 코드 편집기로 열어 수정하고, 등록한 HTTPS 웹앱 주소 또는 localhost 웹 서버에서 실행하세요. 이 시작 예제는 웹 서버에서 실행하도록 만들어서, 더블클릭한 <code>file://</code> 화면에서는 안내만 표시합니다. 지도에 표시되는 로고와 저작권 정보는 유지하세요.</p>
 			</div>
