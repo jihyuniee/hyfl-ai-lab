@@ -35,4 +35,14 @@ astro.config.mjs     # Starlight 사이드바 및 사이트 설정
 
 7개 Part + 3개 Project Lab으로 구성됩니다. 자세한 커리큘럼 설계와 차시 운영안은 사이트 내 [교사용 · 수업 운영 가이드](https://jihyuniee.github.io/hyfl-ai-lab/teacher/guide/)를 참고하세요.
 
+### 번외 · 카카오맵 띄우기
+
+교과서 홈, 사이드바의 ‘번외 · 선택 실습’, 8단원 구현 안내에서 `/data/map-lab/`로 이동합니다. 필수 과제가 아닌 선택 실습입니다. 첫 목표는 공개 실습창 `/labs/kakao-map/`에서 학생이 자기 JavaScript 키를 입력해 지도와 가상 지점 3개를 확인하는 것입니다. 카카오맵 사용 설정 ON, JavaScript SDK 도메인, 실제 도로·지명·마커·출처 확인을 안내합니다.
+
+첫 실습의 등록 도메인은 `https://jihyuniee.github.io`이며, 자기 팀 웹앱으로 옮길 때 그 호스트를 추가 등록합니다. 실습창은 `public/labs/kakao-map/`의 정적 파일로 제공하고 ChatGPT 로그인이나 교사의 키가 필요하지 않습니다. 키는 실행 중 브라우저에서 Kakao에 전달하며 저장소·서버·localStorage에 저장하지 않습니다. 실패 시 Kakao 응답을 새 탭에서 열어 확인하고, 붙여 넣은 오류에서 키를 가린 복사 내용을 만듭니다.
+
+자기 팀 웹앱용 단일 HTML은 `public/templates/maps/kakao-map-practice.html`, 본문은 `src/content/docs/data/map-lab.mdx`에 있습니다. 좌표 연습, 실제 CSV 연결 프롬프트, 원자료 3행 검증은 선택 확장입니다. 기존 활동지에 구현·검증·AI 활용 기록을 이어 씁니다. 지도 제공자의 로고·출처를 유지하고 이용 조건은 본문의 공식 문서에서 확인합니다.
+
+`npm run test:maps`는 내려받을 HTML의 초기화·마커 클릭·실패 처리를 SDK 어댑터로 검사합니다. 공개 실습창은 같은 SDK와 키 입력·새 실행 문맥·오류 가림 구조를 사용합니다. 실제 지도 인증과 외부 타일 응답은 등록된 실행 주소에서 별도로 확인합니다.
+
 <!-- deploy-trigger: 2026-08-27T02:35+09:00 -->

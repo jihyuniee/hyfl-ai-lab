@@ -89,6 +89,13 @@ export default defineConfig({
 								{ label: '11. 처음의 질문으로 돌아가기 · 다음에 공개', link: '/part7/' },
 							],
 						},
+						{
+							label: '번외 · 선택 실습',
+							collapsed: false,
+							items: [
+								{ label: '카카오맵 띄우기', link: '/data/map-lab/' },
+							],
+						},
 					],
 				},
 			],

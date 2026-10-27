@@ -1,0 +1,110 @@
+---
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+
+interface Props {
+	id?: string;
+}
+
+const { id = 'map-starter' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const file = 'kakao-map-practice.html';
+const url = `${base}/templates/maps/${file}`;
+const code = await readFile(resolve(process.cwd(), 'public/templates/maps', file), 'utf8');
+---
+
+<section class="map-starter" data-map-starter aria-label="지도 시작 예제">
+	<div class="map-starter__intro">
+		<strong>지도 한 장과 가상 지점 3개부터 확인하세요.</strong>
+		<p>아래 예제는 실제 CCTV 자료를 포함하지 않습니다. 지도가 보이고 지점을 눌렀을 때 설명이 열리는지 확인한 뒤, 우리 팀의 데이터를 연결합니다.</p>
+	</div>
+		<section class="map-starter__panel" data-map-panel="kakao" aria-labelledby={`${id}-kakao-title`}>
+			<div class="map-starter__header">
+				<div>
+					<h3 id={`${id}-kakao-title`}>카카오맵 시작 예제</h3>
+					<p>카카오맵 사용 설정 ON, JavaScript 키와 웹앱 도메인 등록이 필요합니다.</p>
+				</div>
+				<div class="map-starter__actions">
+					<button type="button" data-copy-map hidden>코드 복사</button>
+					<a href={url} download="index.html">index.html 다운로드</a>
+				</div>
+			</div>
+			<div class="map-starter__note">
+				<p>코드의 <code>const javascriptKey = 'YOUR_JAVASCRIPT_KEY';</code> 한 줄에서 <code>YOUR_JAVASCRIPT_KEY</code>를 본인의 JavaScript 키로 바꾸세요. <strong>REST API 키·어드민 키·Client Secret은 넣지 않습니다.</strong></p>
+				<p>카카오디벨로퍼스에서 <strong>카카오맵 → 사용 설정 → ON</strong>을 확인하고, <strong>앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인</strong>에 실행할 웹앱 주소를 등록하세요. localhost는 포트까지 맞춥니다.</p>
+				<p>내려받은 <code>index.html</code>을 코드 편집기로 열어 수정하고, 등록한 HTTPS 웹앱 주소 또는 localhost 웹 서버에서 실행하세요. 이 시작 예제는 웹 서버에서 실행하도록 만들어서, 더블클릭한 <code>file://</code> 화면에서는 안내만 표시합니다. 지도에 표시되는 로고와 저작권 정보는 유지하세요.</p>
+			</div>
+			<details class="map-starter__code" data-map-code data-pagefind-ignore>
+				<summary>전체 코드 보기</summary>
+				<label>
+					<span>카카오맵 예제 전체 코드 · 읽기 전용</span>
+					<textarea data-map-source readonly spellcheck="false" wrap="off" rows="16" aria-label="카카오맵 예제 전체 코드">{code}</textarea>
+				</label>
+			</details>
+			<p class="map-starter__status" data-map-status role="status" aria-live="polite" aria-atomic="true"></p>
+		</section>
+	<noscript><p class="map-starter__noscript">JavaScript를 사용할 수 없어 자동 복사 버튼은 표시하지 않습니다. ‘전체 코드 보기’에서 코드를 직접 복사하거나 예제 파일을 내려받을 수 있습니다.</p></noscript>
+</section>
+
+<script>
+	document.querySelectorAll<HTMLElement>('[data-map-starter]').forEach((root) => {
+		if (root.dataset.mapReady === 'true') return;
+		const panels = [...root.querySelectorAll<HTMLElement>('[data-map-panel]')];
+		if (panels.length === 0) return;
+		root.dataset.mapReady = 'true';
+
+		panels.forEach((panel) => {
+			const button = panel.querySelector<HTMLButtonElement>('[data-copy-map]');
+			const textarea = panel.querySelector<HTMLTextAreaElement>('[data-map-source]');
+			const details = panel.querySelector<HTMLDetailsElement>('[data-map-code]');
+			const status = panel.querySelector<HTMLElement>('[data-map-status]');
+			if (!button || !textarea || !details || !status) return;
+			button.hidden = false;
+			button.addEventListener('click', async () => {
+				button.disabled = true;
+				try {
+					if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+					await navigator.clipboard.writeText(textarea.value);
+					status.textContent = '전체 코드를 복사했습니다. 코드 편집기에 붙여넣으세요.';
+				} catch {
+					details.open = true;
+					textarea.focus();
+					textarea.select();
+					textarea.setSelectionRange(0, textarea.value.length);
+					status.textContent = '자동 복사를 사용할 수 없어 코드를 선택했습니다. Ctrl+C 또는 ⌘C를 누르거나 선택 메뉴에서 복사하세요.';
+				} finally {
+					button.disabled = false;
+				}
+			});
+		});
+	});
+</script>
+
+<style>
+	.map-starter { margin: 1.5rem 0 2rem; border: 1px solid var(--sl-color-gray-5); border-radius: .9rem; overflow: hidden; background: var(--sl-color-gray-7); }
+	.map-starter [hidden] { display: none !important; }
+	.map-starter__intro { padding: 1rem 1.1rem; background: var(--sl-color-accent-low); border-bottom: 1px solid var(--sl-color-gray-5); }
+	.map-starter__intro strong { color: var(--sl-color-accent-high); }
+	.map-starter p { margin: .35rem 0 0; font-size: .86rem; line-height: 1.7; color: var(--sl-color-gray-2); }
+	.map-starter__panel + .map-starter__panel { border-top: 1px solid var(--sl-color-gray-5); }
+	.map-starter__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.1rem .5rem; }
+	.map-starter__header h3 { margin: 0; font-size: 1rem; line-height: 1.5; }
+	.map-starter__header p { font-size: .8rem; }
+	.map-starter__actions { display: flex; flex: none; flex-wrap: wrap; gap: .45rem; }
+	.map-starter__actions button, .map-starter__actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; border: 1px solid var(--sl-color-accent); border-radius: .5rem; padding: .55rem .75rem; background: transparent; color: var(--sl-color-accent-high); font: inherit; font-size: .8rem; font-weight: 800; text-decoration: none; cursor: pointer; }
+	.map-starter__actions a { background: var(--sl-color-accent-high); color: var(--sl-color-black); }
+	.map-starter__actions button:disabled { cursor: wait; opacity: .7; }
+	.map-starter__note { padding: 0 1.1rem 1rem; }
+	.map-starter__note strong { color: var(--sl-color-white); }
+	.map-starter__note a { color: var(--sl-color-accent-high); text-underline-offset: 3px; }
+	.map-starter__note code { overflow-wrap: anywhere; font-size: .82em; }
+	.map-starter__code { margin: 0; border-top: 1px solid var(--sl-color-gray-5); }
+	.map-starter__code summary { padding: .8rem 1.1rem; color: var(--sl-color-accent-high); font-size: .86rem; font-weight: 800; cursor: pointer; }
+	.map-starter__code label { display: grid; gap: .5rem; padding: 0 1.1rem 1rem; }
+	.map-starter__code label > span { color: var(--sl-color-gray-2); font-size: .8rem; }
+	.map-starter__code textarea { box-sizing: border-box; display: block; width: 100%; min-height: 16rem; max-height: 38rem; resize: vertical; border: 1px solid var(--sl-color-gray-4); border-radius: .5rem; padding: .85rem; background: var(--sl-color-gray-6); color: var(--sl-color-white); font-family: var(--sl-font-mono); font-size: .78rem; line-height: 1.6; tab-size: 2; }
+	.map-starter .map-starter__status { min-height: 2rem; margin: 0; padding: .35rem 1.1rem .7rem; color: var(--sl-color-accent-high); font-size: .8rem; }
+	.map-starter__noscript { padding: 1rem 1.1rem; }
+	.map-starter :is(button, a, select, summary, textarea):focus-visible { outline: 3px solid var(--sl-color-accent-high); outline-offset: 3px; }
+	@media (max-width: 45rem) { .map-starter__header { align-items: stretch; flex-direction: column; } .map-starter__actions > * { flex: 1; } }
+</style>

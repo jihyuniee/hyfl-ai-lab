@@ -1,0 +1,180 @@
+---
+const rows = [
+	{ name: '가상 A', latitude: '37.5651', longitude: '126.9821' },
+	{ name: '가상 B', latitude: '37.5670', longitude: '126.9850' },
+	{ name: '가상 C', latitude: '37.5629', longitude: '126.9843' },
+	{ name: '가상 D', latitude: '', longitude: '126.9862' },
+];
+const columns = [
+	{ value: 'name', label: '지점' },
+	{ value: 'latitude', label: '위도' },
+	{ value: 'longitude', label: '경도' },
+];
+---
+
+<section class="coordinate-lab" data-coordinate-lab aria-label="좌표 열 선택 연습">
+	<div class="coordinate-lab__intro">
+		<h3>작게 연습하기 · 어느 열이 위도일까요?</h3>
+		<p>아래는 <strong>직접 만든 가상 자료 4행</strong>입니다. 실제 CCTV 자료가 아니며, 이 연습에서는 배경 지도나 위치 정보를 불러오지 않습니다.</p>
+	</div>
+
+	<fieldset class="coordinate-lab__fields">
+		<legend>마커에 사용할 두 열을 선택하세요.</legend>
+		<div class="coordinate-lab__selectors">
+			<label>위도로 사용할 열
+				<select data-latitude-column>
+					<option value="">열을 선택하세요</option>
+					{columns.map((column) => <option value={column.value}>{column.label}</option>)}
+				</select>
+			</label>
+			<label>경도로 사용할 열
+				<select data-longitude-column>
+					<option value="">열을 선택하세요</option>
+					{columns.map((column) => <option value={column.value}>{column.label}</option>)}
+				</select>
+			</label>
+		</div>
+		<div class="coordinate-lab__actions">
+			<button type="button" data-check-coordinates>좌표 확인하기</button>
+			<button type="button" class="coordinate-lab__secondary" data-reverse-coordinates>거꾸로 선택해 보기</button>
+		</div>
+	</fieldset>
+
+	<p class="coordinate-lab__status" role="status" aria-live="polite" aria-atomic="true" data-coordinate-status>위도와 경도에 사용할 열을 고른 뒤 ‘좌표 확인하기’를 누르세요.</p>
+
+	<div class="coordinate-lab__table-wrap" tabindex="0" role="region" aria-label="가상 좌표 자료와 행별 검사 결과. 좁은 화면에서는 가로로 스크롤할 수 있습니다.">
+		<table>
+			<caption>가상 연습 자료 · 마지막 행의 위도는 비어 있습니다.</caption>
+			<thead><tr><th scope="col">지점</th><th scope="col">위도</th><th scope="col">경도</th><th scope="col">검사 결과</th></tr></thead>
+			<tbody>
+				{rows.map((row) => (
+					<tr data-coordinate-row data-name={row.name} data-latitude={row.latitude} data-longitude={row.longitude}>
+						<th scope="row">{row.name}</th>
+						<td>{row.latitude || <span class="coordinate-lab__blank">빈 값</span>}</td>
+						<td>{row.longitude}</td>
+						<td data-coordinate-result>검사 전</td>
+					</tr>
+				))}
+			</tbody>
+		</table>
+	</div>
+
+	<p class="coordinate-lab__try"><strong>다음 시도:</strong> ‘거꾸로 선택해 보기’를 누른 뒤 다시 검사하세요. 경도를 위도로 읽으면 어떤 이유로 제외될까요? 가상 D의 빈 값도 함께 살펴보세요.</p>
+	<details class="coordinate-lab__explanation">
+		<summary>빈 값을 0으로 바꾸면 왜 안 될까요?</summary>
+		<p>JavaScript의 <code>Number('')</code>는 <code>0</code>이 됩니다. 0은 위도·경도 범위 안에 있지만, 원자료에 없던 좌표를 새로 만들어 넣으면 실제와 다른 위치가 생깁니다. <strong>빈 값인지 먼저 확인하고</strong>, 값이 있을 때 숫자로 바꿔 검사해야 합니다.</p>
+	</details>
+	<p class="coordinate-lab__limit">이 연습은 숫자와 범위만 검사합니다. WGS84 위도는 −90~90, 경도는 −180~180입니다. 검사를 통과해도 실제 위치가 맞는지는 원자료·좌표계·지도와 따로 대조해야 합니다. 선택과 결과는 저장되지 않습니다.</p>
+	<noscript><p>이 작은 실험을 실행하려면 JavaScript가 필요합니다. 표를 보며 위도 열의 빈 값과 두 좌표의 범위를 직접 확인할 수도 있습니다.</p></noscript>
+</section>
+
+<script>
+	document.querySelectorAll('[data-coordinate-lab]').forEach((root) => {
+		if (!(root instanceof HTMLElement)) return;
+		const latitudeColumn = root.querySelector('[data-latitude-column]');
+		const longitudeColumn = root.querySelector('[data-longitude-column]');
+		const checkButton = root.querySelector('[data-check-coordinates]');
+		const reverseButton = root.querySelector('[data-reverse-coordinates]');
+		const status = root.querySelector('[data-coordinate-status]');
+		if (!(latitudeColumn instanceof HTMLSelectElement) || !(longitudeColumn instanceof HTMLSelectElement)
+			|| !(checkButton instanceof HTMLButtonElement) || !(reverseButton instanceof HTMLButtonElement)
+			|| !(status instanceof HTMLElement)) return;
+
+		const records = [...root.querySelectorAll('[data-coordinate-row]')].flatMap((row) => {
+			const result = row.querySelector('[data-coordinate-result]');
+			if (!(row instanceof HTMLElement) || !(result instanceof HTMLElement)) return [];
+			return [{ row, result }];
+		});
+		const validColumns = new Set(['name', 'latitude', 'longitude']);
+
+		function clearResults(message) {
+			for (const { result } of records) {
+				result.textContent = '검사 전';
+				delete result.dataset.state;
+			}
+			status.textContent = message;
+		}
+
+		function validateCoordinate(raw, label, min, max) {
+			const text = String(raw ?? '').trim();
+			if (text === '') return `${label}가 비어 있음`;
+			const value = Number(text);
+			if (!Number.isFinite(value)) return `${label}가 숫자가 아님`;
+			if (value < min || value > max) return `${label} ${value}: 범위 ${min}~${max} 밖`;
+			return '';
+		}
+
+		checkButton.addEventListener('click', () => {
+			const latKey = latitudeColumn.value;
+			const lngKey = longitudeColumn.value;
+			if (!validColumns.has(latKey) || !validColumns.has(lngKey)) {
+				clearResults('아직 열을 모두 고르지 않았습니다. 위도와 경도에 사용할 열을 하나씩 선택하세요.');
+				(!validColumns.has(latKey) ? latitudeColumn : longitudeColumn).focus();
+				return;
+			}
+			if (latKey === lngKey) {
+				clearResults('같은 열을 두 번 선택했습니다. 위도와 경도로 사용할 서로 다른 두 열을 골라 주세요.');
+				longitudeColumn.focus();
+				return;
+			}
+
+			let validCount = 0;
+			for (const { row, result } of records) {
+				const reasons = [
+					validateCoordinate(row.dataset[latKey], '위도', -90, 90),
+					validateCoordinate(row.dataset[lngKey], '경도', -180, 180),
+				].filter(Boolean);
+				const passed = reasons.length === 0;
+				if (passed) validCount += 1;
+				result.dataset.state = passed ? 'valid' : 'excluded';
+				result.textContent = passed ? '좌표 형식 통과' : `제외 · ${reasons.join(' / ')}`;
+			}
+			status.textContent = `${records.length}행 중 좌표 형식 통과 ${validCount}행 · 제외 ${records.length - validCount}행. 각 행의 검사 결과를 확인하세요.`;
+		});
+
+		for (const select of [latitudeColumn, longitudeColumn]) {
+			select.addEventListener('change', () => clearResults('열 선택을 바꿨습니다. ‘좌표 확인하기’를 눌러 새 조합을 검사하세요.'));
+		}
+		reverseButton.addEventListener('click', () => {
+			latitudeColumn.value = 'longitude';
+			longitudeColumn.value = 'latitude';
+			clearResults('위도에는 경도 열, 경도에는 위도 열을 골랐습니다. ‘좌표 확인하기’를 눌러 결과를 비교하세요.');
+		});
+	});
+</script>
+
+<style>
+	.coordinate-lab { margin: 1.75rem 0; padding: 1.2rem; border: 1px solid var(--lab-border); border-left: 4px solid var(--lab-mint); border-radius: var(--lab-radius-md); background: var(--lab-card-bg); }
+	.coordinate-lab__intro h3 { margin: 0 0 .55rem; font-size: 1.05rem; }
+	.coordinate-lab__intro p, .coordinate-lab__try, .coordinate-lab__limit { margin: .65rem 0; font-size: .9rem; color: var(--sl-color-gray-2); }
+	.coordinate-lab__fields { min-width: 0; margin: 1rem 0; padding: .9rem 1rem 1rem; border: 1px solid var(--lab-border); border-radius: var(--lab-radius-sm); }
+	.coordinate-lab__fields legend { padding: 0 .35rem; font-size: .9rem; font-weight: 700; color: var(--sl-color-white); }
+	.coordinate-lab__selectors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+	.coordinate-lab__selectors label { display: grid; gap: .4rem; font-size: .88rem; font-weight: 650; }
+	.coordinate-lab select { width: 100%; min-width: 0; min-height: 2.75rem; padding: .55rem .65rem; border: 1px solid var(--sl-color-gray-4); border-radius: .4rem; background: var(--lab-card-bg); color: var(--sl-color-white); font: inherit; }
+	.coordinate-lab__actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+	.coordinate-lab button { min-height: 2.75rem; padding: .65rem .9rem; border: 1px solid var(--sl-color-accent-high); border-radius: .45rem; background: var(--sl-color-accent-high); color: var(--sl-color-black); font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; }
+	.coordinate-lab button.coordinate-lab__secondary { background: var(--lab-card-bg); color: var(--sl-color-accent-high); }
+	.coordinate-lab :is(select, button, summary, [tabindex]):focus-visible { outline: 3px solid var(--sl-color-accent); outline-offset: 3px; }
+	.coordinate-lab__status { margin: .9rem 0; padding: .8rem .9rem; background: var(--sl-color-accent-low); border-radius: .45rem; color: var(--sl-color-accent-high); font-size: .9rem; font-weight: 650; }
+	.coordinate-lab__table-wrap { max-width: 100%; overflow-x: auto; margin: 1rem 0; }
+	.coordinate-lab table { width: 100%; min-width: 30rem; margin: 0; font-size: .85rem; }
+	.coordinate-lab caption { text-align: left; padding-bottom: .55rem; color: var(--sl-color-gray-2); font-size: .82rem; }
+	.coordinate-lab th, .coordinate-lab td { padding: .6rem .7rem; }
+	.coordinate-lab tbody th { white-space: nowrap; }
+	.coordinate-lab [data-coordinate-result] { min-width: 10rem; }
+	.coordinate-lab [data-state='valid'] { color: var(--sl-color-accent-high); font-weight: 650; }
+	.coordinate-lab [data-state='excluded'] { color: var(--sl-color-white); font-weight: 650; }
+	.coordinate-lab__blank { font-style: italic; color: var(--sl-color-gray-2); }
+	.coordinate-lab__explanation { margin: 1rem 0; padding: .8rem .9rem; border: 1px solid var(--lab-border); border-radius: .45rem; font-size: .88rem; }
+	.coordinate-lab__explanation summary { font-weight: 700; cursor: pointer; }
+	.coordinate-lab__explanation p { margin: .7rem 0 0; color: var(--sl-color-gray-2); }
+	.coordinate-lab__limit { margin-bottom: 0; font-size: .82rem; }
+	@media (max-width: 36rem) {
+		.coordinate-lab { padding: .9rem; }
+		.coordinate-lab__selectors { grid-template-columns: 1fr; }
+		.coordinate-lab__fields { padding: .8rem; }
+		.coordinate-lab__actions { flex-direction: column; }
+		.coordinate-lab select { font-size: 1rem; }
+	}
+</style>
