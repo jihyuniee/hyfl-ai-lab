@@ -95,6 +95,7 @@ export default defineConfig({
 							items: [
 								{ label: '내 프로젝트에 카카오맵 넣기', link: '/data/map-lab/' },
 								{ label: '참고: GitHub의 내 코드를 GPT와 수정하기', link: '/data/github-ai/' },
+								{ label: '내 웹앱에 AI 챗봇 넣기 · API 신청', link: '/data/ai-chatbot/' },
 							],
 						},
 					],
