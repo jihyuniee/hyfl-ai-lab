@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>내 웹앱에 AI 챗봇 넣기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data/ai-chatbot/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="내 웹앱에 AI 챗봇 넣기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data/ai-chatbot/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="선생님께 API 사용을 신청하고, 시작 파일과 서버 환경변수를 준비해 우리 팀 프로젝트에 GPT·Claude 기능을 연결합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="선생님께 API 사용을 신청하고, 시작 파일과 서버 환경변수를 준비해 우리 팀 프로젝트에 GPT·Claude 기능을 연결합니다."/><script>
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>내 웹앱에 AI 챗봇 넣기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data/ai-chatbot/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="내 웹앱에 AI 챗봇 넣기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data/ai-chatbot/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="구글 클래스룸 댓글로 API 사용을 신청하고, 시작 파일을 활용해 우리 앱에 챗봇을 연결합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="구글 클래스룸 댓글로 API 사용을 신청하고, 시작 파일을 활용해 우리 앱에 챗봇을 연결합니다."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -25,7 +25,6 @@
 		};
 	})();
 </script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/hyfl-ai-lab/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/hyfl-ai-lab/_astro/index.z5Cy3RlA.css"><script type="module" src="/hyfl-ai-lab/_astro/page.B1D-nYk3.js"></script><style>.lab-callout:where(.astro-mrmim4ef){margin:1.75rem 0;padding:1.1rem 1.3rem 1.3rem;border-radius:var(--lab-radius-md);background:var(--lab-card-bg);border:1px solid var(--lab-border);border-left-width:4px;box-shadow:var(--lab-shadow-sm)}.lab-callout__title:where(.astro-mrmim4ef){display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;margin:0 0 .6rem;color:var(--sl-color-white)}.lab-callout__icon:where(.astro-mrmim4ef){font-size:1.1rem;line-height:1}.lab-callout__body:where(.astro-mrmim4ef){font-size:.95rem}.lab-callout__body:where(.astro-mrmim4ef)>*:first-child{margin-top:0}.lab-callout__body:where(.astro-mrmim4ef)>*:last-child{margin-bottom:0}.lab-callout__body:where(.astro-mrmim4ef) ul,.lab-callout__body:where(.astro-mrmim4ef) ol{padding-left:1.3rem}.lab-callout--checklist:where(.astro-mrmim4ef) .lab-callout__body:where(.astro-mrmim4ef) li{list-style:none;position:relative;padding-left:1.6rem}.lab-callout--checklist:where(.astro-mrmim4ef) .lab-callout__body:where(.astro-mrmim4ef) ul{padding-left:0}.lab-callout--checklist:where(.astro-mrmim4ef) .lab-callout__body:where(.astro-mrmim4ef) li:before{content:"";position:absolute;left:0;top:.35rem;width:1.05rem;height:1.05rem;border-radius:5px;border:2px solid var(--lab-mint)}.lab-callout--question:where(.astro-mrmim4ef){border-left-color:var(--lab-blue)}.lab-callout--think:where(.astro-mrmim4ef){border-left-color:var(--lab-violet)}.lab-callout--concept:where(.astro-mrmim4ef){border-left-color:var(--sl-color-accent);background:linear-gradient(180deg,var(--sl-color-accent-low) 0%,var(--lab-card-bg) 18%)}.lab-callout--lab:where(.astro-mrmim4ef){border-left-color:var(--lab-mint)}.lab-callout--mission:where(.astro-mrmim4ef){border-left-color:var(--lab-amber);background:linear-gradient(135deg,rgba(245,185,66,.1),var(--lab-card-bg) 40%)}.lab-callout--fail:where(.astro-mrmim4ef){border-left-color:var(--lab-rose)}.lab-callout--discuss:where(.astro-mrmim4ef){border-left-color:var(--lab-blue)}.lab-callout--caution:where(.astro-mrmim4ef){border-left-color:var(--lab-rose);background:linear-gradient(135deg,rgba(251,113,133,.08),var(--lab-card-bg) 40%)}.lab-callout--teacher:where(.astro-mrmim4ef){border-left-color:var(--lab-amber);border-style:dashed}.lab-callout--exit:where(.astro-mrmim4ef){border-left-color:var(--lab-violet);background:linear-gradient(135deg,rgba(139,92,246,.1),var(--lab-card-bg) 40%)}.lab-callout--reflect:where(.astro-mrmim4ef){border-left-color:var(--sl-color-accent)}.lab-callout--checklist:where(.astro-mrmim4ef){border-left-color:var(--lab-mint)}.lab-callout--rubric:where(.astro-mrmim4ef){border-left-color:var(--lab-blue)}
-</style><style>.copy-prompt:where(.astro-voatq4dp){margin:1.5rem 0;border:1px solid var(--sl-color-gray-5);border-radius:.9rem;overflow:hidden;background:var(--sl-color-gray-7)}.copy-prompt__header:where(.astro-voatq4dp){display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border-bottom:1px solid var(--sl-color-gray-5)}.copy-prompt__header:where(.astro-voatq4dp) div:where(.astro-voatq4dp){display:grid;gap:.15rem}.copy-prompt__header:where(.astro-voatq4dp) span:where(.astro-voatq4dp){color:var(--sl-color-gray-2);font-size:.82rem}.copy-prompt__header:where(.astro-voatq4dp) span:where(.astro-voatq4dp) b:where(.astro-voatq4dp){color:#dc2626}.copy-prompt:where(.astro-voatq4dp) button:where(.astro-voatq4dp){flex:none;border:0;border-radius:.55rem;padding:.6rem .85rem;background:var(--sl-color-accent-high);color:var(--sl-color-black);font-weight:700;cursor:pointer}.copy-prompt__guide:where(.astro-voatq4dp){padding:.75rem 1rem;border-bottom:1px solid var(--sl-color-gray-5)}.copy-prompt__guide:where(.astro-voatq4dp) summary:where(.astro-voatq4dp){color:var(--sl-color-accent-high);font-size:.86rem;font-weight:800;cursor:pointer}.copy-prompt__guide:where(.astro-voatq4dp) div:where(.astro-voatq4dp){display:grid;grid-template-columns:1fr 1fr;gap:.35rem 1rem;padding-top:.6rem}.copy-prompt__guide:where(.astro-voatq4dp) p:where(.astro-voatq4dp){margin:0;color:var(--sl-color-gray-2);font-size:.78rem;line-height:1.5}.copy-prompt:where(.astro-voatq4dp) pre:where(.astro-voatq4dp){max-height:38rem;margin:0;padding:1rem;overflow:auto;border:0;border-radius:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.82rem;line-height:1.65}.copy-prompt:where(.astro-voatq4dp) mark:where(.astro-voatq4dp){padding:.05em .15em;border-radius:.2rem;background:color-mix(in srgb,#ef4444 14%,transparent);color:#dc2626;font-weight:800}@media(max-width:36rem){.copy-prompt__header:where(.astro-voatq4dp){align-items:stretch;flex-direction:column}.copy-prompt:where(.astro-voatq4dp) button:where(.astro-voatq4dp){width:100%}.copy-prompt__guide:where(.astro-voatq4dp) div:where(.astro-voatq4dp){grid-template-columns:1fr}}
 </style></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">콘텐츠로 이동</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/hyfl-ai-lab/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> 인공지능 원리탐구 </span> </a>  </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;검색&#34;}"> <button data-open-modal disabled aria-label="검색" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">검색</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="검색" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> 취소 </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
 	(() => {
 		const openBtn = document.querySelector('button[data-open-modal]');
@@ -72,147 +71,29 @@
 		})();
 	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-우리-앱에서-ai가-할-일-정하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 우리 앱에서 AI가 할 일 정하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-선생님께-api-사용-신청하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 선생님께 API 사용 신청하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-내-프로젝트와-연결-파일-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 내 프로젝트와 연결 파일 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-서버-환경변수-설정하고-배포하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 서버 환경변수 설정하고 배포하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-우리-앱의-기능과-자료-연결하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 우리 앱의 기능과 자료 연결하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-실행-결과와-오류-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 실행 결과와 오류 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-기존-활동지에-기록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 기존 활동지에 기록하기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-우리-앱에서-ai가-할-일-정하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 우리 앱에서 AI가 할 일 정하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-선생님께-api-사용-신청하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 선생님께 API 사용 신청하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-내-프로젝트와-연결-파일-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 내 프로젝트와 연결 파일 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-서버-환경변수-설정하고-배포하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 서버 환경변수 설정하고 배포하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-우리-앱의-기능과-자료-연결하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 우리 앱의 기능과 자료 연결하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-실행-결과와-오류-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 실행 결과와 오류 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#7-기존-활동지에-기록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">7. 기존 활동지에 기록하기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">내 웹앱에 AI 챗봇 넣기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>챗봇·요약·설명·번역 기능이 필요한 팀을 위한 <strong>프로젝트 도움말</strong>입니다. 교과서의 신청 양식과 시작 파일을 이용해 <strong>자신의 웹앱 안에 AI 기능</strong>을 연결합니다.</p>
-<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> AI API 사용 신청 </p> <div class="lab-callout__body astro-mrmim4ef"> <p>우리 팀 앱에 <strong>GPT나 Claude를 활용하는 기능</strong>을 넣고 싶다면 <strong>선생님께 API 사용을 요청하세요.</strong> 사용할 서비스·모델, 사용 대상·기간·한도를 확인하고 프로젝트 서버의 키 설정을 지원받습니다.</p><p><strong>진행 순서:</strong> 역할 정하기 → 신청문 전달 → 내 프로젝트 준비 → 서버 환경변수 설정·배포 → 질문과 답변 확인</p> </div> </div> 
-<div class="sl-heading-wrapper level-h2"><h2 id="1-우리-앱에서-ai가-할-일-정하기">1. 우리 앱에서 AI가 할 일 정하기</h2><a class="sl-anchor-link" href="#1-우리-앱에서-ai가-할-일-정하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 우리 앱에서 AI가 할 일 정하기”</span></a></div>
-<p>AI API는 앱에서 보낸 질문이나 자료를 모델이 처리하고 결과를 돌려주는 연결 방식입니다. 팀은 <strong>누가 어떤 질문을 하고, 어떤 자료를 바탕으로 어떤 답변을 받을지</strong> 정합니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>기능 예시</th><th>AI에 전달할 내용</th><th>확인할 결과</th></tr></thead><tbody><tr><td>데이터 설명</td><td>코드로 계산한 통계, 출처·기준일, 사용자 질문</td><td>수치와 의미를 설명한 답변</td></tr><tr><td>시설 안내</td><td>우리 앱이 검색한 시설 정보와 사용자 조건</td><td>해당 자료에 근거한 안내</td></tr><tr><td>외국어 안내</td><td>출처가 있는 안내문과 선택한 언어</td><td>번역문과 원문 출처</td></tr></tbody></table>
-<p>프로젝트의 주제와 사용할 자료는 각 팀이 정합니다. 집계·검색·필터는 코드로 처리하고 원자료와 대조한 결과를 AI에 전달합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="2-선생님께-api-사용-신청하기">2. 선생님께 API 사용 신청하기</h2><a class="sl-anchor-link" href="#2-선생님께-api-사용-신청하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 선생님께 API 사용 신청하기”</span></a></div>
-<p>아래 양식의 표시된 부분을 채워 <strong>수업에서 안내한 방법으로 선생님께 전달</strong>합니다. 프로젝트 주소와 실제로 구현할 기능을 함께 준비합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="[AI API 사용 신청]
-반·팀명: {{우리 반과 팀명}}
-웹앱 이름: {{우리 팀 앱 이름}}
-현재 프로젝트: {{배포 주소 / GitHub 저장소 주소 / 첨부 파일 / 아직 없음}}
-앱을 사용하는 사람과 해결할 문제: {{사용자·상황·어려움}}
-AI에 맡길 기능 한 가지: {{질문 답변 / 자료 설명 / 요약 / 번역 등}}
-AI에 보낼 자료와 출처: {{실제 자료의 이름·항목·출처 또는 질문만 사용}}
-사용자 질문 예시: {{우리 앱에서 할 질문}}
-기대하는 답변: {{답변에 포함할 내용과 확인할 근거}}
-희망 서비스: {{GPT / Claude / 선생님과 상의}}
-사용 예정 기간과 사용자 수: {{기간·예상 인원}}
-
-우리 팀 프로젝트에서 사용할 API·모델과 사용 한도를 확인하고, 서버 환경변수 설정을 지원받고 싶습니다."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">선생님께 전달할 API 사용 신청문</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="선생님께 전달할 API 사용 신청문" class="astro-voatq4dp"><code class="astro-voatq4dp">[AI API 사용 신청]
-반·팀명: <mark class="astro-voatq4dp">{{우리 반과 팀명}}</mark>
-웹앱 이름: <mark class="astro-voatq4dp">{{우리 팀 앱 이름}}</mark>
-현재 프로젝트: <mark class="astro-voatq4dp">{{배포 주소 / GitHub 저장소 주소 / 첨부 파일 / 아직 없음}}</mark>
-앱을 사용하는 사람과 해결할 문제: <mark class="astro-voatq4dp">{{사용자·상황·어려움}}</mark>
-AI에 맡길 기능 한 가지: <mark class="astro-voatq4dp">{{질문 답변 / 자료 설명 / 요약 / 번역 등}}</mark>
-AI에 보낼 자료와 출처: <mark class="astro-voatq4dp">{{실제 자료의 이름·항목·출처 또는 질문만 사용}}</mark>
-사용자 질문 예시: <mark class="astro-voatq4dp">{{우리 앱에서 할 질문}}</mark>
-기대하는 답변: <mark class="astro-voatq4dp">{{답변에 포함할 내용과 확인할 근거}}</mark>
-희망 서비스: <mark class="astro-voatq4dp">{{GPT / Claude / 선생님과 상의}}</mark>
-사용 예정 기간과 사용자 수: <mark class="astro-voatq4dp">{{기간·예상 인원}}</mark>
-
-우리 팀 프로젝트에서 사용할 API·모델과 사용 한도를 확인하고, 서버 환경변수 설정을 지원받고 싶습니다.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
-<p>신청 후에는 다음 내용을 확인합니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>확인할 항목</th><th>기록할 내용</th></tr></thead><tbody><tr><td>서비스·모델</td><td>OpenAI 또는 Claude, 선생님이 지정한 정확한 모델 식별자</td></tr><tr><td>사용 대상·기간</td><td>앱을 사용할 사람과 사용 종료 시점</td></tr><tr><td>사용 한도</td><td>프로젝트에 적용할 제공사의 사용량·지출 한도</td></tr><tr><td>서버 설정</td><td>키를 등록할 프로젝트와 배포 서비스의 환경변수 설정 위치</td></tr><tr><td>앱 이용코드</td><td>선생님과 정한 코드의 전달 여부와 사용 대상</td></tr></tbody></table>
-<p>API 키의 실제 값은 <strong>프로젝트 서버의 환경변수 설정 화면에서 등록</strong>합니다. 신청문·활동지·AI에 제공할 코드 사본에는 변수 이름과 자리표시자를 기록합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="3-내-프로젝트와-연결-파일-준비하기">3. 내 프로젝트와 연결 파일 준비하기</h2><a class="sl-anchor-link" href="#3-내-프로젝트와-연결-파일-준비하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 내 프로젝트와 연결 파일 준비하기”</span></a></div>
-<p><strong>사용자 질문 → 내 프로젝트의 서버 API → GPT·Claude → 서버 API → 내 앱의 답변 화면</strong> 순서로 연결합니다.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>구성</th><th>역할</th></tr></thead><tbody><tr><td><code dir="auto">index.html</code> 등 화면 코드</td><td>질문·이용코드를 입력받고 답변을 표시</td></tr><tr><td>서버 API</td><td>이용코드와 입력을 확인하고 설정된 모델 호출</td></tr><tr><td>서버 환경변수</td><td>API 비밀키, 사용할 모델, 앱 이용코드 보관</td></tr></tbody></table>
-<p>GitHub Pages는 HTML·CSS·JavaScript를 제공하는 정적 호스팅입니다. AI를 호출하는 서버 코드는 <strong>Vercel Functions 같은 서버 실행 환경</strong>에 배포합니다. 아래 시작 파일은 화면과 서버 API를 <strong>하나의 Vercel 프로젝트 주소</strong>에서 실행하도록 구성되어 있습니다. <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages 안내</a> · <a href="https://vercel.com/docs/functions">Vercel Functions 안내</a></p>
-<div class="sl-heading-wrapper level-h3"><h3 id="a-현재-만드는-앱이-있는-팀">A. 현재 만드는 앱이 있는 팀</h3><a class="sl-anchor-link" href="#a-현재-만드는-앱이-있는-팀"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “A. 현재 만드는 앱이 있는 팀”</span></a></div>
-<ol>
-<li>현재 정상 작동하는 프로젝트를 보관합니다.</li>
-<li>아래 시작 파일을 연결 예제로 준비하고, 현재 프로젝트 파일이나 저장소를 AI에 제공합니다.</li>
-<li><strong>5단계의 요청문</strong>으로 현재 화면·기능을 유지하며 챗봇 화면과 서버 경로를 추가합니다. 프레임워크 프로젝트는 해당 프레임워크의 서버 경로를 사용합니다.</li>
-<li>기존 배포 환경에서 서버 실행이 지원되는지 확인합니다. HTML 프로젝트를 Vercel로 배포할 때는 4단계를 따릅니다.</li>
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-구글-클래스룸-댓글로-신청하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 구글 클래스룸 댓글로 신청하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-챗봇-시작-파일-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 챗봇 시작 파일 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-ai에게-우리-앱에-연결해-달라고-요청하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. AI에게 우리 앱에 연결해 달라고 요청하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-질문을-보내-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 질문을 보내 확인하기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-구글-클래스룸-댓글로-신청하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 구글 클래스룸 댓글로 신청하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-챗봇-시작-파일-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 챗봇 시작 파일 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-ai에게-우리-앱에-연결해-달라고-요청하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. AI에게 우리 앱에 연결해 달라고 요청하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-질문을-보내-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 질문을 보내 확인하기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">내 웹앱에 AI 챗봇 넣기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>우리 팀 웹앱에 <strong>질문에 답하기·자료 설명하기·번역하기</strong> 같은 AI 기능을 넣고 싶을 때 활용하는 안내입니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="1-구글-클래스룸-댓글로-신청하기">1. 구글 클래스룸 댓글로 신청하기</h2><a class="sl-anchor-link" href="#1-구글-클래스룸-댓글로-신청하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 구글 클래스룸 댓글로 신청하기”</span></a></div>
+<p><strong>수업의 구글 클래스룸 게시물에 팀명과 넣고 싶은 기능을 댓글로 남겨 주세요.</strong> 선생님이 확인한 뒤 API 사용과 연결에 필요한 사항을 안내합니다.</p>
+<blockquote>
+<p>예: ○반 ○팀입니다. 우리 앱에서 검색한 시설 정보를 설명해 주는 챗봇을 넣고 싶습니다. API 사용을 신청합니다.</p>
+</blockquote>
+<p>API는 <strong>우리 앱에서 GPT나 Claude에 질문을 보내고 답변을 받아 오는 연결 방식</strong>입니다.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="2-챗봇-시작-파일-준비하기">2. 챗봇 시작 파일 준비하기</h2><a class="sl-anchor-link" href="#2-챗봇-시작-파일-준비하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “2. 챗봇 시작 파일 준비하기”</span></a></div>
+<p><strong><a href="/hyfl-ai-lab/templates/ai-chatbot-starter.zip">챗봇 시작 파일 ZIP 다운로드</a></strong></p>
+<p>압축을 풀면 질문을 입력하는 화면과 AI에 연결하는 서버 코드가 들어 있습니다. <strong>현재 만들고 있는 앱 파일과 시작 파일을 함께 준비</strong>하세요.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="3-ai에게-우리-앱에-연결해-달라고-요청하기">3. AI에게 우리 앱에 연결해 달라고 요청하기</h2><a class="sl-anchor-link" href="#3-ai에게-우리-앱에-연결해-달라고-요청하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. AI에게 우리 앱에 연결해 달라고 요청하기”</span></a></div>
+<p>ChatGPT나 Claude에 <strong>현재 앱 파일과 시작 파일을 함께 첨부</strong>하고, 우리 앱에서 챗봇이 할 일을 설명하세요.</p>
+<p>예를 들어 다음과 같이 요청할 수 있습니다.</p>
+<blockquote>
+<p>현재 만들고 있는 웹앱과 챗봇 시작 파일입니다. 기존 기능을 유지하면서, 검색한 시설 정보를 설명해 주는 챗봇을 추가해 주세요. API 키는 서버 환경변수에 보관하도록 해 주세요. 제가 해야 할 설정과 배포 방법을 한 단계씩 안내해 주세요.</p>
+</blockquote>
+<p>‘검색한 시설 정보를 설명해 주는’ 부분을 <strong>우리 팀이 원하는 기능</strong>으로 바꾸면 됩니다. AI가 안내한 순서대로 수정하고, 연결 설정은 선생님의 안내를 받아 진행하세요.</p>
+<div class="lab-callout lab-callout--concept astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">📚</span> API 키는 어디에 넣나요? </p> <div class="lab-callout__body astro-mrmim4ef"> <p>API 키는 <strong>배포 서비스의 서버 환경변수</strong>에 등록합니다. HTML 코드, 클래스룸 댓글, AI 대화창에 실제 키를 붙여 넣지 마세요.</p> </div> </div> 
+<details><summary>시작 파일의 연결 설정이 필요할 때 펼쳐 보기</summary><p>시작 파일은 <strong>Vercel에서 화면과 서버를 함께 실행</strong>하는 예제입니다. GitHub에 압축을 푼 파일과 폴더를 구조대로 올린 뒤, Vercel에서 해당 저장소를 가져옵니다.</p><ol>
+<li>프로젝트 설정에서 <strong>Framework Preset: Other</strong>를 선택합니다. 저장소 최상위에 <code dir="auto">index.html</code>과 <code dir="auto">package.json</code>이 있는지 확인합니다.</li>
+<li><strong>Build Command</strong>의 Override를 켜고 값을 비워 둡니다.</li>
+<li><strong>Environment Variables</strong>에 선생님과 확인한 값을 등록하고 배포합니다.</li>
 </ol>
-<div class="sl-heading-wrapper level-h3"><h3 id="b-작은-챗봇부터-연결할-팀">B. 작은 챗봇부터 연결할 팀</h3><a class="sl-anchor-link" href="#b-작은-챗봇부터-연결할-팀"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “B. 작은 챗봇부터 연결할 팀”</span></a></div>
-<div class="lab-callout lab-callout--lab astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🧪</span> 챗봇 시작 파일 받기 </p> <div class="lab-callout__body astro-mrmim4ef"> <p><strong><a href="/hyfl-ai-lab/templates/ai-chatbot-starter.zip">챗봇 시작 파일 ZIP 다운로드</a></strong></p><p>압축을 풀어 파일을 준비합니다. 질문·답변 화면, 이용코드 확인, OpenAI·Claude 호출용 서버 코드, 설정 안내가 들어 있습니다. 서비스와 모델은 서버 환경변수로 선택합니다.</p> </div> </div> 
-<ol>
-<li>압축을 푼 폴더에서 <code dir="auto">index.html</code>, <code dir="auto">api</code> 폴더, <code dir="auto">package.json</code>, <code dir="auto">vercel.json</code>, <code dir="auto">README.md</code>와 함께 제공된 파일을 확인합니다.</li>
-<li>GitHub에 프로젝트 저장소를 만들고 <strong>폴더 안의 파일과 하위 폴더를 구조대로</strong> 올립니다. <code dir="auto">index.html</code>과 <code dir="auto">package.json</code>이 저장소의 최상위에 오도록 합니다.</li>
-<li><code dir="auto">README.md</code>를 열어 필요한 환경변수와 서버 구성을 확인합니다.</li>
-<li>다음 단계에서 서버 환경변수를 설정하고 배포합니다.</li>
-</ol>
-<div class="sl-heading-wrapper level-h2"><h2 id="4-서버-환경변수-설정하고-배포하기">4. 서버 환경변수 설정하고 배포하기</h2><a class="sl-anchor-link" href="#4-서버-환경변수-설정하고-배포하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 서버 환경변수 설정하고 배포하기”</span></a></div>
-<p>다음은 <strong>시작 파일을 Vercel로 배포하는 순서</strong>입니다. 기존 프로젝트의 서버 환경을 쓰는 팀은 그 서비스의 환경변수 설정과 배포 절차를 사용합니다.</p>
-<ol>
-<li>Vercel에 로그인하고 <strong>New Project</strong>를 엽니다. 처음 연결할 때는 GitHub 계정을 연결하고 사용할 저장소의 접근 권한을 설정한 뒤 우리 저장소를 선택합니다.</li>
-<li>시작 파일은 <strong>Framework Preset: Other</strong>, <strong>Root Directory: 파일이 있는 저장소 루트</strong>를 확인합니다. <strong>Build Command</strong>의 Override를 켜고 값을 비워 빌드 단계를 생략합니다.</li>
-<li><strong>Environment Variables</strong>에 아래 이름과 값을 등록합니다. 기존 프로젝트는 <strong>Settings → Environment Variables</strong>에서 등록합니다.</li>
-<li>사용할 배포 환경을 선택합니다. 실제 수업용 주소에는 <strong>Production</strong> 설정을 적용합니다.</li>
-<li><strong>Deploy</strong>로 배포하고 완료된 웹앱 주소를 엽니다. 환경변수를 나중에 추가하거나 변경했으면 <strong>Redeploy</strong>하여 새 배포에 적용합니다.</li>
-</ol>
-<p><a href="https://vercel.com/docs/git">Git 저장소에서 배포하기</a> · <a href="https://vercel.com/docs/builds/configure-a-build">일반 HTML 프로젝트의 빌드 설정</a> · <a href="https://vercel.com/docs/environment-variables/managing-environment-variables">환경변수 등록과 적용</a></p>
-<div class="sl-heading-wrapper level-h3"><h3 id="시작-파일에-등록할-값">시작 파일에 등록할 값</h3><a class="sl-anchor-link" href="#시작-파일에-등록할-값"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “시작 파일에 등록할 값”</span></a></div>
 
 
 
@@ -241,170 +122,13 @@ AI에 보낼 자료와 출처: <mark class="astro-voatq4dp">{{실제 자료의 �
 
 
 
-
-
-
-
-
-
-
-<table><thead><tr><th>변수 이름</th><th>입력할 값</th><th>적용 대상</th></tr></thead><tbody><tr><td><code dir="auto">AI_PROVIDER</code></td><td><code dir="auto">openai</code> 또는 <code dir="auto">anthropic</code></td><td>공통</td></tr><tr><td><code dir="auto">AI_MODEL</code></td><td>선생님과 확인한 정확한 모델 식별자</td><td>공통</td></tr><tr><td><code dir="auto">OPENAI_API_KEY</code></td><td>팀 프로젝트에 사용할 OpenAI 키</td><td>OpenAI 선택 시</td></tr><tr><td><code dir="auto">ANTHROPIC_API_KEY</code></td><td>팀 워크스페이스에 범위를 지정한 Claude 키</td><td>Claude 선택 시</td></tr><tr><td><code dir="auto">CHAT_ACCESS_CODE</code></td><td>선생님과 정한 무작위 영문·숫자·<code dir="auto">_</code>·<code dir="auto">-</code> 조합의 16~128자 이용코드</td><td>공통</td></tr></tbody></table>
-<p>API 비밀키는 <strong>서버가 AI를 호출할 때 사용하는 값</strong>입니다. 앱 이용코드는 <strong>허용된 이용자가 챗봇 화면에서 입력하는 값</strong>입니다. 두 값은 각각 따로 설정합니다. 이용코드는 허용된 사람에게 전달하고, 코드 파일에는 자리표시자를 사용합니다.</p>
-<p>선택 설정인 <code dir="auto">CHAT_SYSTEM_PROMPT</code>에는 챗봇의 역할을, <code dir="auto">MAX_OUTPUT_TOKENS</code>에는 서버의 최대 출력 토큰 수를 지정할 수 있습니다. 시작 파일의 기본값과 설정 범위는 함께 받은 <code dir="auto">README.md</code>에서 확인합니다. <a href="https://developers.openai.com/api/reference/overview">OpenAI 키 보관</a> · <a href="https://platform.claude.com/docs/en/manage-claude/authentication">Claude 인증과 워크스페이스 범위</a></p>
-<p><strong>첫 실행:</strong> 배포된 주소에서 앱 이용코드를 입력하고 짧은 질문을 보냅니다. 답변, 처리 상태, 새 대화 기능을 확인합니다. 기존 앱에 지도를 사용한다면 새 배포 주소에 맞춰 지도 서비스의 도메인 설정도 갱신합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="5-우리-앱의-기능과-자료-연결하기">5. 우리 앱의 기능과 자료 연결하기</h2><a class="sl-anchor-link" href="#5-우리-앱의-기능과-자료-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “5. 우리 앱의 기능과 자료 연결하기”</span></a></div>
-<p>현재 프로젝트와 시작 파일을 AI에 함께 제공하고 아래 요청문을 채웁니다. 저장소를 연결해 수정하는 방법은 <a href="/hyfl-ai-lab/data/github-ai/">GitHub의 내 코드를 GPT와 수정하기</a>에서 확인합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀의 현재 프로젝트에 AI 기능 한 가지를 추가해줘.
-
-# 프로젝트와 자료
-- 현재 프로젝트: {{첨부한 파일 또는 GitHub 저장소 주소}}
-- 실행·배포 방식: {{현재 웹앱 주소와 사용 중인 서비스}}
-- 프로젝트 목적: {{사용자와 해결할 문제}}
-- AI가 맡을 역할: {{구체적인 기능 한 가지}}
-- 유지할 기능: {{이미 작동하는 화면·검색·지도·자료 읽기 등}}
-- AI에 전달할 자료: {{현재 코드에서 읽은 관련 항목·출처·기준일 또는 질문만}}
-- 사용할 서비스와 모델: {{선생님과 확인한 서비스·모델 식별자}}
-- 사용할 연결 예제: {{교과서 챗봇 시작 파일 / 현재 프로젝트의 서버 코드}}
-- 사용 대상과 기간: {{선생님과 확인한 대상·기간}}
-
-# 구현 순서
-1. 최신 파일과 실행 환경을 확인하고 질문 화면, 서버 API, 자료 읽기 코드의 위치를 정리해줘. 현재 파일 구조와 정상 기능을 유지하며 필요한 부분을 수정해줘.
-2. 질문 입력·전송·답변 표시·처리 중 안내·새 대화·중복 전송 방지를 구현해줘. 답변은 textContent 등 텍스트를 안전하게 표시하는 방법으로 출력해줘.
-3. 현재 프레임워크에 맞는 서버 경로를 만들고, 브라우저가 같은 배포 주소의 서버 API를 호출하도록 연결해줘. 정적 HTML 프로젝트라면 교과서의 Vercel 시작 예제 구조를 적용해줘.
-4. AI_PROVIDER·AI_MODEL과 해당 서비스의 OPENAI_API_KEY 또는 ANTHROPIC_API_KEY를 서버 환경변수에서 읽어줘. 실제 키는 내가 배포 서비스 설정 화면에 입력할 거야. 설명·예제·공개 파일에는 자리표시자를 사용해줘.
-5. 시작 예제의 CHAT_ACCESS_CODE 인증, 입력·대화·출력 길이 제한, 시간 초과·실패 처리를 유지해줘. 모델과 출력 한도는 서버 설정을 적용해줘.
-6. 자료를 활용하는 기능은 현재 조회한 관련 항목과 출처·기준일을 질문과 함께 전달해줘. 계산·검색·필터 결과는 기존 코드로 구하고, 자료와 AI 답변을 화면에서 구분해줘. 확인할 근거가 부족한 내용은 확인 필요로 안내해줘.
-7. 키나 이용코드의 실제 값은 마스킹해줘. 추가로 필요한 프로젝트 파일이 있으면 경로와 역할을 알려줘.
-
-# 결과
-수정 파일·위치·이유, 적용할 코드, 환경변수 이름, 배포 순서, 실제 검사 결과와 추가 확인 항목을 정리해줘. 연결된 저장소를 수정했다면 실제 커밋 또는 PR 링크를 알려줘. 원자료와 대조할 질문 3개와 오류 상황을 검증할 방법을 포함해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">내 프로젝트에 챗봇 기능 추가하기</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="내 프로젝트에 챗봇 기능 추가하기" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀의 현재 프로젝트에 AI 기능 한 가지를 추가해줘.
-
-# 프로젝트와 자료
-- 현재 프로젝트: <mark class="astro-voatq4dp">{{첨부한 파일 또는 GitHub 저장소 주소}}</mark>
-- 실행·배포 방식: <mark class="astro-voatq4dp">{{현재 웹앱 주소와 사용 중인 서비스}}</mark>
-- 프로젝트 목적: <mark class="astro-voatq4dp">{{사용자와 해결할 문제}}</mark>
-- AI가 맡을 역할: <mark class="astro-voatq4dp">{{구체적인 기능 한 가지}}</mark>
-- 유지할 기능: <mark class="astro-voatq4dp">{{이미 작동하는 화면·검색·지도·자료 읽기 등}}</mark>
-- AI에 전달할 자료: <mark class="astro-voatq4dp">{{현재 코드에서 읽은 관련 항목·출처·기준일 또는 질문만}}</mark>
-- 사용할 서비스와 모델: <mark class="astro-voatq4dp">{{선생님과 확인한 서비스·모델 식별자}}</mark>
-- 사용할 연결 예제: <mark class="astro-voatq4dp">{{교과서 챗봇 시작 파일 / 현재 프로젝트의 서버 코드}}</mark>
-- 사용 대상과 기간: <mark class="astro-voatq4dp">{{선생님과 확인한 대상·기간}}</mark>
-
-# 구현 순서
-1. 최신 파일과 실행 환경을 확인하고 질문 화면, 서버 API, 자료 읽기 코드의 위치를 정리해줘. 현재 파일 구조와 정상 기능을 유지하며 필요한 부분을 수정해줘.
-2. 질문 입력·전송·답변 표시·처리 중 안내·새 대화·중복 전송 방지를 구현해줘. 답변은 textContent 등 텍스트를 안전하게 표시하는 방법으로 출력해줘.
-3. 현재 프레임워크에 맞는 서버 경로를 만들고, 브라우저가 같은 배포 주소의 서버 API를 호출하도록 연결해줘. 정적 HTML 프로젝트라면 교과서의 Vercel 시작 예제 구조를 적용해줘.
-4. AI_PROVIDER·AI_MODEL과 해당 서비스의 OPENAI_API_KEY 또는 ANTHROPIC_API_KEY를 서버 환경변수에서 읽어줘. 실제 키는 내가 배포 서비스 설정 화면에 입력할 거야. 설명·예제·공개 파일에는 자리표시자를 사용해줘.
-5. 시작 예제의 CHAT_ACCESS_CODE 인증, 입력·대화·출력 길이 제한, 시간 초과·실패 처리를 유지해줘. 모델과 출력 한도는 서버 설정을 적용해줘.
-6. 자료를 활용하는 기능은 현재 조회한 관련 항목과 출처·기준일을 질문과 함께 전달해줘. 계산·검색·필터 결과는 기존 코드로 구하고, 자료와 AI 답변을 화면에서 구분해줘. 확인할 근거가 부족한 내용은 확인 필요로 안내해줘.
-7. 키나 이용코드의 실제 값은 마스킹해줘. 추가로 필요한 프로젝트 파일이 있으면 경로와 역할을 알려줘.
-
-# 결과
-수정 파일·위치·이유, 적용할 코드, 환경변수 이름, 배포 순서, 실제 검사 결과와 추가 확인 항목을 정리해줘. 연결된 저장소를 수정했다면 실제 커밋 또는 PR 링크를 알려줘. 원자료와 대조할 질문 3개와 오류 상황을 검증할 방법을 포함해줘.</code></pre> </section>  
-<p>자료를 활용하는 팀은 <strong>관련 항목·출처·기준일을 질문과 함께 전달</strong>합니다. 시작 파일의 참고자료 입력란에는 작은 자료와 출처를 넣어 연결을 확인할 수 있습니다. 이후에는 현재 앱의 검색·조회 결과를 전달하도록 수정합니다.</p>
-<p>질문과 대화, 참고자료에는 시작 파일이 정한 입력 제한이 적용됩니다. AI에 전달할 자료는 질문에 필요한 범위로 골라 준비합니다. 답변 화면에는 <strong>AI가 생성한 답변</strong>임을 표시하고 원자료를 확인할 수 있는 출처를 함께 제공합니다.</p>
-<div class="sl-heading-wrapper level-h2"><h2 id="6-실행-결과와-오류-확인하기">6. 실행 결과와 오류 확인하기</h2><a class="sl-anchor-link" href="#6-실행-결과와-오류-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 실행 결과와 오류 확인하기”</span></a></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>확인할 상황</th><th>직접 확인할 결과</th></tr></thead><tbody><tr><td>기본 질문</td><td>프로젝트의 역할에 맞는 답변이 표시됨</td></tr><tr><td>자료를 사용한 질문</td><td>수치·이름·날짜가 원자료와 맞고 출처를 확인할 수 있음</td></tr><tr><td>근거가 부족한 질문</td><td>추가로 확인할 내용을 안내함</td></tr><tr><td>빈 질문·연속 클릭</td><td>입력 안내가 나오고 처리 중 중복 전송이 제한됨</td></tr><tr><td>이용코드 확인</td><td>올바른 코드로 요청할 수 있고 잘못된 코드에는 안내가 표시됨</td></tr><tr><td>입력 제한·서버 실패</td><td>실제 상태에 맞는 오류 안내가 표시됨</td></tr><tr><td>기존 기능</td><td>원래 있던 검색·지도·표·버튼이 계속 작동함</td></tr></tbody></table>
-<p>AI 답변의 수치·고유명사·출처는 원자료와 대조합니다. 개인을 식별하는 자료는 익명화하고, API에 보낼 내용을 확인한 뒤 테스트합니다.</p>
-<p>시작 예제에서 오류가 생기면 브라우저 개발자도구의 <strong>Network → <code dir="auto">/api/chat</code> 요청</strong>에서 상태 코드와 응답의 오류 코드를 확인합니다. 기존 프로젝트는 자신이 연결한 서버 API 경로를 확인합니다. 서버 설정과 제공사 사용량은 선생님과 함께 확인합니다.</p>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="우리 팀 웹앱의 AI 기능을 실제 관찰 내용과 현재 파일에 근거해 확인해줘.
-
-웹앱 주소: {{키·인증값이 없는 실제 배포 주소}}
-현재 프로젝트: {{첨부 파일 또는 저장소 주소}}
-사용 서비스와 모델: {{선생님과 확인한 값}}
-기대한 동작: {{입력한 질문과 예상한 처리}}
-실제 화면 안내: {{오류 문구 또는 관찰한 결과}}
-Network의 요청 경로·상태·응답 코드: {{확인한 값 또는 미확인}}
-환경변수 확인: {{등록한 변수 이름과 적용 환경만 기록}}
-최근 변경·배포: {{수정한 부분과 재배포 여부}}
-
-1. 브라우저의 요청 주소·방법·본문과 서버가 받는 형식을 대조해줘.
-2. API 경로의 배포, 서버 환경변수의 이름·적용 환경, 이용코드 인증, 모델 설정, 입력 제한을 실제 코드와 오류에 따라 확인해줘.
-3. 제공사 인증·모델 권한·사용량 확인이 필요한 경우 선생님과 확인할 항목을 알려줘.
-4. 기존 정상 기능과 실제 데이터 연결을 유지하며 확인된 원인을 수정해줘.
-5. 수정 파일·위치·코드와 재배포 후 확인할 동작을 알려줘. 실제 키·이용코드는 자리표시자로 표시하고, 확인하지 못한 항목은 미확인으로 적어줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">실제 오류를 확인하고 수정하기</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="실제 오류를 확인하고 수정하기" class="astro-voatq4dp"><code class="astro-voatq4dp">우리 팀 웹앱의 AI 기능을 실제 관찰 내용과 현재 파일에 근거해 확인해줘.
-
-웹앱 주소: <mark class="astro-voatq4dp">{{키·인증값이 없는 실제 배포 주소}}</mark>
-현재 프로젝트: <mark class="astro-voatq4dp">{{첨부 파일 또는 저장소 주소}}</mark>
-사용 서비스와 모델: <mark class="astro-voatq4dp">{{선생님과 확인한 값}}</mark>
-기대한 동작: <mark class="astro-voatq4dp">{{입력한 질문과 예상한 처리}}</mark>
-실제 화면 안내: <mark class="astro-voatq4dp">{{오류 문구 또는 관찰한 결과}}</mark>
-Network의 요청 경로·상태·응답 코드: <mark class="astro-voatq4dp">{{확인한 값 또는 미확인}}</mark>
-환경변수 확인: <mark class="astro-voatq4dp">{{등록한 변수 이름과 적용 환경만 기록}}</mark>
-최근 변경·배포: <mark class="astro-voatq4dp">{{수정한 부분과 재배포 여부}}</mark>
-
-1. 브라우저의 요청 주소·방법·본문과 서버가 받는 형식을 대조해줘.
-2. API 경로의 배포, 서버 환경변수의 이름·적용 환경, 이용코드 인증, 모델 설정, 입력 제한을 실제 코드와 오류에 따라 확인해줘.
-3. 제공사 인증·모델 권한·사용량 확인이 필요한 경우 선생님과 확인할 항목을 알려줘.
-4. 기존 정상 기능과 실제 데이터 연결을 유지하며 확인된 원인을 수정해줘.
-5. 수정 파일·위치·코드와 재배포 후 확인할 동작을 알려줘. 실제 키·이용코드는 자리표시자로 표시하고, 확인하지 못한 항목은 미확인으로 적어줘.</code></pre> </section>  
-<div class="sl-heading-wrapper level-h2"><h2 id="7-기존-활동지에-기록하기">7. 기존 활동지에 기록하기</h2><a class="sl-anchor-link" href="#7-기존-활동지에-기록하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “7. 기존 활동지에 기록하기”</span></a></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>활동지 위치</th><th>기록할 내용</th></tr></thead><tbody><tr><td>STEP 2-4 · 구현</td><td>AI의 역할, 전달한 자료, 서버 연결, 수정 파일</td></tr><tr><td>STEP 3-2 · 검증</td><td>테스트 질문·답변, 원자료 대조, 오류와 수정 내용</td></tr><tr><td>STEP 4 · AI 활용</td><td>사용한 서비스·모델, 구현 요청문, 사람이 검증하고 결정한 내용</td></tr></tbody></table>
-<p><strong>완료 기준:</strong> 자기 웹앱 주소에서 질문과 답변을 주고받고, 원자료와 대조한 결과를 기록합니다.</p>
-<details><summary>교사용 · 팀 프로젝트의 API 지원 설정</summary><ol>
-<li>팀의 사용 목적·대상·기간을 확인하고 서비스와 모델을 정합니다.</li>
-<li>OpenAI의 프로젝트 또는 Claude의 워크스페이스로 사용량을 구분하고, 팀 프로젝트 서버에서 사용할 권한과 키를 설정합니다. Claude 시작 예제는 해당 워크스페이스에 범위를 지정한 키를 사용합니다.</li>
-<li>서버 환경변수에 키를 등록하고, 제공사의 지출 한도와 사용량을 확인합니다. OpenAI는 월간 강제 지출 한도, Claude는 워크스페이스별 월간 지출 한도를 제공합니다. OpenAI는 한도 적용 지연으로 소폭 초과할 수 있음을 안내합니다.</li>
-<li>앱 이용코드와 입력·출력 길이 설정을 확인합니다. 시작 파일은 이용코드·입력 크기·출력 토큰을 검사하고, 월간 사용량과 지출은 제공사에서 관리합니다.</li>
-<li>사용 기간이 끝나면 제공사에서 해당 키를 회수하거나 비활성화합니다.</li>
-</ol><p><a href="https://developers.openai.com/api/docs/guides/spend-limits">OpenAI 지출 한도</a> · <a href="https://platform.claude.com/docs/en/manage-claude/workspaces">Claude 워크스페이스와 한도</a></p></details>
-<p>공식 문서 확인: <strong>2026년 10월 27일</strong>. 서비스 화면과 이용 조건은 연결한 공식 문서에서 확인합니다.</p>
+<table><thead><tr><th>변수 이름</th><th>등록할 값</th></tr></thead><tbody><tr><td><code dir="auto">AI_PROVIDER</code></td><td><code dir="auto">openai</code> 또는 <code dir="auto">anthropic</code></td></tr><tr><td><code dir="auto">AI_MODEL</code></td><td>선생님과 확인한 모델 이름</td></tr><tr><td><code dir="auto">OPENAI_API_KEY</code></td><td>OpenAI를 사용할 때 등록하는 API 키</td></tr><tr><td><code dir="auto">ANTHROPIC_API_KEY</code></td><td>Claude를 사용할 때 등록하는 API 키</td></tr><tr><td><code dir="auto">CHAT_ACCESS_CODE</code></td><td>선생님과 정한 앱 이용코드: 영문·숫자·<code dir="auto">_</code>·<code dir="auto">-</code> 조합 16~128자</td></tr></tbody></table><p><strong>앱 이용코드</strong>는 챗봇 화면에서 입력하는 값이며, API 키와 별개입니다. 환경변수를 변경한 뒤에는 <strong>Redeploy</strong>로 다시 배포합니다.</p><p>기존 앱이 GitHub Pages에 있다면 AI를 호출할 서버 실행 환경도 필요합니다. 위 요청문으로 현재 배포 방법을 AI에 알려 주고 연결 안내를 받으세요. 자세한 설명은 시작 파일의 <code dir="auto">README.md</code>에서 확인할 수 있습니다.</p></details>
+<div class="sl-heading-wrapper level-h2"><h2 id="4-질문을-보내-확인하기">4. 질문을 보내 확인하기</h2><a class="sl-anchor-link" href="#4-질문을-보내-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “4. 질문을 보내 확인하기”</span></a></div>
+<p>배포된 앱에서 이용코드를 입력하고 짧은 질문을 보내 보세요.</p>
+<ul>
+<li>질문을 보내면 답변이 표시되는지 확인합니다.</li>
+<li>우리 앱의 자료를 설명한다면 숫자·이름·날짜가 실제 자료와 맞는지 확인합니다.</li>
+<li>기존에 만든 검색·지도·버튼도 함께 확인합니다.</li>
+</ul>
+<p>오류가 나면 <strong>오류 메시지와 관련 코드를 AI에게 보여 주고 수정</strong>을 요청하세요. API 키 설정이나 사용 한도에 관한 문제는 선생님께 문의하세요.</p>
 <nav class="page-nav" aria-label="단원 이동"> <a href="/hyfl-ai-lab/data-project/">← DATA TO WEB APP</a> <a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a> <a href="/hyfl-ai-lab/data/github-ai/">GitHub의 내 코드를 GPT와 수정하기 →</a> </nav> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr">   </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
