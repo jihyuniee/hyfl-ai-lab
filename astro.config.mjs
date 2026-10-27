@@ -86,7 +86,7 @@ export default defineConfig({
 											collapsed: false,
 											items: [
 												{ label: '지도 넣기', link: '/data/map-lab/' },
-												{ label: 'AI 챗봇 넣기 · API 신청', link: '/data/ai-chatbot/' },
+												{ label: 'AI 기능 하나 연결 · 사용 신청', link: '/data/ai-chatbot/' },
 												{ label: 'GitHub 코드 수정·배포', link: '/data/github-ai/' },
 											],
 										},

@@ -51,12 +51,12 @@ astro.config.mjs     # Starlight 사이드바 및 사이트 설정
 
 본문은 `src/content/docs/data/github-ai.mdx`, 요청문은 `src/content/prompts/github-ai.mjs`에 있습니다. 교과서 홈과 사이드바, DATA TO WEB APP 구현 안내, 지도 실습, School Image Lab의 배포 안내에서 연결합니다. 원고는 준비물, 연결 절차, 수정·저장·배포, 검증 기준과 공식 근거로 구성합니다. 계정별 기능과 이용 조건은 연결 화면과 공식 문서에서 확인합니다.
 
-### 프로젝트 도움말 · 내 웹앱에 AI 챗봇 넣기
+### 프로젝트 도움말 · AI 기능 한 가지 선택 확장
 
-`/data/ai-chatbot/`는 교과서에서 신청문 준비, 교사에게 API 사용 신청, 자기 프로젝트의 서버 설정·배포·응답 확인까지 이어가는 참고 자료입니다. 홈의 프로젝트 도움말, 사이드바, DATA TO WEB APP에서 연결합니다. 신청문은 수업에서 안내한 방법으로 교사에게 전달합니다.
+`/data/ai-chatbot/`는 8단원 프로젝트 하위 선택 확장 가이드입니다. 개발에는 익숙한 생성형 AI를 쓰고, 앱 사용자에게 필요한 경우만 AI 기능 하나를 설계합니다. 데이터·코드·AI의 역할 분담, 클래스룸 신청, 연결 전 가상 응답 시제품, 교사 관리 서버 연결, 근거·사용자 검증, 기존 활동지 기록을 안내합니다. 공용 서버는 아직 제공된 기능으로 가정하지 않으며 주소·인증·모델·한도는 교사의 준비 확인 후 안내합니다.
 
-본문은 `src/content/docs/data/ai-chatbot.mdx`, 신청·구현·오류 확인 요청문은 `src/content/prompts/ai-chatbot.mjs`에 있습니다. 다운로드 예제의 원본은 `examples/ai-chatbot-starter/`입니다. `npm run package:chatbot`과 빌드 전 `prebuild`가 `public/templates/ai-chatbot-starter.zip`을 생성합니다. ZIP은 원본 파일에서 매번 만들며 Git 추적 대상에서 제외합니다.
+본문은 `src/content/docs/data/ai-chatbot.mdx`, 복사 가능한 신청·구현·오류 점검 요청문은 `src/content/prompts/ai-chatbot.mjs`입니다. 비밀키는 교사 관리 서버에만 두며 개인정보를 전송하지 않습니다. 팀별 누적 사용 제한과 차단은 서버에서 구현해야 합니다.
 
-예제는 학생 자신의 Vercel 프로젝트에서 화면과 서버 API를 함께 실행합니다. 제공사 비밀키와 모델은 서버 환경변수로 지정하고, 화면의 앱 이용코드는 서버에서 확인합니다. 입력·대화·출력 길이를 제한하고 제공사의 월간 사용량·지출 한도는 교사가 관리합니다. `npm run test:chatbot`은 외부 요청을 대체한 응답으로 인증·입력 검증·두 제공사 요청 형식·오류 처리를 검사합니다. 실제 모델 응답은 교사가 설정한 계정·키·모델로 배포한 뒤 확인합니다.
+`examples/ai-chatbot-starter/`의 기존 Vercel 서버 예제는 기술 참고 자료로 유지합니다. 이 예제는 새 공용 서버 또는 팀별 누적 할당량 관리 시스템이 아닙니다. `npm run package:chatbot`과 빌드 전 `prebuild`가 ZIP을 생성하고, `npm run test:chatbot`은 외부 호출을 대체한 검사입니다. 실제 모델 응답과 공용 서버는 이 문서 변경에서 검증하거나 배포하지 않습니다.
 
 <!-- deploy-trigger: 2026-08-27T02:35+09:00 -->
