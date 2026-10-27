@@ -97,12 +97,12 @@ test('Kakao waits for maps.load, initializes once, and each fictional marker ope
     [37.5651, 126.9821], [37.5670, 126.9850], [37.5629, 126.9843],
   ]);
   assert.equal(app.points().length, 3);
-  assert(app.points().every(text => /가상.*실제 CCTV 아님/.test(text)));
+  assert(app.points().every(text => /가상 연습 위치·실제 자료 아님/.test(text)));
   assert.equal(app.popups.length, 3);
   for (let index = 0; index < 3; index++) {
     const marker = app.markers[index], popup = app.popups[index];
-    assert.match(marker.options.title, /가상.*실제 CCTV 아님/);
-    assert.match(popup.content.textContent, /가상.*실제 CCTV 아님/);
+    assert.match(marker.options.title, /가상 연습 위치·실제 자료 아님/);
+    assert.match(popup.content.textContent, /가상 연습 위치·실제 자료 아님/);
     assert.equal(popup.content.tagName, 'div');
     assert.equal(popup.opened, undefined);
     marker.events.click();

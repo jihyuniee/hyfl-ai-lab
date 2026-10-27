@@ -41,7 +41,7 @@ astro.config.mjs     # Starlight 사이드바 및 사이트 설정
 
 파일 준비 → 키 자리표시자로 자기 웹앱 주소 확보 → 같은 카카오 앱의 지도 사용 설정 ON·JavaScript 키 SDK 도메인 등록 → 코드의 키 한 줄 교체 → 같은 주소에 재배포 → 지도·마커·기존 기능 검증 순서입니다. 등록할 도메인은 학생 본인의 실제 배포 호스트입니다. 교과서 호스트를 공통 등록값으로 안내하지 않습니다. 예전 `/labs/kakao-map/` 주소는 새 교과서 안내로 이동합니다.
 
-자기 팀 웹앱용 단일 HTML은 `public/templates/maps/kakao-map-practice.html`, 본문은 `src/content/docs/data/map-lab.mdx`, 신규·기존 프로젝트와 오류 수정·CSV 연결 프롬프트는 `src/content/prompts/map-lab.mjs`에 있습니다. 좌표 연습, 실제 CSV 연결, 원자료 3행 검증은 선택 확장입니다. 기존 활동지에 구현·검증·AI 활용 기록을 이어 씁니다. 지도 제공자의 로고·출처를 유지하고 이용 조건은 본문의 공식 문서에서 확인합니다.
+자기 팀 웹앱용 단일 HTML은 `public/templates/maps/kakao-map-practice.html`, 본문은 `src/content/docs/data/map-lab.mdx`, 신규·기존 프로젝트와 오류 수정·공공데이터 연결 프롬프트는 `src/content/prompts/map-lab.mjs`에 있습니다. 가상 지점은 지도 연결 점검용이며, 이후 각 팀이 선택한 공공데이터를 기존 CSV·JSON·데이터 배열·API 등의 방식으로 연결합니다. 자료의 주제와 표시 항목을 특정하지 않고 실제 필드·좌표계·기록 단위·출처를 확인하게 합니다. 원자료 3건과 결과를 대조하고 기존 활동지에 구현·검증·AI 활용 기록을 이어 씁니다. 지도 제공자의 로고·출처를 유지하고 이용 조건은 본문의 공식 문서에서 확인합니다.
 
 `npm run test:maps`는 내려받을 HTML의 초기화·마커 클릭·실패 처리를 SDK 어댑터로 검사합니다. 실제 지도 인증과 외부 타일 응답은 학생이 등록한 자기 웹앱 주소에서 별도로 확인합니다. 안내와 예제에는 실제 키를 포함하지 않습니다.
 
