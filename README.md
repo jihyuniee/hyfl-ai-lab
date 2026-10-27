@@ -49,6 +49,6 @@ astro.config.mjs     # Starlight 사이드바 및 사이트 설정
 
 `/data/github-ai/`는 연결 기능을 사용할 수 있는 팀을 위한 선택 참고 자료입니다. 처음 프로젝트를 올린 뒤 권한을 허용한 AI 환경에서 같은 저장소의 최신 파일을 읽고 수정하며, 변경 내역·커밋 또는 PR을 확인하고 배포 브랜치에 반영한 뒤 같은 웹앱 주소에서 검증하는 흐름을 안내합니다. 기존 프로젝트의 구조·기능과 팀이 선택한 자료를 유지합니다.
 
-본문은 `src/content/docs/data/github-ai.mdx`, 요청문은 `src/content/prompts/github-ai.mjs`에 있습니다. 교과서 홈과 사이드바, DATA TO WEB APP 구현 안내, 지도 실습, School Image Lab의 배포 안내에서 연결합니다. 사용 가능한 기능과 이용 조건은 참고 페이지의 공식 문서에서 확인하도록 안내하며, 모든 학생에게 같은 계정 기능이나 유료 구독을 전제하지 않습니다.
+본문은 `src/content/docs/data/github-ai.mdx`, 요청문은 `src/content/prompts/github-ai.mjs`에 있습니다. 교과서 홈과 사이드바, DATA TO WEB APP 구현 안내, 지도 실습, School Image Lab의 배포 안내에서 연결합니다. 원고는 준비물, 연결 절차, 수정·저장·배포, 검증 기준과 공식 근거로 구성합니다. 계정별 기능과 이용 조건은 연결 화면과 공식 문서에서 확인합니다.
 
 <!-- deploy-trigger: 2026-08-27T02:35+09:00 -->
