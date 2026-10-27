@@ -27,7 +27,7 @@
   <ol>
     <li>카카오디벨로퍼스의 내 앱에서 <strong>카카오맵 → 사용 설정 → ON</strong>을 확인하세요.</li>
     <li><strong>앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인</strong>에 실제 웹앱 주소를 등록하세요. localhost를 쓴다면 <code>http://localhost:8080</code>처럼 실행 포트도 맞추세요.</li>
-    <li>코드의 <code>const javascriptKey = 'YOUR_JAVASCRIPT_KEY';</code> 한 줄을 본인의 JavaScript 키로 설정하세요. <strong>REST API 키·어드민 키·Client Secret은 넣지 않습니다.</strong></li>
+    <li>파일 아래의 JavaScript 코드에서 <code>javascriptKey</code> 설정값을 본인의 JavaScript 키로 바꾸고, 저장한 파일을 같은 주소에 다시 배포하세요. <strong>REST API 키·어드민 키·Client Secret은 넣지 않습니다.</strong></li>
   </ol>
   <p>이 시작 예제는 HTTP(S) 웹 서버에서 실행하도록 만들었습니다. 파일을 더블클릭한 <code>file://</code> 화면에서는 안내만 표시합니다. 등록한 localhost 서버나 실제 HTTPS 웹앱 주소에서 여세요.</p>
   <p id="status" role="status" aria-live="polite">지도 실행 조건을 확인하고 있습니다.</p>
@@ -60,6 +60,7 @@
       return;
     }
 
+    // 카카오 설정을 마친 뒤 아래 한 줄의 따옴표 안만 내 JavaScript 키로 바꿉니다.
     const javascriptKey = 'YOUR_JAVASCRIPT_KEY';
     if (!javascriptKey.trim() || /^YOUR_/i.test(javascriptKey.trim())) {
       setStatus('아직 JavaScript 키를 넣지 않았습니다. 카카오맵 사용 설정을 ON으로 바꾸고, JavaScript 키의 SDK 도메인에 웹앱 주소를 등록한 뒤 코드의 javascriptKey 값을 설정하세요.');

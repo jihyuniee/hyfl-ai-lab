@@ -3,113 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="인공지능 원리탐구 교과서의 번외 실습. 자기 JavaScript 키로 카카오맵을 띄우고 가상 지점 세 곳을 확인합니다.">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="theme-color" content="#17634c">
-  <title>카카오맵 번외 실습 · 인공지능 원리탐구</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%2317634c'/%3E%3Cpath d='m9 12 8-3 8 3 7-3v20l-7 3-8-3-8 3Z' fill='none' stroke='%23fff' stroke-width='2'/%3E%3Cpath d='M17 9v20m8-17v20' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?rev=2">
-  <script src="./diagnostics.js?rev=2" defer></script>
-  <script src="./app.js?rev=2" defer></script>
+  <meta http-equiv="refresh" content="0; url=/hyfl-ai-lab/data/map-lab/">
+  <link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data/map-lab/">
+  <meta name="description" content="자신의 index.html 또는 기존 프로젝트에 카카오맵을 넣는 교과서 안내로 이동합니다.">
+  <title>내 프로젝트에 카카오맵 넣기 · 인공지능 원리탐구</title>
+  <style>
+    body { max-width: 640px; margin: 12vh auto; padding: 24px; font: 18px/1.8 system-ui, sans-serif; color: #20332a; background: #f7f8f4; }
+    h1 { font-size: 1.6rem; line-height: 1.4; }
+    a { color: #17634c; text-underline-offset: 4px; }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#key">키 입력으로 건너뛰기</a>
-  <header class="site-header">
-    <a class="brand" href="/hyfl-ai-lab/data/map-lab/" aria-label="교과서 번외 실습 설명으로 돌아가기">
-      <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="m4 8 8-3 8 3 8-3v20l-8 3-8-3-8 3V8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 5v20m8-17v20" stroke="currentColor" stroke-width="1.8"/></svg></span>
-      <span>지도 실험실<span class="brand-sub">교과서 번외 실습 · 설명으로 돌아가기 ↗</span></span>
-    </a>
-    <a class="header-link" href="https://developers.kakao.com/" target="_blank" rel="noopener noreferrer">카카오 Developers <span aria-hidden="true">↗</span></a>
-  </header>
-
   <main>
-    <section class="intro" aria-labelledby="page-title">
-      <div>
-        <p class="eyebrow"><span></span> MY FIRST MAP</p>
-        <h1 id="page-title">내 키로 띄우는 <em>첫 번째 지도.</em></h1>
-        <p class="intro-text">JavaScript 키를 연결하고, 지도 위 연습 지점 세 곳을 눌러 보세요.</p>
-      </div>
-      <span class="lesson-badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.7"/></svg>카카오맵 실습</span>
-    </section>
-
-    <div class="workbench">
-      <aside class="setup-panel" aria-label="지도 연결 설정">
-        <section class="setup-step domain-step">
-          <div class="step-heading"><span class="step-number">01</span><h2>이 주소를 먼저 등록하세요</h2></div>
-          <p class="step-description">카카오 Developers에서 내 키의<br><strong>JavaScript SDK 도메인</strong>에 추가해 주세요.</p>
-          <div class="domain-box">
-            <label class="sr-only" for="domain">등록할 도메인</label>
-            <textarea id="domain" rows="2" readonly spellcheck="false" aria-describedby="domain-feedback"></textarea>
-            <button id="copy-domain" class="copy-button" type="button" aria-label="도메인 복사" title="도메인 복사"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="1.7"/></svg></button>
-          </div>
-          <p id="domain-feedback" class="domain-feedback" role="status">위 주소 전체를 복사해서 등록하세요.</p>
-          <details class="path-help"><summary>등록 메뉴가 어디 있나요?</summary><p>내 앱 → <b>앱</b> → <b>플랫폼 키</b> → <b>JavaScript 키</b> → <b>JavaScript SDK 도메인</b></p><p>앱의 <b>카카오맵 → 사용 설정</b>도 <b>ON</b>으로 바꿔 주세요.</p></details>
-        </section>
-
-        <section class="setup-step key-step">
-          <div class="step-heading"><span class="step-number">02</span><h2>내 키로 지도를 연결해요</h2></div>
-          <form id="connect-form" novalidate>
-            <label class="field-label" for="key">JavaScript 키</label>
-            <div class="key-field">
-              <input id="key" type="password" placeholder="발급받은 키를 붙여 넣으세요" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="256" aria-describedby="key-hint form-feedback">
-              <button id="toggle-key" class="key-toggle" type="button" aria-label="키 표시" aria-pressed="false">보기</button>
-            </div>
-            <p id="key-hint" class="field-hint">REST API 키가 아닌 JavaScript 키를 넣어 주세요.</p>
-            <p id="form-feedback" class="form-feedback" role="alert" hidden></p>
-            <button id="connect-button" class="primary-button" type="submit"><span id="connect-label">지도 띄우기</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          </form>
-          <p class="privacy-note"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4" y="8" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 8V5a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.4"/></svg><span>키는 이 사이트 서버나 저장소에 따로 저장하지 않습니다. 지도를 불러오기 위해 카카오로 전송됩니다.</span></p>
-        </section>
-
-        <div class="small-tip"><span class="tip-icon" aria-hidden="true">↗</span><p><strong>다음에는 우리 동네 데이터로</strong><br>CCTV·가로등·공공시설 위치를 표시하는 웹앱으로 발전시킬 수 있어요.</p></div>
-      </aside>
-
-      <section class="map-panel" aria-labelledby="map-title">
-        <div class="map-toolbar">
-          <div><h2 id="map-title">지도 미리보기</h2><p id="map-status" class="map-status" role="status"><span class="status-dot"></span><span id="status-text">키 입력을 기다리고 있어요</span></p></div>
-          <button id="fit-map" class="fit-button" type="button" disabled><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>전체 보기</button>
-        </div>
-        <div id="map-stage" class="map-stage">
-          <div id="map-host" class="map-host"></div>
-          <div id="map-placeholder" class="map-placeholder">
-            <div id="placeholder-art" class="placeholder-art" aria-hidden="true">
-              <svg viewBox="0 0 340 222" fill="none"><ellipse cx="170" cy="190" rx="124" ry="15" fill="#163f3010"/><path d="m29 64 91-28 99 30 91-28v123l-91 28-99-30-91 28Z" fill="#f9fbf4" stroke="#c0d1bc" stroke-width="1.5" stroke-linejoin="round"/><path d="M120 36v123m99-93v123" stroke="#c0d1bc" stroke-width="1.5"/><path d="m30 112 90-29 99 31 91-29m-280 56 90-28 99 30 91-28" stroke="#e1e9d9" stroke-width="8"/><path d="m73 50 1 123m94-122v122m99-122v122" stroke="#e1e9d9" stroke-width="7"/><path d="m45 151 65-20 54 16 34-24 76 23" stroke="#b5cba7" stroke-width="2.5" stroke-dasharray="4 5" stroke-linecap="round"/><path d="M103 79c0 16-21 36-21 36S61 95 61 79a21 21 0 1 1 42 0Z" fill="#17634c"/><circle cx="82" cy="78" r="7" fill="#edf7e9"/><path d="M202 106c0 16-21 36-21 36s-21-20-21-36a21 21 0 1 1 42 0Z" fill="#ecad53"/><circle cx="181" cy="105" r="7" fill="#fff9ea"/><path d="M279 64c0 16-21 36-21 36s-21-20-21-36a21 21 0 1 1 42 0Z" fill="#7c9f79"/><circle cx="258" cy="63" r="7" fill="#f4f9ee"/></svg>
-            </div>
-            <div id="loading-spinner" class="spinner" hidden aria-hidden="true"></div>
-            <span id="placeholder-kicker" class="placeholder-kicker">YOUR MAP STARTS HERE</span>
-            <h3 id="placeholder-title">우리 동네를 만날 준비가 됐나요?</h3>
-            <p id="placeholder-text">내 JavaScript 키를 입력하면<br>이 자리에 실제 카카오맵이 나타나요.</p>
-            <span id="placeholder-badge" class="placeholder-badge">연습 지점 3개가 함께 표시됩니다</span>
-          </div>
-        </div>
-        <section id="diagnostic-panel" class="diagnostic-panel" aria-labelledby="diagnostic-title" hidden>
-          <div class="diagnostic-heading"><h3 id="diagnostic-title">카카오가 보낸 오류를 확인해요</h3><span id="diagnostic-stage" class="diagnostic-stage"></span></div>
-          <p id="diagnostic-description">아래 버튼을 누르면 카카오의 응답이 새 탭에 열립니다. 그곳의 <b>message</b> 문구를 복사해 아래에 붙여 넣어 주세요.</p>
-          <a id="open-kakao-error" class="diagnostic-link" target="_blank" rel="noopener" referrerpolicy="strict-origin-when-cross-origin" hidden>카카오 오류 내용 열기 <span aria-hidden="true">↗</span></a>
-          <p id="response-privacy" class="response-privacy">요청 주소에는 키가 포함되어 있습니다. 주소창 대신 오류 문구만 복사해 주세요. 붙여 넣은 내용에서는 키 값을 자동으로 가립니다.</p>
-          <label for="kakao-response" class="field-label">오류 문구 붙여 넣기</label>
-          <textarea id="kakao-response" rows="3" maxlength="10000" spellcheck="false" autocomplete="off" placeholder='예: {"errorType":"…","message":"…"}'></textarea>
-          <p class="diagnostic-small">새 탭에 오류 대신 긴 프로그램 코드가 보이면, 붙여 넣지 말고 ‘프로그램 코드가 보인다’고 알려 주세요. 새 탭 요청과 처음 실패한 요청의 결과가 다를 수 있습니다.</p>
-          <div id="diagnosis-result" class="diagnosis-result" role="status" hidden><h4 id="diagnosis-title"></h4><p id="diagnosis-action"></p></div>
-          <button id="copy-diagnostic" class="copy-diagnostic" type="button">키 없이 오류 복사</button>
-          <p id="diagnostic-feedback" class="diagnostic-small" role="status"></p>
-          <textarea id="diagnostic-copy-fallback" class="diagnostic-copy-fallback" rows="6" readonly aria-label="직접 복사할 진단 내용" hidden></textarea>
-        </section>
-        <div class="points-section">
-          <div class="points-heading"><h3>연습 지점 <span>3</span></h3><span class="demo-tag">가상 데이터 · 실제 CCTV 아님</span></div>
-          <div class="point-list" aria-label="가상 연습 지점">
-            <button class="point-button" type="button" data-point="0" disabled><span class="point-letter point-a">A</span><span><strong>연습 지점 A</strong><small>37.5651, 126.9821</small></span><span class="point-arrow" aria-hidden="true">↗</span></button>
-            <button class="point-button" type="button" data-point="1" disabled><span class="point-letter point-b">B</span><span><strong>연습 지점 B</strong><small>37.5670, 126.9850</small></span><span class="point-arrow" aria-hidden="true">↗</span></button>
-            <button class="point-button" type="button" data-point="2" disabled><span class="point-letter point-c">C</span><span><strong>연습 지점 C</strong><small>37.5629, 126.9843</small></span><span class="point-arrow" aria-hidden="true">↗</span></button>
-          </div>
-          <p class="map-caption" id="map-caption">지도 연결 후 지점 카드나 지도 위 마커를 눌러 보세요.</p>
-        </div>
-      </section>
-    </div>
-
-    <details class="troubleshooting" id="troubleshooting"><summary><span><span class="help-mark" aria-hidden="true">?</span>지도가 보이지 않나요?</span><span class="details-chevron" aria-hidden="true">⌄</span></summary><div class="troubleshooting-content"><p><b>① 키 종류</b><br>내 앱의 <b>JavaScript 키</b>인지 확인해 주세요.</p><p><b>② 도메인과 사용 설정</b><br>위 도메인을 JavaScript SDK 도메인에 등록하고, 카카오맵 사용 설정을 <b>ON</b>으로 바꿔 주세요.</p><p><b>③ 이용 상태</b><br>카카오 Developers에서 앱의 무료 쿼터 적용 여부와 이용 한도를 확인해 주세요. 학교 네트워크의 차단도 확인할 수 있어요.</p><p class="help-footnote">이 페이지만으로 오류 원인을 단정할 수는 없어요. 설정을 고친 뒤 <b>지도 띄우기</b>를 다시 눌러 주세요. 지도 틀과 마커가 생겨도 배경이 회색이면 도로·지명이 표시되는지 추가로 확인해 주세요.</p></div></details>
+    <h1>내 프로젝트에 카카오맵 넣기</h1>
+    <p>자신의 <code>index.html</code>을 만들거나 기존 프로젝트에 지도를 추가하는 교과서 안내로 이동합니다.</p>
+    <p><a href="/hyfl-ai-lab/data/map-lab/">교과서 번외 실습 열기 →</a></p>
+    <p>자기 웹앱 배포, 도메인 등록, 키 적용, 지도 확인 순서로 따라 할 수 있습니다.</p>
   </main>
-  <footer><span>지도 실험실 <span class="footer-dot">·</span> 작은 실습에서 시작하는 우리 동네 프로젝트</span><a href="https://apis.map.kakao.com/web/guide/" target="_blank" rel="noopener noreferrer">카카오맵 공식 안내 ↗</a></footer>
-  <noscript><div class="noscript">이 페이지에서 지도를 띄우려면 브라우저의 JavaScript를 켜 주세요.</div></noscript>
 </body>
 </html>
