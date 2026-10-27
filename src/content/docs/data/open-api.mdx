@@ -17,10 +17,10 @@ export const apiRequestPrompt = [
   'https://open.neis.go.kr/hub/mealServiceDietInfo',
   '',
   '바꿀 값:',
-  '- 인증키: {{수업용 인증키 또는 발급받은 인증키}}',
+  '- 인증키: YOUR_API_KEY (자리표시자를 유지)',
   '- 시도교육청코드: {{예: B10}}',
   '- 학교코드: {{예: 7010259}}',
-  '- 급식일자: {{예: 20210222}}',
+  '- 급식일자: {{현재 제공 범위에서 조회할 날짜, YYYYMMDD}}',
   '- 식사코드: {{선택, 예: 2 / 모르면 비워 두기}}',
   '',
   '고정할 값:',
@@ -29,6 +29,7 @@ export const apiRequestPrompt = [
   '- pSize=100',
   '',
   '위 값을 사용해서 브라우저 주소창에 붙여 넣을 수 있는 전체 API 요청 주소를 만들어줘.',
+  '실제 인증키는 넣지 말고 YOUR_API_KEY를 유지해줘. 받은 주소의 자리표시자는 내가 직접 바꿔 실행할게.',
   '그리고 내가 바꾼 값이 무엇을 의미하는지 표로 정리해줘.'
 ].join('\n');
 
@@ -36,7 +37,7 @@ export const jsonReadPrompt = [
   '아래 NEIS 급식 API 응답 JSON에서 실제 값을 찾아 표로 정리해줘.',
   '',
   '요청 주소:',
-  '{{브라우저에서 실행한 API 요청 주소}}',
+  '{{KEY 값을 YOUR_API_KEY로 바꾼 요청 주소}}',
   '',
   '응답 JSON:',
   '{{브라우저에 나온 JSON 일부 붙여 넣기}}',
@@ -85,14 +86,18 @@ Open API는 기관이 정한 주소와 조건값을 사용해 데이터를 요�
 JSON은 **반정형 데이터**입니다. 이름표와 값이 묶여 있고, 여러 묶음이 계층적으로 들어갈 수 있습니다. 앱은 이름표를 기준으로 필요한 값을 찾아 화면에 표시합니다.
 
 ~~~json
-"SCHUL_NM": "한영외국어고등학교"
-"MMEAL_SC_NM": "중식"
-"CAL_INFO": "1196.2 Kcal"
+{
+  "SCHUL_NM": "한영외국어고등학교",
+  "MMEAL_SC_NM": "중식",
+  "CAL_INFO": "1196.2 Kcal"
+}
 ~~~
+
+위 값은 구조를 읽기 위한 예시입니다. 실제 학교·날짜의 값은 직접 조회한 응답에서 확인합니다.
 
 ## 2. API 키와 요청값 확인하기
 
-오늘 예시는 NEIS 교육정보 개방 포털의 **급식식단정보**입니다. 이 자료는 학교 급식의 요리명, 원산지정보, 칼로리정보, 영양정보 등을 일자별로 제공합니다.
+오늘 예시는 NEIS 교육정보 개방 포털의 **급식식단정보**입니다. 포털은 현재년도 급식 자료를 제공한다고 안내합니다. 실제 조회 가능한 범위는 원문과 응답에서 확인합니다. 이 자료는 학교 급식의 요리명, 원산지정보, 칼로리정보, 영양정보 등을 일자별로 제공합니다.
 
 - 원자료: [NEIS 급식식단정보](https://open.neis.go.kr/portal/data/service/selectServicePage.do?infId=OPEN17320190722180924242823&infSeq=1)
 
@@ -114,21 +119,21 @@ API 키는 제공 기관이 발급하는 인증값입니다. 발급받은 키를
 
 ## 3. 요청 주소 만들고 실행하기
 
-아래 프롬프트를 복사한 뒤 빨간 부분을 수업에서 사용할 값으로 바꿉니다. 생성형 AI는 입력한 값을 바탕으로 브라우저 주소창에 붙여 넣을 수 있는 API 요청 주소를 만들어 줍니다.
+아래 프롬프트를 복사한 뒤 빨간 부분을 수업에서 사용할 값으로 바꿉니다. 생성형 AI에는 실제 인증키 대신 `YOUR_API_KEY`를 제공합니다. 받은 주소의 자리표시자는 교사가 안내한 실습 환경에서 직접 바꿔 실행합니다.
 
 <CopyPrompt title="급식 API 요청 주소 만들기 프롬프트" content={apiRequestPrompt} />
 
 AI가 만들어 준 요청 주소는 다음과 같은 구조입니다.
 
 ~~~text
-https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=수업용_인증키&Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=B10&SD_SCHUL_CODE=7010259&MLSV_YMD=20210222
+https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=수업용_인증키&Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=B10&SD_SCHUL_CODE=7010259&MLSV_YMD=YYYYMMDD
 ~~~
 
 주소에서 <code>?</code> 뒤에는 조건값이 이어지고, 여러 조건은 <code>&</code>로 연결됩니다. 조건은 <code>이름=값</code> 형태로 씁니다.
 
 | 바꿔 볼 값 | 예시 | 확인할 변화 |
 | --- | --- | --- |
-| 날짜 | <code>MLSV_YMD=20210223</code> | 다른 날짜의 메뉴가 나오는지 확인 |
+| 날짜 | <code>MLSV_YMD=조회할다른날짜</code> | 다른 날짜의 메뉴가 나오는지 확인 |
 | 페이지 크기 | <code>pSize=5</code>, <code>pSize=100</code> | 한 번에 받는 기록 수 확인 |
 | 식사 코드 | <code>MMEAL_SC_CODE=2</code> | 중식 자료만 나오는지 확인 |
 | 학교 코드 | <code>SD_SCHUL_CODE=...</code> | 다른 학교의 급식 자료 확인 |
@@ -147,7 +152,7 @@ https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=수업용_인증키&Type=jso
 | 칼로리정보 | <code>CAL_INFO</code> |  |
 | 영양정보 | <code>NTR_INFO</code> |  |
 
-예시 응답의 일부는 다음과 같습니다.
+아래는 응답 구조를 설명하기 위한 편집 예시입니다. 메뉴와 수치를 실제 조회 결과로 사용하지 않습니다. 실습 날짜는 현재 조회 가능한 날짜로 정합니다.
 
 ~~~json
 {
@@ -180,6 +185,8 @@ https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=수업용_인증키&Type=jso
 | <code>{ }</code> | 하나의 묶음 | 한 건의 급식 기록 |
 | <code>[ ]</code> | 여러 개의 묶음 | 여러 날짜 또는 여러 식사 기록 |
 | <code>"이름": "값"</code> | 항목 이름과 실제 값 | <code>"SCHUL_NM": "한영외국어고등학교"</code> |
+
+예시의 정상 응답에서는 `mealServiceDietInfo → head → RESULT`에 처리 상태가, `row`에 급식 기록이 있습니다. 데이터 없음·오류 응답에서는 실제 구조와 `CODE`·`MESSAGE`를 먼저 확인합니다.
 
 <code>row</code> 안에 실제 급식 데이터가 들어 있습니다. <code>DDISH_NM</code> 안의 <code>&lt;br/&gt;</code>는 줄바꿈 표시입니다. 앱은 이 표시를 기준으로 메뉴를 줄마다 나누어 보여 줄 수 있습니다.
 
@@ -218,7 +225,7 @@ API 응답에서 찾은 값은 웹앱의 화면 요소가 됩니다.
 | 화면에 보여 줄 값 | 날짜, 식사명, 메뉴, 칼로리정보, 영양정보 |
 | 확인 방법 | 브라우저 JSON 원문과 앱 화면 결과 비교 |
 
-<Callout kind="caution" title="API 키 관리">실제 API 키가 들어간 주소와 HTML 파일은 공개 게시물, 공개 GitHub 저장소, 공개 GitHub Pages에 올리지 않습니다. 수업 실습에서는 교사가 안내한 범위에서 사용하고, 공개할 때는 키를 가리거나 서버에서 숨기는 방식을 선택합니다.</Callout>
+<Callout kind="caution" title="API 키 관리">실제 API 키가 들어간 주소와 HTML 파일은 공개 게시물, 공개 GitHub 저장소, 공개 GitHub Pages에 올리지 않습니다. 수업 실습에서는 교사가 안내한 범위에서 사용하고, 공개 코드에 키를 자리표시자로 바꾸면 그 상태로는 인증 요청이 실행되지 않습니다. 실제 키를 보호하면서 공개 실행하려면 서버 연결 등 적용할 방법을 선생님과 확인합니다.</Callout>
 
 <Callout kind="exit" title="오늘의 정리">Open API는 조건값을 넣어 데이터를 요청하는 주소입니다. JSON 응답에서 필요한 값을 찾으면 날짜 선택, 메뉴 검색, 칼로리 표시, 알레르기 번호 확인 같은 웹앱 기능으로 연결할 수 있습니다.</Callout>
 
