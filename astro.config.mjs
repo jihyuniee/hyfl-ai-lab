@@ -90,7 +90,7 @@ export default defineConfig({
 							],
 						},
 						{
-							label: '번외 · 선택 실습',
+							label: '프로젝트 도움말 · 필요한 기능 추가',
 							collapsed: false,
 							items: [
 								{ label: '내 프로젝트에 카카오맵 넣기', link: '/data/map-lab/' },
