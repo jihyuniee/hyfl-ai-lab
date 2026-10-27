@@ -60,15 +60,6 @@ export default defineConfig({
 					items: [
 						{ label: '교과서 안내', link: '/' },
 						{
-							label: '프로젝트 도움말 · 필요한 기능 추가',
-							collapsed: false,
-							items: [
-								{ label: '내 프로젝트에 카카오맵 넣기', link: '/data/map-lab/' },
-								{ label: '참고: GitHub의 내 코드를 GPT와 수정하기', link: '/data/github-ai/' },
-								{ label: '내 웹앱에 AI 챗봇 넣기 · API 신청', link: '/data/ai-chatbot/' },
-							],
-						},
-						{
 							label: 'Ⅰ단원. 인공지능과 기계학습',
 							collapsed: false,
 							items: [
@@ -85,7 +76,22 @@ export default defineConfig({
 								{ label: '5. AI와 함께 데이터 질문 만들기', link: '/data/kosis-mcp/' },
 								{ label: '6. 데이터가 나오는 주소 읽기', link: '/data/open-api/' },
 								{ label: '7. API 키로 바이브코딩하기', link: '/data-lab/' },
-								{ label: '8. DATA TO WEB APP', link: '/data-project/' },
+								{
+									label: '8. DATA TO WEB APP',
+									collapsed: false,
+									items: [
+										{ label: '프로젝트 진행 · 활동지 작성', link: '/data-project/' },
+										{
+											label: '프로젝트 도움말 · 필요한 기능 추가',
+											collapsed: false,
+											items: [
+												{ label: '지도 넣기', link: '/data/map-lab/' },
+												{ label: 'AI 챗봇 넣기 · API 신청', link: '/data/ai-chatbot/' },
+												{ label: 'GitHub 코드 수정·배포', link: '/data/github-ai/' },
+											],
+										},
+									],
+								},
 							],
 						},
 						{
