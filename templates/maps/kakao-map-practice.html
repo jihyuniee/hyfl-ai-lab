@@ -23,7 +23,7 @@
 </head>
 <body>
   <h1>카카오맵 · 지도와 마커 연습</h1>
-  <p class="notice"><strong>가상 연습 위치 3곳입니다. 실제 CCTV 자료가 아닙니다.</strong><br>먼저 지도와 마커 클릭을 확인하고, 다음 단계에서 출처가 있는 실제 데이터를 연결하세요.</p>
+  <p class="notice"><strong>가상 연습 위치 3곳입니다. 실제 자료가 아닙니다.</strong><br>먼저 지도와 마커 클릭을 확인하고, 출처가 있는 우리 팀의 실제 위치 자료로 교체하세요.</p>
   <ol>
     <li>카카오디벨로퍼스의 내 앱에서 <strong>카카오맵 → 사용 설정 → ON</strong>을 확인하세요.</li>
     <li><strong>앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인</strong>에 실제 웹앱 주소를 등록하세요. localhost를 쓴다면 <code>http://localhost:8080</code>처럼 실행 포트도 맞추세요.</li>
@@ -34,14 +34,14 @@
   <div id="map" role="region" aria-label="가상 연습 위치 지도"></div>
   <h2>연습 위치 목록</h2>
   <ul id="point-list"></ul>
-  <p>데이터 출처: 이 예제에서 만든 가상 연습 좌표. 실제 CCTV의 존재·운영 상태·안전을 나타내지 않습니다.</p>
+  <p>데이터 출처: 이 예제에서 만든 가상 연습 좌표. 우리 팀 자료를 연결할 때는 실제 데이터 출처와 기준일을 표시하세요.</p>
   <p>지도에 표시되는 카카오 로고와 저작권 정보는 그대로 유지하세요. <a href="https://apis.map.kakao.com/web/guide/" target="_blank" rel="noopener noreferrer">카카오맵 공식 시작 안내</a> · 인터넷 연결과 계정의 이용 설정이 필요합니다.</p>
   <noscript><p>지도를 실행하려면 JavaScript를 사용할 수 있는 브라우저가 필요합니다.</p></noscript>
   <script>
   (function () {
     'use strict';
 
-    // 연습용으로 정한 가상 좌표입니다. 실제 CCTV의 존재·위치를 뜻하지 않습니다.
+    // 연습용으로 정한 가상 좌표입니다. 출처가 있는 우리 팀의 실제 위치 자료로 교체하세요.
     const demoPoints = [
       { name: '가상 지점 A', lat: 37.5651, lng: 126.9821 },
       { name: '가상 지점 B', lat: 37.5670, lng: 126.9850 },
@@ -51,7 +51,7 @@
     const setStatus = (message) => { status.textContent = message; };
     for (const point of demoPoints) {
       const item = document.createElement('li');
-      item.textContent = point.name + ' — 가상 연습 위치·실제 CCTV 아님 (' + point.lat + ', ' + point.lng + ')';
+      item.textContent = point.name + ' — 가상 연습 위치·실제 자료 아님 (' + point.lat + ', ' + point.lng + ')';
       document.getElementById('point-list').append(item);
     }
 
@@ -107,11 +107,11 @@
               const marker = new kakao.maps.Marker({
                 map: map,
                 position: new kakao.maps.LatLng(point.lat, point.lng),
-                title: point.name + ' · 가상 연습 위치·실제 CCTV 아님'
+                title: point.name + ' · 가상 연습 위치·실제 자료 아님'
               });
               const content = document.createElement('div');
               content.className = 'popup';
-              content.textContent = point.name + ' · 가상 연습 위치·실제 CCTV 아님';
+              content.textContent = point.name + ' · 가상 연습 위치·실제 자료 아님';
               const popup = new kakao.maps.InfoWindow({ content: content, removable: true });
               kakao.maps.event.addListener(marker, 'click', function () { popup.open(map, marker); });
             }

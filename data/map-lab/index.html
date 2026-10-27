@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>번외 실습: 내 프로젝트에 카카오맵 넣기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data/map-lab/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="번외 실습: 내 프로젝트에 카카오맵 넣기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data/map-lab/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="자신의 index.html 또는 기존 프로젝트에 카카오맵을 추가하고, 본인 웹앱 주소를 등록해 배경 지도와 가상 지점 세 곳을 직접 띄웁니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="자신의 index.html 또는 기존 프로젝트에 카카오맵을 추가하고, 본인 웹앱 주소를 등록해 배경 지도와 가상 지점 세 곳을 직접 띄웁니다."/><script>
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>번외 실습: 내 프로젝트에 카카오맵 넣기 | 인공지능 원리탐구</title><link rel="canonical" href="https://jihyuniee.github.io/hyfl-ai-lab/data/map-lab/"/><link rel="sitemap" href="/hyfl-ai-lab/sitemap-index.xml"/><link rel="shortcut icon" href="/hyfl-ai-lab/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.18.2"/><meta name="generator" content="Starlight v0.34.8"/><meta property="og:title" content="번외 실습: 내 프로젝트에 카카오맵 넣기"/><meta property="og:type" content="article"/><meta property="og:url" content="https://jihyuniee.github.io/hyfl-ai-lab/data/map-lab/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="자신의 index.html 또는 기존 프로젝트에 카카오맵을 추가하고, 가상 연습 위치로 연결을 점검한 뒤 우리 팀이 선택한 공공데이터를 지도에 연결합니다."/><meta property="og:site_name" content="인공지능 원리탐구"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="자신의 index.html 또는 기존 프로젝트에 카카오맵을 추가하고, 가상 연습 위치로 연결을 점검한 뒤 우리 팀이 선택한 공공데이터를 지도에 연결합니다."/><script>
 	window.StarlightThemeProvider = (() => {
 		const storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -73,9 +73,9 @@
 		})();
 	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">테마 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">어두운 테마</option><option value="light" class="astro-4yphtoen">밝은 테마</option><option value="auto" selected class="astro-4yphtoen">자동</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
 	StarlightThemeProvider.updatePickers();
-</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-지도를-넣을-내-파일-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 지도를 넣을 내 파일 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-내-웹앱을-배포하고-실제-주소-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 내 웹앱을 배포하고 실제 주소 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-카카오-앱을-켜고-내-도메인-등록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 카카오 앱을 켜고 내 도메인 등록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-내-파일의-키-한-줄을-바꾸고-다시-배포하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 내 파일의 키 한 줄을 바꾸고 다시 배포하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-내-프로젝트에서-지도와-기존-기능-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 내 프로젝트에서 지도와 기존 기능 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-안-보이면-내-웹앱의-실제-오류-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 안 보이면 내 웹앱의 실제 오류 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#선택-확장-실제-cctv-csv-연결하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">선택 확장. 실제 CCTV CSV 연결하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#기존-활동지에-이어-기록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">기존 활동지에 이어 기록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#공식-자료-다시-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">공식 자료 다시 확인하기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-지도를-넣을-내-파일-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 지도를 넣을 내 파일 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-내-웹앱을-배포하고-실제-주소-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 내 웹앱을 배포하고 실제 주소 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-카카오-앱을-켜고-내-도메인-등록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 카카오 앱을 켜고 내 도메인 등록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-내-파일의-키-한-줄을-바꾸고-다시-배포하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 내 파일의 키 한 줄을 바꾸고 다시 배포하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-내-프로젝트에서-지도와-기존-기능-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 내 프로젝트에서 지도와 기존 기능 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-안-보이면-내-웹앱의-실제-오류-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 안 보이면 내 웹앱의 실제 오류 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#선택-확장-실제-cctv-csv-연결하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">선택 확장. 실제 CCTV CSV 연결하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#기존-활동지에-이어-기록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">기존 활동지에 이어 기록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#공식-자료-다시-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">공식 자료 다시 확인하기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">번외 실습: 내 프로젝트에 카카오맵 넣기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>이 페이지는 <strong>지도 기능이 필요한 팀을 위한 번외 실습</strong>입니다. 지금 만드는 프로젝트에 지도 기능을 추가합니다. 아직 프로젝트가 없다면 한 파일짜리 <code dir="auto">index.html</code>로 시작할 수 있습니다.</p>
-<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 완성할 결과 </p> <div class="lab-callout__body astro-mrmim4ef"> <p><strong>우리 팀 웹앱 주소 안에서 카카오 배경 지도, 가상 지점 3개, 지점을 눌렀을 때 설명</strong>이 보이게 만듭니다. 세 지점은 실제 CCTV가 아닌 연습용 위치입니다. 지도가 완성된 뒤 필요한 팀만 실제 CCTV 자료를 연결합니다.</p> </div> </div> 
-<p>진행 순서는 <strong>내 파일 준비 → 내 배포 주소 확인 → 카카오 설정 → 내 파일에 키 입력 → 같은 주소에서 확인</strong>입니다. 교과서를 옆에 열어 두고, 아래 작업은 자신의 파일과 프로젝트에서 진행하세요.</p>
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/hyfl-ai-lab/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script><script type="module" src="/hyfl-ai-lab/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="2" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">목차<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-지도를-넣을-내-파일-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 지도를 넣을 내 파일 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-내-웹앱을-배포하고-실제-주소-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 내 웹앱을 배포하고 실제 주소 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-카카오-앱을-켜고-내-도메인-등록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 카카오 앱을 켜고 내 도메인 등록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-내-파일의-키-한-줄을-바꾸고-다시-배포하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 내 파일의 키 한 줄을 바꾸고 다시 배포하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-내-프로젝트에서-지도와-기존-기능-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 내 프로젝트에서 지도와 기존 기능 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-안-보이면-내-웹앱의-실제-오류-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 안 보이면 내 웹앱의 실제 오류 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#우리-팀의-공공데이터를-지도에-연결하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">우리 팀의 공공데이터를 지도에 연결하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#기존-활동지에-이어-기록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">기존 활동지에 이어 기록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#공식-자료-다시-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">공식 자료 다시 확인하기</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="2"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">목차</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#1-지도를-넣을-내-파일-준비하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">1. 지도를 넣을 내 파일 준비하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#2-내-웹앱을-배포하고-실제-주소-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">2. 내 웹앱을 배포하고 실제 주소 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#3-카카오-앱을-켜고-내-도메인-등록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">3. 카카오 앱을 켜고 내 도메인 등록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#4-내-파일의-키-한-줄을-바꾸고-다시-배포하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">4. 내 파일의 키 한 줄을 바꾸고 다시 배포하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#5-내-프로젝트에서-지도와-기존-기능-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">5. 내 프로젝트에서 지도와 기존 기능 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#6-안-보이면-내-웹앱의-실제-오류-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">6. 안 보이면 내 웹앱의 실제 오류 확인하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#우리-팀의-공공데이터를-지도에-연결하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">우리 팀의 공공데이터를 지도에 연결하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#기존-활동지에-이어-기록하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">기존 활동지에 이어 기록하기</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#공식-자료-다시-확인하기" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">공식 자료 다시 확인하기</span> </a>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">번외 실습: 내 프로젝트에 카카오맵 넣기</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>이 페이지는 <strong>지도 기능이 필요한 팀을 위한 번외 실습</strong>입니다. 지금 만드는 프로젝트에 지도 기능을 추가합니다. 아직 프로젝트가 없다면 한 파일짜리 <code dir="auto">index.html</code>로 시작할 수 있습니다.</p>
+<div class="lab-callout lab-callout--mission astro-mrmim4ef"> <p class="lab-callout__title astro-mrmim4ef"> <span class="lab-callout__icon astro-mrmim4ef" aria-hidden="true">🎯</span> 완성할 결과 </p> <div class="lab-callout__body astro-mrmim4ef"> <p><strong>우리 팀이 선택한 공공데이터의 위치와 필요한 정보를 우리 팀 웹앱의 카카오 지도에 표시</strong>합니다. 먼저 <strong>가상 연습 위치·실제 자료 아님</strong>으로 표시한 세 위치와 클릭 설명으로 지도 연결을 점검하고, 그다음 팀의 실제 자료를 연결합니다.</p> </div> </div> 
+<p>진행 순서는 <strong>내 파일 준비 → 내 배포 주소 확인 → 카카오 설정 → 내 파일에 키 입력 → 지도 연결 점검 → 우리 팀 공공데이터 연결</strong>입니다. 교과서를 옆에 열어 두고, 아래 작업은 자신의 파일과 프로젝트에서 진행하세요.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="1-지도를-넣을-내-파일-준비하기">1. 지도를 넣을 내 파일 준비하기</h2><a class="sl-anchor-link" href="#1-지도를-넣을-내-파일-준비하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “1. 지도를 넣을 내 파일 준비하기”</span></a></div>
 <p>우리 팀 상황에 맞게 <strong>A 또는 B 중 하나</strong>로 시작합니다. 두 경우 모두 키는 아직 넣지 않고 <code dir="auto">YOUR_JAVASCRIPT_KEY</code>로 남겨 둡니다.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="a-이미-만드는-프로젝트가-있다면">A. 이미 만드는 프로젝트가 있다면</h3><a class="sl-anchor-link" href="#a-이미-만드는-프로젝트가-있다면"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “A. 이미 만드는 프로젝트가 있다면”</span></a></div>
@@ -99,8 +99,8 @@
 2. 지도 컨테이너 ID가 기존 요소와 충돌하지 않게 하고 높이를 명시해줘. 지도 전용 CSS만 추가해 기존 body·제목·버튼 등의 스타일을 바꾸지 마.
 3. 카카오 지도 SDK가 이미 있는지 확인하고 한 번만 불러와줘. SDK 주소는 https://dapi.kakao.com/v2/maps/sdk.js 이고 appkey와 autoload=false를 사용해줘. 지도 요소와 SDK가 준비된 다음 kakao.maps.load 콜백에서 초기화해줘. 프레임워크라면 실제 컴포넌트 수명 주기에 맞추고 브라우저에서만 실행해줘. 숨겨진 지도 탭이 열리거나 지도 영역 크기가 바뀌면 필요한 relayout을 처리해줘.
 4. 키 설정은 const javascriptKey = 'YOUR_JAVASCRIPT_KEY';처럼 한 곳으로 모아줘. 실제 키는 내가 직접 바꿀 거야. 키가 없는 동안에는 설정 안내를 보여줘. REST API 키·어드민 키·Client Secret은 넣지 마.
-5. 먼저 가상 지점 A(37.5651, 126.9821), B(37.5670, 126.9850), C(37.5629, 126.9843)를 마커로 표시해줘. 마커를 누르면 이름과 ‘가상 연습 위치·실제 CCTV 아님’ 설명을 보여줘. 가상 좌표를 실제 CSV나 분석 결과에 섞거나 저장하지 마.
-6. 아직 실제 CCTV CSV, 현재 위치, 길찾기는 추가하지 마. 지도 출처는 유지하고, 로딩·실패 안내를 추가해줘. 기존 기능은 그대로 테스트할 수 있어야 해.
+5. 먼저 가상 지점 A(37.5651, 126.9821), B(37.5670, 126.9850), C(37.5629, 126.9843)를 마커로 표시해줘. 마커를 누르면 이름과 ‘가상 연습 위치·실제 자료 아님’ 설명을 보여줘. 가상 좌표를 우리 팀의 실제 데이터나 분석 결과에 섞거나 저장하지 마.
+6. 우리 팀이 선택한 실제 자료는 지도 연결을 확인한 뒤 적용할 거야. 기존 데이터 연결은 유지하고 현재 위치·길찾기는 새로 추가하지 마. 지도 출처와 로딩·실패 안내를 제공하고 기존 기능도 그대로 테스트할 수 있게 해줘.
 7. 내가 등록할 도메인은 우리 팀 웹앱의 실제 호스트와 사용 중인 포트야. 저장소 경로·파일명은 제외해줘. 카카오 앱의 사용 설정 ON과 해당 JavaScript 키의 SDK 도메인 설정을 안내해줘.
 
 # 결과 형식
@@ -121,8 +121,8 @@
 2. 지도 컨테이너 ID가 기존 요소와 충돌하지 않게 하고 높이를 명시해줘. 지도 전용 CSS만 추가해 기존 body·제목·버튼 등의 스타일을 바꾸지 마.
 3. 카카오 지도 SDK가 이미 있는지 확인하고 한 번만 불러와줘. SDK 주소는 https://dapi.kakao.com/v2/maps/sdk.js 이고 appkey와 autoload=false를 사용해줘. 지도 요소와 SDK가 준비된 다음 kakao.maps.load 콜백에서 초기화해줘. 프레임워크라면 실제 컴포넌트 수명 주기에 맞추고 브라우저에서만 실행해줘. 숨겨진 지도 탭이 열리거나 지도 영역 크기가 바뀌면 필요한 relayout을 처리해줘.
 4. 키 설정은 const javascriptKey = &#39;YOUR_JAVASCRIPT_KEY&#39;;처럼 한 곳으로 모아줘. 실제 키는 내가 직접 바꿀 거야. 키가 없는 동안에는 설정 안내를 보여줘. REST API 키·어드민 키·Client Secret은 넣지 마.
-5. 먼저 가상 지점 A(37.5651, 126.9821), B(37.5670, 126.9850), C(37.5629, 126.9843)를 마커로 표시해줘. 마커를 누르면 이름과 ‘가상 연습 위치·실제 CCTV 아님’ 설명을 보여줘. 가상 좌표를 실제 CSV나 분석 결과에 섞거나 저장하지 마.
-6. 아직 실제 CCTV CSV, 현재 위치, 길찾기는 추가하지 마. 지도 출처는 유지하고, 로딩·실패 안내를 추가해줘. 기존 기능은 그대로 테스트할 수 있어야 해.
+5. 먼저 가상 지점 A(37.5651, 126.9821), B(37.5670, 126.9850), C(37.5629, 126.9843)를 마커로 표시해줘. 마커를 누르면 이름과 ‘가상 연습 위치·실제 자료 아님’ 설명을 보여줘. 가상 좌표를 우리 팀의 실제 데이터나 분석 결과에 섞거나 저장하지 마.
+6. 우리 팀이 선택한 실제 자료는 지도 연결을 확인한 뒤 적용할 거야. 기존 데이터 연결은 유지하고 현재 위치·길찾기는 새로 추가하지 마. 지도 출처와 로딩·실패 안내를 제공하고 기존 기능도 그대로 테스트할 수 있게 해줘.
 7. 내가 등록할 도메인은 우리 팀 웹앱의 실제 호스트와 사용 중인 포트야. 저장소 경로·파일명은 제외해줘. 카카오 앱의 사용 설정 ON과 해당 JavaScript 키의 SDK 도메인 설정을 안내해줘.
 
 # 결과 형식
@@ -132,8 +132,8 @@
 - 첨부 정보가 부족해 기존 기능을 유지할 수 없다면 필요한 파일을 구체적으로 알려줘. 실행해 보지 않은 결과를 확인 완료라고 쓰지 마.</code></pre> </section> <script type="module">document.querySelectorAll("[data-copy-prompt]").forEach(e=>{const t=e.querySelector("[data-copy-button]");!(t instanceof HTMLButtonElement)||!(e instanceof HTMLElement)||t.addEventListener("click",async()=>{const n=e.dataset.copyValue??"";try{await navigator.clipboard.writeText(n),t.textContent="복사 완료!",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},1800)}catch{t.textContent="복사하지 못했습니다",setTimeout(()=>{t.textContent="전체 프롬프트 복사"},2200)}})});</script> 
 <p><strong>아래 B의 새 시작 HTML 전체로 현재 프로젝트를 덮어쓰지 않습니다.</strong> 지도 영역의 높이, SDK를 한 번 불러오는 코드, 가상 마커 기능을 현재 파일 안에 추가하는 작업입니다. 기존 파일을 첨부하지 않으면 AI가 원래 기능을 알 수 없습니다.</p>
 <div class="sl-heading-wrapper level-h3"><h3 id="b-아직-프로젝트가-없다면">B. 아직 프로젝트가 없다면</h3><a class="sl-anchor-link" href="#b-아직-프로젝트가-없다면"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “B. 아직 프로젝트가 없다면”</span></a></div>
-<p>아래 <strong>index.html 다운로드</strong>로 시작 파일을 받습니다. 배경 지도와 가상 지점 3개를 위한 코드가 들어 있으며, 실제 CCTV 자료는 포함하지 않습니다. <strong>이번 순서에서는 키를 바꾸지 말고 먼저 2단계에서 배포 주소를 만듭니다.</strong></p>
-<section class="map-starter astro-zadmeugt" data-map-starter aria-label="지도 시작 예제"> <div class="map-starter__intro astro-zadmeugt"> <strong class="astro-zadmeugt">내 프로젝트로 사용할 index.html을 내려받으세요.</strong> <p class="astro-zadmeugt">처음 만드는 팀을 위한 한 파일짜리 시작 예제입니다. 기존 프로젝트가 있다면 본문의 ‘기존 프로젝트에 추가하기’를 이용하세요. 세 지점은 실제 CCTV가 아닌 가상 연습 위치입니다.</p> </div> <section class="map-starter__panel astro-zadmeugt" data-map-panel="kakao" aria-labelledby="map-starter-kakao-title"> <div class="map-starter__header astro-zadmeugt"> <div class="astro-zadmeugt"> <h3 id="map-starter-kakao-title" class="astro-zadmeugt">카카오맵 시작 예제</h3> <p class="astro-zadmeugt">카카오맵 사용 설정 ON, JavaScript 키와 웹앱 도메인 등록이 필요합니다.</p> </div> <div class="map-starter__actions astro-zadmeugt"> <button type="button" data-copy-map hidden class="astro-zadmeugt">코드 복사</button> <a href="/hyfl-ai-lab/templates/maps/kakao-map-practice.html" download="index.html" class="astro-zadmeugt">index.html 다운로드</a> </div> </div> <div class="map-starter__note astro-zadmeugt"> <p class="astro-zadmeugt">처음 배포할 때는 키 자리표시자를 그대로 둡니다. 본문 순서대로 자기 웹앱 주소와 카카오 설정을 준비한 뒤, 파일 아래 <code class="astro-zadmeugt">&lt;script&gt;</code> 안의 <code class="astro-zadmeugt">const javascriptKey = 'YOUR_JAVASCRIPT_KEY';</code>에서 따옴표 안만 본인의 JavaScript 키로 바꾸고 다시 배포하세요. <strong class="astro-zadmeugt">REST API 키·어드민 키·Client Secret은 넣지 않습니다.</strong></p> <p class="astro-zadmeugt">카카오디벨로퍼스에서 <strong class="astro-zadmeugt">카카오맵 → 사용 설정 → ON</strong>을 확인하고, <strong class="astro-zadmeugt">앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인</strong>에 실행할 웹앱 주소를 등록하세요. localhost는 포트까지 맞춥니다.</p> <p class="astro-zadmeugt">내려받은 <code class="astro-zadmeugt">index.html</code>을 코드 편집기로 열어 수정하고, 등록한 HTTPS 웹앱 주소 또는 localhost 웹 서버에서 실행하세요. 이 시작 예제는 웹 서버에서 실행하도록 만들어서, 더블클릭한 <code class="astro-zadmeugt">file://</code> 화면에서는 안내만 표시합니다. 지도에 표시되는 로고와 저작권 정보는 유지하세요.</p> </div> <details class="map-starter__code astro-zadmeugt" data-map-code data-pagefind-ignore> <summary class="astro-zadmeugt">전체 코드 보기</summary> <label class="astro-zadmeugt"> <span class="astro-zadmeugt">카카오맵 예제 전체 코드 · 읽기 전용</span> <textarea data-map-source readonly spellcheck="false" wrap="off" rows="16" aria-label="카카오맵 예제 전체 코드" class="astro-zadmeugt">&lt;!doctype html&gt;
+<p>아래 <strong>index.html 다운로드</strong>로 시작 파일을 받습니다. 배경 지도와 가상 연습 위치 3개를 위한 코드가 들어 있습니다. <strong>가상 연습 위치·실제 자료 아님</strong>을 표시한 예제입니다. <strong>이번 순서에서는 키를 바꾸지 말고 먼저 2단계에서 배포 주소를 만듭니다.</strong></p>
+<section class="map-starter astro-zadmeugt" data-map-starter aria-label="지도 시작 예제"> <div class="map-starter__intro astro-zadmeugt"> <strong class="astro-zadmeugt">내 프로젝트로 사용할 index.html을 내려받으세요.</strong> <p class="astro-zadmeugt">처음 만드는 팀을 위한 한 파일짜리 시작 예제입니다. 기존 프로젝트가 있다면 본문의 ‘기존 프로젝트에 추가하기’를 이용하세요. 세 지점은 실제 자료가 아닌 가상 연습 위치입니다. 지도 연결을 확인한 뒤 출처가 있는 우리 팀의 실제 위치 자료로 교체하세요.</p> </div> <section class="map-starter__panel astro-zadmeugt" data-map-panel="kakao" aria-labelledby="map-starter-kakao-title"> <div class="map-starter__header astro-zadmeugt"> <div class="astro-zadmeugt"> <h3 id="map-starter-kakao-title" class="astro-zadmeugt">카카오맵 시작 예제</h3> <p class="astro-zadmeugt">카카오맵 사용 설정 ON, JavaScript 키와 웹앱 도메인 등록이 필요합니다.</p> </div> <div class="map-starter__actions astro-zadmeugt"> <button type="button" data-copy-map hidden class="astro-zadmeugt">코드 복사</button> <a href="/hyfl-ai-lab/templates/maps/kakao-map-practice.html" download="index.html" class="astro-zadmeugt">index.html 다운로드</a> </div> </div> <div class="map-starter__note astro-zadmeugt"> <p class="astro-zadmeugt">처음 배포할 때는 키 자리표시자를 그대로 둡니다. 본문 순서대로 자기 웹앱 주소와 카카오 설정을 준비한 뒤, 파일 아래 <code class="astro-zadmeugt">&lt;script&gt;</code> 안의 <code class="astro-zadmeugt">const javascriptKey = 'YOUR_JAVASCRIPT_KEY';</code>에서 따옴표 안만 본인의 JavaScript 키로 바꾸고 다시 배포하세요. <strong class="astro-zadmeugt">REST API 키·어드민 키·Client Secret은 넣지 않습니다.</strong></p> <p class="astro-zadmeugt">카카오디벨로퍼스에서 <strong class="astro-zadmeugt">카카오맵 → 사용 설정 → ON</strong>을 확인하고, <strong class="astro-zadmeugt">앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인</strong>에 실행할 웹앱 주소를 등록하세요. localhost는 포트까지 맞춥니다.</p> <p class="astro-zadmeugt">내려받은 <code class="astro-zadmeugt">index.html</code>을 코드 편집기로 열어 수정하고, 등록한 HTTPS 웹앱 주소 또는 localhost 웹 서버에서 실행하세요. 이 시작 예제는 웹 서버에서 실행하도록 만들어서, 더블클릭한 <code class="astro-zadmeugt">file://</code> 화면에서는 안내만 표시합니다. 지도에 표시되는 로고와 저작권 정보는 유지하세요.</p> </div> <details class="map-starter__code astro-zadmeugt" data-map-code data-pagefind-ignore> <summary class="astro-zadmeugt">전체 코드 보기</summary> <label class="astro-zadmeugt"> <span class="astro-zadmeugt">카카오맵 예제 전체 코드 · 읽기 전용</span> <textarea data-map-source readonly spellcheck="false" wrap="off" rows="16" aria-label="카카오맵 예제 전체 코드" class="astro-zadmeugt">&lt;!doctype html&gt;
 &lt;html lang=&quot;ko&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -158,7 +158,7 @@
 &lt;/head&gt;
 &lt;body&gt;
   &lt;h1&gt;카카오맵 · 지도와 마커 연습&lt;/h1&gt;
-  &lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;가상 연습 위치 3곳입니다. 실제 CCTV 자료가 아닙니다.&lt;/strong&gt;&lt;br&gt;먼저 지도와 마커 클릭을 확인하고, 다음 단계에서 출처가 있는 실제 데이터를 연결하세요.&lt;/p&gt;
+  &lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;가상 연습 위치 3곳입니다. 실제 자료가 아닙니다.&lt;/strong&gt;&lt;br&gt;먼저 지도와 마커 클릭을 확인하고, 출처가 있는 우리 팀의 실제 위치 자료로 교체하세요.&lt;/p&gt;
   &lt;ol&gt;
     &lt;li&gt;카카오디벨로퍼스의 내 앱에서 &lt;strong&gt;카카오맵 → 사용 설정 → ON&lt;/strong&gt;을 확인하세요.&lt;/li&gt;
     &lt;li&gt;&lt;strong&gt;앱 → 플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인&lt;/strong&gt;에 실제 웹앱 주소를 등록하세요. localhost를 쓴다면 &lt;code&gt;http://localhost:8080&lt;/code&gt;처럼 실행 포트도 맞추세요.&lt;/li&gt;
@@ -169,14 +169,14 @@
   &lt;div id=&quot;map&quot; role=&quot;region&quot; aria-label=&quot;가상 연습 위치 지도&quot;&gt;&lt;/div&gt;
   &lt;h2&gt;연습 위치 목록&lt;/h2&gt;
   &lt;ul id=&quot;point-list&quot;&gt;&lt;/ul&gt;
-  &lt;p&gt;데이터 출처: 이 예제에서 만든 가상 연습 좌표. 실제 CCTV의 존재·운영 상태·안전을 나타내지 않습니다.&lt;/p&gt;
+  &lt;p&gt;데이터 출처: 이 예제에서 만든 가상 연습 좌표. 우리 팀 자료를 연결할 때는 실제 데이터 출처와 기준일을 표시하세요.&lt;/p&gt;
   &lt;p&gt;지도에 표시되는 카카오 로고와 저작권 정보는 그대로 유지하세요. &lt;a href=&quot;https://apis.map.kakao.com/web/guide/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;카카오맵 공식 시작 안내&lt;/a&gt; · 인터넷 연결과 계정의 이용 설정이 필요합니다.&lt;/p&gt;
   &lt;noscript&gt;&lt;p&gt;지도를 실행하려면 JavaScript를 사용할 수 있는 브라우저가 필요합니다.&lt;/p&gt;&lt;/noscript&gt;
   &lt;script&gt;
   (function () {
     &#39;use strict&#39;;
 
-    // 연습용으로 정한 가상 좌표입니다. 실제 CCTV의 존재·위치를 뜻하지 않습니다.
+    // 연습용으로 정한 가상 좌표입니다. 출처가 있는 우리 팀의 실제 위치 자료로 교체하세요.
     const demoPoints = [
       { name: &#39;가상 지점 A&#39;, lat: 37.5651, lng: 126.9821 },
       { name: &#39;가상 지점 B&#39;, lat: 37.5670, lng: 126.9850 },
@@ -186,7 +186,7 @@
     const setStatus = (message) =&gt; { status.textContent = message; };
     for (const point of demoPoints) {
       const item = document.createElement(&#39;li&#39;);
-      item.textContent = point.name + &#39; — 가상 연습 위치·실제 CCTV 아님 (&#39; + point.lat + &#39;, &#39; + point.lng + &#39;)&#39;;
+      item.textContent = point.name + &#39; — 가상 연습 위치·실제 자료 아님 (&#39; + point.lat + &#39;, &#39; + point.lng + &#39;)&#39;;
       document.getElementById(&#39;point-list&#39;).append(item);
     }
 
@@ -242,11 +242,11 @@
               const marker = new kakao.maps.Marker({
                 map: map,
                 position: new kakao.maps.LatLng(point.lat, point.lng),
-                title: point.name + &#39; · 가상 연습 위치·실제 CCTV 아님&#39;
+                title: point.name + &#39; · 가상 연습 위치·실제 자료 아님&#39;
               });
               const content = document.createElement(&#39;div&#39;);
               content.className = &#39;popup&#39;;
-              content.textContent = point.name + &#39; · 가상 연습 위치·실제 CCTV 아님&#39;;
+              content.textContent = point.name + &#39; · 가상 연습 위치·실제 자료 아님&#39;;
               const popup = new kakao.maps.InfoWindow({ content: content, removable: true });
               kakao.maps.event.addListener(marker, &#39;click&#39;, function () { popup.open(map, marker); });
             }
@@ -279,13 +279,13 @@
 # 만들 결과
 - 프로젝트 이름: {{우리 팀 웹앱 이름}}
 - HTML·CSS·JavaScript를 포함한 하나의 index.html로 만들어줘. GitHub Pages 같은 정적 호스팅에서 내 주소로 실행할 거야.
-- 지도와 가상 연습 지점 3개부터 확인할 거야. 실제 CCTV 데이터, 현재 위치, 길찾기는 아직 추가하지 마.
+- 지도와 가상 연습 지점 3개로 연결부터 확인할 거야. 우리 팀이 선택한 실제 공공데이터는 그다음에 연결할 거야. 현재 위치와 길찾기는 아직 추가하지 마.
 
 # 구현 조건
 1. 지도 영역에 명시적인 높이를 주고, 화면에는 프로젝트 제목과 로드 상태를 표시해줘.
 2. 키 설정은 실행되는 JavaScript의 const javascriptKey = 'YOUR_JAVASCRIPT_KEY'; 한 줄로 만들어줘. 실제 키는 내가 직접 바꿀 거야. 키 자리표시자는 이 설정 한 곳에서만 사용하고, 키 값을 화면에 출력하거나 저장하지 마. REST API 키·어드민 키·Client Secret은 넣지 마.
 3. SDK는 https://dapi.kakao.com/v2/maps/sdk.js 에 appkey와 autoload=false를 붙여 한 번만 불러와줘. SDK를 불러온 뒤 kakao.maps.load 콜백 안에서 지도를 초기화해줘. 키가 자리표시자일 때는 외부 요청 없이 설정 안내를 보여줘.
-4. 가상 지점 A(37.5651, 126.9821), B(37.5670, 126.9850), C(37.5629, 126.9843)를 표시해줘. 좌표는 위도·경도 순서야. 마커를 누르면 이름과 ‘가상 연습 위치·실제 CCTV 아님’ 설명이 열리게 해줘. 같은 내용을 글 목록으로도 보여줘.
+4. 가상 지점 A(37.5651, 126.9821), B(37.5670, 126.9850), C(37.5629, 126.9843)를 표시해줘. 좌표는 위도·경도 순서야. 마커를 누르면 이름과 ‘가상 연습 위치·실제 자료 아님’ 설명이 열리게 해줘. 같은 내용을 글 목록으로도 보여줘.
 5. SDK 오류와 시간 초과를 안내하고, 배경 지도까지 확인하지 않았는데 성공했다고 단정하지 마. 카카오 로고와 저작권 표시는 유지해줘.
 6. 실제 실행할 내 웹앱 도메인을 카카오에 등록해야 한다고 설명해줘. 등록값은 프로토콜·호스트·사용 중인 포트이며 뒤의 저장소·파일 경로는 제외해줘.
 
@@ -295,13 +295,13 @@
 # 만들 결과
 - 프로젝트 이름: <mark class="astro-voatq4dp">{{우리 팀 웹앱 이름}}</mark>
 - HTML·CSS·JavaScript를 포함한 하나의 index.html로 만들어줘. GitHub Pages 같은 정적 호스팅에서 내 주소로 실행할 거야.
-- 지도와 가상 연습 지점 3개부터 확인할 거야. 실제 CCTV 데이터, 현재 위치, 길찾기는 아직 추가하지 마.
+- 지도와 가상 연습 지점 3개로 연결부터 확인할 거야. 우리 팀이 선택한 실제 공공데이터는 그다음에 연결할 거야. 현재 위치와 길찾기는 아직 추가하지 마.
 
 # 구현 조건
 1. 지도 영역에 명시적인 높이를 주고, 화면에는 프로젝트 제목과 로드 상태를 표시해줘.
 2. 키 설정은 실행되는 JavaScript의 const javascriptKey = &#39;YOUR_JAVASCRIPT_KEY&#39;; 한 줄로 만들어줘. 실제 키는 내가 직접 바꿀 거야. 키 자리표시자는 이 설정 한 곳에서만 사용하고, 키 값을 화면에 출력하거나 저장하지 마. REST API 키·어드민 키·Client Secret은 넣지 마.
 3. SDK는 https://dapi.kakao.com/v2/maps/sdk.js 에 appkey와 autoload=false를 붙여 한 번만 불러와줘. SDK를 불러온 뒤 kakao.maps.load 콜백 안에서 지도를 초기화해줘. 키가 자리표시자일 때는 외부 요청 없이 설정 안내를 보여줘.
-4. 가상 지점 A(37.5651, 126.9821), B(37.5670, 126.9850), C(37.5629, 126.9843)를 표시해줘. 좌표는 위도·경도 순서야. 마커를 누르면 이름과 ‘가상 연습 위치·실제 CCTV 아님’ 설명이 열리게 해줘. 같은 내용을 글 목록으로도 보여줘.
+4. 가상 지점 A(37.5651, 126.9821), B(37.5670, 126.9850), C(37.5629, 126.9843)를 표시해줘. 좌표는 위도·경도 순서야. 마커를 누르면 이름과 ‘가상 연습 위치·실제 자료 아님’ 설명이 열리게 해줘. 같은 내용을 글 목록으로도 보여줘.
 5. SDK 오류와 시간 초과를 안내하고, 배경 지도까지 확인하지 않았는데 성공했다고 단정하지 마. 카카오 로고와 저작권 표시는 유지해줘.
 6. 실제 실행할 내 웹앱 도메인을 카카오에 등록해야 한다고 설명해줘. 등록값은 프로토콜·호스트·사용 중인 포트이며 뒤의 저장소·파일 경로는 제외해줘.
 
@@ -340,8 +340,8 @@
 
 
 
-<table><thead><tr><th>실제로 지도가 실행될 주소 예시</th><th>카카오에 등록할 SDK 도메인</th></tr></thead><tbody><tr><td><code dir="auto">https://my-team.github.io/cctv-map/</code></td><td><code dir="auto">https://my-team.github.io</code></td></tr><tr><td><code dir="auto">https://my-team-map.vercel.app/</code></td><td><code dir="auto">https://my-team-map.vercel.app</code></td></tr><tr><td><code dir="auto">http://localhost:3000/index.html</code></td><td><code dir="auto">http://localhost:3000</code></td></tr></tbody></table>
-<p><strong>표의 주소는 형식을 보여 주는 예시입니다. 그대로 등록하지 말고 자신의 주소에서 확인합니다.</strong> 등록값에는 프로토콜과 호스트를 쓰고, <code dir="auto">/cctv-map/</code> 같은 뒤의 경로는 뺍니다. localhost를 사용하면 실제 포트도 포함합니다. Vercel의 미리보기 주소와 정식 배포 주소가 다르면, 실제 확인할 주소를 기준으로 설정합니다.</p>
+<table><thead><tr><th>실제로 지도가 실행될 주소 예시</th><th>카카오에 등록할 SDK 도메인</th></tr></thead><tbody><tr><td><code dir="auto">https://my-team.github.io/our-map/</code></td><td><code dir="auto">https://my-team.github.io</code></td></tr><tr><td><code dir="auto">https://my-team-map.vercel.app/</code></td><td><code dir="auto">https://my-team-map.vercel.app</code></td></tr><tr><td><code dir="auto">http://localhost:3000/index.html</code></td><td><code dir="auto">http://localhost:3000</code></td></tr></tbody></table>
+<p><strong>표의 주소는 형식을 보여 주는 예시입니다. 그대로 등록하지 말고 자신의 주소에서 확인합니다.</strong> 등록값에는 프로토콜과 호스트를 쓰고, <code dir="auto">/our-map/</code> 같은 뒤의 경로는 뺍니다. localhost를 사용하면 실제 포트도 포함합니다. Vercel의 미리보기 주소와 정식 배포 주소가 다르면, 실제 확인할 주소를 기준으로 설정합니다.</p>
 <p><strong>직접 확인:</strong> 내 웹앱이 열리는 주소와 그 주소에서 뽑은 SDK 도메인을 구분해 적었습니다.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="3-카카오-앱을-켜고-내-도메인-등록하기">3. 카카오 앱을 켜고 내 도메인 등록하기</h2><a class="sl-anchor-link" href="#3-카카오-앱을-켜고-내-도메인-등록하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “3. 카카오 앱을 켜고 내 도메인 등록하기”</span></a></div>
 <ol>
@@ -400,9 +400,9 @@
 
 
 
-<table><thead><tr><th>확인할 것</th><th>직접 볼 결과</th></tr></thead><tbody><tr><td>배경 지도</td><td>실제 도로와 지명이 보임</td></tr><tr><td>마커</td><td>가상 연습 지점 세 곳이 표시됨</td></tr><tr><td>클릭</td><td>마커를 누르면 해당 지점의 이름·가상 위치 안내가 열림</td></tr><tr><td>출처</td><td>카카오 로고와 저작권 표시가 가려지지 않음</td></tr><tr><td>기존 프로젝트</td><td>원래 있던 버튼·입력·목록이 계속 작동함</td></tr></tbody></table>
+<table><thead><tr><th>확인할 것</th><th>직접 볼 결과</th></tr></thead><tbody><tr><td>배경 지도</td><td>실제 도로와 지명이 보임</td></tr><tr><td>마커</td><td>가상 연습 위치 세 곳이 표시됨</td></tr><tr><td>클릭</td><td>마커를 누르면 이름과 <strong>가상 연습 위치·실제 자료 아님</strong> 안내가 열림</td></tr><tr><td>출처</td><td>카카오 로고와 저작권 표시가 가려지지 않음</td></tr><tr><td>기존 프로젝트</td><td>원래 있던 버튼·입력·목록이 계속 작동함</td></tr></tbody></table>
 <p>‘지도 초기화 완료’ 문구만으로 확인을 끝내지 않습니다. <strong>회색 배경 위 마커만 보인다면 배경 이미지가 제대로 로드되지 않았을 수 있습니다.</strong> 지도 영역이 접히거나 안 보이면 CSS에 높이가 있는지도 확인합니다.</p>
-<p><strong>직접 확인:</strong> 내 주소 안에서 배경·세 지점·클릭 설명·출처가 보이고 기존 기능도 작동하면 기본 실습 완료입니다. 실제 CCTV가 필요한 팀만 아래 선택 확장으로 진행하세요.</p>
+<p><strong>직접 확인:</strong> 내 주소 안에서 배경·세 지점·클릭 설명·출처가 보이고 기존 기능도 작동하면 지도 연결 점검을 마친 것입니다. 이제 아래에서 우리 팀이 선택한 자료를 연결합니다.</p>
 <span id="troubleshoot"></span>
 <div class="sl-heading-wrapper level-h2"><h2 id="6-안-보이면-내-웹앱의-실제-오류-확인하기">6. 안 보이면 내 웹앱의 실제 오류 확인하기</h2><a class="sl-anchor-link" href="#6-안-보이면-내-웹앱의-실제-오류-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “6. 안 보이면 내 웹앱의 실제 오류 확인하기”</span></a></div>
 <p>먼저 <strong>배포된 내 파일에 키를 넣었는지, 그 키의 앱이 ON인지, 현재 주소가 SDK 도메인에 등록됐는지</strong> 확인합니다. 흰 화면이나 실패 안내만으로 저작권 문제라고 단정하지 않습니다.</p>
@@ -459,6 +459,7 @@
 - 웹앱 주소: {{키나 토큰이 없는 실제 주소}}
 - 지도 배경은 보이는가: {{보임 / 안 보임 / 일부만 보임}}
 - 마커는 보이는가: {{보임 / 안 보임 / 일부만 보임}}
+- 자료 연결 방식: {{CSV / JSON / 데이터 배열 / API 등 실제 방식}}
 - 화면에 나온 문구: {{실제 오류 문구 또는 없음}}
 - Console 오류: {{키·토큰을 가린 실제 오류 또는 아직 확인하지 못함}}
 - Network의 실패한 요청 도메인과 상태 코드: {{확인한 값 또는 아직 확인하지 못함}}
@@ -470,7 +471,7 @@
 2. JavaScript 키를 사용했는지, 카카오맵 사용 설정이 ON인지, 실제 웹앱 호스트·포트가 해당 키의 JavaScript SDK 도메인 설정에 포함되는지 확인해줘. 도메인 입력 형식은 실제 주소의 프로토콜·호스트·포트를 쓰고 뒤의 페이지 경로는 제외한다. 현재 카카오 설정은 http/https 중 하나를 등록하면 둘 다 지원하므로 프로토콜 차이만으로 오류라고 단정하지 마.
 3. AI 미리보기의 iframe·CSP 제한인지, 실제 배포 주소에서도 생기는 오류인지 구분해줘. 등록할 주소는 지도를 실제로 실행하는 우리 팀 웹앱의 도메인이다. 교과서 주소나 GitHub 저장소 화면 주소를 등록하지 않도록 안내해줘.
 4. 401·403·429 또는 차단 문구는 실패한 요청과 실제 응답을 보고 인증·도메인·사용 설정·쿼터·네트워크 문제를 구분해줘. disabled OPEN_MAP_AND_LOCAL service 응답이면 입력한 키가 속한 앱의 카카오맵 → 사용 설정 → ON을 먼저 확인해줘. ON인데 계속되면 같은 앱의 키인지와 이용 상태를 확인하고, 모든 403을 같은 원인으로 단정하지 마. 오류 문구 없이 저작권 문제라고 단정하거나, 출처 표시 한 줄만 넣으면 무조건 해결된다고 말하지 마.
-5. 지도는 보이는데 마커가 없다면 CSV를 실제로 읽었는지, 열 이름·좌표계·위경도 순서·빈 값·지도 범위·필터를 확인해줘.
+5. 지도는 보이는데 마커가 없다면 우리 팀 자료를 실제로 읽었는지, 파일·API 응답의 목록 경로와 필드 이름·좌표계·위경도 순서·빈 값·조회 범위·필터를 확인해줘. 없는 좌표를 추정해서 채우지 마.
 
 # 수정 조건
 - 확인한 사실과 추정을 나누어 설명하고, 부족한 정보가 있으면 무엇을 직접 확인할지 알려줘.
@@ -485,6 +486,7 @@
 - 웹앱 주소: <mark class="astro-voatq4dp">{{키나 토큰이 없는 실제 주소}}</mark>
 - 지도 배경은 보이는가: <mark class="astro-voatq4dp">{{보임 / 안 보임 / 일부만 보임}}</mark>
 - 마커는 보이는가: <mark class="astro-voatq4dp">{{보임 / 안 보임 / 일부만 보임}}</mark>
+- 자료 연결 방식: <mark class="astro-voatq4dp">{{CSV / JSON / 데이터 배열 / API 등 실제 방식}}</mark>
 - 화면에 나온 문구: <mark class="astro-voatq4dp">{{실제 오류 문구 또는 없음}}</mark>
 - Console 오류: <mark class="astro-voatq4dp">{{키·토큰을 가린 실제 오류 또는 아직 확인하지 못함}}</mark>
 - Network의 실패한 요청 도메인과 상태 코드: <mark class="astro-voatq4dp">{{확인한 값 또는 아직 확인하지 못함}}</mark>
@@ -496,7 +498,7 @@
 2. JavaScript 키를 사용했는지, 카카오맵 사용 설정이 ON인지, 실제 웹앱 호스트·포트가 해당 키의 JavaScript SDK 도메인 설정에 포함되는지 확인해줘. 도메인 입력 형식은 실제 주소의 프로토콜·호스트·포트를 쓰고 뒤의 페이지 경로는 제외한다. 현재 카카오 설정은 http/https 중 하나를 등록하면 둘 다 지원하므로 프로토콜 차이만으로 오류라고 단정하지 마.
 3. AI 미리보기의 iframe·CSP 제한인지, 실제 배포 주소에서도 생기는 오류인지 구분해줘. 등록할 주소는 지도를 실제로 실행하는 우리 팀 웹앱의 도메인이다. 교과서 주소나 GitHub 저장소 화면 주소를 등록하지 않도록 안내해줘.
 4. 401·403·429 또는 차단 문구는 실패한 요청과 실제 응답을 보고 인증·도메인·사용 설정·쿼터·네트워크 문제를 구분해줘. disabled OPEN_MAP_AND_LOCAL service 응답이면 입력한 키가 속한 앱의 카카오맵 → 사용 설정 → ON을 먼저 확인해줘. ON인데 계속되면 같은 앱의 키인지와 이용 상태를 확인하고, 모든 403을 같은 원인으로 단정하지 마. 오류 문구 없이 저작권 문제라고 단정하거나, 출처 표시 한 줄만 넣으면 무조건 해결된다고 말하지 마.
-5. 지도는 보이는데 마커가 없다면 CSV를 실제로 읽었는지, 열 이름·좌표계·위경도 순서·빈 값·지도 범위·필터를 확인해줘.
+5. 지도는 보이는데 마커가 없다면 우리 팀 자료를 실제로 읽었는지, 파일·API 응답의 목록 경로와 필드 이름·좌표계·위경도 순서·빈 값·조회 범위·필터를 확인해줘. 없는 좌표를 추정해서 채우지 마.
 
 # 수정 조건
 - 확인한 사실과 추정을 나누어 설명하고, 부족한 정보가 있으면 무엇을 직접 확인할지 알려줘.
@@ -504,14 +506,47 @@
 - SDK 주소는 https://dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_JAVASCRIPT_KEY&amp;autoload=false 를 사용해줘. JavaScript 키는 YOUR_JAVASCRIPT_KEY로 남겨 내가 직접 입력하게 하고, REST API 키·어드민 키·서버용 비밀키는 요청하거나 코드에 넣지 마.
 - 브라우저 보안 설정을 끄거나, 인증·지도 타일 차단을 프록시 등으로 우회하게 하지 마. 출처 표시는 유지해줘.
 - 수정한 파일을 실제 배포 주소에서 다시 확인할 구체적인 행동과 예상 결과를 알려줘. 아직 실행하지 않은 결과를 확인 완료라고 쓰지 마.</code></pre> </section>  
-<div class="sl-heading-wrapper level-h2"><h2 id="선택-확장-실제-cctv-csv-연결하기">선택 확장. 실제 CCTV CSV 연결하기</h2><a class="sl-anchor-link" href="#선택-확장-실제-cctv-csv-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “선택 확장. 실제 CCTV CSV 연결하기”</span></a></div>
-<p>배경 지도는 카카오가 보내 주고, CCTV 마커는 <strong>우리 파일의 위도·경도</strong>로 만듭니다. 지도 연결만으로 실제 CCTV 정보가 자동으로 생기지는 않습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="좌표와-원자료-확인하기">좌표와 원자료 확인하기</h3><a class="sl-anchor-link" href="#좌표와-원자료-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “좌표와 원자료 확인하기”</span></a></div>
-<p>아래는 <strong>가상 자료 4행</strong>의 좌표 검사입니다. 위도·경도 열을 고르고 <strong>좌표 확인하기</strong>를 누른 뒤, 열을 거꾸로 선택하거나 빈칸이 있는 행을 비교해 보세요. 지도 실습의 가상 지점 3개와는 별도의 자료입니다.</p>
-<section class="coordinate-lab astro-rr3jikmz" data-coordinate-lab aria-label="좌표 열 선택 연습"> <div class="coordinate-lab__intro astro-rr3jikmz"> <h3 class="astro-rr3jikmz">작게 연습하기 · 어느 열이 위도일까요?</h3> <p class="astro-rr3jikmz">아래는 <strong class="astro-rr3jikmz">직접 만든 가상 자료 4행</strong>입니다. 실제 CCTV 자료가 아니며, 이 연습에서는 배경 지도나 위치 정보를 불러오지 않습니다.</p> </div> <fieldset class="coordinate-lab__fields astro-rr3jikmz"> <legend class="astro-rr3jikmz">마커에 사용할 두 열을 선택하세요.</legend> <div class="coordinate-lab__selectors astro-rr3jikmz"> <label class="astro-rr3jikmz">위도로 사용할 열
+<div class="sl-heading-wrapper level-h2"><h2 id="우리-팀의-공공데이터를-지도에-연결하기">우리 팀의 공공데이터를 지도에 연결하기</h2><a class="sl-anchor-link" href="#우리-팀의-공공데이터를-지도에-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “우리 팀의 공공데이터를 지도에 연결하기”</span></a></div>
+<p><strong>이미 팀이 정한 문제와 자료를 바탕으로 연결합니다.</strong> CCTV·공공쓰레기통·버스정류장은 가능한 자료의 예시일 뿐이며, 사용할 자료와 표시할 항목은 각 팀이 정합니다. 배경 지도는 카카오가 보내 주고, 우리 자료의 위치 정보로 마커를 만듭니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="자료의-위치와-한-항목의-의미-확인하기">자료의 위치와 한 항목의 의미 확인하기</h3><a class="sl-anchor-link" href="#자료의-위치와-한-항목의-의미-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “자료의 위치와 한 항목의 의미 확인하기”</span></a></div>
+<p>원자료와 항목 설명을 열어 아래 내용을 확인합니다. CSV는 열 이름, JSON·API는 필드 이름과 목록이 들어 있는 위치를 확인하세요.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>확인할 내용</th><th>우리 자료에서 정할 것</th></tr></thead><tbody><tr><td>한 행·항목의 의미</td><td>시설 한 곳, 관측 한 번 등 원자료의 단위. 같은 장소가 여러 행에 나오는지도 확인</td></tr><tr><td>위치를 구분할 이름·ID</td><td>실제로 있는 이름·식별자·주소 중 마커와 원자료를 대조할 값</td></tr><tr><td>위도·경도</td><td>실제 열·필드 이름과 좌표계. WGS84인지 확인하고 빈 값·문자를 0으로 바꾸지 않기</td></tr><tr><td>설명·분류·수치</td><td>자료에 있고 프로젝트에 필요한 것만 선택. 필터나 합계가 필요 없는 자료에는 추가하지 않기</td></tr><tr><td>출처·기준일·범위</td><td>자료 출처, 갱신·조회 시점, 선택한 지역이나 기간</td></tr></tbody></table>
+<p><strong>주소만 있다면 좌표가 있는 자료를 확보하거나, 주소를 위도·경도로 바꾸는 작업이 별도로 필요합니다.</strong> 주소를 숫자 좌표 자리에 넣을 수는 없습니다. 미터 단위 좌표 등 다른 좌표계라면 필요한 변환을 확인한 뒤 사용합니다. 카카오의 <code dir="auto">new kakao.maps.LatLng(위도, 경도)</code>는 <strong>위도, 경도</strong> 순서이며 GeoJSON의 <code dir="auto">[경도, 위도]</code>와 구분합니다.</p>
+<p>아래는 <strong>가상 연습 위치·실제 자료 아님</strong>을 전제로 한 4행의 좌표 검사입니다. 위도·경도 열을 골라 <strong>좌표 확인하기</strong>를 누른 뒤, 거꾸로 선택하거나 빈칸이 있는 행을 비교해 보세요. 앞서 지도에 표시한 가상 위치 3개와는 별도의 자료입니다.</p>
+<section class="coordinate-lab astro-rr3jikmz" data-coordinate-lab aria-label="좌표 열 선택 연습"> <div class="coordinate-lab__intro astro-rr3jikmz"> <h3 class="astro-rr3jikmz">작게 연습하기 · 어느 열이 위도일까요?</h3> <p class="astro-rr3jikmz">아래는 <strong class="astro-rr3jikmz">직접 만든 가상 자료 4행</strong>입니다. 실제 자료가 아니며, 이 연습에서는 배경 지도나 외부 위치 정보를 불러오지 않습니다.</p> </div> <fieldset class="coordinate-lab__fields astro-rr3jikmz"> <legend class="astro-rr3jikmz">마커에 사용할 두 열을 선택하세요.</legend> <div class="coordinate-lab__selectors astro-rr3jikmz"> <label class="astro-rr3jikmz">위도로 사용할 열
 <select data-latitude-column class="astro-rr3jikmz"> <option value="" class="astro-rr3jikmz">열을 선택하세요</option> <option value="name" class="astro-rr3jikmz">지점</option><option value="latitude" class="astro-rr3jikmz">위도</option><option value="longitude" class="astro-rr3jikmz">경도</option> </select> </label> <label class="astro-rr3jikmz">경도로 사용할 열
 <select data-longitude-column class="astro-rr3jikmz"> <option value="" class="astro-rr3jikmz">열을 선택하세요</option> <option value="name" class="astro-rr3jikmz">지점</option><option value="latitude" class="astro-rr3jikmz">위도</option><option value="longitude" class="astro-rr3jikmz">경도</option> </select> </label> </div> <div class="coordinate-lab__actions astro-rr3jikmz"> <button type="button" data-check-coordinates class="astro-rr3jikmz">좌표 확인하기</button> <button type="button" class="coordinate-lab__secondary astro-rr3jikmz" data-reverse-coordinates>거꾸로 선택해 보기</button> </div> </fieldset> <p class="coordinate-lab__status astro-rr3jikmz" role="status" aria-live="polite" aria-atomic="true" data-coordinate-status>위도와 경도에 사용할 열을 고른 뒤 ‘좌표 확인하기’를 누르세요.</p> <div class="coordinate-lab__table-wrap astro-rr3jikmz" tabindex="0" role="region" aria-label="가상 좌표 자료와 행별 검사 결과. 좁은 화면에서는 가로로 스크롤할 수 있습니다."> <table class="astro-rr3jikmz"> <caption class="astro-rr3jikmz">가상 연습 자료 · 마지막 행의 위도는 비어 있습니다.</caption> <thead class="astro-rr3jikmz"><tr class="astro-rr3jikmz"><th scope="col" class="astro-rr3jikmz">지점</th><th scope="col" class="astro-rr3jikmz">위도</th><th scope="col" class="astro-rr3jikmz">경도</th><th scope="col" class="astro-rr3jikmz">검사 결과</th></tr></thead> <tbody class="astro-rr3jikmz"> <tr data-coordinate-row data-name="가상 A" data-latitude="37.5651" data-longitude="126.9821" class="astro-rr3jikmz"> <th scope="row" class="astro-rr3jikmz">가상 A</th> <td class="astro-rr3jikmz">37.5651</td> <td class="astro-rr3jikmz">126.9821</td> <td data-coordinate-result class="astro-rr3jikmz">검사 전</td> </tr><tr data-coordinate-row data-name="가상 B" data-latitude="37.5670" data-longitude="126.9850" class="astro-rr3jikmz"> <th scope="row" class="astro-rr3jikmz">가상 B</th> <td class="astro-rr3jikmz">37.5670</td> <td class="astro-rr3jikmz">126.9850</td> <td data-coordinate-result class="astro-rr3jikmz">검사 전</td> </tr><tr data-coordinate-row data-name="가상 C" data-latitude="37.5629" data-longitude="126.9843" class="astro-rr3jikmz"> <th scope="row" class="astro-rr3jikmz">가상 C</th> <td class="astro-rr3jikmz">37.5629</td> <td class="astro-rr3jikmz">126.9843</td> <td data-coordinate-result class="astro-rr3jikmz">검사 전</td> </tr><tr data-coordinate-row data-name="가상 D" data-latitude data-longitude="126.9862" class="astro-rr3jikmz"> <th scope="row" class="astro-rr3jikmz">가상 D</th> <td class="astro-rr3jikmz"><span class="coordinate-lab__blank astro-rr3jikmz">빈 값</span></td> <td class="astro-rr3jikmz">126.9862</td> <td data-coordinate-result class="astro-rr3jikmz">검사 전</td> </tr> </tbody> </table> </div> <p class="coordinate-lab__try astro-rr3jikmz"><strong class="astro-rr3jikmz">다음 시도:</strong> ‘거꾸로 선택해 보기’를 누른 뒤 다시 검사하세요. 경도를 위도로 읽으면 어떤 이유로 제외될까요? 가상 D의 빈 값도 함께 살펴보세요.</p> <details class="coordinate-lab__explanation astro-rr3jikmz"> <summary class="astro-rr3jikmz">빈 값을 0으로 바꾸면 왜 안 될까요?</summary> <p class="astro-rr3jikmz">JavaScript의 <code class="astro-rr3jikmz">Number('')</code>는 <code class="astro-rr3jikmz">0</code>이 됩니다. 0은 위도·경도 범위 안에 있지만, 원자료에 없던 좌표를 새로 만들어 넣으면 실제와 다른 위치가 생깁니다. <strong class="astro-rr3jikmz">빈 값인지 먼저 확인하고</strong>, 값이 있을 때 숫자로 바꿔 검사해야 합니다.</p> </details> <p class="coordinate-lab__limit astro-rr3jikmz">이 연습은 숫자와 범위만 검사합니다. WGS84 위도는 −90~90, 경도는 −180~180입니다. 검사를 통과해도 실제 위치가 맞는지는 원자료·좌표계·지도와 따로 대조해야 합니다. 선택과 결과는 저장되지 않습니다.</p> <noscript><p class="astro-rr3jikmz">이 작은 실험을 실행하려면 JavaScript가 필요합니다. 표를 보며 위도 열의 빈 값과 두 좌표의 범위를 직접 확인할 수도 있습니다.</p></noscript> </section> <script type="module">document.querySelectorAll("[data-coordinate-lab]").forEach(n=>{if(!(n instanceof HTMLElement))return;const l=n.querySelector("[data-latitude-column]"),o=n.querySelector("[data-longitude-column]"),v=n.querySelector("[data-check-coordinates]"),E=n.querySelector("[data-reverse-coordinates]"),d=n.querySelector("[data-coordinate-status]");if(!(l instanceof HTMLSelectElement)||!(o instanceof HTMLSelectElement)||!(v instanceof HTMLButtonElement)||!(E instanceof HTMLButtonElement)||!(d instanceof HTMLElement))return;const u=[...n.querySelectorAll("[data-coordinate-row]")].flatMap(e=>{const t=e.querySelector("[data-coordinate-result]");return!(e instanceof HTMLElement)||!(t instanceof HTMLElement)?[]:[{row:e,result:t}]}),f=new Set(["name","latitude","longitude"]);function i(e){for(const{result:t}of u)t.textContent="검사 전",delete t.dataset.state;d.textContent=e}function S(e,t,c,r){const s=String(e??"").trim();if(s==="")return`${t}가 비어 있음`;const a=Number(s);return Number.isFinite(a)?a<c||a>r?`${t} ${a}: 범위 ${c}~${r} 밖`:"":`${t}가 숫자가 아님`}v.addEventListener("click",()=>{const e=l.value,t=o.value;if(!f.has(e)||!f.has(t)){i("아직 열을 모두 고르지 않았습니다. 위도와 경도에 사용할 열을 하나씩 선택하세요."),(f.has(e)?o:l).focus();return}if(e===t){i("같은 열을 두 번 선택했습니다. 위도와 경도로 사용할 서로 다른 두 열을 골라 주세요."),o.focus();return}let c=0;for(const{row:r,result:s}of u){const a=[S(r.dataset[e],"위도",-90,90),S(r.dataset[t],"경도",-180,180)].filter(Boolean),m=a.length===0;m&&(c+=1),s.dataset.state=m?"valid":"excluded",s.textContent=m?"좌표 형식 통과":`제외 · ${a.join(" / ")}`}d.textContent=`${u.length}행 중 좌표 형식 통과 ${c}행 · 제외 ${u.length-c}행. 각 행의 검사 결과를 확인하세요.`});for(const e of[l,o])e.addEventListener("change",()=>i("열 선택을 바꿨습니다. ‘좌표 확인하기’를 눌러 새 조합을 검사하세요."));E.addEventListener("click",()=>{l.value="longitude",o.value="latitude",i("위도에는 경도 열, 경도에는 위도 열을 골랐습니다. ‘좌표 확인하기’를 눌러 결과를 비교하세요.")})});</script> 
-<p><a href="https://www.data.go.kr/data/15013094/standard.do">전국CCTV표준데이터</a> 또는 지자체 공개 자료에서 CSV와 항목 설명을 확인합니다. 원본을 보관하고 필요한 지역·목적을 정합니다. 자료가 크면 그 범위를 별도 CSV로 추리고 사용한 범위를 표시합니다. 한글이 깨지면 인코딩을 확인하고 편집한 자료는 CSV UTF-8로 저장합니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="기존-자료-읽기-방식에-지도-연결하기">기존 자료 읽기 방식에 지도 연결하기</h3><a class="sl-anchor-link" href="#기존-자료-읽기-방식에-지도-연결하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “기존 자료 읽기 방식에 지도 연결하기”</span></a></div>
+<p><strong>우리 앱이 이미 CSV·JSON·API 중 어떤 방식으로 자료를 읽는지 확인하고 그 방식을 유지합니다.</strong> 아래에서 우리 팀에 해당하는 방법을 사용하세요.</p>
 
 
 
@@ -533,100 +568,97 @@
 
 
 
-
-
-
-
-<table><thead><tr><th>확인할 열</th><th>기능과 확인할 점</th></tr></thead><tbody><tr><td>위도·경도</td><td>WGS84인지 확인하고 위치 표시. 빈 값·문자를 0으로 바꾸지 않기</td></tr><tr><td>주소·설치 위치·목적</td><td>실제로 있는 설명과 필터에 사용</td></tr><tr><td>카메라 대수</td><td>한 행이 한 대인지 설치 지점 한 곳인지 구분</td></tr><tr><td>데이터 기준일·출처</td><td>자료의 시점과 근거 표시</td></tr></tbody></table>
-<p>카카오의 <code dir="auto">new kakao.maps.LatLng(위도, 경도)</code>는 <strong>위도, 경도</strong> 순서입니다. GeoJSON의 <code dir="auto">[경도, 위도]</code>, 미터 단위 좌표, 기상 격자와 구분하세요.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="내-웹앱에-파일-선택-기능-추가하기">내 웹앱에 파일 선택 기능 추가하기</h3><a class="sl-anchor-link" href="#내-웹앱에-파일-선택-기능-추가하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “내 웹앱에 파일 선택 기능 추가하기”</span></a></div>
+<table><thead><tr><th>현재 자료 방식</th><th>지도에 연결하기 전에 확인할 것</th></tr></thead><tbody><tr><td>CSV 파일</td><td>실제 열 이름·인코딩·빈 값. 파일 선택 기능을 쓴다면 브라우저에서 선택한 파일을 읽는지</td></tr><tr><td>JSON 파일</td><td>위치 항목이 들어 있는 배열의 경로와 실제 필드 이름</td></tr><tr><td>Open API</td><td>응답의 목록 경로, 조회 조건, 페이지별 요청과 받은 범위, 인증·CORS 처리</td></tr></tbody></table>
+<p>API를 쓰는 팀은 <a href="/hyfl-ai-lab/data/open-api/">응답 구조 읽기</a>와 <a href="/hyfl-ai-lab/data-lab/">API로 웹앱 만들기</a>를 이어 참고하세요. 한 페이지만 받은 결과를 전체 자료라고 표시하지 않고, 실제 읽은 범위를 알립니다. 인증과 CORS도 기존 방식에 맞게 확인하며 서버용 비밀키를 HTML에 넣지 않습니다.</p>
 <ol>
-<li>현재 프로젝트 파일과 실제 CSV를 AI에 함께 첨부합니다. 코드 사본의 키는 <code dir="auto">YOUR_JAVASCRIPT_KEY</code>로 바꿔 제공합니다.</li>
-<li>아래 요청의 빨간 부분을 실제 파일에서 확인한 값으로 바꿉니다. 없는 정보는 ‘없음’ 또는 ‘확인 필요’로 적습니다.</li>
-<li>수정된 코드에 본인이 키를 다시 넣고, 같은 팀 웹앱 주소에 배포합니다.</li>
-<li><strong>내 웹앱의 CSV 파일 선택 버튼</strong>으로 파일을 엽니다. 가상 지점이 실제 자료의 마커와 섞이지 않는지 확인합니다.</li>
+<li>현재 프로젝트와 우리 자료의 항목 설명·예시를 AI에 함께 제공합니다. 일부 샘플이면 샘플임을 밝히고 실제 파일·API를 읽는 기존 방법을 설명합니다. 코드 사본의 지도 키·인증값은 자리표시자로 바꿉니다.</li>
+<li>아래 요청의 빨간 부분을 실제 열·필드와 팀이 필요한 기능으로 바꿉니다. 없는 항목은 ‘없음’, 확인하지 못한 내용은 ‘확인 필요’로 적습니다.</li>
+<li>수정본의 필요한 설정을 기존 방식대로 연결하고 같은 프로젝트에 배포합니다. 기존 화면·기능과 데이터 읽기가 유지되는지 확인합니다.</li>
+<li>내 웹앱에서 자료를 읽어 마커를 확인합니다. <strong>가상 연습 위치를 실제 자료 결과와 섞지 않습니다.</strong></li>
 </ol>
-<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="현재 카카오 지도가 연결된 우리 팀 프로젝트를 바탕으로, 실제 CCTV CSV 파일을 선택해 지도에 표시하는 기능을 추가해줘.
+<section class="copy-prompt astro-voatq4dp" data-copy-prompt data-copy-value="현재 카카오 지도가 연결된 우리 팀 프로젝트에, 우리가 선택한 공공데이터의 위치를 표시해줘. 자료의 주제와 연결 방식은 아래의 우리 팀 내용을 따라줘.
 
 # 우리 팀의 자료와 실행 환경
 - 사용할 지도: 카카오 지도 JavaScript SDK
 - 현재 실행 주소: {{우리 팀 웹앱의 HTTPS 주소}}
-- 분석할 지역과 범위: {{예: 강동구의 방범용 CCTV 설치 지점}}
-- CSV 파일명: {{실제로 첨부한 파일명}}
-- 위도 열 이름: {{CSV 첫 행에서 확인한 이름}}
-- 경도 열 이름: {{CSV 첫 행에서 확인한 이름}}
-- 주소 또는 설치 위치 열: {{실제 열 이름}}
-- 설치 목적 열: {{있으면 실제 열 이름, 없으면 없음}}
-- 카메라 대수 열: {{있으면 실제 열 이름, 없으면 없음}}
+- 우리 팀의 문제와 사용할 자료: {{프로젝트 목적과 선택한 공공데이터 이름}}
+- 데이터 연결 방식: {{CSV 파일 / JSON 파일 / 이미 읽은 데이터 배열 / 기존 API 등 실제 방식}}
+- 파일명 또는 자료를 읽는 코드 위치: {{실제 파일명·함수명, API라면 키를 가린 주소와 응답의 목록 경로}}
+- 표시할 지역·기간·조회 범위: {{우리 팀이 정한 범위}}
+- 한 행 또는 한 기록의 의미: {{원자료 설명에서 확인한 단위}}
+- 지점 이름 또는 식별자 항목: {{실제 열·필드 이름, 없으면 없음}}
+- 위치 항목과 좌표계: {{위도·경도 필드 이름과 확인한 좌표계 / 주소 필드만 있음 / 확인 필요}}
+- 마커를 눌렀을 때 보여 줄 항목: {{우리 팀에 필요한 실제 열·필드 이름}}
+- 검색·필터가 필요한 항목: {{실제 존재하고 프로젝트에 필요한 항목, 없으면 없음}}
+- 별도로 집계할 수치와 의미: {{필요하고 실제 있는 수치만, 없으면 없음}}
 - 데이터 출처 URL와 기준일: {{원자료에서 확인한 값, 없으면 확인 필요}}
-- 한 행이 의미하는 것: {{설치 지점 한 곳 / 카메라 한 대 / 확인 필요}}
 
 # 만들어야 할 기능
-1. 기존 지도와 정상 작동하는 기능을 유지하고, 사용자가 CSV를 직접 고르는 파일 선택 버튼을 추가해줘. 선택한 파일은 브라우저에서 읽고 서버에 전송하거나 저장하지 마.
-2. 선택한 CSV의 전체 행을 읽어. AI에게 보인 일부 샘플만 하드코딩하거나 전체 데이터로 취급하지 마. 전국 자료에서 특정 지역만 추렸다면 그 범위를 화면에 표시해줘.
-3. CSV의 BOM, 따옴표 안 쉼표와 줄바꿈, 빈 값을 올바르게 처리해줘. 단순 split(',')로 파싱하지 마. 한글이 깨진 경우 인코딩을 확인할 수 있게 안내해줘.
-4. 실제 열 이름을 바탕으로 위도·경도 열을 연결하고, 열이 없으면 사용자가 다시 선택하거나 확인할 수 있게 해줘. WGS84 위도·경도인지 확인되지 않았다면 확인 필요로 알리고 임의로 좌표계를 가정하지 마.
-5. 빈 문자열·공백·숫자로 바뀌지 않는 값·범위 밖 좌표를 0으로 바꾸지 마. 파일의 전체 데이터 행 수, 현재 조건에 해당하는 행 수, 유효 좌표가 있는 행 수와 제외된 행 수를 구분해서 보여줘. 머리글은 데이터 행으로 세지 마.
-6. 유효한 WGS84 좌표를 new kakao.maps.LatLng(위도, 경도)에 넣고 kakao.maps.Marker로 표시해줘. 여러 위치는 kakao.maps.LatLngBounds에 extend한 뒤 map.setBounds로 보이게 하고, 한 위치만 있으면 적절한 중심·확대 수준을 사용해줘. 유효 좌표가 없을 때는 빈 bounds로 지도를 이동하지 마. 마커를 누르면 InfoWindow에 실제 주소·설치 목적·대수·기준일을 보여줘. 설치 목적 열이 있으면 목적 선택 필터와 전체 보기를 제공하고, 없으면 그 필터는 생략해줘. CSV의 텍스트는 DOM 요소의 textContent로 넣어 HTML이 실행되지 않게 해줘.
-7. 가상 연습 지점은 실제 자료 결과와 섞지 마. 실제 파일을 고르거나 파일·필터가 바뀔 때 기존 마커마다 setMap(null)을 호출하고 열린 정보창도 닫아줘. 새 결과를 그린 뒤 지도와 같은 자료의 위치 목록을 제공해줘.
-8. 같은 좌표에 여러 행이 있으면 그 사실을 알리고, 행 수·서로 다른 설치 지점 수·카메라 대수를 혼동하지 않게 해줘. 자료에 대수 열이 없으면 대수를 만들어내지 마.
-9. 파일 미선택, 데이터 없음, 잘못된 열, 좌표 누락, 필터 결과 0건, 지도 배경 로드 실패를 각각 이해하기 쉬운 말로 안내해줘. 확인하지 않은 수치를 '0건'으로 확정하지 마.
+1. 기존 지도·디자인·정상 기능과 데이터 연결 방식을 유지하고, 위에서 지정한 우리 팀 자료를 지도에 연결해줘. 특정 시설 종류나 데이터 열을 임의로 정하거나 없는 이름·설명·수치를 만들어내지 마.
+2. CSV·JSON 파일을 쓰는 팀이면 기존 파일 읽기를 활용해줘. 파일 선택 기능이 아직 필요하다면 추가하되 선택한 파일은 브라우저에서 읽어줘. 이미 데이터 배열이나 API 응답을 읽고 있다면 그 실제 결과를 사용하고 CSV 파일 선택을 필수로 만들지 마. 샘플 몇 건을 하드코딩해 전체 데이터로 취급하지 마.
+3. CSV라면 BOM, 따옴표 안 쉼표와 줄바꿈, 빈 값을 처리하고 단순 split(',')로 파싱하지 마. JSON·API라면 실제 응답에서 기록 목록이 있는 경로와 필드 이름을 확인해줘. API의 페이지별 응답·조회 범위·아직 가져오지 않은 자료를 구분하고, 일부 응답을 전체 자료로 표시하지 마.
+4. 위치 필드와 좌표계를 확인해줘. 기존에 검증한 좌표 매핑이나 변환이 있다면 유지해줘. 주소만 있거나 좌표계가 불명확하면 확인할 정보와 좌표 확보 방법을 먼저 설명하고, 좌표를 임의로 만들거나 새 변환 API를 자동으로 추가하지 마. 빈 문자열·공백·문자·범위 밖 좌표를 0으로 바꾸지 마.
+5. 현재 읽은 기록 수, 그중 현재 조건에 해당하는 기록 수, 유효 좌표 기록 수와 위치 문제로 제외된 기록 수를 구분해줘. CSV 머리글은 세지 마. 조회 실패·미완료를 '0건'으로 확정하지 말고, 다른 파일·조건·API 응답으로 바뀌면 계산을 갱신해줘.
+6. 유효한 WGS84 좌표를 new kakao.maps.LatLng(위도, 경도)에 넣어 마커로 표시해줘. 여러 위치는 LatLngBounds와 map.setBounds로 보여주고, 한 위치·유효 좌표 없음도 처리해줘. 마커 설명에는 위에서 지정한 실제 항목만 보여줘. 분류 필터는 자료에 있고 우리 팀에 필요한 경우에만 만들고, 지도와 목록에 같은 조건을 적용해줘. 자료의 텍스트는 textContent로 넣어 HTML이 실행되지 않게 해줘.
+7. 실제 자료를 적용할 때 가상 연습 지점은 제거해줘. 자료나 조건이 바뀌면 이전 마커를 setMap(null)로 정리하고 열린 정보창을 닫은 뒤 새 결과를 보여줘. 원자료와 비교할 수 있는 글 목록도 함께 제공해줘.
+8. 같은 좌표의 여러 기록을 임의로 하나로 합치지 마. 기록 수·고유 지점 수·수치의 합계는 각각의 기준을 설명할 수 있을 때만 구분해서 보여줘. 고유 지점을 판단할 기준이 없다면 그 수를 추정하지 마.
+9. 자료 미선택·조회 중·조회 실패·자료 없음·필드 불일치·좌표 누락·필터 결과 없음·배경 지도 실패 중 실제 방식에 해당하는 상태를 안내해줘. 원자료가 알려 주지 않는 현재 상태나 기능을 확인한 것처럼 표현하지 마.
 
 # 지도와 실행 조건
-- 첨부한 프로젝트의 파일 구조와 배포 방식을 유지해줘. 한 파일 HTML로 시작했다면 HTML·CSS·JavaScript를 포함한 하나의 index.html로, 기존 프레임워크 프로젝트라면 그 구조에 맞게 수정해줘. CSV를 읽기 위해 별도 서버가 필요하지 않도록 브라우저에서 처리하고, 지도 영역에는 명시적인 높이를 줘.
+- 첨부한 프로젝트의 파일 구조와 배포 방식을 유지해줘. 한 파일 HTML이면 그 구조로, 프레임워크 프로젝트면 그 구조에 맞게 수정하고 지도 영역에 높이를 지정해줘. 지도 표시만을 위해 새 서버·데이터베이스나 실시간 기능을 추가하지 마.
 - SDK는 https://dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_JAVASCRIPT_KEY&#38;autoload=false 를 사용하고, SDK 로드 후 kakao.maps.load 콜백 안에서 지도 객체를 만들어줘. 카카오 지도만 사용해줘.
 - JavaScript 키는 코드의 YOUR_JAVASCRIPT_KEY 자리표시자로 남겨 내가 직접 입력하게 해줘. REST API 키·어드민 키·서버용 비밀키를 넣지 마. 등록할 JavaScript SDK 도메인은 학생 웹앱의 프로토콜·호스트·사용 중인 포트이며, 뒤의 경로는 제외한다.
-- 위도·경도가 이미 있는 CSV이므로 주소를 다시 좌표로 바꾸는 API는 필요하지 않다. 카카오 로고와 저작권 표시는 가리거나 제거하지 마.
-- CCTV CSV 업로드에는 공공데이터 API 인증키가 필요하지 않다. 이번 기능에 실시간 API·서버·데이터베이스를 새로 추가하지 마.
-- 지도 출처와 데이터 출처·기준일을 표시하고, 공개된 위치 자료로 실시간 영상·운영 상태·안전 보장을 제공한다고 표현하지 마.
+- 로컬 CSV·JSON 파일을 읽는 기능에는 별도 공공데이터 API 인증키를 요구하지 마. API를 사용하는 팀은 기존 서비스의 인증·호출 방식과 한도를 유지하고, 아직 해결되지 않은 인증·브라우저 호출 제한이 있으면 필요한 설정을 설명해줘. 서버용 비밀키를 공개 코드에 넣거나 보안 제한을 우회하지 마.
+- 카카오 로고와 저작권 표시, 우리 팀 데이터의 출처·기준일·조회 범위를 표시해줘.
 
 # 결과 형식
-한 파일 HTML이면 수정한 index.html 전체를, 여러 파일 프로젝트면 수정한 파일별 전체 코드와 적용 위치를 알려줘. 직접 확인하지 않은 결과를 성공했다고 쓰지 말고, 원자료 3행과 비교할 방법·빈 좌표 처리·파일 재선택 테스트를 안내해줘."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">내 카카오 지도에 CCTV CSV 연결 요청</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="내 카카오 지도에 CCTV CSV 연결 요청" class="astro-voatq4dp"><code class="astro-voatq4dp">현재 카카오 지도가 연결된 우리 팀 프로젝트를 바탕으로, 실제 CCTV CSV 파일을 선택해 지도에 표시하는 기능을 추가해줘.
+한 파일 HTML이면 수정한 index.html 전체를, 여러 파일 프로젝트면 수정한 파일별 전체 코드와 적용 위치를 알려줘. 자료와 지도 항목을 어떻게 연결했는지 설명하고, 원자료 3건의 이름·위치·선택한 속성과 대조할 방법을 알려줘. 빈 좌표 처리와 우리 팀 방식에 맞는 파일 재선택·API 재조회·필터 변경 중 해당하는 검증을 안내해줘. 직접 확인하지 않은 결과를 성공했다고 쓰지 마."> <div class="copy-prompt__header astro-voatq4dp"> <div class="astro-voatq4dp"> <strong class="astro-voatq4dp">우리 팀 공공데이터를 카카오 지도에 연결 요청</strong> <span class="astro-voatq4dp"><b class="astro-voatq4dp">{{빨간 부분}}</b>을 우리 팀의 내용으로 바꾸세요.</span> </div> <button type="button" data-copy-button class="astro-voatq4dp">전체 프롬프트 복사</button> </div> <details class="copy-prompt__guide astro-voatq4dp"> <summary class="astro-voatq4dp">프롬프트 구조와 각 부분이 필요한 이유 보기</summary> <div class="astro-voatq4dp"> <p class="astro-voatq4dp"><b class="astro-voatq4dp">역할·프로젝트 맥락</b>은 AI가 어떤 관점에서 어느 팀의 문제를 다루는지 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">과업·필수 기능</b>은 만들어야 할 결과와 빠뜨리면 안 되는 동작을 정합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">화면·디자인·기술 조건</b>은 실제 사용자와 실행 환경의 제약을 전달합니다.</p> <p class="astro-voatq4dp"><b class="astro-voatq4dp">오류 처리·검증 기준</b>은 실패했을 때의 안내와 완성 여부를 판단하는 기준입니다.</p> </div> </details> <pre aria-label="우리 팀 공공데이터를 카카오 지도에 연결 요청" class="astro-voatq4dp"><code class="astro-voatq4dp">현재 카카오 지도가 연결된 우리 팀 프로젝트에, 우리가 선택한 공공데이터의 위치를 표시해줘. 자료의 주제와 연결 방식은 아래의 우리 팀 내용을 따라줘.
 
 # 우리 팀의 자료와 실행 환경
 - 사용할 지도: 카카오 지도 JavaScript SDK
 - 현재 실행 주소: <mark class="astro-voatq4dp">{{우리 팀 웹앱의 HTTPS 주소}}</mark>
-- 분석할 지역과 범위: <mark class="astro-voatq4dp">{{예: 강동구의 방범용 CCTV 설치 지점}}</mark>
-- CSV 파일명: <mark class="astro-voatq4dp">{{실제로 첨부한 파일명}}</mark>
-- 위도 열 이름: <mark class="astro-voatq4dp">{{CSV 첫 행에서 확인한 이름}}</mark>
-- 경도 열 이름: <mark class="astro-voatq4dp">{{CSV 첫 행에서 확인한 이름}}</mark>
-- 주소 또는 설치 위치 열: <mark class="astro-voatq4dp">{{실제 열 이름}}</mark>
-- 설치 목적 열: <mark class="astro-voatq4dp">{{있으면 실제 열 이름, 없으면 없음}}</mark>
-- 카메라 대수 열: <mark class="astro-voatq4dp">{{있으면 실제 열 이름, 없으면 없음}}</mark>
+- 우리 팀의 문제와 사용할 자료: <mark class="astro-voatq4dp">{{프로젝트 목적과 선택한 공공데이터 이름}}</mark>
+- 데이터 연결 방식: <mark class="astro-voatq4dp">{{CSV 파일 / JSON 파일 / 이미 읽은 데이터 배열 / 기존 API 등 실제 방식}}</mark>
+- 파일명 또는 자료를 읽는 코드 위치: <mark class="astro-voatq4dp">{{실제 파일명·함수명, API라면 키를 가린 주소와 응답의 목록 경로}}</mark>
+- 표시할 지역·기간·조회 범위: <mark class="astro-voatq4dp">{{우리 팀이 정한 범위}}</mark>
+- 한 행 또는 한 기록의 의미: <mark class="astro-voatq4dp">{{원자료 설명에서 확인한 단위}}</mark>
+- 지점 이름 또는 식별자 항목: <mark class="astro-voatq4dp">{{실제 열·필드 이름, 없으면 없음}}</mark>
+- 위치 항목과 좌표계: <mark class="astro-voatq4dp">{{위도·경도 필드 이름과 확인한 좌표계 / 주소 필드만 있음 / 확인 필요}}</mark>
+- 마커를 눌렀을 때 보여 줄 항목: <mark class="astro-voatq4dp">{{우리 팀에 필요한 실제 열·필드 이름}}</mark>
+- 검색·필터가 필요한 항목: <mark class="astro-voatq4dp">{{실제 존재하고 프로젝트에 필요한 항목, 없으면 없음}}</mark>
+- 별도로 집계할 수치와 의미: <mark class="astro-voatq4dp">{{필요하고 실제 있는 수치만, 없으면 없음}}</mark>
 - 데이터 출처 URL와 기준일: <mark class="astro-voatq4dp">{{원자료에서 확인한 값, 없으면 확인 필요}}</mark>
-- 한 행이 의미하는 것: <mark class="astro-voatq4dp">{{설치 지점 한 곳 / 카메라 한 대 / 확인 필요}}</mark>
 
 # 만들어야 할 기능
-1. 기존 지도와 정상 작동하는 기능을 유지하고, 사용자가 CSV를 직접 고르는 파일 선택 버튼을 추가해줘. 선택한 파일은 브라우저에서 읽고 서버에 전송하거나 저장하지 마.
-2. 선택한 CSV의 전체 행을 읽어. AI에게 보인 일부 샘플만 하드코딩하거나 전체 데이터로 취급하지 마. 전국 자료에서 특정 지역만 추렸다면 그 범위를 화면에 표시해줘.
-3. CSV의 BOM, 따옴표 안 쉼표와 줄바꿈, 빈 값을 올바르게 처리해줘. 단순 split(&#39;,&#39;)로 파싱하지 마. 한글이 깨진 경우 인코딩을 확인할 수 있게 안내해줘.
-4. 실제 열 이름을 바탕으로 위도·경도 열을 연결하고, 열이 없으면 사용자가 다시 선택하거나 확인할 수 있게 해줘. WGS84 위도·경도인지 확인되지 않았다면 확인 필요로 알리고 임의로 좌표계를 가정하지 마.
-5. 빈 문자열·공백·숫자로 바뀌지 않는 값·범위 밖 좌표를 0으로 바꾸지 마. 파일의 전체 데이터 행 수, 현재 조건에 해당하는 행 수, 유효 좌표가 있는 행 수와 제외된 행 수를 구분해서 보여줘. 머리글은 데이터 행으로 세지 마.
-6. 유효한 WGS84 좌표를 new kakao.maps.LatLng(위도, 경도)에 넣고 kakao.maps.Marker로 표시해줘. 여러 위치는 kakao.maps.LatLngBounds에 extend한 뒤 map.setBounds로 보이게 하고, 한 위치만 있으면 적절한 중심·확대 수준을 사용해줘. 유효 좌표가 없을 때는 빈 bounds로 지도를 이동하지 마. 마커를 누르면 InfoWindow에 실제 주소·설치 목적·대수·기준일을 보여줘. 설치 목적 열이 있으면 목적 선택 필터와 전체 보기를 제공하고, 없으면 그 필터는 생략해줘. CSV의 텍스트는 DOM 요소의 textContent로 넣어 HTML이 실행되지 않게 해줘.
-7. 가상 연습 지점은 실제 자료 결과와 섞지 마. 실제 파일을 고르거나 파일·필터가 바뀔 때 기존 마커마다 setMap(null)을 호출하고 열린 정보창도 닫아줘. 새 결과를 그린 뒤 지도와 같은 자료의 위치 목록을 제공해줘.
-8. 같은 좌표에 여러 행이 있으면 그 사실을 알리고, 행 수·서로 다른 설치 지점 수·카메라 대수를 혼동하지 않게 해줘. 자료에 대수 열이 없으면 대수를 만들어내지 마.
-9. 파일 미선택, 데이터 없음, 잘못된 열, 좌표 누락, 필터 결과 0건, 지도 배경 로드 실패를 각각 이해하기 쉬운 말로 안내해줘. 확인하지 않은 수치를 &#39;0건&#39;으로 확정하지 마.
+1. 기존 지도·디자인·정상 기능과 데이터 연결 방식을 유지하고, 위에서 지정한 우리 팀 자료를 지도에 연결해줘. 특정 시설 종류나 데이터 열을 임의로 정하거나 없는 이름·설명·수치를 만들어내지 마.
+2. CSV·JSON 파일을 쓰는 팀이면 기존 파일 읽기를 활용해줘. 파일 선택 기능이 아직 필요하다면 추가하되 선택한 파일은 브라우저에서 읽어줘. 이미 데이터 배열이나 API 응답을 읽고 있다면 그 실제 결과를 사용하고 CSV 파일 선택을 필수로 만들지 마. 샘플 몇 건을 하드코딩해 전체 데이터로 취급하지 마.
+3. CSV라면 BOM, 따옴표 안 쉼표와 줄바꿈, 빈 값을 처리하고 단순 split(&#39;,&#39;)로 파싱하지 마. JSON·API라면 실제 응답에서 기록 목록이 있는 경로와 필드 이름을 확인해줘. API의 페이지별 응답·조회 범위·아직 가져오지 않은 자료를 구분하고, 일부 응답을 전체 자료로 표시하지 마.
+4. 위치 필드와 좌표계를 확인해줘. 기존에 검증한 좌표 매핑이나 변환이 있다면 유지해줘. 주소만 있거나 좌표계가 불명확하면 확인할 정보와 좌표 확보 방법을 먼저 설명하고, 좌표를 임의로 만들거나 새 변환 API를 자동으로 추가하지 마. 빈 문자열·공백·문자·범위 밖 좌표를 0으로 바꾸지 마.
+5. 현재 읽은 기록 수, 그중 현재 조건에 해당하는 기록 수, 유효 좌표 기록 수와 위치 문제로 제외된 기록 수를 구분해줘. CSV 머리글은 세지 마. 조회 실패·미완료를 &#39;0건&#39;으로 확정하지 말고, 다른 파일·조건·API 응답으로 바뀌면 계산을 갱신해줘.
+6. 유효한 WGS84 좌표를 new kakao.maps.LatLng(위도, 경도)에 넣어 마커로 표시해줘. 여러 위치는 LatLngBounds와 map.setBounds로 보여주고, 한 위치·유효 좌표 없음도 처리해줘. 마커 설명에는 위에서 지정한 실제 항목만 보여줘. 분류 필터는 자료에 있고 우리 팀에 필요한 경우에만 만들고, 지도와 목록에 같은 조건을 적용해줘. 자료의 텍스트는 textContent로 넣어 HTML이 실행되지 않게 해줘.
+7. 실제 자료를 적용할 때 가상 연습 지점은 제거해줘. 자료나 조건이 바뀌면 이전 마커를 setMap(null)로 정리하고 열린 정보창을 닫은 뒤 새 결과를 보여줘. 원자료와 비교할 수 있는 글 목록도 함께 제공해줘.
+8. 같은 좌표의 여러 기록을 임의로 하나로 합치지 마. 기록 수·고유 지점 수·수치의 합계는 각각의 기준을 설명할 수 있을 때만 구분해서 보여줘. 고유 지점을 판단할 기준이 없다면 그 수를 추정하지 마.
+9. 자료 미선택·조회 중·조회 실패·자료 없음·필드 불일치·좌표 누락·필터 결과 없음·배경 지도 실패 중 실제 방식에 해당하는 상태를 안내해줘. 원자료가 알려 주지 않는 현재 상태나 기능을 확인한 것처럼 표현하지 마.
 
 # 지도와 실행 조건
-- 첨부한 프로젝트의 파일 구조와 배포 방식을 유지해줘. 한 파일 HTML로 시작했다면 HTML·CSS·JavaScript를 포함한 하나의 index.html로, 기존 프레임워크 프로젝트라면 그 구조에 맞게 수정해줘. CSV를 읽기 위해 별도 서버가 필요하지 않도록 브라우저에서 처리하고, 지도 영역에는 명시적인 높이를 줘.
+- 첨부한 프로젝트의 파일 구조와 배포 방식을 유지해줘. 한 파일 HTML이면 그 구조로, 프레임워크 프로젝트면 그 구조에 맞게 수정하고 지도 영역에 높이를 지정해줘. 지도 표시만을 위해 새 서버·데이터베이스나 실시간 기능을 추가하지 마.
 - SDK는 https://dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_JAVASCRIPT_KEY&amp;autoload=false 를 사용하고, SDK 로드 후 kakao.maps.load 콜백 안에서 지도 객체를 만들어줘. 카카오 지도만 사용해줘.
 - JavaScript 키는 코드의 YOUR_JAVASCRIPT_KEY 자리표시자로 남겨 내가 직접 입력하게 해줘. REST API 키·어드민 키·서버용 비밀키를 넣지 마. 등록할 JavaScript SDK 도메인은 학생 웹앱의 프로토콜·호스트·사용 중인 포트이며, 뒤의 경로는 제외한다.
-- 위도·경도가 이미 있는 CSV이므로 주소를 다시 좌표로 바꾸는 API는 필요하지 않다. 카카오 로고와 저작권 표시는 가리거나 제거하지 마.
-- CCTV CSV 업로드에는 공공데이터 API 인증키가 필요하지 않다. 이번 기능에 실시간 API·서버·데이터베이스를 새로 추가하지 마.
-- 지도 출처와 데이터 출처·기준일을 표시하고, 공개된 위치 자료로 실시간 영상·운영 상태·안전 보장을 제공한다고 표현하지 마.
+- 로컬 CSV·JSON 파일을 읽는 기능에는 별도 공공데이터 API 인증키를 요구하지 마. API를 사용하는 팀은 기존 서비스의 인증·호출 방식과 한도를 유지하고, 아직 해결되지 않은 인증·브라우저 호출 제한이 있으면 필요한 설정을 설명해줘. 서버용 비밀키를 공개 코드에 넣거나 보안 제한을 우회하지 마.
+- 카카오 로고와 저작권 표시, 우리 팀 데이터의 출처·기준일·조회 범위를 표시해줘.
 
 # 결과 형식
-한 파일 HTML이면 수정한 index.html 전체를, 여러 파일 프로젝트면 수정한 파일별 전체 코드와 적용 위치를 알려줘. 직접 확인하지 않은 결과를 성공했다고 쓰지 말고, 원자료 3행과 비교할 방법·빈 좌표 처리·파일 재선택 테스트를 안내해줘.</code></pre> </section>  
-<p>AI에 CSV를 첨부한 것과 웹앱이 파일을 읽는 것은 별개입니다. 샘플 몇 행을 하드코딩하지 않고 <strong>선택한 파일 전체를 읽어 계산</strong>해야 합니다. 브라우저의 CSV 파일 선택 방식에는 별도의 공공데이터 API 키나 서버 저장이 필요하지 않습니다. 새로 접속하면 파일을 다시 고를 수 있으며, CSV를 공개 저장소에 올릴 필요는 없습니다.</p>
-<div class="sl-heading-wrapper level-h3"><h3 id="원자료-3행과-결과-대조하기">원자료 3행과 결과 대조하기</h3><a class="sl-anchor-link" href="#원자료-3행과-결과-대조하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “원자료 3행과 결과 대조하기”</span></a></div>
-<p>원자료에서 서로 다른 위치 3행을 골라 지도 위치·주소·목적·대수를 비교합니다. 다음도 직접 확인합니다.</p>
+한 파일 HTML이면 수정한 index.html 전체를, 여러 파일 프로젝트면 수정한 파일별 전체 코드와 적용 위치를 알려줘. 자료와 지도 항목을 어떻게 연결했는지 설명하고, 원자료 3건의 이름·위치·선택한 속성과 대조할 방법을 알려줘. 빈 좌표 처리와 우리 팀 방식에 맞는 파일 재선택·API 재조회·필터 변경 중 해당하는 검증을 안내해줘. 직접 확인하지 않은 결과를 성공했다고 쓰지 마.</code></pre> </section>  
+<p><strong>CSV 파일 선택은 구체적인 연결 방법의 한 예입니다.</strong> 이 방식을 택했다면 내 웹앱의 파일 선택 버튼으로 CSV를 열고, 일부 샘플이 아닌 선택한 파일 전체를 읽어 계산합니다. 한글이 깨지면 인코딩을 확인합니다. 브라우저에서 파일을 읽는 기능에는 공공데이터 API 키나 서버 저장이 필요하지 않으며, CSV를 공개 저장소에 올릴 필요도 없습니다. JSON·API를 사용하는 팀이 CSV로 바꿀 필요는 없습니다.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="원자료-3개-항목과-결과-대조하기">원자료 3개 항목과 결과 대조하기</h3><a class="sl-anchor-link" href="#원자료-3개-항목과-결과-대조하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “원자료 3개 항목과 결과 대조하기”</span></a></div>
+<p>원자료에서 서로 다른 위치의 <strong>3행 또는 3개 항목</strong>을 골라 지도 위치·식별 이름과 <strong>우리 팀이 표시하기로 한 값</strong>을 비교합니다. 다음도 직접 확인합니다.</p>
 <ul>
-<li>빈 좌표는 잘못된 위치에 점을 만들지 않고 제외한 행 수에 반영되는가?</li>
-<li>다른 CSV를 고르면 이전 마커가 정리되는가? 설치 목적 필터가 있다면 목록과 지도가 함께 바뀌는가?</li>
-<li><strong>현재 조건의 행 수 = 유효 좌표 행 수 + 좌표 문제로 제외한 행 수</strong>인가? 머리글·겹친 마커·서로 다른 설치 지점 수·카메라 대수를 구분했는가?</li>
-<li>데이터 출처·기준일·지도 저작권 표시가 보이는가?</li>
+<li>빈 좌표는 잘못된 위치에 점을 만들지 않고 제외한 항목 수에 반영되는가?</li>
+<li>자료나 조회 조건을 바꾸면 이전 마커가 정리되는가? 분류 필터를 만들었다면 목록과 지도도 같은 조건을 보여 주는가?</li>
+<li><strong>실제로 읽은 현재 조건의 항목 수 = 유효 좌표 항목 수 + 좌표 문제로 제외한 항목 수</strong>인가? 행·항목 수, 서로 다른 위치 수, 자료 속 수치의 합계를 구분했는가?</li>
+<li>원자료를 일부만 읽었다면 그 범위를 알리고, 출처·기준일·지도 저작권 표시를 유지했는가?</li>
 </ul>
-<p>공개 위치 자료만으로 현재 운영 상태·실시간 영상·특정 길의 안전을 보장할 수는 없습니다. 확인하지 못한 것은 ‘확인 필요’로 남깁니다.</p>
+<p>자료에서 확인되지 않는 실시간 상태나 의미를 추정하여 표시하지 않습니다. 확인하지 못한 것은 ‘확인 필요’로 남깁니다.</p>
 <div class="sl-heading-wrapper level-h2"><h2 id="기존-활동지에-이어-기록하기">기존 활동지에 이어 기록하기</h2><a class="sl-anchor-link" href="#기존-활동지에-이어-기록하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “기존 활동지에 이어 기록하기”</span></a></div>
 <p><strong>새 활동지를 만들지 않고</strong> 배부된 활동지에 이번 프로젝트 작업을 이어 적습니다.</p>
 
@@ -650,13 +682,13 @@
 
 
 
-<table><thead><tr><th>기존 활동지</th><th>이번에 기록할 내용</th></tr></thead><tbody><tr><td><strong>STEP 2-4</strong></td><td>지도 추가, 실제 오류, 수정한 설정·코드, 실행하며 확인한 결과</td></tr><tr><td><strong>STEP 3-2</strong></td><td>지도·기존 기능의 검증 결과. CSV를 썼다면 비교한 원자료의 행과 값</td></tr><tr><td><strong>STEP 4</strong></td><td>실제 AI 요청, 도움받은 내용, 팀이 확인하고 채택·수정·제외한 이유</td></tr></tbody></table>
+<table><thead><tr><th>기존 활동지</th><th>이번에 기록할 내용</th></tr></thead><tbody><tr><td><strong>STEP 2-4</strong></td><td>지도 추가, 실제 오류, 수정한 설정·코드, 실행하며 확인한 결과</td></tr><tr><td><strong>STEP 3-2</strong></td><td>지도·기존 기능의 검증 결과, 비교한 원자료의 행·항목과 값</td></tr><tr><td><strong>STEP 4</strong></td><td>실제 AI 요청, 도움받은 내용, 팀이 확인하고 채택·수정·제외한 이유</td></tr></tbody></table>
 <p>기록 빈도와 범위는 기존 활동지의 약속과 선생님 안내를 따릅니다. 이미 적은 출처·기준일은 이어 사용하고 실제 바뀐 내용만 갱신하세요. <strong>키 값은 기록하지 않습니다.</strong></p>
 <div class="sl-heading-wrapper level-h2"><h2 id="공식-자료-다시-확인하기">공식 자료 다시 확인하기</h2><a class="sl-anchor-link" href="#공식-자료-다시-확인하기"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">섹션 제목: “공식 자료 다시 확인하기”</span></a></div>
 <p>공식 문서 확인: <strong>2026년 10월 27일</strong>. 화면과 이용 조건이 달라지면 원문을 확인합니다.</p>
 <ul>
 <li>카카오 지도: <a href="https://apis.map.kakao.com/web/guide/">웹 가이드</a> · <a href="https://developers.kakao.com/docs/ko/app-setting/app">JavaScript 키·도메인</a> · <a href="https://developers.kakao.com/docs/ko/kakaomap/common">사용 설정·무료 쿼터 조건</a> · <a href="https://apis.map.kakao.com/web/documentation/">SDK 객체·메서드</a></li>
-<li>공공데이터포털: <a href="https://www.data.go.kr/data/15013094/standard.do">전국CCTV표준데이터</a> · <a href="https://www.data.go.kr/data/15075538/fileData.do">파일 안내</a></li>
+<li><a href="https://www.data.go.kr/">공공데이터포털</a>: 우리 팀이 선택한 자료의 원문과 항목 설명 확인</li>
 <li>GitHub Pages: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">공개 브랜치·폴더 설정</a></li>
 </ul>
 <nav class="page-nav" aria-label="단원 이동"> <a href="/hyfl-ai-lab/data-project/">← 8. DATA TO WEB APP</a> <a class="page-nav__home" href="/hyfl-ai-lab/">전체 목차</a> <span></span> </nav> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr">   </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
