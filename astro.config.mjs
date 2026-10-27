@@ -60,6 +60,15 @@ export default defineConfig({
 					items: [
 						{ label: '교과서 안내', link: '/' },
 						{
+							label: '프로젝트 도움말 · 필요한 기능 추가',
+							collapsed: false,
+							items: [
+								{ label: '내 프로젝트에 카카오맵 넣기', link: '/data/map-lab/' },
+								{ label: '참고: GitHub의 내 코드를 GPT와 수정하기', link: '/data/github-ai/' },
+								{ label: '내 웹앱에 AI 챗봇 넣기 · API 신청', link: '/data/ai-chatbot/' },
+							],
+						},
+						{
 							label: 'Ⅰ단원. 인공지능과 기계학습',
 							collapsed: false,
 							items: [
@@ -88,15 +97,7 @@ export default defineConfig({
 								{ label: '11. 처음의 질문으로 돌아가기 · 다음에 공개', link: '/part7/' },
 							],
 						},
-						{
-							label: '프로젝트 도움말 · 필요한 기능 추가',
-							collapsed: false,
-							items: [
-								{ label: '내 프로젝트에 카카오맵 넣기', link: '/data/map-lab/' },
-								{ label: '참고: GitHub의 내 코드를 GPT와 수정하기', link: '/data/github-ai/' },
-								{ label: '내 웹앱에 AI 챗봇 넣기 · API 신청', link: '/data/ai-chatbot/' },
-							],
-						},
+
 					],
 				},
 			],
