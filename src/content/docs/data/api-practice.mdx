@@ -83,7 +83,7 @@ https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?servic
 - `HH00`: 자료가 준비된 정시 네 자리로 바꿉니다. 예를 들어 오전 9시는 `0900`입니다.
 - `60`,`127`: 격자 자료에서 확인한 우리 지역 값으로 바꿉니다.
 
-**인코딩은 사용하는 도구와 맞춰 한 번 처리합니다.** 포털은 일반 인증키를 Encoding/Decoding 형태로 안내할 수 있습니다. 주소 문자열을 직접 붙이는 방식과 Swagger·`URLSearchParams`처럼 값을 인코딩하는 도구는 입력 방식이 다릅니다. 이미 인코딩한 값을 다시 인코딩하면 `%` 등이 중복 변환될 수 있습니다. 포털 테스트 도구의 안내와 공식 예시를 따르고, 오류가 나면 키를 재발급하기 전에 이중 인코딩 여부를 확인합니다.
+**인코딩은 사용하는 도구와 맞춰 한 번 처리합니다.** 포털은 일반 인증키를 Encoding/Decoding 형태로 안내할 수 있습니다. 주소 문자열을 직접 붙이는 방식과 Swagger·`URLSearchParams`처럼 값을 인코딩하는 도구는 입력 방식이 다릅니다. 이미 인코딩한 값을 다시 인코딩하면 `%` 등이 중복 변환될 수 있습니다. 포털 테스트 도구의 안내와 공식 예시를 따르고, 오류가 나면 키를 재발급하기 전에 이중 인코딩 여부를 확인합니다. **직접 URL 문자열에 넣을 때는 한 번 인코딩된 값**, `URLSearchParams`처럼 자동 인코딩하는 도구에는 **Decoding 값**을 넣습니다. 이미 Encoding된 값을 자동 인코딩 도구에 다시 넣지 않습니다. 기관·테스트 도구의 공식 입력 안내도 함께 확인하세요.
 
 이번처럼 **GET이고 인증·조건이 URL 쿼리에 들어가는 요청**은 완성형을 **줄바꿈 없는 한 줄**로 브라우저 주소창에 붙여 넣어 실행할 수 있습니다. 헤더 인증이나 POST가 필요한 다른 API는 주소창만으로 같은 요청을 만들 수 없습니다. 기관 테스트 도구와 해당 명세의 방법을 사용하세요. 키가 들어간 주소는 공유·캡처·공개 북마크로 남기지 않습니다.
 
@@ -154,6 +154,36 @@ if (value !== '' && Number.isFinite(Number(value)) && Number(value) > -900 && Nu
 ~~~
 
 실제 앱에서는 이 코드 전에 HTTP·기관 오류와 빈 목록도 처리해야 합니다. **값 하나를 꺼내는 부분과 데이터 요청 부분을 나누어 확인**하면 문제가 생긴 위치를 찾기 쉽습니다.
+
+<details>
+<summary>참고 · 같은 요청을 코드로 옮길 때</summary>
+
+아래는 앞에서 주소창에 보낸 **같은 GET 요청을 서버 코드로 옮기는 원리**입니다. **브라우저 HTML에 붙여 넣는 코드가 아닙니다.** `process.env`를 읽고 `fetch`를 실행하는 서버 환경이 이미 준비된 경우의 예시이며, 이 안내가 서버나 키 설정을 만들어 주지는 않습니다. 공개 앱의 서버 연결은 선생님과 확인합니다.
+
+~~~js
+// 서버 전용 예시: 실제 키는 서버 환경변수에 따로 설정합니다.
+async function requestWeather({ baseDate, baseTime, nx, ny }) {
+  const key = process.env.DATA_GO_KR_SERVICE_KEY; // Decoding 값
+  if (!key) throw new Error('서버의 인증값 설정이 필요합니다.');
+  const params = new URLSearchParams({
+    serviceKey: key, pageNo: '1', numOfRows: '1000', dataType: 'JSON',
+    base_date: baseDate, base_time: baseTime,
+    nx: String(nx), ny: String(ny)
+  }); // 각 값을 한 번 인코딩합니다.
+  const endpoint = 'https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst';
+  const response = await fetch(`${endpoint}?${params}`, { method: 'GET' });
+  if (!response.ok) throw new Error(`HTTP 상태 확인: ${response.status}`);
+  const raw = await response.json();
+  const code = String(raw.response?.header?.resultCode ?? '');
+  if (code === '03') return { status: 'no-data' };
+  if (code !== '00') throw new Error(`기관 처리 코드 확인: ${code || '형식 확인 필요'}`);
+  return { status: 'ok', data: raw };
+}
+~~~
+
+`baseDate`·`baseTime`·`nx`·`ny`에는 앞서 직접 확인한 조건을 전달합니다. 서버는 허용할 입력·호출량·오류·시간 제한도 별도로 처리해야 합니다. 요청 URL에는 키가 들어가므로 로그나 오류 화면에 전체 주소를 출력하지 않습니다. 인증 오류가 XML 등으로 왔다면 JSON 처리 오류만 보고 판단하지 말고, 키를 가린 원문 형식을 확인합니다. 정상 응답을 받으면 앞의 `T1H` 선택 과정으로 화면에 필요한 값을 연결합니다.
+
+</details>
 
 ### 직접 실행해 보는 화면 예제
 
