@@ -1,11 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {chooseMapServicePrompt, publicDataMapPrompt} from '../src/content/prompts/map-lab.mjs';
+import {chooseMapServicePrompt, selectedServicePublicDataMapPrompt} from '../src/content/prompts/map-lab.mjs';
+const publicDataMapPrompt=selectedServicePublicDataMapPrompt;
 const page=readFileSync(new URL('../src/content/docs/data/map-lab.mdx',import.meta.url),'utf8');
 test('map selection is optional and provider-specific tutorial preserved',()=>{
- assert.match(page,/내 프로젝트에 지도 넣기\(선택\)/);
- assert.match(page,/카카오 지도를 선택한 팀 · 기존 시작 파일과 설정 예시/);
+ assert.match(page,/내 프로젝트에 카카오맵 넣기/);
+ assert.match(page,/카카오를 선택한 팀의 경로/);
  assert.match(page,/<MapStarter/);
  assert.match(page,/OpenStreetMap은 지도 데이터/);
 });
