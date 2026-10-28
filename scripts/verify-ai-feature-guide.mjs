@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
-import { requestApiPrompt, addChatbotPrompt, chatbotDebugPrompt } from '../src/content/prompts/ai-chatbot.mjs';
+import { addChatbotPrompt, chatbotDebugPrompt } from '../src/content/prompts/ai-chatbot.mjs';
 const read = path => readFile(new URL('../' + path, import.meta.url), 'utf8');
 const guide = await read('src/content/docs/data/ai-chatbot.mdx');
 const project = await read('src/content/docs/data-project.mdx');
@@ -26,11 +26,10 @@ test('practical starter and all existing worksheet steps remain available', () =
  for (const text of ['content={developmentPrompt}', '현재 앱 파일을 첨부했습니다.', 'content={analysisPrompt}']) assert.ok(project.includes(text));
 });
 test('prompts support work students can do without inventing infrastructure', () => {
- for (const name of ['requestApiPrompt','addChatbotPrompt','chatbotDebugPrompt']) assert.ok(guide.includes(`content={${name}}`));
+ for (const name of ['addChatbotPrompt','chatbotDebugPrompt']) assert.ok(guide.includes(`content={${name}}`));
  assert.ok(addChatbotPrompt.includes('유료 API를 호출하지 말고'));
  assert.ok(addChatbotPrompt.includes('추측하지 마'));
  assert.ok(chatbotDebugPrompt.includes('미검증'));
- assert.ok(requestApiPrompt.includes('연결할 수 있는지'));
 });
 test('short help links remain directly inside chapter eight', () => {
  const start=config.indexOf("label: '8. DATA TO WEB APP'");

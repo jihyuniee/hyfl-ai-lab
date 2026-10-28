@@ -55,7 +55,7 @@ astro.config.mjs     # Starlight 사이드바 및 사이트 설정
 
 `/data/ai-chatbot/`는 8단원 프로젝트 하위 선택 확장 가이드입니다. 학생용 본문은 기능 정하기·화면 만들기·교사에게 문의·자료 비교의 짧은 선택 도움말입니다. 공용 서버는 준비 전임을 명시하고, 기본 앱의 구현·검증을 계속하도록 안내합니다. 교사용 역량 매핑과 서버 운영 참고는 `internal/teacher/project-guidance.md`에 분리해 보존합니다. 이 경로는 저장소 문서이며 학생 사이트 페이지로 빌드하지 않습니다. 공개 저장소이므로 접근 제한 문서는 아닙니다.
 
-본문은 `src/content/docs/data/ai-chatbot.mdx`, 복사 가능한 신청·구현·오류 점검 요청문은 `src/content/prompts/ai-chatbot.mjs`입니다. 비밀키는 교사 관리 서버에만 두며 개인정보를 전송하지 않습니다. 팀별 누적 사용 제한과 차단은 서버에서 구현해야 합니다.
+본문은 `src/content/docs/data/ai-chatbot.mdx`, 복사 가능한 구현·오류 점검 요청문은 `src/content/prompts/ai-chatbot.mjs`입니다. 비밀키는 교사 관리 서버에만 두며 개인정보를 전송하지 않습니다. 팀별 누적 사용 제한과 차단은 서버에서 구현해야 합니다.
 
 `examples/ai-chatbot-starter/`의 기존 Vercel 서버 예제는 기술 참고 자료로 유지합니다. 이 예제는 새 공용 서버 또는 팀별 누적 할당량 관리 시스템이 아닙니다. `npm run package:chatbot`과 빌드 전 `prebuild`가 ZIP을 생성하고, `npm run test:chatbot`은 외부 호출을 대체한 검사입니다. 실제 모델 응답과 공용 서버는 이 문서 변경에서 검증하거나 배포하지 않습니다.
 
