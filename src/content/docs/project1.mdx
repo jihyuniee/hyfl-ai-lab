@@ -212,7 +212,7 @@ import ProjectStepFour from '../../components/ProjectStepFour.mdx';
 
 ### 확률이 높으면 정답일까?
 
-모델의 **CLASS A 95%** 표시는 현재 입력이 학습한 두 클래스 중 어느 쪽과 더 비슷한지를 나타냅니다.
+모델의 **CLASS A 95%** 표시는 정해진 클래스들 가운데 A에 부여한 예측 확률입니다. 실제 정답률이 95%이거나 사진의 닮은 정도가 95%라는 뜻은 아닙니다. [분류 확률에 대한 Google 설명](https://developers.google.com/machine-learning/crash-course/neural-networks/multi-class)
 
 두 클래스 어디에도 속하지 않는 대상을 보여줘도 모델은 대개 둘 중 하나를 선택합니다. 결과를 볼 때는 모델이 판단하도록 만든 대상인지도 사람이 함께 확인해야 합니다.
 
@@ -354,6 +354,8 @@ LLM에 전달되는 정보는 프롬프트와 대화에 포함된 텍스트·이
 아래 프롬프트에서 **빨간색으로 표시된 부분을 모두 우리 팀의 내용으로 바꾼 뒤** 생성형 AI에 입력합니다. STEP 1~3의 활동지에 이미 기록한 내용을 사용하고, 실제 모델의 종류·클래스 이름·공유 주소가 정확한지 확인합니다.
 
 <CopyPrompt content={schoolImageLabWebPrompt} />
+
+<span id="github로-웹페이지-배포하기" />
 
 ### GitHub Pages로 웹페이지 배포하기
 
