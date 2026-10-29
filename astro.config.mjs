@@ -81,6 +81,7 @@ export default defineConfig({
 									collapsed: false,
 									items: [
 										{ label: '프로젝트 안내', link: '/data-project/' },
+										{ label: '인증키로 데이터 받기', link: '/data/api-practice/' },
 										{ label: '지도 넣기', link: '/data/map-lab/' },
 										{ label: 'AI 기능(선택)', link: '/data/ai-chatbot/' },
 										{ label: '코드 수정·배포', link: '/data/github-ai/' },
