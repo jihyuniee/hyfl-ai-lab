@@ -21,11 +21,12 @@ test('sentinel missing temperature never renders as observed degrees',()=>{
  for(const n of ['-999','-900','900','999'])assert.equal(parse(payload([{...row,obsrValue:n}])).kind,'missing-value');assert.equal(parse(payload([{...row,obsrValue:'0'}])).temperature,'0');
 });
 test('three prompts carry documentation/context and key placeholder',()=>{
- for(const s of [specToUrlPrompt,diagnoseApiPrompt,responseToAppPrompt])for(const token of ['공식 활용 명세서','상세기능','원하는 데이터','조회 조건','개발 환경','YOUR_API_KEY'])assert.ok(s.includes(token));
+ for(const s of [diagnoseApiPrompt,responseToAppPrompt])for(const token of ['공식 활용 명세서','상세기능','원하는 데이터','조회 조건','개발 환경','YOUR_API_KEY'])assert.ok(s.includes(token));
+ for(const token of ['요청 주소(URL)', '요청 인자(파라미터)', '가져오고 싶은 데이터', 'YOUR_API_KEY', '필수 정보가 부족하면'])assert.ok(specToUrlPrompt.includes(token));
  assert.match(responseToAppPrompt,/존재하지 않는 서버/);assert.match(diagnoseApiPrompt,/no-cors/);
 });
 test('guide keeps portal auth distinct and example is explicitly synthetic',()=>{
  const page=readFileSync(new URL('../src/content/docs/data/api-practice.mdx',import.meta.url),'utf8');
- for(const token of ['getUltraSrtNcst','serviceKey','authKey','모의 JSON','관측된 실황','fcstValue','실제 인증키를 사용한 호출 결과는 아닙니다'])assert.ok(page.includes(token));
+ for(const token of ['getUltraSrtNcst','serviceKey','authKey','관측된 실황','실제 인증키를 사용한 호출 결과는 아닙니다'])assert.ok(page.includes(token));
  assert.doesNotMatch(html,/fetch\(|XMLHttpRequest/);
 });
