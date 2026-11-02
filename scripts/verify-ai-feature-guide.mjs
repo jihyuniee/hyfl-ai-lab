@@ -8,8 +8,8 @@ const project = await read('src/content/docs/data-project.mdx');
 const home = await read('src/content/docs/index.mdx');
 const config = await read('astro.config.mjs');
 const teacher = await read('internal/teacher/project-guidance.md');
-test('student guide is optional and names actual current scope', () => {
- for (const text of ['필요한 팀만', '공용 연결 서버는 준비 전', '예시 답변 · 실제 AI 연결 전', '기존 활동지 STEP 3']) assert.ok(guide.includes(text));
+test('student guide provides optional real connection and deployment steps', () => {
+ for (const text of ['필요한 팀만', '팀별 서버를 배포', '예시 답변 · 실제 AI 연결 전', '기존 활동지 STEP 3', 'OPENAI_API_KEY', 'Redeploy', '/api/chat']) assert.ok(guide.includes(text));
 });
 test('competency mapping is teacher reference, not student reporting rubric', () => {
  for (const text of ['드러낼 네 가지 역량', '드러나는 역량', '탐구 과정에서 보여 줄 것']) assert.ok(!(guide+project+home).includes(text));
@@ -27,7 +27,7 @@ test('practical starter and all existing worksheet steps remain available', () =
 });
 test('prompts support work students can do without inventing infrastructure', () => {
  for (const name of ['addChatbotPrompt','chatbotDebugPrompt']) assert.ok(guide.includes(`content={${name}}`));
- assert.ok(addChatbotPrompt.includes('유료 API를 호출하지 말고'));
+ assert.ok(addChatbotPrompt.includes('서버 환경변수로만'));
  assert.ok(addChatbotPrompt.includes('추측하지 마'));
  assert.ok(chatbotDebugPrompt.includes('미검증'));
 });
