@@ -18,7 +18,9 @@
     "demonstration": "",
     "verification": "",
     "description": "책상 사진으로 정리가 필요한 상태인지 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 2,
+    "peerJoint": false
   },
   {
     "id": "sil-6-02",
@@ -40,7 +42,9 @@
     "demonstration": "",
     "verification": "",
     "description": "쓰레기 이미지를 분류해 분리배출을 돕는 모델입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-6-03",
@@ -62,7 +66,9 @@
     "demonstration": "",
     "verification": "",
     "description": "소화기가 제자리에 있는지, 가려지거나 파손됐는지 사진으로 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 1,
+    "peerJoint": false
   },
   {
     "id": "sil-6-04",
@@ -84,7 +90,9 @@
     "demonstration": "",
     "verification": "",
     "description": "카메라나 사진으로 쓰레기의 종류를 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-6-05",
@@ -105,7 +113,9 @@
     "demonstration": "",
     "verification": "",
     "description": "서관 4층 에어컨의 켜짐·꺼짐 상태를 사진으로 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-6-06",
@@ -126,7 +136,9 @@
     "demonstration": "",
     "verification": "",
     "description": "우산 정리 상태를 확인하는 이미지 분류 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 3,
+    "peerJoint": false
   },
   {
     "id": "sil-6-07",
@@ -148,7 +160,9 @@
     "demonstration": "",
     "verification": "",
     "description": "사진을 찍거나 올려 쓰레기 종류를 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-6-08",
@@ -169,7 +183,9 @@
     "demonstration": "",
     "verification": "",
     "description": "학급 물품을 찾는 이미지 분류 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-6-09",
@@ -190,7 +206,9 @@
     "demonstration": "",
     "verification": "",
     "description": "사진 속 자세를 분류해 바른 자세를 살펴봅니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-7-01",
@@ -212,7 +230,9 @@
     "demonstration": "",
     "verification": "",
     "description": "도서관 책이 올바르게 꽂혀 있는지 이미지로 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-7-02",
@@ -233,7 +253,9 @@
     "demonstration": "",
     "verification": "",
     "description": "교실 쓰레기의 종류를 분류해 분리배출을 돕습니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-7-03",
@@ -255,7 +277,9 @@
     "demonstration": "",
     "verification": "",
     "description": "전자칠판 사진으로 전원이 켜져 있는지 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-7-04",
@@ -277,7 +301,9 @@
     "demonstration": "",
     "verification": "",
     "description": "엎드린 자세를 분류해 수업 준비를 돕는 모델입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-7-05",
@@ -299,7 +325,9 @@
     "verification": "",
     "submittedUrl": "https://36f5402-sys.github.io./-/",
     "description": "음식 이미지를 분류해 급식 잔반 문제를 살펴봅니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-7-06",
@@ -320,7 +348,9 @@
     "demonstration": "",
     "verification": "",
     "description": "수업 준비물을 확인하기 위한 이미지 분류 모델입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 2,
+    "peerJoint": true
   },
   {
     "id": "sil-7-07",
@@ -342,7 +372,9 @@
     "demonstration": "",
     "verification": "",
     "description": "책등의 인덱스 색상을 보고 도서 분류번호를 예측합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-7-08",
@@ -364,7 +396,9 @@
     "demonstration": "",
     "verification": "",
     "description": "쓰레기 사진으로 분리배출 종류를 예측합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 2,
+    "peerJoint": true
   },
   {
     "id": "sil-7-09",
@@ -385,7 +419,9 @@
     "demonstration": "",
     "verification": "",
     "description": "스탠딩 책상의 사용 상태를 확인하고 일정 시간 이후 알림을 제공합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 1,
+    "peerJoint": false
   },
   {
     "id": "sil-8-01",
@@ -407,7 +443,9 @@
     "demonstration": "",
     "verification": "",
     "description": "이미지 분류로 교실 에어컨의 켜짐·꺼짐 상태를 확인합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 3,
+    "peerJoint": false
   },
   {
     "id": "sil-8-02",
@@ -429,7 +467,9 @@
     "demonstration": "",
     "verification": "",
     "description": "간식 사진을 분류해 매점 재고를 확인하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 1,
+    "peerJoint": false
   },
   {
     "id": "sil-8-03",
@@ -450,7 +490,9 @@
     "demonstration": "",
     "verification": "",
     "description": "학년별 배지를 이미지로 분류해 급식시간 관리에 활용합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 2,
+    "peerJoint": false
   },
   {
     "id": "sil-8-04",
@@ -471,7 +513,9 @@
     "demonstration": "",
     "verification": "",
     "description": "",
-    "descriptionSource": ""
+    "descriptionSource": "",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-8-05",
@@ -492,7 +536,9 @@
     "demonstration": "",
     "verification": "",
     "description": "페트병·캔의 분리배출 상태를 사진으로 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-8-06",
@@ -514,7 +560,9 @@
     "demonstration": "",
     "verification": "",
     "description": "전자칠판 화면의 켜짐·꺼짐 상태를 이미지로 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-8-07",
@@ -535,7 +583,9 @@
     "demonstration": "",
     "verification": "",
     "description": "지우개 가루가 있는지 분류해 야자실 정리 상태를 살펴봅니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-8-08",
@@ -556,7 +606,9 @@
     "demonstration": "",
     "verification": "",
     "description": "카메라나 사진으로 등교 복장을 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-8-09",
@@ -577,7 +629,9 @@
     "demonstration": "",
     "verification": "",
     "description": "이미지 분류를 석식 신청자 확인에 활용하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-9-01",
@@ -599,7 +653,9 @@
     "demonstration": "",
     "verification": "",
     "description": "교복 착용 상태를 이미지로 분류하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-9-02",
@@ -620,7 +676,9 @@
     "demonstration": "",
     "verification": "",
     "description": "창밖 사진으로 날씨를 판별하는 이미지 분류 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 3,
+    "peerJoint": false
   },
   {
     "id": "sil-9-03",
@@ -642,7 +700,9 @@
     "demonstration": "",
     "verification": "",
     "description": "카메라로 화장실 휴지 거치대를 확인하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 1,
+    "peerJoint": false
   },
   {
     "id": "sil-9-04",
@@ -664,7 +724,9 @@
     "demonstration": "",
     "verification": "",
     "description": "사진으로 파이리빵의 유무를 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-9-05",
@@ -685,7 +747,9 @@
     "demonstration": "",
     "verification": "",
     "description": "학교 안의 분리수거 문제를 다루는 이미지 분류 모델입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-9-06",
@@ -707,7 +771,9 @@
     "demonstration": "",
     "verification": "",
     "description": "카메라나 사진으로 교복 착용 상태를 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-9-07",
@@ -728,7 +794,9 @@
     "demonstration": "",
     "verification": "",
     "description": "실시간 카메라 입력으로 복장을 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-9-08",
@@ -749,7 +817,9 @@
     "demonstration": "",
     "verification": "",
     "description": "공부 시간을 선택하는 출석부 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 2,
+    "peerJoint": false
   },
   {
     "id": "sil-9-09",
@@ -770,7 +840,9 @@
     "demonstration": "",
     "verification": "",
     "description": "분실 의류를 실시간으로 분류하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-9-10",
@@ -792,7 +864,9 @@
     "demonstration": "",
     "verification": "",
     "description": "분실물 사진을 보고 물건의 종류를 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-10-01",
@@ -814,7 +888,9 @@
     "demonstration": "",
     "verification": "",
     "description": "이미지 분류로 등교 복장을 확인하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-10-02",
@@ -836,7 +912,9 @@
     "demonstration": "",
     "verification": "",
     "description": "쓰레기통 사진으로 비워야 할 상태인지 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-10-03",
@@ -857,7 +935,9 @@
     "demonstration": "",
     "verification": "",
     "description": "급식실 사진에서 빈자리와 사용 중인 자리를 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-10-04",
@@ -879,7 +959,9 @@
     "demonstration": "",
     "verification": "",
     "description": "선풍기와 전등의 상태를 확인하는 이미지 분류 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 3,
+    "peerJoint": false
   },
   {
     "id": "sil-10-05",
@@ -900,7 +982,9 @@
     "demonstration": "",
     "verification": "",
     "description": "교복 하의 복장을 분류하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-10-06",
@@ -921,7 +1005,9 @@
     "demonstration": "",
     "verification": "",
     "description": "사진으로 캔과 플라스틱을 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-10-07",
@@ -943,7 +1029,9 @@
     "demonstration": "",
     "verification": "",
     "description": "카메라로 등교 복장을 분류하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-10-08",
@@ -964,7 +1052,9 @@
     "demonstration": "",
     "verification": "",
     "description": "선풍기 전원 상태를 이미지로 분류합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 1,
+    "peerJoint": false
   },
   {
     "id": "sil-10-09",
@@ -985,7 +1075,9 @@
     "demonstration": "",
     "verification": "",
     "description": "의상 이미지를 분류해 학년별 급식시간 관리에 활용합니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": null,
+    "peerJoint": false
   },
   {
     "id": "sil-10-10",
@@ -1006,6 +1098,8 @@
     "demonstration": "",
     "verification": "",
     "description": "화장실 물내림 소리를 분류하는 프로젝트입니다.",
-    "descriptionSource": "원본 웹앱의 소개·표제 요약"
+    "descriptionSource": "원본 웹앱의 소개·표제 요약",
+    "peerRank": 2,
+    "peerJoint": false
   }
 ]
