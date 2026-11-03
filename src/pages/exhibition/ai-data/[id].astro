@@ -1,0 +1,15 @@
+---
+import Layout from '../../../components/DataExhibitionLayout.astro';
+import projects from '../../../data/ai-data-projects.json';
+export function getStaticPaths() { return projects.filter(p=>p.id !== 'data-queen').map(work=>({params:{id:work.id},props:{work}})); }
+const { work } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const sections = [['problem','해결하려는 문제',work.problem],['decisions','우리 팀이 결정한 것',work.decisions],['implementation','실제 구현한 기능',work.implementation],['verification','직접 확인한 방법과 결과',work.verification]];
+---
+<Layout title={`${work.title} · ${work.team} | AI × DATA`} description={work.problem}>
+<a class="back-link" href={`${base}/exhibition/ai-data/#class-${work.classroom}`}>← {work.classroom}반 목록</a>
+<section class="book-intro"><p class="eyebrow">2학년 {work.classroom}반 · {work.teamNumber}팀 · {work.team}</p><h1>{work.title}</h1><div class="actions"><a class="primary" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 사용하기 ↗</a></div></section>
+{sections.map(([,title,text],i)=><section class="record-section"><div><p class="section-number">0{i+1}</p><h2>{title}</h2></div><div class="section-body"><p class="submitted-text">{text}</p></div></section>)}
+<p class="book-note">우리 팀이 작성한 기록입니다.</p>
+</Layout>
+<style>.submitted-text{white-space:pre-wrap;overflow-wrap:anywhere}</style>

@@ -1,0 +1,27 @@
+name: AI DATA submission and exhibition checks
+on:
+  pull_request:
+    paths:
+      - 'src/pages/exhibition/ai-data/**'
+      - 'src/components/DataSubmissionForm.astro'
+      - 'src/lib/ai-data.mjs'
+      - 'src/data/ai-data-projects.json'
+      - 'scripts/*ai-data*.mjs'
+      - 'tests/ai-data.test.mjs'
+      - 'package*.json'
+      - '.github/workflows/ai-data-check.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run test:exhibition
+      - run: node scripts/verify-ai-data-build.mjs
+      - run: npm run build

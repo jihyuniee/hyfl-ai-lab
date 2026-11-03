@@ -19,3 +19,7 @@ npm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Never commit private submissions or review files; download outside this checkout.
+ai-data-*.json
+private-submissions/

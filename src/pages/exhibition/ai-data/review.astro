@@ -1,0 +1,8 @@
+---
+import Layout from '../../../components/DataExhibitionLayout.astro';
+import Form from '../../../components/DataSubmissionForm.astro';
+---
+<Layout title="교사 검수 도구 | AI × DATA" description="제출 파일을 기기 안에서 확인하고 공개할 내용만 정리합니다.">
+<section class="book-intro"><h1>교사 검수 도구</h1><p class="lead">구글클래스룸에서 받은 제출 JSON을 여세요. 직접 입력하여 대신 등록할 수도 있습니다.<br/>파일 내용은 이 기기에서만 처리됩니다. 이 화면에는 비공개 제출 목록이나 게시 권한이 없습니다. 내려받은 검수 파일은 저장소 쓰기 권한을 가진 교사만 게시할 수 있습니다.<br/>자동 검사는 이름이나 모든 키를 판별하지 못합니다. 문장과 연결된 웹앱의 공개 화면도 직접 확인하세요.</p></section>
+<Form review/>
+</Layout>

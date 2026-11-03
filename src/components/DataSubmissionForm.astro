@@ -1,0 +1,48 @@
+---
+import { fields } from '../lib/ai-data.mjs';
+const { review = false } = Astro.props;
+---
+<div data-submission-form data-review={review ? 'true' : 'false'}>
+{review && <label>제출 파일 열기 <input type="file" accept=".json,application/json" id="submission-file"/></label>}
+<form>
+<div class="numbers"><label>반 <input name="classroom" type="number" min="1" max="10" required/></label><label>팀 번호 <input name="teamNumber" type="number" min="1" max="30" required/></label></div>
+{Object.entries(fields).map(([name,[label,max]]) => <label>{label}<small>최대 {max}자</small>{['team','title','url'].includes(name) ? <input name={name} type={name === 'url' ? 'url' : 'text'} maxlength={max} required/> : <textarea name={name} maxlength={max} rows="3" required/>}</label>)}
+<p>활동지 전체를 붙이지 마세요. 이름·학번·연락처·API 키를 넣지 마세요. 작성한 문장 그대로 공개됩니다. 확인하지 않은 내용을 만들어 쓰지 마세요.</p>
+<label class="confirm"><input type="checkbox" name="privacy" required/> {review ? '각 문장과 연결한 웹앱을 직접 살폈고 개인정보·키·활동지 원문이 없으며 공개할 내용을 확인했습니다.' : '우리 팀이 작성한 내용이며 개인정보·키·활동지 원문을 넣지 않았습니다.'}</label>
+<button class="primary" type="submit">{review ? '검수 완료 파일 받기' : '제출 파일 받기'}</button>
+<p role="status" aria-live="polite" id="submission-status"></p>
+</form>
+</div>
+<script>
+import { validateSubmission } from '../lib/ai-data.mjs';
+const root = document.querySelector('[data-submission-form]')!;
+const form = root.querySelector('form')!;
+const status = root.querySelector('#submission-status')!;
+const review = root.getAttribute('data-review') === 'true';
+root.querySelector('#submission-file')?.addEventListener('change', async (event) => {
+  try {
+    form.reset();
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    if (file.size > 16000) throw Error('파일이 너무 큽니다. 제출 화면에서 받은 JSON만 열어 주세요.');
+    const data = validateSubmission(JSON.parse(await file.text()));
+    for (const [key, value] of Object.entries(data)) (form.elements.namedItem(key) as HTMLInputElement).value = String(value);
+    status.textContent = '불러왔습니다. 문장과 실행 주소를 검수한 뒤 승인하세요.';
+  } catch(e) { status.textContent = (e as Error).message; }
+});
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  try {
+    const data = Object.fromEntries([...new FormData(form)].filter(([k]) => k !== 'privacy'));
+    const submission = validateSubmission(data);
+    const blob = new Blob([JSON.stringify(review ? { reviewed: true, submission } : submission, null, 2)], {type:'application/json'});
+    const href = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href=href; a.download=`ai-data-${submission.classroom}-${submission.teamNumber}${review ? '-reviewed' : ''}.json`; a.click();
+    setTimeout(() => URL.revokeObjectURL(href), 1000);
+    status.textContent = review ? '검수 파일을 받았습니다. 아직 공개되지 않았습니다. 교사용 안내에 따라 게시하세요.' : '파일을 받았습니다. 아직 제출되지 않았습니다. 구글클래스룸의 전시관 제출 과제에 이 파일을 첨부하고 제출하세요.';
+  } catch(e) { status.textContent = (e as Error).message; }
+});
+</script>
+<style>
+form{max-width:720px}label{display:block;margin:20px 0;font-size:14px}small{display:block;color:#64748b;margin:5px 0}input:not([type=checkbox]),textarea{display:block;width:100%;padding:10px;border:1px solid #94a3b8;border-radius:6px;font:inherit;color:inherit;background:white;margin-top:7px}input:focus-visible,textarea:focus-visible{outline:2px solid #2563eb;outline-offset:2px}.numbers{display:flex;gap:20px}.numbers label{flex:1}.confirm{line-height:1.8}p{font-size:13px;line-height:1.9;margin:16px 0;white-space:pre-wrap}button{margin:10px 0}
+</style>
