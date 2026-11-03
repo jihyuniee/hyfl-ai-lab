@@ -1,0 +1,7 @@
+:root {
+ --hyfl-font: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI', 'Malgun Gothic', system-ui, 'Noto Sans KR', sans-serif;
+ --hyfl-accent: #2563eb;
+ --hyfl-text: #0f172a;
+ --hyfl-border: #e2e8f0;
+ --hyfl-radius: 10px;
+}
