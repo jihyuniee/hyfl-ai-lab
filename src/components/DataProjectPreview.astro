@@ -1,0 +1,20 @@
+---
+const url = 'https://dataqueen.vercel.app/';
+---
+<div class="cover"><div class="cover-frame" id="project-cover" aria-hidden="true" inert data-url={url}></div><button class="cover-button" id="open-project-preview" aria-haspopup="dialog"><span>웹앱 화면 미리보기 ↗</span><span class="sr-only">Re:Cloth</span></button></div>
+<dialog id="data-preview-dialog" aria-labelledby="data-preview-title"><div class="preview-top"><h2 id="data-preview-title">Re:Cloth 미리보기</h2><button id="close-data-preview" aria-label="미리보기 닫기">×</button></div><div class="preview-tools"><p>학생이 만든 현재 웹앱입니다. 실제 체험은 새 창에서도 할 수 있습니다.</p><a href={url} target="_blank" rel="noopener noreferrer">새 창에서 사용하기 ↗</a></div><div id="full-frame"></div></dialog>
+<script>
+const cover = document.querySelector<HTMLElement>('#project-cover')!;
+const dialog = document.querySelector<HTMLDialogElement>('#data-preview-dialog')!;
+const full = document.querySelector('#full-frame')!;
+const trigger = document.querySelector<HTMLButtonElement>('#open-project-preview')!;
+const url = cover.dataset.url!;
+function frame(small = false) { const node = document.createElement('iframe'); node.src = url; node.title = 'Re:Cloth 의류 리사이클 헬퍼'; node.referrerPolicy = 'no-referrer'; node.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms'); node.setAttribute('allow', "camera 'none'; microphone 'none'; geolocation 'none'; autoplay 'none'"); if(small) node.tabIndex = -1; return node; }
+const resize = new ResizeObserver(entries => entries.forEach(e => cover.style.setProperty('--cover-scale', String(e.contentRect.width / 1280)))); resize.observe(cover);
+let visible = false;
+const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; if(visible && !dialog.open && !cover.children.length) cover.replaceChildren(frame(true)); else if(!visible) cover.replaceChildren(); }); observer.observe(cover);
+trigger.addEventListener('click', () => { cover.replaceChildren(); full.replaceChildren(frame()); dialog.showModal(); });
+document.querySelector('#close-data-preview')!.addEventListener('click', () => dialog.close());
+dialog.addEventListener('close', () => { full.replaceChildren(); if(visible) cover.replaceChildren(frame(true)); trigger.focus(); });
+dialog.addEventListener('click', e => { if(e.target===dialog) { const r=dialog.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close(); } });
+</script>

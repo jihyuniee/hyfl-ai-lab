@@ -1,0 +1,14 @@
+---
+import Layout from '../../../components/DataExhibitionLayout.astro';
+import Preview from '../../../components/DataProjectPreview.astro';
+import projects from '../../../data/ai-data-projects.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const work = projects[0];
+---
+<Layout title="HYFL AI × DATA 활용대회 · 학생 웹앱 작품집" description="공공데이터와 생성형 AI로 만든 학생 웹앱과 제작 과정을 소개합니다. 첫 사례: 9반 DATA QUEEN의 Re:Cloth.">
+<section class="book-intro"><p class="eyebrow">한영외국어고등학교 · 2026 · 두 번째 프로젝트</p><h1>HYFL AI × DATA 활용대회</h1><p class="lead">학생 웹앱 작품집<br/>공공데이터에서 발견한 문제를 사용자를 돕는 기능으로 연결합니다.</p></section>
+<section class="book-meaning"><h2>생성형 AI를 활용한<br/>공공데이터 웹앱 만들기</h2><p>주변의 문제를 공공데이터로 살펴보고, 생성형 AI와 협력해 웹앱을 구현하는 프로젝트입니다. 학생이 문제와 기능을 결정하고, 데이터와 실행 결과를 확인하며 서비스를 개선해 갑니다. 작품과 함께 그 선택과 제작 과정도 남깁니다.</p></section>
+<div class="class-bar"><span class="class-label">9반</span><p>첫 전시 사례 · 1작품</p></div>
+<article class="feature-card"><Preview/><div class="feature-body"><p class="meta">2학년 {work.classroom}반 · {work.teamNumber}팀 · {work.team}<span class="status">{work.status}</span></p><h2><a href={`${base}/exhibition/ai-data/${work.id}/`} style="text-decoration:none">{work.title}</a></h2><p class="subtitle">{work.subtitle}</p><p class="student-question">{work.question}</p><p class="summary">{work.summary}</p><div class="tags">{work.tags.map(tag=><span>{tag}</span>)}</div><p class="meta" style="margin-top:18px">{work.members.join(' · ')}</p><div class="actions"><a class="primary" href={`${base}/exhibition/ai-data/${work.id}/`}>작품과 제작 이야기 보기 →</a><a class="secondary" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 체험 ↗</a></div></div></article>
+<p class="book-note">활동지와 현재 웹앱을 바탕으로 제작 과정을 소개합니다. 아직 완성되지 않은 기능과 검증 기록도 구분해 남깁니다. 다른 팀의 작품은 준비되는 대로 이어서 전시합니다.</p>
+</Layout>

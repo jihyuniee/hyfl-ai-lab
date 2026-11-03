@@ -1,0 +1,17 @@
+[
+  {
+    "id": "data-queen",
+    "classroom": 9,
+    "teamNumber": 2,
+    "team": "DATA QUEEN",
+    "title": "Re:Cloth",
+    "subtitle": "의류 리사이클 헬퍼",
+    "members": ["변유나", "김나연", "한제인"],
+    "url": "https://dataqueen.vercel.app/",
+    "status": "제작 중",
+    "question": "안 쓰는 옷을 어디에, 어떻게 보내야 할까?",
+    "summary": "의류 배출 기준을 살펴보고, 수거함과 수거업체를 찾아갈 수 있도록 돕는 웹앱을 만들고 있습니다.",
+    "tags": ["의류 배출", "자원순환", "수거 정보"],
+    "checkedAt": "2026-11-03"
+  }
+]

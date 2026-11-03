@@ -1,0 +1,10 @@
+---
+interface Props { active: 'model' | 'data' }
+const { active } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<nav class="project-switch" aria-label="프로젝트별 작품집">
+<a href={`${base}/exhibition/school-image-lab/`} aria-current={active === 'model' ? 'page' : undefined}><span>프로젝트 1</span> 머신러닝 분류 모델</a>
+<a href={`${base}/exhibition/ai-data/`} aria-current={active === 'data' ? 'page' : undefined}><span>프로젝트 2</span> 공공데이터 웹앱</a>
+</nav>
+<style>.project-switch{display:flex;gap:24px;border-bottom:1px solid #e2e8f0;padding:18px 0 12px;font-size:13px;flex-wrap:wrap}.project-switch a{text-decoration:none;color:#64748b;padding-bottom:5px}.project-switch span{font-size:11px;margin-right:6px}.project-switch a[aria-current=page]{color:#2563eb;font-weight:700;border-bottom:2px solid #2563eb}.project-switch a:focus-visible{outline:2px solid #2563eb;outline-offset:4px}@media(max-width:600px){.project-switch{gap:14px;font-size:12px}.project-switch span{display:block;font-size:10px;margin-bottom:4px}}</style>
