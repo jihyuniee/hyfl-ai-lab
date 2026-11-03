@@ -1,0 +1,8 @@
+---
+import SchoolImageExhibition from '../../../components/SchoolImageExhibition.astro';
+export function getStaticPaths() {
+ return [6,7,8,9,10].map(classroom => ({ params: { classroom: String(classroom) }, props: { classroom } }));
+}
+const { classroom } = Astro.props;
+---
+<SchoolImageExhibition classroom={classroom} />
