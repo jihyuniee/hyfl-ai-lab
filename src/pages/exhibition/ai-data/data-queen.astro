@@ -2,7 +2,7 @@
 import Layout from '../../../components/DataExhibitionLayout.astro';
 import Preview from '../../../components/DataProjectPreview.astro';
 import projects from '../../../data/ai-data-projects.json';
-const work=projects[0];
+const work=projects.find(project => project.id === 'data-queen')!;
 const base=import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <Layout title="Re:Cloth · DATA QUEEN | AI × DATA 학생 웹앱 작품집" description="9반 DATA QUEEN이 의류수거함과 폐의류 자료를 탐색하고 Re:Cloth를 만들어 가는 과정을 소개합니다.">

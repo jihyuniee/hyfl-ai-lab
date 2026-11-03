@@ -11,7 +11,9 @@
     "test:maps": "node scripts/verify-map-starters.mjs",
     "test:chatbot": "node scripts/verify-chatbot-starter.mjs",
     "package:chatbot": "node scripts/package-chatbot-starter.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "test:exhibition": "node --test tests/ai-data.test.mjs",
+    "exhibition:publish": "node scripts/publish-ai-data.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.6",
