@@ -60,15 +60,6 @@ export default defineConfig({
 					items: [
 						{ label: '교과서 안내', link: '/' },
 						{
-							label: '학생 작품전',
-							collapsed: false,
-							items: [
-								{ label: '전시관 둘러보기', link: '/exhibition/' },
-								{ label: 'AI × DATA 작품전', link: '/exhibition/data/' },
-								{ label: 'Teachable Machine 작품전', link: '/exhibition/teachable-machine/' },
-							],
-						},
-						{
 							label: 'Ⅰ단원. 인공지능과 기계학습',
 							collapsed: false,
 							items: [

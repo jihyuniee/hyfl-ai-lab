@@ -4,12 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch: {}
-  issues:
-    types: [closed, reopened, edited, deleted]
 
 permissions:
   contents: write
-  issues: write
 
 concurrency:
   group: pages-deploy
@@ -32,9 +29,7 @@ jobs:
         run: npm ci
 
       - name: Build site
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node --test scripts/verify-exhibition.mjs && node scripts/sync-exhibition.mjs && npm run build
+        run: npm run build
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
