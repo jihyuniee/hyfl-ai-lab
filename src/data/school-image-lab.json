@@ -396,18 +396,18 @@
       "이은별",
       "이지민"
     ],
-    "url": "https://soeun1342.github.io/hyfl2026/",
+    "url": "https://cocoyerim2.github.io/hyfl2026/",
     "submittedStatus": "reported-working",
-    "title": "",
-    "titleSource": "",
-    "httpStatus": 404,
+    "title": "❄️ 전기세 아끼기 ❄️",
+    "titleSource": "h1",
+    "httpStatus": 200,
     "checkedAt": "2026-11-03",
     "question": "",
     "dataFinding": "",
     "demonstration": "",
     "verification": "",
-    "description": "",
-    "descriptionSource": ""
+    "description": "이미지 분류로 교실 에어컨의 켜짐·꺼짐 상태를 확인합니다.",
+    "descriptionSource": "원본 웹앱의 소개·표제 요약"
   },
   {
     "id": "sil-8-02",
