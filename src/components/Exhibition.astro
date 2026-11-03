@@ -1,0 +1,124 @@
+---
+import works from '../data/exhibition.json';
+interface Props { category?: 'AI × DATA' | 'Teachable Machine' }
+const { category } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const entries = works.filter((work) => !category || work.category === category);
+const submit = 'https://github.com/jihyuniee/hyfl-ai-lab/issues/new?template=exhibition.yml';
+const years = [...new Set(entries.map((w) => w.year))];
+const classes = [...new Set(entries.map((w) => w.classroom))].sort();
+const topics = [...new Set(entries.map((w) => w.topic))].sort();
+---
+<section class="exhibit" data-exhibition>
+  <header class="exhibit-hero">
+    <p class="eyebrow">HYFL STUDENT EXHIBITION · 학생 작품전</p>
+    <h2>{category === 'Teachable Machine' ? '우리가 가르친 AI,\n우리가 발견한 가능성.' : '우리의 질문이\n작품이 되는 곳.'}</h2>
+    <p class="hero-description">{category === 'Teachable Machine' ? '직접 모으고, 가르치고, 시험하며 만든 AI 웹앱을 만나 보세요.' : '공공데이터에서 발견한 문제, AI와 함께 만든 변화. 한영외고 학생들의 생각을 직접 체험해 보세요.'}</p>
+    <div class="hero-actions"><a href="#works" class="primary">작품 둘러보기 ↓</a><a href={submit} target="_blank" rel="noopener noreferrer">우리 작품 올리기 ↗</a></div>
+    <span class="hero-caption">질문하고 · 만들고 · 함께 사용하며 · 다시 생각합니다</span>
+  </header>
+  <nav class="exhibit-nav" aria-label="작품전 선택">
+    <a href={`${base}/exhibition/`} aria-current={!category ? 'page' : undefined}>전체 작품전</a>
+    <a href={`${base}/exhibition/data/`} aria-current={category === 'AI × DATA' ? 'page' : undefined}>AI × DATA</a>
+    <a href={`${base}/exhibition/teachable-machine/`} aria-current={category === 'Teachable Machine' ? 'page' : undefined}>Teachable Machine</a>
+  </nav>
+  <section id="works" aria-labelledby="works-heading">
+    <div class="section-heading"><div><p class="eyebrow">EXPLORE THE WORKS</p><h2 id="works-heading">{category ? `${category} 작품전` : '학생들의 질문을 만나 보세요'}</h2></div><p data-result-count role="status">{entries.length}개의 작품</p></div>
+    <div class="filters">
+      <label>작품 찾기<input type="search" data-filter="search" placeholder="작품명, 팀명, 궁금한 주제" /></label>
+      <label>연도<select data-filter="year"><option value="">전체 연도</option>{years.map((v) => <option>{v}</option>)}</select></label>
+      <label>반<select data-filter="classroom"><option value="">전체 반</option>{classes.map((v) => <option>{v}</option>)}</select></label>
+      <label>주제<select data-filter="topic"><option value="">전체 주제</option>{topics.map((v) => <option>{v}</option>)}</select></label>
+    </div>
+    <div class="works-grid">
+      {entries.map((work) => (
+        <article class="work" id={`work-${work.id}`} data-work data-year={work.year} data-classroom={work.classroom} data-topic={work.topic} data-search={`${work.title} ${work.team} ${work.question} ${work.topic}`.toLocaleLowerCase('ko')}>
+          {work.image ? <img class="work-image" src={work.image} alt={`${work.title} 웹앱 대표 화면`} loading="lazy" referrerpolicy="no-referrer" /> : <div class="work-cover" aria-hidden="true"><span>{work.category}</span><strong>{work.title}</strong></div>}
+          <div class="work-body"><p class="work-meta">{work.year} · {work.classroom} · {work.team}</p><h3>{work.title}</h3><p class="work-question">{work.question}</p><span class="topic">{work.topic}</span>
+            <a class="visit" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 직접 체험하기 ↗</a>
+            <details><summary>우리의 제작 이야기</summary><dl><dt>이렇게 사용해 보세요</dt><dd>{work.experience}</dd><dt>데이터 또는 모델 이야기</dt><dd>{work.data}</dd><dt>만들며 알게 된 점</dt><dd>{work.learning}</dd></dl><a href={`${base}/${work.category === 'AI × DATA' ? 'data-project' : 'project1'}/`}>이 작품으로 이어진 수업 보기 →</a></details>
+            <details class="feedback"><summary>이 작품에 의견 남기기</summary><p>학생·교사·외부 관람자 모두 참여할 수 있어요. 작품을 직접 사용한 뒤 아래 질문을 참고해 댓글을 남겨 주세요.</p><ol><li>누구에게 어떤 도움이 될까요?</li><li>직접 써 보니 어떤 점이 좋았나요?</li><li>어떤 데이터나 기능을 더하면 좋을까요?</li></ol><p>GitHub 로그인이 필요하며 댓글은 공개됩니다. 관람 의견은 공식 심사 점수와 별도로 활용합니다.</p><a href={`${work.issueUrl}#new_comment_field`} target="_blank" rel="noopener noreferrer">의견 작성하러 가기 ↗</a></details>
+          </div>
+        </article>
+      ))}
+    </div>
+    {entries.length === 0 && <div class="empty"><span class="empty-mark" aria-hidden="true">＋</span><h3>첫 번째 작품을 기다립니다</h3><p>여러분의 질문과 웹앱으로 이 전시 공간을 채워 주세요.<br />신청한 작품은 담당 교사 확인 후 이곳에 전시됩니다.</p><a href={submit} target="_blank" rel="noopener noreferrer">우리 작품 전시 신청하기 ↗</a></div>}
+    <p data-no-results hidden>조건에 맞는 작품이 없어요. 검색어나 필터를 바꿔 보세요.</p>
+  </section>
+  <section class="invitation"><p class="eyebrow">TRY · RESPOND · REIMAGINE</p><h2>작품 하나를 사용해 보는 것부터.</h2><p>관심 있는 작품 한두 개를 골라 직접 체험해 주세요. 좋았던 점, 막혔던 순간, 새로운 아이디어가 다음 버전을 만드는 힌트가 됩니다.</p><p>교사와 외부 관람자의 시선도 환영합니다. 한 줄의 구체적인 의견을 남겨 주세요.</p></section>
+  <section class="submit-guide" id="submit-guide"><h2>우리 작품을 전시하려면</h2><p>웹앱 주소와 간단한 소개를 준비해 신청하세요. 팀원의 실명 대신 팀명으로 소개합니다.</p><ol><li><a href={submit} target="_blank" rel="noopener noreferrer">작품 전시 신청서</a>를 열어 작성합니다. GitHub 로그인이 필요합니다.</li><li>질문·사용 방법·데이터나 모델·만들며 알게 된 점을 적고, 대표 화면을 첨부합니다.</li><li>담당 교사가 확인한 작품이 전시됩니다. 수정은 기존 신청의 본문을 편집하면 되며, 다시 확인한 뒤 공개됩니다.</li></ol><p>신청 내용은 제출 즉시 공개 GitHub 저장소에 기록됩니다. API 키와 개인정보는 제외하고, 팀원과 공개 범위를 확인하세요. 별도 과제 제출은 수업 안내를 따릅니다.</p></section>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-exhibition]').forEach((root) => {
+    const controls = [...root.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-filter]')];
+    const works = [...root.querySelectorAll<HTMLElement>('[data-work]')];
+    const update = () => {
+      let visible = 0;
+      for (const work of works) {
+        const matches = controls.every((control) => {
+          const key = control.dataset.filter!;
+          const value = control.value.trim().toLocaleLowerCase('ko');
+          return !value || (key === 'search' ? work.dataset.search?.includes(value) : work.dataset[key]?.toLocaleLowerCase('ko') === value);
+        });
+        work.hidden = !matches;
+        if (matches) visible++;
+      }
+      root.querySelector('[data-result-count]')!.textContent = `${visible}개의 작품`;
+      const empty = root.querySelector<HTMLElement>('[data-no-results]')!;
+      empty.hidden = visible > 0 || works.length === 0;
+    };
+    controls.forEach((control) => control.addEventListener('input', update));
+    root.querySelectorAll<HTMLImageElement>('.work-image').forEach((img) => {
+      img.addEventListener('error', () => { img.hidden = true; });
+    });
+  });
+</script>
+<style>
+  .exhibit { --exhibit-ink: #173a36; --exhibit-paper: #f4f4ed; }
+  .exhibit :is(h2,h3,p,ol,details,dl) { margin-top: 0; }
+  .exhibit-hero { position: relative; padding: clamp(1.5rem,5vw,3.5rem); background: var(--exhibit-paper); color: var(--exhibit-ink); border-top: 5px solid #28766b; border-radius: 4px 4px 20px 20px; overflow: hidden; }
+  .eyebrow { font-size: .73rem; font-weight: 700; letter-spacing: .12em; }
+  .exhibit-hero h2 { white-space: pre-line; font-size: clamp(2.1rem,4.7vw,3.7rem); line-height: 1.2; letter-spacing: -.05em; color: var(--exhibit-ink); margin: 1.4rem 0; }
+  .hero-description { max-width: 34rem; font-size: 1.05rem; line-height: 1.85; }
+  .hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; margin: 1.7rem 0 2.5rem; }
+  .hero-actions a { color: var(--exhibit-ink); font-weight: 700; text-decoration: none; }
+  .hero-actions .primary { background: var(--exhibit-ink); color: #fff; padding: .75rem 1rem; border-radius: 6px; }
+  .hero-caption { display: block; border-top: 1px solid #c5d2c8; padding-top: 1rem; font-size: .8rem; }
+  .exhibit-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.5rem 0 2.8rem; }
+  .exhibit-nav a { padding: .6rem .9rem; border: 1px solid var(--sl-color-gray-5); border-radius: 30px; text-decoration: none; font-size: .9rem; }
+  .exhibit-nav a[aria-current] { color: white; background: #173a36; border-color: #173a36; }
+  .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
+  .section-heading h2 { font-size: 1.5rem; letter-spacing: -.035em; }
+  .section-heading>p { flex-shrink: 0; color: var(--sl-color-gray-3); font-size: .85rem; }
+  .filters { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: .65rem; margin: 1rem 0 1.4rem; }
+  .filters label { display: grid; gap: .35rem; font-size: .8rem; font-weight: 600; }
+  .filters input,.filters select { min-width: 0; width: 100%; padding: .65rem; border: 1px solid var(--sl-color-gray-5); border-radius: 6px; background: var(--sl-color-bg); color: var(--sl-color-white); font: inherit; }
+  .works-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.4rem; }
+  .work { border: 1px solid var(--sl-color-gray-5); border-radius: 12px; overflow: hidden; align-self: start; }
+  .work[hidden], [hidden] { display: none !important; }
+  .work-image { display: block; width: 100%; aspect-ratio: 16/10; object-fit: contain; background: var(--exhibit-paper); }
+  .work-cover { background: #e7eee7; color: #173a36; min-height: 12rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+  .work-cover span { font-size: .75rem; letter-spacing: .07em; }
+  .work-cover strong { font-size: 1.8rem; line-height: 1.3; letter-spacing: -.04em; overflow-wrap: anywhere; }
+  .work-body { padding: 1.25rem; }
+  .work-meta { color: var(--sl-color-gray-3); font-size: .78rem; }
+  .work-body h3 { font-size: 1.3rem; margin-bottom: .6rem; }
+  .work-question,dd { white-space: pre-line; overflow-wrap: anywhere; }
+  .work-question { font-size: .95rem; line-height: 1.8; }
+  .topic { display: inline-block; padding: .2rem .5rem; font-size: .75rem; border: 1px solid var(--sl-color-gray-5); border-radius: 5px; margin-bottom: 1rem; }
+  .visit { display: block; padding: .7rem; text-align: center; background: #173a36; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; }
+  .work details { border-top: 1px solid var(--sl-color-gray-5); padding-top: .85rem; margin-top: 1rem; font-size: .9rem; }
+  .work summary { cursor: pointer; font-weight: 700; padding: .3rem 0; }
+  .work dl, .work details>p { margin-top: .8rem; }
+  dt { font-weight: 700; margin: 1rem 0 .3rem; } dd { margin-left: 0; }
+  .empty { text-align: center; border: 1px dashed var(--sl-color-gray-4); border-radius: 12px; padding: 3rem 1rem; }
+  .empty-mark { display: block; font-size: 2.5rem; color: #428c7b; }
+  .empty h3 { margin: .8rem 0; } .empty p { line-height: 1.9; color: var(--sl-color-gray-2); }
+  .invitation { margin-top: 3rem; padding: 2rem; border-left: 4px solid #3a8375; background: var(--sl-color-gray-7); border-radius: 0 10px 10px 0; }
+  .invitation h2,.submit-guide h2 { font-size: 1.4rem; }
+  .invitation p:last-child { margin-bottom: 0; }
+  .submit-guide { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--sl-color-gray-5); }
+  .submit-guide>p:last-child { font-size: .85rem; color: var(--sl-color-gray-3); }
+  a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible { outline: 3px solid #bb773a; outline-offset: 4px; }
+  @media(max-width: 700px) { .works-grid { grid-template-columns: 1fr; } .filters { grid-template-columns: 1fr 1fr; } .section-heading { display: block; } .invitation { padding: 1.4rem; } }
+</style>
