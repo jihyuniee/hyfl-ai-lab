@@ -1,0 +1,8 @@
+---
+interface Props { projectId: string; title: string }
+const { projectId, title } = Astro.props;
+---
+<button type="button" class="data-vote-button" data-vote-project={projectId} data-vote-title={title} disabled aria-pressed="false" aria-label={`${title}에 공감상 투표`}><span data-vote-heart aria-hidden="true">♡</span> <span data-vote-label>투표 준비 중</span></button>
+<style>
+.data-vote-button{display:inline-flex;gap:6px;align-items:center;padding:9px 13px;border:1px solid #cbd5e1;border-radius:6px;background:white;color:#475569;font-size:13px;line-height:1.6}.data-vote-button[aria-pressed=true]{color:#2563eb;border-color:#2563eb;background:#eff6ff}.data-vote-button:disabled{cursor:default;color:#64748b;background:#f8fafc}.data-vote-button [data-vote-heart]{font-size:20px;line-height:1}
+</style>
