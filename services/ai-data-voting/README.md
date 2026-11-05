@@ -11,7 +11,18 @@
 
 ## 배포
 
-저장소 루트에서 별도의 Vercel 프로젝트를 연결한다. 기존 hyfl-class 프로젝트는 건드리지 않는다. Vercel CLI를 쓰는 경우 저장소 루트에서 `vercel --local-config vercel.voting.json`으로 미리 배포하고, 검증 후 동일 구성으로 `vercel --prod --local-config vercel.voting.json`을 실행한다. Vercel 프로젝트의 Node.js 버전은 22 이상으로 설정한다. 루트 `api/ai-data/`가 서버리스 엔드포인트이며, 서버 라이브러리와 데이터 JSON을 함께 번들한다. GitHub Pages 빌드에는 영향을 주지 않는다.
+학생 이름·학번·활동지 내용은 투표 서버에 필요하지 않다. 저장소 루트에서 `node scripts/package-voting-server.mjs`를 실행하면 `voting-server-package/`에 서버 코드와 프로젝트 ID만 준비된다. `title`도 ID로 대체하며 화면의 팀 이름은 기존 전시관에서 표시한다. 해당 폴더에서 별도 Vercel 프로젝트 `hyfl-ai-data-voting`에 연결하고 `vercel`로 시험 배포한다. 검증된 구성을 `vercel --prod`로 배포한다. 저장소 루트 전체나 기존 hyfl-class 프로젝트에 배포하지 않는다. Node.js는 22로 설정한다. 팀을 추가하면 패키지를 다시 생성해 재배포한다. 배포 패키지에는 비밀값을 넣지 않는다.
+
+2026-11-05 별도 서버: https://hyfl-ai-data-voting.vercel.app (Vercel READY). `VOTING_ENABLED=false`, `PUBLISH_RESULTS=false`, 허용 원본과 운영용 해시 비밀값을 설정했다. OAuth·학교 도메인·Redis·기간은 미설정이며 전시관 공개 설정 두 값은 비워 둔다. 실제 HTTP 확인: 학교 원본 status 200/preparing(일정 null·집계 없음), POST vote 503(저장 차단), 다른 원본/원본 없음 403, 사전 요청 OPTIONS 204, 응답 no-store. 단위 테스트 16개와 사이트 빌드 통과는 실제 Google·Redis 검증과 구분한다. 실제 로그인·저장·동시 중복·변경·취소는 아직 미검증이다.
+
+### 설정값 발급과 입력 위치
+
+- Google Cloud Console → 학교 조직의 프로젝트 → Google Auth Platform → Branding/Audience에서 학교 내부 사용자용 구성 → Clients → Create client → Web application. Authorized JavaScript origins에는 `https://jihyuniee.github.io`만 입력한다(경로 없음). ID 토큰 콜백 방식이므로 리디렉션 URI와 클라이언트 비밀키는 필요하지 않다. 클라이언트 ID는 Vercel의 `GOOGLE_CLIENT_ID`와 나중에 전시관 `googleClientId`에 동일하게 넣는다. 학교 계정 도메인은 실제 학생 이메일의 @ 뒤 값을 확인해 `SCHOOL_DOMAINS`에 넣는다.
+- Upstash Console → Redis → Create Database에서 투표 전용 DB 생성 → Connect → REST에서 REST URL과 쓰기 토큰 복사. 각각 아래 두 환경변수에 입력한다. 읽기 전용 토큰은 투표를 저장할 수 없다. 운영용과 별도로 시험 DB를 만든다.
+- Vercel → hyfl-ai-data-voting → Settings → Environment Variables에서 Production 대상으로 입력한다. Redis 토큰은 Secret/Sensitive로 저장한다. 비밀값을 활동지·GitHub·공개 JSON·채팅에 붙여 넣지 않는다. 변경 후 새로 배포해야 반영된다.
+- 모든 팀 등록 후 `VOTING_START`/`VOTING_END`를 `YYYY-MM-DDTHH:mm:ss+09:00`으로 입력한다. 검증 전까지 `VOTING_ENABLED=false`를 유지한다. 별도 시험 프로젝트와 Redis에서 기간을 짧게 설정해 아래 검증을 끝낸 뒤 운영 설정으로 옮긴다. 결과 공개는 운영 마감 후 `PUBLISH_RESULTS=true`로 변경하고 재배포한다.
+
+공식 안내: https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid · https://upstash.com/docs/redis/features/restapi
 
 서버의 환경변수:
 

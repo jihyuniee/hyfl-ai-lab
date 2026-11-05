@@ -19,3 +19,6 @@ npm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# generated privacy-minimized voting deployment
+voting-server-package/
