@@ -1,0 +1,7 @@
+{
+  "framework": null,
+  "installCommand": "npm ci --prefix services/ai-data-voting --no-audit --no-fund",
+  "buildCommand": "mkdir -p voting-public",
+  "outputDirectory": "voting-public",
+  "functions": { "api/ai-data/*.mjs": { "includeFiles": "src/data/ai-data-projects.json" } }
+}

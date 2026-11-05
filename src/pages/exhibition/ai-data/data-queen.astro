@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../components/DataExhibitionLayout.astro';
+import VoteButton from '../../../components/DataVoteButton.astro';
 import Preview from '../../../components/DataProjectPreview.astro';
 import projects from '../../../data/ai-data-projects.json';
 const work=projects.find(project => project.id === 'data-queen')!;
@@ -13,6 +14,7 @@ const base=import.meta.env.BASE_URL.replace(/\/$/, '');
 <section class="record-section" id="problem"><div><p class="section-number">01 · 문제와 사용자</p><h2>우리 팀이 정한 문제</h2></div><div class="section-body"><p>사용하지 않는 옷을 어디에, 어떻게 배출해야 할지 찾기 어려운 시민을 위해 만들었습니다. 의류수거함 위치와 배출 방법, 수거업체 정보를 한곳에서 안내하고자 했습니다.</p></div></section>
 <section class="record-section" id="data"><div><p class="section-number">02 · 데이터와 기능</p><h2>우리 팀이 조사한 데이터와<br/>만들고 있는 기능</h2></div><div class="section-body"><p>의류수거함의 위치와 폐의류 처리 관련 자료를 조사했습니다. 이를 바탕으로 수거함 지도, 품목별 배출 가이드, 수거업체 안내를 구상했습니다.</p><table class="evidence-table"><thead><tr><th scope="col">조사한 자료</th><th scope="col">출처</th></tr></thead><tbody><tr><td>전국의류수거함표준데이터</td><td>공공데이터포털 · 상세 출처 링크 입력 예정</td></tr><tr><td>폐기물 발생량 및 처리현황_생활폐기물</td><td><a href="https://kosis.kr/statHtml/statHtml.do?orgId=106&tblId=DT_106N_29_2020005&conn_path=I2" target="_blank" rel="noopener noreferrer">KOSIS ↗</a></td></tr><tr><td>생활폐기물 재활용 현황</td><td><a href="https://kosis.kr/statHtml/statHtml.do?orgId=392&tblId=DT_531&conn_path=I2" target="_blank" rel="noopener noreferrer">KOSIS ↗</a></td></tr></tbody></table><p class="small">수거함 지도는 현재 샘플 목록을 표시합니다.</p><h3>AI에게 도움받은 일과 우리 팀이 결정한 것</h3><p>화면 구성과 HTML·CSS·JavaScript 구현을 생성형 AI에게 요청했습니다. 우리 팀은 배출 가이드·지도·퀴즈 등 필요한 기능과 수거업체를 연결하는 방향을 정했습니다.</p></div></section>
 <section class="record-section" id="demo"><div><p class="section-number">03 · 사용 예시</p><h2>직접 사용해 보세요</h2></div><div class="section-body"><ol class="feature-list"><li><strong>배출 가이드</strong>를 엽니다.</li><li>품목 검색에 <strong>‘솜이불’</strong>을 입력합니다.</li><li><strong>‘수거 불가 솜이불’</strong>과 관할 구청의 처리 안내를 확인하라는 설명이 표시됩니다.</li></ol><p class="small">전시 준비 중 확인한 화면 동작 예시입니다. 지역별 공식 배출 기준과의 대조 결과는 아직 등록되지 않았습니다.</p><div class="actions"><a class="secondary" href="https://dataqueen.vercel.app/#guide" target="_blank" rel="noopener noreferrer">배출 가이드 열기 ↗</a></div></div></section>
-<section class="record-section" id="verification"><div><p class="section-number">04 · 검증과 개선</p><h2>우리 팀이 확인한 결과와<br/>앞으로 개선할 점</h2></div><div class="section-body"><p class="note">팀의 검증 결과와 개선 계획이 아직 등록되지 않았습니다. 최종 제출 때 학생들이 직접 작성할 공간입니다.</p></div></section>
+<section class="record-section" id="verification"><div><p class="section-number">04 · 검증과 개선</p><h2>우리 팀이 확인한 결과와<br/>앞으로 개선할 점</h2></div><div class="section-body"><p class="note">팀의 검증 결과와 개선 계획이 아직 등록되지 않았습니다. 최종 제출한 팀 기록을 확인한 뒤 갱신합니다.</p></div></section>
+<div class="actions"><VoteButton projectId={work.id} title={work.title}/></div>
 <div class="project-nav-next"><p>학생 활동지의 내용을 줄여 정리한 전시 예시입니다.<br/>최종 소개는 팀이 직접 작성하고 확인한 내용으로 갱신합니다.</p><a href={`${base}/data-project/`}>이 프로젝트의 수업 보기 ↗</a></div>
 </Layout>
