@@ -13,5 +13,20 @@
     "summary": "의류 배출 기준을 살펴보고, 수거함과 수거업체를 찾아갈 수 있도록 돕는 웹앱을 만들고 있습니다.",
     "tags": ["의류 배출", "자원순환", "수거 정보"],
     "checkedAt": "2026-11-03"
+  },
+  {
+    "id": "epic-pizza",
+    "classroom": 9,
+    "teamNumber": null,
+    "team": "에픽피자",
+    "title": "길온",
+    "subtitle": "안전한 귀갓길을 잇다",
+    "members": ["김도희", "유현서", "김민수"],
+    "url": "https://leokim0502.github.io/T1win/",
+    "status": "검증 중",
+    "question": "밤늦은 귀갓길, 주변 CCTV를 확인하며 경로를 고를 수 있을까?",
+    "summary": "송파구 CCTV 위치와 카메라 대수 데이터를 지도에 표시하고, 경로 주변의 CCTV를 비교해 귀갓길 선택을 돕는 웹앱입니다.",
+    "tags": ["귀갓길", "CCTV 위치", "경로 비교"],
+    "checkedAt": "2026-11-05"
   }
 ]

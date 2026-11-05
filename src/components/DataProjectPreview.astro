@@ -1,20 +1,62 @@
 ---
-const url = 'https://dataqueen.vercel.app/';
+interface Props { id: string; url: string; title: string }
+const { id, url, title } = Astro.props;
+const dialogId = `preview-${id}`;
+const titleId = `preview-title-${id}`;
 ---
-<div class="cover"><div class="cover-frame" id="project-cover" aria-hidden="true" inert data-url={url}></div><button class="cover-button" id="open-project-preview" aria-haspopup="dialog"><span>웹앱 화면 미리보기 ↗</span><span class="sr-only">Re:Cloth</span></button></div>
-<dialog id="data-preview-dialog" aria-labelledby="data-preview-title"><div class="preview-top"><h2 id="data-preview-title">Re:Cloth 미리보기</h2><button id="close-data-preview" aria-label="미리보기 닫기">×</button></div><div class="preview-tools"><p>학생이 만든 현재 웹앱입니다. 실제 체험은 새 창에서도 할 수 있습니다.</p><a href={url} target="_blank" rel="noopener noreferrer">새 창에서 사용하기 ↗</a></div><div id="full-frame"></div></dialog>
+<div data-project-preview data-url={url} data-title={title}>
+  <div class="cover">
+    <div class="cover-frame" data-cover aria-hidden="true" inert></div>
+    <button class="cover-button" data-open-preview aria-haspopup="dialog" aria-controls={dialogId} aria-label={`${title} 웹앱 화면 미리보기`}><span>웹앱 화면 미리보기 ↗</span></button>
+  </div>
+  <dialog id={dialogId} aria-labelledby={titleId}>
+    <div class="preview-top"><h2 id={titleId}>{title} 미리보기</h2><button data-close-preview aria-label="미리보기 닫기">×</button></div>
+    <div class="preview-tools"><p>팀이 만든 현재 웹앱입니다. 실제 체험은 새 창에서도 할 수 있습니다.</p><a href={url} target="_blank" rel="noopener noreferrer">새 창에서 사용하기 ↗</a></div>
+    <div class="preview-frame" data-preview-frame></div>
+  </dialog>
+</div>
 <script>
-const cover = document.querySelector<HTMLElement>('#project-cover')!;
-const dialog = document.querySelector<HTMLDialogElement>('#data-preview-dialog')!;
-const full = document.querySelector('#full-frame')!;
-const trigger = document.querySelector<HTMLButtonElement>('#open-project-preview')!;
-const url = cover.dataset.url!;
-function frame(small = false) { const node = document.createElement('iframe'); node.src = url; node.title = 'Re:Cloth 의류 리사이클 헬퍼'; node.referrerPolicy = 'no-referrer'; node.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms'); node.setAttribute('allow', "camera 'none'; microphone 'none'; geolocation 'none'; autoplay 'none'"); if(small) node.tabIndex = -1; return node; }
-const resize = new ResizeObserver(entries => entries.forEach(e => cover.style.setProperty('--cover-scale', String(e.contentRect.width / 1280)))); resize.observe(cover);
-let visible = false;
-const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; if(visible && !dialog.open && !cover.children.length) cover.replaceChildren(frame(true)); else if(!visible) cover.replaceChildren(); }); observer.observe(cover);
-trigger.addEventListener('click', () => { cover.replaceChildren(); full.replaceChildren(frame()); dialog.showModal(); });
-document.querySelector('#close-data-preview')!.addEventListener('click', () => dialog.close());
-dialog.addEventListener('close', () => { full.replaceChildren(); if(visible) cover.replaceChildren(frame(true)); trigger.focus(); });
-dialog.addEventListener('click', e => { if(e.target===dialog) { const r=dialog.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close(); } });
+document.querySelectorAll<HTMLElement>('[data-project-preview]').forEach(root => {
+  const cover = root.querySelector<HTMLElement>('[data-cover]')!;
+  const dialog = root.querySelector<HTMLDialogElement>('dialog')!;
+  const full = root.querySelector<HTMLElement>('[data-preview-frame]')!;
+  const trigger = root.querySelector<HTMLButtonElement>('[data-open-preview]')!;
+  const url = root.dataset.url!;
+  const title = root.dataset.title!;
+  function frame(small = false) {
+    const node = document.createElement('iframe');
+    node.src = url;
+    node.title = `${title} 웹앱`;
+    node.referrerPolicy = 'no-referrer';
+    node.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
+    node.setAttribute('allow', "camera 'none'; microphone 'none'; geolocation 'none'; autoplay 'none'");
+    if (small) node.tabIndex = -1;
+    return node;
+  }
+  new ResizeObserver(entries => entries.forEach(entry => {
+    cover.style.setProperty('--cover-scale', String(entry.contentRect.width / 1280));
+  })).observe(cover);
+  let visible = false;
+  new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    if (visible && !dialog.open && !cover.children.length) cover.replaceChildren(frame(true));
+    else if (!visible) cover.replaceChildren();
+  }).observe(cover);
+  trigger.addEventListener('click', () => {
+    cover.replaceChildren();
+    full.replaceChildren(frame());
+    dialog.showModal();
+  });
+  root.querySelector('[data-close-preview]')!.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => {
+    full.replaceChildren();
+    if (visible) cover.replaceChildren(frame(true));
+    trigger.focus();
+  });
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+});
 </script>
