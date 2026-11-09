@@ -1,0 +1,25 @@
+---
+import Layout from './DataExhibitionLayout.astro';
+import VoteButton from './DataVoteButton.astro';
+import Preview from './DataProjectPreview.astro';
+import projects from '../data/ai-data-projects.json';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const { classroom = null } = Astro.props;
+const allClassrooms = [6, 7, 8, 9, 10];
+const classrooms = classroom === null ? [...new Set(projects.map(work => work.classroom))].sort((a, b) => a - b) : [classroom];
+---
+<Layout title="HYFL AI × DATA 활용대회 · 학생 웹앱 작품집" description="공공데이터와 생성형 AI로 만든 웹앱과 제작 과정을 소개합니다. 지역의 문화공간, 자원순환, 귀갓길 등 학생들이 발견한 문제와 해결 과정을 만나 보세요.">
+<section class="book-intro"><p class="eyebrow">한영외국어고등학교 · 2026 · 두 번째 프로젝트</p><h1>HYFL AI × DATA 활용대회</h1><p class="lead">학생 웹앱 작품집<br/>공공데이터에서 발견한 문제를 사용자를 돕는 기능으로 연결합니다.</p></section>
+<nav class="class-navigation" aria-label="반별 작품 보기"><a href={`${base}/exhibition/ai-data/`} aria-current={classroom === null ? 'page' : undefined}>전체 작품</a>{allClassrooms.map(number => <a href={`${base}/exhibition/ai-data/classes/${number}/`} aria-current={classroom === number ? 'page' : undefined}>{number}반 <span>{projects.filter(work => work.classroom === number).length}</span></a>)}</nav>
+<section class="book-meaning"><h2>생성형 AI를 활용한<br/>공공데이터 웹앱 만들기</h2><p>주변의 문제를 공공데이터로 살펴보고, 생성형 AI와 협력해 웹앱을 구현하는 프로젝트입니다. 학생이 문제와 기능을 결정하고, 데이터와 실행 결과를 확인하며 서비스를 개선해 갑니다. 작품과 함께 그 선택과 제작 과정도 남깁니다.</p></section>
+{classrooms.map(classroom => <section aria-label={`${classroom}반 프로젝트`}>
+{projects.filter(work => work.classroom === classroom).length === 0 && <p class="book-note">이 반의 작품은 준비되는 대로 전시합니다.</p>}
+<div class="class-bar"><span class="class-label">{classroom}반</span><p>프로젝트 {projects.filter(work => work.classroom === classroom).length}개</p></div>
+{projects.filter(work => work.classroom === classroom).map(work => <article class="feature-card"><Preview id={work.id} url={work.url} title={work.title}/><div class="feature-body"><p class="meta">2학년 {work.classroom}반 · {work.teamNumber ? `${work.teamNumber}팀 · ` : ''}{work.team}<span class="status">{work.status}</span></p><h2><a href={`${base}/exhibition/ai-data/${work.id}/`} style="text-decoration:none">{work.title}</a></h2><p class="subtitle">{work.subtitle}</p><p class="student-question">{work.question}</p><p class="summary">{work.summary}</p><div class="tags">{work.tags.map(tag=><span>{tag}</span>)}</div><p class="meta" style="margin-top:18px">{work.members.join(' · ')}</p><div class="actions"><a class="primary" href={`${base}/exhibition/ai-data/${work.id}/`}>프로젝트와 제작 이야기 보기 →</a><a class="secondary" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 체험 ↗</a><VoteButton projectId={work.id} title={work.title}/></div></div></article>)}
+</section>)}
+<p class="book-note">활동지와 현재 웹앱을 바탕으로 제작 과정을 소개합니다. 아직 완성되지 않은 기능과 검증 기록도 구분해 남깁니다. 다른 팀의 작품은 준비되는 대로 이어서 전시합니다.</p>
+</Layout>
+
+<style>
+.class-navigation{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 32px}.class-navigation a{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid #b6b5ab;border-radius:999px;color:inherit;text-decoration:none}.class-navigation a[aria-current="page"]{background:#223b31;color:#fff;border-color:#223b31}.class-navigation span{font-size:.8em;opacity:.8}.class-navigation a:focus-visible{outline:3px solid #b16c28;outline-offset:3px}
+</style>
