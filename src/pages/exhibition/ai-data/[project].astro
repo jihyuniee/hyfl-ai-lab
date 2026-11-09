@@ -1,0 +1,15 @@
+---
+import Layout from '../../../components/DataExhibitionLayout.astro';
+import StudentStory from '../../../components/DataProjectStory.astro';
+import { getProjectStory } from '../../../lib/project-story.mjs';
+import projects from '../../../data/ai-data-projects.json';
+export function getStaticPaths() {
+  const separatePages = new Set(['data-queen', 'epic-pizza', 'culturelink', 'kiosk-practice']);
+  return projects.filter(work => !separatePages.has(work.id) && getProjectStory(work)).map(work => ({ params: { project: work.id }, props: { work } }));
+}
+const { work } = Astro.props;
+const story = getProjectStory(work)!;
+---
+<Layout title={`${work.title} · ${work.team || '학생 프로젝트'} | AI × DATA 프로젝트 전시관`} description={story.oneLineIntro}>
+  <StudentStory work={work} story={story}/>
+</Layout>
