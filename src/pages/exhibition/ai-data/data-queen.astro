@@ -1,12 +1,17 @@
 ---
 import Layout from '../../../components/DataExhibitionLayout.astro';
+import StudentStory from '../../../components/DataProjectStory.astro';
+import { getProjectStory } from '../../../lib/project-story.mjs';
 import VoteButton from '../../../components/DataVoteButton.astro';
 import Preview from '../../../components/DataProjectPreview.astro';
 import projects from '../../../data/ai-data-projects.json';
 const work=projects.find(project => project.id === 'data-queen')!;
+const story = getProjectStory(work);
 const base=import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <Layout title="Re:Cloth · DATA QUEEN | AI × DATA 학생 웹앱 작품집" description="9반 DATA QUEEN이 의류수거함과 폐의류 자료를 탐색하고 Re:Cloth를 만들어 가는 과정을 소개합니다.">
+{story ? <StudentStory work={work} story={story}/> : <>
+
 <a class="back-link" href={`${base}/exhibition/ai-data/`}>← 9반 작품집으로</a>
 <section class="work-heading"><div><p class="eyebrow">AI × DATA · 2학년 9반 2팀 · DATA QUEEN<span class="status">제작 중</span></p><h1>Re:Cloth</h1><p class="subtitle">의류 리사이클 헬퍼</p><p class="student-question">안 쓰는 옷을 어디에, 어떻게 보내야 할까?</p></div><div><p class="team-members"><strong>변유나</strong> · 발표·조사<br/><strong>김나연</strong> · 조사·디자인·오류 수정<br/><strong>한제인</strong> · 웹페이지 구현</p><div class="actions"><a class="primary" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 직접 사용하기 ↗</a></div></div></section>
 <Preview id={work.id} url={work.url} title={work.title}/>
@@ -17,4 +22,5 @@ const base=import.meta.env.BASE_URL.replace(/\/$/, '');
 <section class="record-section" id="verification"><div><p class="section-number">04 · 검증과 개선</p><h2>우리 팀이 확인한 결과와<br/>앞으로 개선할 점</h2></div><div class="section-body"><p class="note">팀의 검증 결과와 개선 계획이 아직 등록되지 않았습니다. 최종 제출한 팀 기록을 확인한 뒤 갱신합니다.</p></div></section>
 <div class="actions"><VoteButton projectId={work.id} title={work.title}/></div>
 <div class="project-nav-next"><p>학생 활동지의 내용을 줄여 정리한 전시 예시입니다.<br/>최종 소개는 팀이 직접 작성하고 확인한 내용으로 갱신합니다.</p><a href={`${base}/data-project/`}>이 프로젝트의 수업 보기 ↗</a></div>
+</>}
 </Layout>
