@@ -50,3 +50,19 @@ Redis 해시 한 필드가 한 계정의 선택을 나타낸다. Lua 스크립�
 투표는 공감상에만 사용한다. 동점은 공동 공감상, 유효 투표가 없으면 선정하지 않는다. 대상은 `internal/teacher/ai-data-evaluation.md`의 별도 근거 평가를 적용한다.
 
 참고: https://developers.google.com/identity/gsi/web/guides/verify-google-id-token · https://upstash.com/docs/redis/features/restapi
+
+## 전시관 좋아요·댓글 (2026-11-10)
+
+`/api/ai-data/community`는 공감상 투표와 독립된 관람객 반응이다. 학교 로그인이나 투표 설정을 요구하지 않으며, 여러 작품에 좋아요를 누르고 취소할 수 있다. 공감상은 기존 학교 계정 투표 규칙을 그대로 사용하고 현재 비활성 상태다.
+
+- 공유 저장소: 이 프로젝트에 연결된 전용 **private Vercel Blob** `hyfl-ai-data-community` (`BLOB_READ_WRITE_TOKEN`은 서버 환경변수). 공용 브라우저 저장소에는 임의의 방문자 UUID만 보관한다. 숫자·댓글은 서버에서 불러온다.
+- UUID를 `VOTER_HASH_SECRET`과 별도 `community-v1` 문맥으로 HMAC 처리한다. 원래 UUID·이름·이메일은 저장하지 않는다. 댓글 응답에는 본문·시각·댓글 ID·본인 여부만 반환한다. 이름은 모두 ‘관람객’이다.
+- 좋아요는 브라우저당 작품별 한 번이다. 저장소 초기화·다른 브라우저·기기를 동일인으로 합치지 않으므로 시상·순위 판정에 사용하지 않는다. 공개 익명 참여이며 학교 구성원 인증이나 완전한 중복·스팸 방지는 제공하지 않는다.
+- 댓글은 최대 300자, 같은 브라우저에서 작품당 분당 한 번. 최신 50개를 보여주고 전체 개수는 별도로 표시한다. 본문은 `textContent`로 렌더링한다. 작성 브라우저만 자기 댓글을 삭제할 수 있고, 다른 방문자의 삭제 요청은 서버에서 거절한다.
+- 각 좋아요·댓글을 독립된 객체로 저장하여 다른 방문자의 동시 쓰기가 서로 덮어쓰지 않는다. 저장 실패 시 성공이나 임의의 숫자를 표시하지 않는다. 허용 Origin은 기존 `ALLOWED_ORIGINS`를 적용한다.
+- 운영자가 댓글을 삭제해야 하면 Vercel Storage에서 `community/comments/<작품 ID>/`의 해당 객체를 확인해 삭제한다. 새 댓글은 검수 없이 공개된다.
+- 공개 설정은 `public/exhibition-community.json`의 API 원본 주소 하나다. 비밀 토큰이나 방문자 식별값을 넣지 않는다.
+
+배포 패키지는 `node scripts/package-exhibition-api.mjs /저장소밖/새폴더`로 만든다. 서버 파일과 ID-only 작품 목록만 포함하며 이름·활동지·교과서는 배포하지 않는다. 패키지 폴더를 기존 `hyfl-ai-data-voting` 프로젝트에 배포한다. 이 저장소 전체를 Vercel 프로젝트에 연결하지 않는다. 작품 추가 시 API도 다시 배포한다.
+
+검증: `npm test --prefix services/ai-data-voting`과 `npm run build`. 실제 연결에서는 좋아요 두 번이 한 번으로 유지되는지, 취소·다시 읽기·댓글 작성/삭제, 다른 방문자 삭제 거부, 허용되지 않은 Origin 차단, 기존 투표 상태가 `preparing`인지 확인한다. 시험용 반응은 검증 후 모두 제거한다.
