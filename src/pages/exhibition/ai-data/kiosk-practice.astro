@@ -1,12 +1,17 @@
 ---
 import Layout from '../../../components/DataExhibitionLayout.astro';
+import StudentStory from '../../../components/DataProjectStory.astro';
+import { getProjectStory } from '../../../lib/project-story.mjs';
 import VoteButton from '../../../components/DataVoteButton.astro';
 import Preview from '../../../components/DataProjectPreview.astro';
 import projects from '../../../data/ai-data-projects.json';
 const work = projects.find(project => project.id === 'kiosk-practice')!;
+const story = getProjectStory(work);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <Layout title="키오스크 연습실 · 진라면신라면 | AI × DATA 프로젝트 전시관" description="7반 신재영·홍서진이 고령자의 디지털 격차에 주목해 키오스크 연습실을 만든 과정을 소개합니다.">
+{story ? <StudentStory work={work} story={story}/> : <>
+
 <a class="back-link" href={`${base}/exhibition/ai-data/classes/7/`}>← 7반 프로젝트 목록으로</a>
 <section class="work-heading"><div><p class="eyebrow">AI × DATA · 2학년 7반 · {work.team}<span class="status">{work.status}</span></p><h1>{work.title}</h1><p class="subtitle">{work.subtitle}</p><p class="student-question">{work.question}</p></div><div><p class="team-members"><strong>신재영</strong> · 자료 검색·AI 프롬프트·활동지 작성<br/><strong>홍서진</strong> · 자료 검색·활동지 작성·발표</p><div class="actions"><a class="primary" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 직접 사용하기 ↗</a></div></div></section>
 <Preview id={work.id} url={work.url} title={work.title}/>
@@ -16,4 +21,5 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <section class="record-section" id="demo"><div><p class="section-number">03 · 사용 예시</p><h2>같이 연습한 다음<br/>혼자 눌러 보기</h2></div><div class="section-body"><ol class="feature-list"><li>첫 화면에서 <strong>관공서·은행·병원·식당</strong> 중 연습할 장소를 고릅니다. 위쪽에서 글씨 크기를 조절할 수 있습니다.</li><li>관공서에서 <strong>서류 떼러 왔어요</strong>를 고르고 상황에 맞는 버튼을 선택합니다. 잘못 고르면 다시 시도하도록 안내합니다.</li><li>‘자세한 설명 보기’, 이전, 처음부터 버튼으로 도움을 받거나 절차를 되짚습니다.</li><li>상황 선택 화면의 <strong>실전 모드</strong>에서는 정해진 정답 없이 버튼을 눌러 보며 연습합니다.</li></ol><p>실제 기관·매장의 기기와 화면이 모두 같지는 않습니다. 주민등록번호·계좌번호·실제 결제 정보를 입력하는 서비스가 아니라 모의 절차를 익히는 연습 화면입니다.</p><div class="actions"><a class="secondary" href={work.url} target="_blank" rel="noopener noreferrer">키오스크 연습실 열기 ↗</a></div></div></section>
 <section class="record-section" id="verification"><div><p class="section-number">04 · 검증과 개선</p><h2>사용자 의견으로<br/>연습 방식을 바꾸다</h2></div><div class="section-body"><h3>직접 써 보고 고친 점</h3><p>처음 만든 화면이 너무 세부적이어서 단순하게 바꾸었습니다. 이후 어머니가 ‘퀴즈처럼 답을 고르는 것 외에 실제처럼 혼자 해 볼 수 있으면 좋겠다’고 제안했고, 11월 6일 연습 모드와 실전 모드를 구분했습니다.</p><h3>현재 웹앱에서 확인한 결과</h3><table class="evidence-table"><thead><tr><th scope="col">확인한 입력</th><th scope="col">2026-11-09 실행 결과</th></tr></thead><tbody><tr><td>관공서 → 서류 떼러 왔어요 → 요금 납부</td><td>‘괜찮아요, 다시 눌러 볼까요?’와 민원 발급을 안내하는 설명이 나타났습니다.</td></tr><tr><td>같은 단계에서 민원 발급 선택</td><td>‘잘하셨어요!’ 안내 뒤 2/6 단계의 서류 선택 화면으로 넘어갔습니다.</td></tr><tr><td>관공서 → 실전 모드</td><td>‘정답은 없어요. 마음대로 눌러 보세요!’와 모의 버튼이 표시되었습니다.</td></tr></tbody></table><p>팀은 의견 입력 뒤 감사 문구가 나타나는 것도 확인했다고 활동지에 기록했습니다. 현재 공개 코드에서 의견은 콘솔에 출력하는 방식이며, 운영자에게 전달하거나 서버에 누적 저장하는 기능으로 확인되지는 않았습니다.</p><h3>남은 한계와 개선 방향</h3><p>버튼이 의도대로 동작하는 것과 실제 고령자의 이용 어려움이 줄어드는 것은 구분해야 합니다. 팀도 실제 불편 개선 효과는 확인하지 못했다고 정리했습니다. 앞으로 여러 가게나 영화관과 협력해 실제 키오스크 화면을 반영하고 싶다고 제안했습니다.</p></div></section>
 <div class="actions"><VoteButton projectId={work.id} title={work.title}/></div><div class="project-nav-next"><p>팀 활동지와 현재 웹앱을 바탕으로 정리했습니다.<br/>사용자 경험과 학생의 기능 선택·개선 과정을 소개합니다.</p><a href={`${base}/data-project/`}>이 프로젝트의 수업 보기 ↗</a></div>
+</>}
 </Layout>

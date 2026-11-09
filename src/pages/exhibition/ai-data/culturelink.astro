@@ -1,12 +1,17 @@
 ---
 import Layout from '../../../components/DataExhibitionLayout.astro';
+import StudentStory from '../../../components/DataProjectStory.astro';
+import { getProjectStory } from '../../../lib/project-story.mjs';
 import VoteButton from '../../../components/DataVoteButton.astro';
 import Preview from '../../../components/DataProjectPreview.astro';
 import projects from '../../../data/ai-data-projects.json';
 const work = projects.find(project => project.id === 'culturelink')!;
+const story = getProjectStory(work);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <Layout title="컬처링크 · 주민문화 | AI × DATA 프로젝트 전시관" description="7반 주민문화 팀이 지역별 문화시설 분포를 탐구하고 문화공간 기획을 연결하는 컬처링크를 만든 과정을 소개합니다.">
+{story ? <StudentStory work={work} story={story}/> : <>
+
 <a class="back-link" href={`${base}/exhibition/ai-data/`}>← 프로젝트 목록으로</a>
 <section class="work-heading">
 <div><p class="eyebrow">AI × DATA · 2학년 7반 · {work.team}<span class="status">{work.status}</span></p><h1>{work.title}</h1><p class="subtitle">{work.subtitle}</p><p class="student-question">{work.question}</p></div>
@@ -43,4 +48,5 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </div></section>
 <div class="actions"><VoteButton projectId={work.id} title={work.title}/></div>
 <div class="project-nav-next"><p>팀 활동지와 현재 웹앱을 바탕으로 정리했습니다.<br/>팀이 기록한 결과와 현재 확인한 구현 범위를 구분해 소개합니다.</p><a href={`${base}/data-project/`}>이 프로젝트의 수업 보기 ↗</a></div>
+</>}
 </Layout>
