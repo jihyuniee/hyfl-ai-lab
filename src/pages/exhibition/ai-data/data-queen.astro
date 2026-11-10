@@ -13,7 +13,7 @@ const base=import.meta.env.BASE_URL.replace(/\/$/, '');
 {story ? <StudentStory work={work} story={story}/> : <>
 
 <a class="back-link" href={`${base}/exhibition/ai-data/`}>← 9반 작품집으로</a>
-<section class="work-heading"><div><p class="eyebrow">AI × DATA · 2학년 9반 2팀 · DATA QUEEN<span class="status">제작 중</span></p><h1>Re:Cloth</h1><p class="subtitle">의류 리사이클 헬퍼</p><p class="student-question">안 쓰는 옷을 어디에, 어떻게 보내야 할까?</p></div><div><p class="team-members"><strong>변유나</strong> · 발표·조사<br/><strong>김나연</strong> · 조사·디자인·오류 수정<br/><strong>한제인</strong> · 웹페이지 구현</p><div class="actions"><a class="primary" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 직접 사용하기 ↗</a></div></div></section>
+<section class="work-heading"><div><p class="eyebrow">AI × DATA · 2학년 9반 2팀 · DATA QUEEN<span class="status">제작 중</span></p><h1>Re:Cloth</h1><p class="subtitle">의류 리사이클 헬퍼</p><p class="student-question">{work.question}</p></div><div><p class="team-members"><strong>변유나</strong> · 발표·조사<br/><strong>김나연</strong> · 조사·디자인·오류 수정<br/><strong>한제인</strong> · 웹페이지 구현</p><div class="actions"><a class="primary" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 직접 사용하기 ↗</a></div></div></section>
 <Preview id={work.id} url={work.url} title={work.title}/>
 <nav class="work-contents" aria-label="작품 소개"><a href="#problem">01 우리 팀의 문제</a><a href="#data">02 데이터와 기능</a><a href="#demo">03 사용 예시</a><a href="#verification">04 검증과 개선</a></nav>
 <section class="record-section" id="problem"><div><p class="section-number">01 · 문제와 사용자</p><h2>우리 팀이 정한 문제</h2></div><div class="section-body"><p>사용하지 않는 옷을 어디에, 어떻게 배출해야 할지 찾기 어려운 시민을 위해 만들었습니다. 의류수거함 위치와 배출 방법, 수거업체 정보를 한곳에서 안내하고자 했습니다.</p></div></section>
