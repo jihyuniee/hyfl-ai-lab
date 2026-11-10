@@ -16,7 +16,7 @@ import { specToUrlPrompt } from '../../prompts/public-api-practice.mjs';
 
 <span id="portal-screen" />
 
-## 1. 이 세 가지만 준비하세요
+## 1. 공식 안내에서 네 가지를 준비하세요
 
 신청한 API의 상세 페이지나 활용가이드에서 **사용할 조회 기능**을 고릅니다.
 
@@ -24,13 +24,14 @@ import { specToUrlPrompt } from '../../prompts/public-api-practice.mjs';
 | --- | --- |
 | 요청 주소(URL) | 선택한 기능의 요청주소를 복사합니다. |
 | 요청 인자(요청변수·파라미터) | 항목 이름·필수 여부·형식·예시가 있는 표를 복사하거나 캡처합니다. |
+| 요청·인증 방식 | GET/POST, 키를 넣을 위치(쿼리·헤더 등)와 항목명, 인코딩 안내를 복사합니다. 모르면 해당 안내를 첨부합니다. |
 | 가져오고 싶은 데이터 | 지역·날짜·검색어·개수 등 원하는 조건을 적습니다. |
 
 찾기 어렵다면 상세 페이지에서 `Ctrl+F`로 **요청주소**, **요청변수**를 검색하거나 **참고문서·활용가이드**를 확인하세요.
 
 ## 2. 아래 프롬프트를 복사하세요
 
-표시된 세 곳을 우리 팀의 내용으로 바꾸어 AI에 보냅니다. **실제 인증키는 보내지 않습니다.**
+표시된 네 곳을 우리 팀의 내용으로 바꾸어 AI에 보냅니다. **실제 인증키는 보내지 않습니다.**
 
 <CopyPrompt title="데이터 요청 URL 만들어 달라고 하기" content={specToUrlPrompt} />
 
@@ -48,7 +49,7 @@ import { specToUrlPrompt } from '../../prompts/public-api-practice.mjs';
 | `=` | 인자 이름과 값 연결 | `pageNo=1` |
 | `&` | 다음 요청 인자 연결 | `&numOfRows=10` |
 
-예를 들어 **요청변수 표의 `pageNo`에 `1`을 넣는다**는 뜻이 `pageNo=1`입니다. 인자 이름과 넣을 값의 형식은 API마다 다릅니다.
+예를 들어 **요청변수 표의 `pageNo`에 `1`을 넣는다**는 뜻이 `pageNo=1`입니다. **엔드포인트**는 선택한 조회 기능의 요청주소이고, 그 뒤에 요청 인자를 붙입니다. 이미 `?`와 인자가 있는 주소에는 다음 인자를 `&`로 연결합니다. 인자 이름과 넣을 값의 형식은 API마다 다릅니다.
 
 <details>
 <summary>기상청 요청 주소 예시 보기</summary>
@@ -100,6 +101,6 @@ https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?servic
 **어떤 조건을 보냈고, 어떤 값을 받았나요?** 직접 받은 항목 하나의 이름·값·뜻을 기존 활동지에 기록하세요. 키가 들어간 URL은 공유하지 않습니다.
 </Callout>
 
-참고: [공공데이터포털 활용방법](https://www.data.go.kr/ugs/selectPublicDataUseGuideMetView.do) · [포털 실행 도구 안내](https://www.data.go.kr/images/biz/swagger-guide/gw/gateway_swagger_guide.pdf)
+참고: [공공데이터포털 활용방법](https://www.data.go.kr/ugs/selectPublicDataUseGuideMetView.do) · [포털 실행 도구 안내](https://www.data.go.kr/images/biz/swagger-guide/gw/gateway_swagger_guide.pdf) · [MDN 요청 인자와 GET/POST 설명](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Sending_and_retrieving_form_data)
 
 <PageNav prev={{ label: '요청과 응답 읽기', href: '/hyfl-ai-lab/data/open-api/' }} next={{ label: '팀 프로젝트로 돌아가기', href: '/hyfl-ai-lab/data-project/' }} />
