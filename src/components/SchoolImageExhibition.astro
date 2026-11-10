@@ -2,6 +2,7 @@
 import submittedWorks from '../data/school-image-lab.json';
 import '../styles/textbook-tokens.css';
 import ExhibitionProjectNav from './ExhibitionProjectNav.astro';
+import ExhibitionHeader from './ExhibitionHeader.astro';
 interface Props { classroom?: number }
 const selectedClass = Astro.props.classroom ?? 6;
 const works = submittedWorks.filter(work => work.classroom === selectedClass).map((work, order) => ({ ...work, order })).sort((a, b) => Number(Boolean(b.peerRank)) - Number(Boolean(a.peerRank)) || a.classroom - b.classroom || (a.peerRank ?? 99) - (b.peerRank ?? 99) || a.order - b.order);
@@ -21,7 +22,7 @@ const title = (work: typeof works[number]) => work.title || `${work.team}의 작
 </head>
 <body>
 <a class="skip" href="#works">작품으로 바로 가기</a>
-<header class="site-header"><a class="brand" href={`${base}/`}>인공지능 원리탐구</a><nav aria-label="전시관 메뉴"><span aria-current="page">프로젝트 전시관</span><a href={`${base}/`}>교과서 보기 ↗</a></nav></header>
+<ExhibitionHeader />
 <main>
 <ExhibitionProjectNav active="model" />
 <section class="intro"><div><p class="eyebrow">한영외국어고등학교 · 2026 · 첫 번째 프로젝트</p><h1>School Image Lab</h1><p class="subtitle">{`${selectedClass}반 학생 작품전`}</p></div><p class="intro-copy">사진과 소리 데이터를 모아<br />머신러닝 분류 모델을 직접 만들었습니다.<br /><span>6·7·8·9·10반, 47팀의 결과물을 반별로 만나 보세요.</span></p></section>
