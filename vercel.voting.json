@@ -1,7 +1,7 @@
 {
   "framework": null,
   "installCommand": "npm ci --prefix services/ai-data-voting --no-audit --no-fund",
-  "buildCommand": "mkdir -p voting-public",
+  "buildCommand": "node -e \"require('fs').mkdirSync('voting-public',{recursive:true});require('fs').writeFileSync('voting-public/index.html','<!doctype html><meta charset=utf-8><title>Voting API</title><p>Voting API</p>')\"",
   "outputDirectory": "voting-public",
   "functions": { "api/ai-data/*.mjs": { "includeFiles": "src/data/ai-data-projects.json" } }
 }
