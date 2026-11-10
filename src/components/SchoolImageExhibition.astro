@@ -1,7 +1,6 @@
 ---
 import submittedWorks from '../data/school-image-lab.json';
 import '../styles/textbook-tokens.css';
-import ExhibitionProjectNav from './ExhibitionProjectNav.astro';
 import ExhibitionHeader from './ExhibitionHeader.astro';
 interface Props { classroom?: number }
 const selectedClass = Astro.props.classroom ?? 6;
@@ -22,9 +21,8 @@ const title = (work: typeof works[number]) => work.title || `${work.team}의 작
 </head>
 <body>
 <a class="skip" href="#works">작품으로 바로 가기</a>
-<ExhibitionHeader />
+<ExhibitionHeader active="model" />
 <main>
-<ExhibitionProjectNav active="model" />
 <section class="intro"><div><p class="eyebrow">한영외국어고등학교 · 2026 · 첫 번째 프로젝트</p><h1>School Image Lab</h1><p class="subtitle">{`${selectedClass}반 학생 작품전`}</p></div><p class="intro-copy">사진과 소리 데이터를 모아<br />머신러닝 분류 모델을 직접 만들었습니다.<br /><span>6·7·8·9·10반, 47팀의 결과물을 반별로 만나 보세요.</span></p></section>
 <section class="project-meaning" aria-labelledby="project-meaning-title"><h2 id="project-meaning-title">머신러닝 분류 모델 만들기</h2><div><p>학교생활에서 구분이 필요한 상황을 찾고, 사진이나 소리 데이터를 직접 수집해 머신러닝 분류 모델을 학습시켰습니다. 새로운 데이터로 모델을 시험하고 개선하며, 데이터와 분류 기준이 AI의 판단에 어떤 영향을 주는지 탐구했습니다.</p><p>완성한 모델은 웹앱으로 연결해 직접 체험할 수 있도록 만들었습니다. 각 팀이 무엇을 구분하도록 학습시켰는지, 새로운 입력에도 잘 작동하는지, 어떤 한계가 남아 있는지 살펴보세요.</p></div></section>
 <section id="works" aria-label="학생 작품 둘러보기">
