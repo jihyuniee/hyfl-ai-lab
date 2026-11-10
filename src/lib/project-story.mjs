@@ -1,4 +1,4 @@
-// Public text copied from the team's checked form answers (questions 5–9).
+// Exhibition copy adapted from the team's form answers (questions 5–9).
 export const storyFields = ['oneLineIntro', 'motivation', 'dataUse', 'features', 'memory'];
 export function getProjectStory(project) {
   const story = project?.story;
