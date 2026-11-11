@@ -79,3 +79,13 @@ test('a database failure does not silently switch a write to Blob', async () => 
   assert.equal(JSON.stringify(res.body).includes('private database detail'), false);
   assert.deepEqual(failures, [['COMMUNITY_UNEXPECTED_FAILURE', 'POST']]);
 });
+
+test('the old Blob backend rejects reply requests instead of flattening them into ordinary comments', async () => {
+  const { createCommunity } = await import('../lib/community.mjs'); let writes = 0;
+  const community = createCommunity({ projects: [{id:'sample'}], secret:'test-secret-'.repeat(4), storage:{create:async()=>{writes++;},list:async()=>[],read:async()=>null} });
+  const actor={authenticated:true,id:'a'.repeat(64),profile:{name:'시험',picture:''}};
+  const parent='99970000000-'+'d'.repeat(64);
+  await assert.rejects(community.comment('sample',actor,'답글',true,parent),{status:503});
+  await assert.rejects(community.comments('sample',actor,{parentId:parent}),{status:503});
+  assert.equal(writes,0);
+});

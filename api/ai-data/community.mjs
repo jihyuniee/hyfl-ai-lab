@@ -67,11 +67,13 @@ return async function handler(req, res) {
     const community = providedCommunity || communityForEnvironment(env);
     let result;
     if (req.method === 'GET') {
-      const session = { auth: authConfiguration(env), storage: env.DATABASE_URL ? 'postgres' : 'blob', viewer: actor ? { ...actor.profile, isAdmin: actor.isAdmin } : null };
+      const session = { auth: authConfiguration(env), storage: env.DATABASE_URL ? 'postgres' : 'blob',
+        features: { replies: Boolean(env.DATABASE_URL), replyWriting: Boolean(env.DATABASE_URL) && env.COMMUNITY_REPLIES_ENABLED !== 'false' },
+        viewer: actor ? { ...actor.profile, isAdmin: actor.isAdmin } : null };
       if (params.has('session')) { res.status(200).json(session); return; }
       if (!storageConfigured(env)) throw new CommunityError(503, '좋아요와 댓글을 준비하고 있습니다.');
       result = !projectId ? { ...session, projects: await community.all(actor) } : params.get('view') === 'likes' ?
-        await community.likers(projectId, params.get('cursor') || '') : await community.comments(projectId, actor, { legacyToken, cursor: params.get('cursor') || '', manage: params.get('manage') === 'true' });
+        await community.likers(projectId, params.get('cursor') || '') : await community.comments(projectId, actor, { legacyToken, cursor: params.get('cursor') || '', manage: params.get('manage') === 'true', parentId: params.get('parent') });
     } else {
       if (!storageConfigured(env)) throw new CommunityError(503, '좋아요와 댓글을 준비하고 있습니다.');
       if (!req.headers['content-type']?.startsWith('application/json')) throw new CommunityError(415, 'JSON 요청이 필요합니다.');
@@ -81,7 +83,10 @@ return async function handler(req, res) {
       if (!body || typeof body !== 'object') throw new CommunityError(400, '입력한 내용을 확인해 주세요.');
       if (req.method === 'DELETE') result = await community.removeComment(body.projectId, actor, body.commentId, legacyToken);
       else if (body.action === 'like') result = await community.like(body.projectId, actor, body.liked, body.profileConsent);
-      else if (body.action === 'comment') result = await community.comment(body.projectId, actor, body.text, body.profileConsent);
+      else if (body.action === 'comment') {
+        if (body.parentId != null && env.COMMUNITY_REPLIES_ENABLED === 'false') throw new CommunityError(503, '답글 작성을 잠시 쉬고 있어요. 입력한 내용은 유지됩니다.');
+        result = await community.comment(body.projectId, actor, body.text, body.profileConsent, body.parentId);
+      }
       else if (body.action === 'moderate') result = await community.moderate(body.projectId, actor, body.commentId, body.hidden);
       else throw new CommunityError(400, '요청을 확인해 주세요.');
     }

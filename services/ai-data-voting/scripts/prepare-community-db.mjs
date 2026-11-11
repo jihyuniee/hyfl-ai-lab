@@ -15,9 +15,24 @@ export function deploymentConnections(env) {
   return { migration: env.DATABASE_URL_UNPOOLED, application: env.DATABASE_URL };
 }
 
+export async function ensureReplyReference(query) {
+  const exists = await query(`SELECT 1 FROM pg_constraint
+    WHERE conrelid = 'hyfl_community.comments'::regclass AND conname = 'community_comments_parent_fk'`);
+  if (!exists.length) {
+    try {
+      await query(`ALTER TABLE hyfl_community.comments ADD CONSTRAINT community_comments_parent_fk
+        FOREIGN KEY (project_id, parent_id) REFERENCES hyfl_community.comments (project_id, comment_id) ON DELETE NO ACTION`);
+    } catch (error) {
+      // Two builds can prepare the same branch; never repair or delete inconsistent data.
+      if (error.code !== '42710') throw error;
+    }
+  }
+}
+
 export async function prepareCommunityDatabase(query, schema, legacyStorage, applicationQuery = query) {
   // Only create the application's own schema. Existing records and Neon Auth tables are untouched.
   for (const statement of schema.split(';').map(value => value.trim()).filter(Boolean)) await query(statement);
+  await ensureReplyReference(query);
   const legacyImport = legacyStorage ? await importBlobCommunity(query, legacyStorage) : null;
   const id = `diagnostic-${randomUUID()}`;
   const actor = { authenticated: true, id: randomBytes(32).toString('hex'), profile: { name: '비공개 저장소 점검', picture: '' }, email: '', isAdmin: false };
@@ -36,11 +51,18 @@ export async function prepareCommunityDatabase(query, schema, legacyStorage, app
     let denied = false;
     try { await service.removeComment(id, other, commentId); } catch (error) { denied = error.status === 403; }
     check(denied, 'DB_COMMENT_OWNER_FAILED');
+    const reply = await service.comment(id, other, '비공개 답글 연결 점검', true, commentId);
+    const replyId = reply.comments[0]?.id;
+    check(reply.total === 1 && reply.comments[0]?.parentId === commentId, 'DB_REPLY_WRITE_FAILED');
+    check((await service.comments(id, actor)).comments[0]?.replyCount === 1, 'DB_REPLY_COUNT_FAILED');
     await service.moderate(id, teacher, commentId, true);
     check((await service.comments(id)).total === 0, 'DB_COMMENT_HIDE_FAILED');
     await service.moderate(id, teacher, commentId, false);
-    check((await service.comments(id)).total === 1, 'DB_COMMENT_RESTORE_FAILED');
+    check((await service.comments(id)).total === 2, 'DB_COMMENT_RESTORE_FAILED');
     await service.removeComment(id, actor, commentId);
+    const deleted = await service.comments(id);
+    check(deleted.total === 1 && deleted.comments[0]?.deleted && deleted.comments[0]?.profile === null, 'DB_REPLY_PRESERVATION_FAILED');
+    await service.removeComment(id, other, replyId);
     await service.like(id, actor, false);
     const summary = await service.summary(id, actor);
     check(summary.likes === 0 && summary.comments === 0, 'DB_COMMENT_CLEANUP_FAILED');
@@ -49,7 +71,7 @@ export async function prepareCommunityDatabase(query, schema, legacyStorage, app
     await applicationQuery('DELETE FROM hyfl_community.comments WHERE project_id = $1', [id]);
     await applicationQuery('DELETE FROM hyfl_community.likes WHERE project_id = $1', [id]);
   }
-  return { schemaReady: true, privateStorageTest: true, diagnosticRowsRemoved: true, ...(legacyImport ? { legacyImport } : {}) };
+  return { schemaReady: true, privateStorageTest: true, replyStorageTest: true, diagnosticRowsRemoved: true, ...(legacyImport ? { legacyImport } : {}) };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

@@ -70,8 +70,9 @@ export function createCommunity({ storage, projects, secret, now = Date.now }) {
       return { people: records.map(profileOf).filter(Boolean), total: files.length, anonymous: records.filter(record => record && !record.profile).length,
         nextCursor: page.length && files.some(file => file.pathname > page.at(-1).pathname) ? fileId(page.at(-1)) : null };
     },
-    async comments(id, actor, { legacyToken, cursor = '', manage = false } = {}) {
+    async comments(id, actor, { legacyToken, cursor = '', manage = false, parentId = null } = {}) {
       project(id);
+      if (parentId !== null) throw new CommunityError(503, '답글 저장소를 준비하고 있습니다. 잠시 후 다시 시도해 주세요.');
       if (manage && !actor?.isAdmin) throw new CommunityError(403, '선생님만 댓글을 관리할 수 있습니다.');
       if (cursor && !validComment(cursor)) throw new CommunityError(400, '목록 위치를 확인해 주세요.');
       const { files, hidden } = await commentFiles(id, manage);
@@ -86,8 +87,9 @@ export function createCommunity({ storage, projects, secret, now = Date.now }) {
       return { comments: items.filter(Boolean), total: sorted.length,
         nextCursor: page.length && sorted.some(file => file.pathname > page.at(-1).pathname) ? fileId(page.at(-1)) : null };
     },
-    async comment(id, actor, text, consent) {
+    async comment(id, actor, text, consent, parentId = null) {
       project(id); const author = signedIn(actor);
+      if (parentId !== null) throw new CommunityError(503, '답글 저장소를 준비하고 있습니다. 잠시 후 다시 시도해 주세요.');
       if (consent !== true) throw new CommunityError(400, '이름과 프로필 공개 안내를 확인해 주세요.');
       if (typeof text !== 'string' || !text.trim() || text.trim().length > 300) throw new CommunityError(400, '댓글은 1~300자로 작성해 주세요.');
       const minute = Math.floor(now() / 60000);
