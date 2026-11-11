@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import handler, { prepareCommunity } from '../../../api/ai-data/community.mjs';
+import { BlobStoreSuspendedError } from '../lib/blob.mjs';
 function response() { return { headers: {}, statusCode: null, body: null, setHeader(key, value) { this.headers[key] = value; }, status(value) { this.statusCode = value; return this; }, json(value) { this.body = value; }, end() {} }; }
 test('community rejects other origins and exposes exact approved CORS methods', () => {
   process.env.ALLOWED_ORIGINS = 'https://jihyuniee.github.io';
@@ -36,4 +37,23 @@ test('unconfigured session is readable, reports not ready and exposes no private
   await createHandler({ env: { VOTER_HASH_SECRET: 'never-public', COMMUNITY_ADMIN_EMAILS: 'private@school.example' } })({ headers: { origin: 'https://jihyuniee.github.io' }, method: 'GET', url: '/api/ai-data/community?session=true' }, res);
   assert.equal(res.statusCode, 200); assert.equal(res.body.auth.ready, false); assert.equal(res.body.viewer, null);
   assert.equal(JSON.stringify(res.body).includes('never-public'), false); assert.equal(JSON.stringify(res.body).includes('private@'), false);
+});
+test('an authenticated write reports suspended storage without exposing credentials or comment data', async () => {
+  const { createHandler } = await import('../../../api/ai-data/community.mjs');
+  const failures = [];
+  const res = response();
+  await createHandler({
+    env: { BLOB_STORE_ID: 'test-only' },
+    auth: async () => ({ authenticated: true, id: 'a'.repeat(64), email: 'private@school.example' }),
+    community: { async comment() { throw new BlobStoreSuspendedError(); } },
+    reportFailure: (...args) => failures.push(args)
+  })({ headers: { origin: 'https://jihyuniee.github.io', authorization: 'Bearer test-only-credential', 'content-type': 'application/json' },
+    method: 'POST', url: '/api/ai-data/community', body: { action: 'comment', projectId: 'sample', text: 'private test text', profileConsent: true } }, res);
+  assert.equal(res.statusCode, 503);
+  assert.equal(res.body.code, 'COMMUNITY_STORAGE_SUSPENDED');
+  assert.match(res.body.error, /입력한 내용은 유지/);
+  assert.deepEqual(failures, [['COMMUNITY_STORAGE_SUSPENDED', 'POST']]);
+  for (const privateValue of ['test-only-credential', 'private@school.example', 'private test text']) {
+    assert.equal(JSON.stringify({ body: res.body, failures }).includes(privateValue), false);
+  }
 });

@@ -1,1 +1,1 @@
-export { put, list, get, del } from '@vercel/blob';
+export { put, list, get, del, BlobStoreSuspendedError } from '@vercel/blob';

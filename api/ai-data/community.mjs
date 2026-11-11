@@ -1,4 +1,4 @@
-import { put, list, get, del } from '../../services/ai-data-voting/lib/blob.mjs';
+import { put, list, get, del, BlobStoreSuspendedError } from '../../services/ai-data-voting/lib/blob.mjs';
 import projects from '../../src/data/ai-data-projects.json' with { type: 'json' };
 import { createCommunity, CommunityError, isLegacyVisitor } from '../../services/ai-data-voting/lib/community.mjs';
 import { authenticate, authConfiguration } from '../../services/ai-data-voting/lib/community-auth.mjs';
@@ -25,6 +25,8 @@ const storage = {
         allowOverwrite: false, contentType: 'application/json', cacheControlMaxAge: 60 });
       return true;
     } catch (error) {
+      // A suspended store cannot accept this write; do not hide the cause behind a fallback read.
+      if (error instanceof BlobStoreSuspendedError) throw error;
       if (await storage.read(path)) return idempotent;
       throw error;
     }
@@ -46,7 +48,8 @@ export function prepareCommunity(req, res) {
   if (!['GET', 'POST', 'DELETE'].includes(req.method)) { res.setHeader('Allow', 'GET, POST, DELETE, OPTIONS'); res.status(405).end(); return false; }
   return true;
 }
-export function createHandler({ community = service, env = process.env, auth = authenticate } = {}) {
+export function createHandler({ community = service, env = process.env, auth = authenticate,
+  reportFailure = (code, method) => console.error('community_api_failure', { code, method }) } = {}) {
 return async function handler(req, res) {
   if (!prepareCommunity(req, res)) return;
   try {
@@ -77,7 +80,13 @@ return async function handler(req, res) {
     }
     res.status(200).json(result);
   } catch (error) {
+    if (error instanceof BlobStoreSuspendedError) {
+      reportFailure('COMMUNITY_STORAGE_SUSPENDED', req.method);
+      res.status(503).json({ code: 'COMMUNITY_STORAGE_SUSPENDED', error: '좋아요·댓글 저장 기능이 일시 중지되어 있습니다. 입력한 내용은 유지됩니다.' });
+      return;
+    }
     const status = error instanceof CommunityError ? error.status : error instanceof SyntaxError ? 400 : 503;
+    if (status >= 500 && !(error instanceof CommunityError)) reportFailure('COMMUNITY_UNEXPECTED_FAILURE', req.method);
     res.status(status).json({ error: error instanceof CommunityError ? error.message : status === 400 ? '입력한 내용을 확인해 주세요.' : '반응을 저장하거나 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.' });
   }
 };
