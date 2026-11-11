@@ -15,9 +15,24 @@ export function deploymentConnections(env) {
   return { migration: env.DATABASE_URL_UNPOOLED, application: env.DATABASE_URL };
 }
 
+export async function ensureReplyReference(query) {
+  const exists = await query(`SELECT 1 FROM pg_constraint
+    WHERE conrelid = 'hyfl_community.comments'::regclass AND conname = 'community_comments_parent_fk'`);
+  if (!exists.length) {
+    try {
+      await query(`ALTER TABLE hyfl_community.comments ADD CONSTRAINT community_comments_parent_fk
+        FOREIGN KEY (project_id, parent_id) REFERENCES hyfl_community.comments (project_id, comment_id) ON DELETE NO ACTION`);
+    } catch (error) {
+      // Two builds can prepare the same branch; never repair or delete inconsistent data.
+      if (error.code !== '42710') throw error;
+    }
+  }
+}
+
 export async function prepareCommunityDatabase(query, schema, legacyStorage, applicationQuery = query) {
   // Only create the application's own schema. Existing records and Neon Auth tables are untouched.
   for (const statement of schema.split(';').map(value => value.trim()).filter(Boolean)) await query(statement);
+  await ensureReplyReference(query);
   const legacyImport = legacyStorage ? await importBlobCommunity(query, legacyStorage) : null;
   const id = `diagnostic-${randomUUID()}`;
   const actor = { authenticated: true, id: randomBytes(32).toString('hex'), profile: { name: '비공개 저장소 점검', picture: '' }, email: '', isAdmin: false };

@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { createHmac } from 'node:crypto';
 import { PGlite } from '@electric-sql/pglite';
 import { createPostgresCommunity } from '../lib/community-postgres.mjs';
-import { prepareCommunityDatabase, deploymentConnections } from '../scripts/prepare-community-db.mjs';
+import { prepareCommunityDatabase, deploymentConnections, ensureReplyReference } from '../scripts/prepare-community-db.mjs';
 import { importBlobCommunity } from '../lib/community-import.mjs';
 import { createHandler } from '../../../api/ai-data/community.mjs';
 
@@ -15,7 +15,7 @@ const first = { authenticated: true, id: 'a'.repeat(64), profile: { name: "O'Rei
 const second = { ...first, id: 'b'.repeat(64), profile: { name: '다른 관람객', picture: '' } };
 const teacher = { ...second, id: 'c'.repeat(64), isAdmin: true };
 const query = async (text, params = []) => (await db.query(text, params)).rows;
-before(async () => { await db.exec(schema); });
+before(async () => { await db.exec(schema); await ensureReplyReference(query); });
 beforeEach(async () => { await db.exec('TRUNCATE hyfl_community.moderation, hyfl_community.comments, hyfl_community.likes, hyfl_community.migrations'); });
 after(async () => { await db.close(); });
 function fixture(projects = [{ id: 'sample' }]) {
@@ -288,4 +288,56 @@ test('a concurrent root deletion and reply cannot leave a reply without its root
   if (result[0].status === 'rejected') assert.equal(result[0].reason.status, 404);
   const [row] = await query('SELECT count(*)::int AS orphaned FROM hyfl_community.comments r LEFT JOIN hyfl_community.comments p ON p.project_id=r.project_id AND p.comment_id=r.parent_id WHERE r.parent_id IS NOT NULL AND p.comment_id IS NULL');
   assert.equal(row.orphaned, 0);
+});
+
+test('the reply foreign key rejects missing/cross-project parents and blocks physical deletion without changing rows', async () => {
+  const { service } = fixture();
+  const parent = (await service.comment('sample', first, '보존할 원댓글', true)).comments[0].id;
+  await service.comment('sample', second, '보존할 답글', true, parent);
+  await ensureReplyReference(query); await ensureReplyReference(query);
+  await assert.rejects(query('DELETE FROM hyfl_community.comments WHERE project_id=$1 AND comment_id=$2', ['sample', parent]), { code: '23503' });
+  for (const projectId of ['other-project', 'sample']) {
+    await assert.rejects(query(`INSERT INTO hyfl_community.comments
+      (project_id,comment_id,author_id,text,created_at,parent_id) VALUES ($1,$2,$3,$4,$5,$6)`,
+    [projectId, '99970000000-' + 'e'.repeat(64), first.id, '잘못된 연결', new Date().toISOString(), projectId === 'sample' ? '99970000000-' + 'f'.repeat(64) : parent]), { code: '23503' });
+  }
+  assert.equal((await service.summary('sample')).comments, 2);
+  assert.equal((await service.comments('sample')).comments[0].text, '보존할 원댓글');
+});
+
+test('the reply write switch keeps existing replies readable and retains root comments, likes, deletion and teacher hiding', async () => {
+  process.env.ALLOWED_ORIGINS = 'https://jihyuniee.github.io';
+  const { service } = fixture();
+  const parent = (await service.comment('sample', first, '기존 원댓글', true)).comments[0].id;
+  const reply = (await service.comment('sample', second, '기존 답글', true, parent)).comments[0].id;
+  const run = createHandler({ env: { DATABASE_URL: 'test-only', COMMUNITY_REPLIES_ENABLED: 'false' }, community: service, auth: async token => token === 'second' ? second : teacher });
+  async function request(method, body, suffix = '', token = 'teacher') {
+    const res = { statusCode: null, body: null, setHeader() {}, status(value) { this.statusCode = value; return this; }, json(value) { this.body = value; }, end() {} };
+    await run({ method, url: '/api/ai-data/community' + suffix, body, headers: { origin: 'https://jihyuniee.github.io', authorization: 'Bearer ' + token, 'content-type': 'application/json' } }, res);
+    return res;
+  }
+  const session = await request('GET', null, '?session=true');
+  assert.equal(session.body.features.replies, true); assert.equal(session.body.features.replyWriting, false);
+  assert.equal((await request('GET', null, '?project=sample&parent=' + parent)).body.comments[0].text, '기존 답글');
+  assert.equal((await request('POST', { action: 'comment', projectId: 'sample', parentId: parent, text: '중지할 새 답글', profileConsent: true })).statusCode, 503);
+  assert.equal((await service.summary('sample')).comments, 2);
+  assert.equal((await request('POST', { action: 'comment', projectId: 'sample', text: '허용할 원댓글', profileConsent: true })).statusCode, 200);
+  assert.equal((await request('POST', { action: 'like', projectId: 'sample', liked: true, profileConsent: true })).body.likes, 1);
+  assert.equal((await request('POST', { action: 'moderate', projectId: 'sample', commentId: parent, hidden: true })).statusCode, 200);
+  assert.equal((await request('GET', null, '?project=sample&parent=' + parent)).statusCode, 404);
+  assert.equal((await request('DELETE', { projectId: 'sample', commentId: reply }, '', 'second')).statusCode, 200);
+});
+
+test('thirty synthetic student accounts retain simultaneous likes, comments and replies without duplicates', async () => {
+  const { service, advance } = fixture();
+  const parent = (await service.comment('sample', first, '발표 원댓글', true)).comments[0].id;
+  const students = Array.from({ length: 30 }, (_, i) => ({ ...second, id: (i + 1000).toString(16).padStart(64, '0'), profile: { name: `합성 학생 ${i}`, picture: '' } }));
+  await Promise.all(students.map(async student => { await service.like('sample', student, true, true); await service.comment('sample', student, '발표 감상', true); }));
+  advance(); await Promise.all(students.map(student => service.comment('sample', student, '발표 답글', true, parent)));
+  const summary = await service.summary('sample');
+  assert.equal(summary.likes, 30); assert.equal(summary.comments, 61);
+  const replies = await service.comments('sample', null, { parentId: parent });
+  const next = await service.comments('sample', null, { parentId: parent, cursor: replies.nextCursor });
+  assert.equal(replies.total, 30); assert.equal(new Set([...replies.comments, ...next.comments].map(row => row.id)).size, 30);
+  assert.equal(JSON.stringify(replies).includes(second.email), false);
 });

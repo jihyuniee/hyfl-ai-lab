@@ -63,10 +63,15 @@ export function createPostgresCommunity({ query, projects, secret, now = Date.no
         LEFT JOIN hyfl_community.moderation pm ON pm.project_id = c.project_id AND pm.comment_id = c.parent_id
         WHERE c.project_id = $1 AND ($3::boolean OR (m.comment_id IS NULL AND pm.comment_id IS NULL))
       ), threads AS (
-        SELECT c.*, (SELECT count(*)::int FROM visible r WHERE r.parent_id = c.comment_id AND r.deleted_at IS NULL) AS reply_count
-        FROM visible c WHERE c.parent_id IS NULL
+        SELECT c.*, replies.reply_count, replies.reply_version
+        FROM visible c CROSS JOIN LATERAL (
+          SELECT count(*)::int AS reply_count,
+            md5(coalesce(string_agg(r.comment_id || ':' || r.hidden::text, ',' ORDER BY r.comment_id), '')) AS reply_version
+          FROM visible r WHERE r.parent_id = c.comment_id AND r.deleted_at IS NULL
+        ) replies
+        WHERE c.parent_id IS NULL
       ), page AS (
-        SELECT c.*, 0 AS reply_count FROM visible c
+        SELECT c.*, 0 AS reply_count, ''::text AS reply_version FROM visible c
         WHERE $4::text IS NOT NULL AND c.parent_id = $4 AND c.deleted_at IS NULL AND c.comment_id > $2 COLLATE "C"
         UNION ALL
         SELECT t.* FROM threads t WHERE $4::text IS NULL AND (t.deleted_at IS NULL OR t.reply_count > 0) AND t.comment_id > $2 COLLATE "C"
@@ -78,7 +83,7 @@ export function createPostgresCommunity({ query, projects, secret, now = Date.no
       const page = result.entries.slice(0, 20);
       return { comments: page.map(row => ({ id: row.comment_id, text: row.text,
         createdAt: new Date(row.created_at).toISOString(), profile: profileOf(row),
-        parentId: row.parent_id, replyCount: row.reply_count, deleted: Boolean(row.deleted_at),
+        parentId: row.parent_id, replyCount: row.reply_count, replyVersion: row.reply_version, deleted: Boolean(row.deleted_at),
         own: !row.deleted_at && owns({ author: row.author_id }, actor, legacyToken),
         ...(manage ? { hidden: row.hidden, authorEmail: row.author_email || null } : {}) })),
       total: result.total, nextCursor: result.entries.length > 20 ? page.at(-1).comment_id : null };

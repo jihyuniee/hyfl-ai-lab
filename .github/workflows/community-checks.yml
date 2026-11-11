@@ -1,0 +1,32 @@
+name: Exhibition community checks
+
+on:
+  pull_request:
+    paths:
+      - 'api/ai-data/**'
+      - 'services/ai-data-voting/**'
+      - 'src/scripts/data-community.ts'
+      - 'src/components/Data*'
+      - 'src/data/ai-data-projects.json'
+      - 'package*.json'
+      - '.github/workflows/community-checks.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            services/ai-data-voting/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm ci --prefix services/ai-data-voting --no-audit --no-fund
+      - run: npm test --prefix services/ai-data-voting
+      - run: npm run build
