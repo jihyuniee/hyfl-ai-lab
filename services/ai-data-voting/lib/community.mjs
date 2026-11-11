@@ -12,8 +12,8 @@ export function createCommunity({ storage, projects, secret, now = Date.now }) {
   function project(id) {
     if (!projects.some(item => item.id === id)) throw new CommunityError(400, '등록된 작품을 선택해 주세요.');
   }
-  function school(actor) {
-    if (!actor?.school || !/^[0-9a-f]{64}$/.test(actor.id || '')) throw new CommunityError(401, '학교 구글 계정으로 로그인해 주세요.');
+  function signedIn(actor) {
+    if (!actor?.authenticated || !/^[0-9a-f]{64}$/.test(actor.id || '')) throw new CommunityError(401, 'Google 계정으로 로그인해 주세요.');
     return actor.id;
   }
   function legacy(token) {
@@ -37,7 +37,7 @@ export function createCommunity({ storage, projects, secret, now = Date.now }) {
     summary,
     async all(actor) { return Promise.all(projects.map(item => summary(item.id, actor))); },
     async like(id, actor, liked, consent) {
-      project(id); const author = school(actor);
+      project(id); const author = signedIn(actor);
       if (typeof liked !== 'boolean') throw new CommunityError(400, '좋아요 상태를 확인해 주세요.');
       if (liked && consent !== true) throw new CommunityError(400, '이름과 프로필 공개 안내를 확인해 주세요.');
       if (liked) await storage.create(likePath(id, author), { createdAt: new Date(now()).toISOString(), profile: actor.profile }, true);
@@ -70,7 +70,7 @@ export function createCommunity({ storage, projects, secret, now = Date.now }) {
         nextCursor: page.length && sorted.some(file => file.pathname > page.at(-1).pathname) ? fileId(page.at(-1)) : null };
     },
     async comment(id, actor, text, consent) {
-      project(id); const author = school(actor);
+      project(id); const author = signedIn(actor);
       if (consent !== true) throw new CommunityError(400, '이름과 프로필 공개 안내를 확인해 주세요.');
       if (typeof text !== 'string' || !text.trim() || text.trim().length > 300) throw new CommunityError(400, '댓글은 1~300자로 작성해 주세요.');
       const minute = Math.floor(now() / 60000);

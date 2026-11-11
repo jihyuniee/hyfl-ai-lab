@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createHmac } from 'node:crypto';
 import { createCommunity } from '../lib/community.mjs';
 const secret = 'test-secret-'.repeat(4);
-const first = { id: 'a'.repeat(64), school: true, profile: { name: '첫 관람객', picture: '' }, email: 'first@school.example', isAdmin: false };
+const first = { id: 'a'.repeat(64), authenticated: true, profile: { name: '첫 관람객', picture: '' }, email: 'first@school.example', isAdmin: false };
 const second = { ...first, id: 'b'.repeat(64), profile: { name: '두 번째 관람객', picture: '' }, email: 'second@school.example' };
 const admin = { ...first, id: 'c'.repeat(64), isAdmin: true };
 function fixture() {

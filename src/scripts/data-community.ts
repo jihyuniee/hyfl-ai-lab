@@ -4,7 +4,7 @@ type Summary = { projectId: string; likes: number; comments: number; liked: bool
 type Comment = { id: string; text: string; createdAt: string; own: boolean; profile: Profile | null; hidden?: boolean; authorEmail?: string | null };
 type CommentPage = { comments: Comment[]; total: number; nextCursor: string | null };
 type PeoplePage = { people: Profile[]; total: number; anonymous: number; nextCursor: string | null };
-type Session = { auth: { ready: boolean; clientId: string; schoolDomains: string[] }; viewer: Viewer | null };
+type Session = { auth: { ready: boolean; clientId: string; schoolDomains: string[]; loginMode?: string }; viewer: Viewer | null };
 type GoogleIdentity = { initialize(options: { client_id: string; callback: (response: { credential: string }) => void; auto_select: boolean; hd?: string }): void; renderButton(element: HTMLElement, options: { theme: string; size: string; text: string }): void; disableAutoSelect(): void };
 const googleIdentity = () => (window as Window & { google?: { accounts: { id: GoogleIdentity } } }).google?.accounts.id;
 const messageOf = (error: unknown) => error instanceof Error && !/fetch|timeout|aborted/i.test(error.message) ? error.message : '반응을 연결하지 못했습니다. 네트워크 연결을 확인하고 다시 시도해 주세요.';
@@ -111,19 +111,19 @@ export function initCommunity() {
     if (!consentBox.checked) return;
     try {
       await ready;
-      if (!session.auth.ready) { googleSlot.hidden = true; loginMessage.textContent = '학교 로그인 연결을 준비하고 있습니다. 연결 후 참여할 수 있습니다.'; return; }
-      loginMessage.textContent = '학교 구글 계정을 선택해 주세요.';
+      if (!session.auth.ready) { googleSlot.hidden = true; loginMessage.textContent = 'Google 로그인 연결을 준비하고 있습니다. 연결 후 참여할 수 있습니다.'; return; }
+      loginMessage.textContent = '학교 계정이나 개인 Google 계정을 선택해 주세요.';
       await loadGoogle();
       if (!consentBox.checked || !loginDialog.open) return;
       const identity = googleIdentity()!;
       identity.initialize({ client_id: session.auth.clientId, auto_select: false,
-        ...(session.auth.schoolDomains.length === 1 ? { hd: session.auth.schoolDomains[0] } : {}),
+        ...(session.auth.loginMode === 'school' && session.auth.schoolDomains.length === 1 ? { hd: session.auth.schoolDomains[0] } : {}),
         callback: async response => {
           token = response.credential;
           try {
-            // The server verifies signature, audience, expiry, verified email and Workspace hd.
+            // The server verifies signature, audience, expiry and verified email (hd in school-only mode).
             const verified = await request<Session>('GET', undefined, { session: 'true' });
-            if (!verified.viewer) throw new Error('학교 계정을 확인하지 못했습니다.');
+            if (!verified.viewer) throw new Error('Google 계정을 확인하지 못했습니다.');
             session = verified; consent = consentBox.checked;
             if (!consent) { token = ''; session.viewer = null; return; }
             await refreshAll(); loginDialog.close(); refreshPanels.forEach(refresh => refresh());
@@ -216,7 +216,7 @@ export function initCommunity() {
     }
     function setView(next: string) {
       view = next; form.hidden = next !== 'comments';
-      root.querySelector('[data-community-prompt]')!.textContent = next === 'likes' ? '이 작품에 좋아요를 남긴 학교 관람객입니다.' : '직접 써 본 소감이나 팀에게 전하고 싶은 제안을 남겨 주세요.';
+      root.querySelector('[data-community-prompt]')!.textContent = next === 'likes' ? '이 작품에 좋아요를 남긴 관람객입니다.' : '직접 써 본 소감이나 팀에게 전하고 싶은 제안을 남겨 주세요.';
       root.querySelectorAll<HTMLElement>('[data-community-tab]').forEach(tab => { const selected = tab.dataset.communityTab === next; tab.setAttribute('aria-selected', String(selected)); tab.tabIndex = selected ? 0 : -1; });
       root.querySelector<HTMLElement>('[data-community-manage-label]')!.hidden = next !== 'comments' || !session.viewer?.isAdmin;
       void load(false);

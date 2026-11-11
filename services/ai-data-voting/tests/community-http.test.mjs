@@ -25,7 +25,7 @@ test('anonymous writes and legacy client UUID writes cannot bypass school login'
   const run = createHandler({ env, community });
   for (const authorization of [undefined, 'Bearer a0000000-0000-4000-8000-000000000001']) {
     const res = response();
-    await run({ headers: { origin: 'https://jihyuniee.github.io', authorization, 'content-type': 'application/json' }, method: 'POST', url: '/api/ai-data/community', body: { action: 'like', projectId: 'sample', liked: true, profileConsent: true, actor: { school: true, isAdmin: true } } }, res);
+    await run({ headers: { origin: 'https://jihyuniee.github.io', authorization, 'content-type': 'application/json' }, method: 'POST', url: '/api/ai-data/community', body: { action: 'like', projectId: 'sample', liked: true, profileConsent: true, actor: { authenticated: true, isAdmin: true } } }, res);
     assert.equal(res.statusCode, 401);
   }
   assert.equal(writes, 0);
