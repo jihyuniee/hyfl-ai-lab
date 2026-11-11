@@ -96,3 +96,28 @@ test('older comments and large liker lists paginate without duplicate or lost re
   assert.equal((await service.likers('sample', people.nextCursor)).people.length, 5);
   await assert.rejects(service.comments('sample', null, { cursor: '../other' }), { status: 400 });
 });
+test('the 18-project gallery shares three listings while preserving project counts, privacy and hidden comments', async () => {
+  const projects = Array.from({ length: 18 }, (_, i) => ({ id: `work-${i}` }));
+  const hiddenId = '99970000000-' + 'd'.repeat(64);
+  const visibleId = '99970000001-' + 'e'.repeat(64);
+  const records = new Map([
+    [`community/likes/work-0/${first.id}.json`, { profile: first.profile }],
+    [`community/likes/work-1/${second.id}.json`, { createdAt: '2026-11-10T00:00:00Z' }],
+    [`community/comments/work-0/${hiddenId}.json`, { text: 'hidden' }],
+    [`community/moderation/work-0/${hiddenId}.json`, { hiddenAt: '2026-11-10T00:00:00Z' }],
+    [`community/comments/work-1/${visibleId}.json`, { text: 'visible' }]
+  ]);
+  const prefixes = [];
+  const service = createCommunity({ projects, secret, storage: {
+    async list(prefix) { prefixes.push(prefix); return [...records.keys()].filter(path => path.startsWith(prefix)).map(pathname => ({ pathname })); },
+    async read(path) { return records.get(path); }
+  } });
+  const result = await service.all(first);
+  assert.deepEqual(prefixes.sort(), ['community/comments/', 'community/likes/', 'community/moderation/']);
+  assert.equal(result.length, 18);
+  assert.deepEqual(result[0], { projectId: 'work-0', likes: 1, comments: 0, liked: true, people: [first.profile] });
+  assert.deepEqual(result[1], { projectId: 'work-1', likes: 1, comments: 1, liked: false, people: [] });
+  assert.equal(result.slice(2).every(item => item.likes === 0 && item.comments === 0 && !item.liked), true);
+  assert.equal(JSON.stringify(result).includes(first.id), false);
+  assert.equal(records.size, 5);
+});

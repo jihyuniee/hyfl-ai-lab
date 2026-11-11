@@ -88,3 +88,13 @@ Google Cloud OAuth 웹 클라이언트의 승인된 JavaScript 원본에 `https:
 `node scripts/package-exhibition-api.mjs /저장소밖/새폴더`로 API 전용 패키지를 만든 뒤 기존 `hyfl-ai-data-voting` 프로젝트에 배포한다. 서버 코드와 ID-only 작품 목록만 포함하며 학생 소개·교과서는 배포하지 않는다. 작품 추가 시 API도 다시 배포한다.
 
 `npm test --prefix services/ai-data-voting`과 `npm run build`를 실행한다. 단위 테스트는 검증 결과와 저장소를 주입하므로 실제 Google 계정 인증이나 운영 Blob 쓰기 검증을 대신하지 않는다. 운영 연결 후 학교 계정 로그인 → 공개 안내 확인 → 좋아요·취소 → 다른 브라우저에서 동일 계정 복원 → 댓글 작성·본인 삭제 → 교사 숨김·복원을 확인한다. 개인 Gmail·학교 계정 허용, 만료/위조 토큰·익명 UUID 쓰기 거절, `school` 모드에서 다른 학교 계정 거절과 일반 응답의 이메일 비공개도 확인한다.
+
+### 저장소 사용량과 정지 상태
+
+2026-11-11 운영 점검에서 기존 private Blob 저장소의 `status=limits-exceeded-suspended`, `billingState=suspended`, `usageQuotaExceeded=true`를 확인했다. 별도 진단 경로의 작은 JSON 저장도 `This store has been suspended`로 실패했고 진단 경로 정리를 완료했다. 로그인 이름이 표시되거나 빈 목록이 조회되는 것만으로 저장 성공을 판단하지 않는다. 정지된 항목의 재시도를 유도하지 않도록 API는 `503`과 `COMMUNITY_STORAGE_SUSPENDED`를 반환하고, 토큰·이메일·댓글 본문 없이 오류 분류와 HTTP 메서드만 로그에 남긴다.
+
+작품 전체 조회는 좋아요·댓글·숨김 기록을 종류별로 한 번씩 모아서 계산한다. 18개 작품 및 목록당 1페이지일 때 목록 호출을 54회에서 3회로 줄인다. 목록이 1,000개를 넘으면 기존처럼 페이지를 이어 조회한다. 개별 작품의 기록 경로, 익명 기록, 프로필 공개 범위와 숨김 처리는 유지한다. 프로필 본문 읽기와 쓰기도 사용량을 소비하므로 실제 전시 규모에 맞춰 Usage를 확인한다.
+
+저장소 정지 해제는 운영 계정에서 Vercel의 사용량·제한 상태를 확인해 처리해야 한다. 기존 저장소와 기록을 보존하며, 정지가 해제된 뒤 실제 학교·개인 계정으로 저장→조회→취소/삭제를 다시 검증한다. 코드를 배포한 것만으로 운영 저장이 복구됐다고 표시하지 않는다.
+
+공식 사용량 안내: https://vercel.com/docs/vercel-blob/usage-and-pricing

@@ -21,21 +21,33 @@ export function createCommunity({ storage, projects, secret, now = Date.now }) {
   }
   function owns(record, actor, legacyToken) { return Boolean(record?.author && ((actor?.id && record.author === actor.id) || (legacy(legacyToken) && record.author === legacy(legacyToken)))); }
   function likePath(id, author) { return `community/likes/${id}/${author}.json`; }
-  async function commentFiles(id, manage = false) {
-    const files = await storage.list(`community/comments/${id}/`);
-    const hidden = new Set((await storage.list(`community/moderation/${id}/`)).map(fileId));
+  const forProject = (files, namespace, id) => files.filter(file => file.pathname.startsWith(`community/${namespace}/${id}/`));
+  async function commentFiles(id, manage = false, snapshot) {
+    const files = snapshot ? forProject(snapshot.comments, 'comments', id) : await storage.list(`community/comments/${id}/`);
+    const moderation = snapshot ? forProject(snapshot.moderation, 'moderation', id) : await storage.list(`community/moderation/${id}/`);
+    const hidden = new Set(moderation.map(fileId));
     return { files: files.filter(file => manage || !hidden.has(fileId(file))), hidden };
   }
-  async function summary(id, actor) {
+  async function summary(id, actor, snapshot) {
     project(id);
-    const [likes, comments] = await Promise.all([storage.list(`community/likes/${id}/`), commentFiles(id)]);
+    const [likes, comments] = await Promise.all([
+      snapshot ? forProject(snapshot.likes, 'likes', id) : storage.list(`community/likes/${id}/`), commentFiles(id, false, snapshot)
+    ]);
     const previews = await Promise.all(likes.slice(0, 4).map(file => storage.read(file.pathname)));
     return { projectId: id, likes: likes.length, comments: comments.files.length,
       liked: Boolean(actor && likes.some(file => file.pathname === likePath(id, actor.id))), people: previews.map(profileOf).filter(Boolean) };
   }
   return {
     summary,
-    async all(actor) { return Promise.all(projects.map(item => summary(item.id, actor))); },
+    async all(actor) {
+      // List each namespace once instead of three times per project (54 -> 3 for 18 projects).
+      // Keep the existing paths and per-namespace pagination; do not rewrite any records.
+      const [likes, comments, moderation] = await Promise.all([
+        storage.list('community/likes/'), storage.list('community/comments/'), storage.list('community/moderation/')
+      ]);
+      const snapshot = { likes, comments, moderation };
+      return Promise.all(projects.map(item => summary(item.id, actor, snapshot)));
+    },
     async like(id, actor, liked, consent) {
       project(id); const author = signedIn(actor);
       if (typeof liked !== 'boolean') throw new CommunityError(400, '좋아요 상태를 확인해 주세요.');
