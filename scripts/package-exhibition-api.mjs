@@ -7,6 +7,8 @@ const allowlist = [
   'api/ai-data/community.mjs', 'api/ai-data/status.mjs', 'api/ai-data/vote.mjs',
   'services/ai-data-voting/lib/community.mjs', 'services/ai-data-voting/lib/blob.mjs',
   'services/ai-data-voting/lib/community-auth.mjs',
+  'services/ai-data-voting/lib/community-postgres.mjs', 'services/ai-data-voting/lib/postgres.mjs', 'services/ai-data-voting/lib/community-import.mjs',
+  'services/ai-data-voting/sql/community.sql', 'services/ai-data-voting/scripts/prepare-community-db.mjs',
   'services/ai-data-voting/lib/http.mjs', 'services/ai-data-voting/lib/voting.mjs',
   'services/ai-data-voting/package.json', 'services/ai-data-voting/package-lock.json'
 ];
@@ -16,7 +18,7 @@ const projects = JSON.parse(await readFile(resolve(root, 'src/data/ai-data-proje
 await mkdir(resolve(output, 'src/data'), { recursive: true });
 await writeFile(resolve(output, 'src/data/ai-data-projects.json'), JSON.stringify(projects.map(({ id }) => ({ id }))));
 await writeFile(resolve(output, 'package.json'), JSON.stringify({ name: 'hyfl-ai-data-api', type: 'module', private: true, engines: { node: '>=22' } }));
-await writeFile(resolve(output, 'vercel.json'), JSON.stringify({ framework: null, installCommand: 'npm ci --prefix services/ai-data-voting --no-audit --no-fund', buildCommand: 'mkdir -p voting-public', outputDirectory: 'voting-public', functions: { 'api/ai-data/*.mjs': { includeFiles: 'src/data/ai-data-projects.json' } } }));
+await writeFile(resolve(output, 'vercel.json'), JSON.stringify({ framework: null, installCommand: 'npm ci --prefix services/ai-data-voting --omit=dev --no-audit --no-fund', buildCommand: 'node services/ai-data-voting/scripts/prepare-community-db.mjs && mkdir -p voting-public', outputDirectory: 'voting-public', functions: { 'api/ai-data/*.mjs': { includeFiles: 'src/data/ai-data-projects.json' } } }));
 await mkdir(resolve(output, 'voting-public'));
 await writeFile(resolve(output, 'voting-public/index.html'), '<!doctype html><html lang="ko"><meta charset="utf-8"><title>AI × DATA 전시관 API</title><p>AI × DATA 전시관의 관람객 반응 및 투표 API입니다.</p></html>');
 console.log(`Packaged exhibition API: ${output}`);

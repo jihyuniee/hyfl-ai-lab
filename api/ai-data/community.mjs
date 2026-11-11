@@ -2,6 +2,8 @@ import { put, list, get, del, BlobStoreSuspendedError } from '../../services/ai-
 import projects from '../../src/data/ai-data-projects.json' with { type: 'json' };
 import { createCommunity, CommunityError, isLegacyVisitor } from '../../services/ai-data-voting/lib/community.mjs';
 import { authenticate, authConfiguration } from '../../services/ai-data-voting/lib/community-auth.mjs';
+import { createPostgresCommunity } from '../../services/ai-data-voting/lib/community-postgres.mjs';
+import { createPostgresQuery } from '../../services/ai-data-voting/lib/postgres.mjs';
 
 const storage = {
   async list(prefix) {
@@ -33,7 +35,11 @@ const storage = {
   },
   async remove(path) { await del(path); }
 };
-const service = createCommunity({ storage, projects, secret: process.env.VOTER_HASH_SECRET });
+export function communityForEnvironment(env, queryFactory = createPostgresQuery) {
+  return env.DATABASE_URL ? createPostgresCommunity({ query: queryFactory(env.DATABASE_URL), projects, secret: env.VOTER_HASH_SECRET }) :
+    createCommunity({ storage, projects, secret: env.VOTER_HASH_SECRET });
+}
+const storageConfigured = env => Boolean(env.DATABASE_URL || env.BLOB_READ_WRITE_TOKEN || env.BLOB_STORE_ID);
 export function prepareCommunity(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   res.setHeader('Vary', 'Origin');
@@ -48,7 +54,7 @@ export function prepareCommunity(req, res) {
   if (!['GET', 'POST', 'DELETE'].includes(req.method)) { res.setHeader('Allow', 'GET, POST, DELETE, OPTIONS'); res.status(405).end(); return false; }
   return true;
 }
-export function createHandler({ community = service, env = process.env, auth = authenticate,
+export function createHandler({ community: providedCommunity, env = process.env, auth = authenticate,
   reportFailure = (code, method) => console.error('community_api_failure', { code, method }) } = {}) {
 return async function handler(req, res) {
   if (!prepareCommunity(req, res)) return;
@@ -58,15 +64,16 @@ return async function handler(req, res) {
     const actor = token && !isLegacyVisitor(token) ? await auth(token, env) : null;
     const params = new URL(req.url, 'https://community.invalid').searchParams;
     const projectId = params.get('project');
+    const community = providedCommunity || communityForEnvironment(env);
     let result;
     if (req.method === 'GET') {
-      const session = { auth: authConfiguration(env), viewer: actor ? { ...actor.profile, isAdmin: actor.isAdmin } : null };
+      const session = { auth: authConfiguration(env), storage: env.DATABASE_URL ? 'postgres' : 'blob', viewer: actor ? { ...actor.profile, isAdmin: actor.isAdmin } : null };
       if (params.has('session')) { res.status(200).json(session); return; }
-      if (!env.BLOB_READ_WRITE_TOKEN && !env.BLOB_STORE_ID) throw new CommunityError(503, '좋아요와 댓글을 준비하고 있습니다.');
+      if (!storageConfigured(env)) throw new CommunityError(503, '좋아요와 댓글을 준비하고 있습니다.');
       result = !projectId ? { ...session, projects: await community.all(actor) } : params.get('view') === 'likes' ?
         await community.likers(projectId, params.get('cursor') || '') : await community.comments(projectId, actor, { legacyToken, cursor: params.get('cursor') || '', manage: params.get('manage') === 'true' });
     } else {
-      if (!env.BLOB_READ_WRITE_TOKEN && !env.BLOB_STORE_ID) throw new CommunityError(503, '좋아요와 댓글을 준비하고 있습니다.');
+      if (!storageConfigured(env)) throw new CommunityError(503, '좋아요와 댓글을 준비하고 있습니다.');
       if (!req.headers['content-type']?.startsWith('application/json')) throw new CommunityError(415, 'JSON 요청이 필요합니다.');
       if (Number(req.headers['content-length'] || 0) > 4096) throw new CommunityError(413, '입력한 내용이 너무 깁니다.');
       const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
