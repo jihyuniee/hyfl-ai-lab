@@ -80,7 +80,9 @@ test('Postgres teacher moderation preserves the original text and hides private 
   assert.equal((await service.comments('sample')).total, 1);
   await service.moderate('sample', teacher, id, true);
   await service.removeComment('sample', first, id);
-  assert.equal((await query('SELECT * FROM hyfl_community.moderation')).length, 0);
+  // Keep the hidden flag even after deletion so attached replies cannot be republished.
+  assert.equal((await query('SELECT * FROM hyfl_community.moderation')).length, 1);
+  assert.equal((await service.comments('sample')).total, 0);
 });
 test('Postgres aggregates 18 project summaries in one query and paginates without losing records', async () => {
   const projects = Array.from({ length: 18 }, (_, i) => ({ id: `work-${i}` }));
@@ -117,7 +119,7 @@ test('deployment database preparation is repeatable and removes only its private
   const { service } = fixture();
   await service.like('sample', first, true, true);
   await service.comment('sample', first, '기존 감상 보존', true);
-  for (let i = 0; i < 2; i++) assert.deepEqual(await prepareCommunityDatabase(query, schema), { schemaReady: true, privateStorageTest: true, diagnosticRowsRemoved: true });
+  for (let i = 0; i < 2; i++) assert.deepEqual(await prepareCommunityDatabase(query, schema), { schemaReady: true, privateStorageTest: true, replyStorageTest: true, diagnosticRowsRemoved: true });
   assert.equal((await service.summary('sample')).likes, 1);
   assert.equal((await service.comments('sample')).comments[0].text, '기존 감상 보존');
   assert.equal((await query("SELECT count(*)::int AS count FROM hyfl_community.comments WHERE project_id LIKE 'diagnostic-%'"))[0].count, 0);
@@ -168,4 +170,122 @@ test('the HTTP comment flow persists to Postgres, returns the public contract an
   assert.equal((await request('DELETE', 'second', { projectId: 'sample', commentId: id })).statusCode, 403);
   const removed = await request('DELETE', 'first', { projectId: 'sample', commentId: id });
   assert.equal(removed.statusCode, 200); assert.equal(removed.body.total, 0);
+});
+
+test('replies belong to their root, retain public profiles and count alongside root comments', async () => {
+  const { service } = fixture();
+  const root = (await service.comment('sample', first, '원댓글', true)).comments[0];
+  const page = await service.comment('sample', second, '팀의 답변', true, root.id);
+  assert.equal(page.comments[0].parentId, root.id);
+  assert.equal(page.comments[0].profile.name, second.profile.name);
+  const list = await service.comments('sample', first);
+  assert.equal(list.comments.length, 1); assert.equal(list.comments[0].replyCount, 1); assert.equal(list.total, 2);
+  assert.equal((await service.summary('sample')).comments, 2);
+  const replies = await service.comments('sample', first, { parentId: root.id });
+  assert.equal(replies.comments[0].own, false);
+  assert.equal(JSON.stringify(replies).includes(second.email), false);
+  assert.equal(JSON.stringify(replies).includes(second.id), false);
+});
+test('reply targets reject another project, nested replies, missing parents, deletion and hiding', async () => {
+  const { service, advance } = fixture([{ id: 'sample' }, { id: 'other' }]);
+  const root = (await service.comment('sample', first, '원댓글', true)).comments[0];
+  for (const target of ['', {}, "'; DROP TABLE comments; --"]) await assert.rejects(service.comment('sample', second, '답글', true, target), { status: 400 });
+  await assert.rejects(service.comment('other', second, '다른 작품', true, root.id), { status: 404 });
+  await assert.rejects(service.comment('sample', second, '없는 댓글', true, '99970000000-' + 'f'.repeat(64)), { status: 404 });
+  const reply = (await service.comment('sample', second, '답글', true, root.id)).comments[0]; advance();
+  await assert.rejects(service.comment('sample', second, '답글의 답글', true, reply.id), { status: 404 });
+  await service.moderate('sample', teacher, root.id, true);
+  await assert.rejects(service.comment('sample', second, '숨겨진 원댓글', true, root.id), { status: 404 });
+  await assert.rejects(service.comments('sample', null, { parentId: root.id }), { status: 404 });
+  await service.moderate('sample', teacher, root.id, false); await service.removeComment('sample', first, root.id);
+  await assert.rejects(service.comment('sample', second, '삭제된 원댓글', true, root.id), { status: 404 });
+});
+test('a root deletion redacts private content while preserving other people’s replies', async () => {
+  const { service } = fixture();
+  const root = (await service.comment('sample', first, '원문은 삭제되어야 함', true)).comments[0];
+  const reply = (await service.comment('sample', second, '남겨 둘 답글', true, root.id)).comments[0];
+  await assert.rejects(service.removeComment('sample', first, reply.id), { status: 403 });
+  await service.removeComment('sample', first, root.id);
+  const page = await service.comments('sample', first);
+  assert.equal(page.comments[0].deleted, true); assert.equal(page.comments[0].own, false); assert.equal(page.comments[0].profile, null);
+  assert.equal(page.comments[0].text, '삭제된 댓글입니다.'); assert.equal(page.total, 1);
+  const [stored] = await query('SELECT text, profile, author_email FROM hyfl_community.comments WHERE comment_id = $1', [root.id]);
+  assert.deepEqual(stored, { text: '삭제된 댓글입니다.', profile: null, author_email: '' });
+  assert.equal((await service.comments('sample', null, { parentId: root.id })).comments[0].text, '남겨 둘 답글');
+  await service.removeComment('sample', second, reply.id);
+  assert.equal((await service.comments('sample')).comments.length, 0);
+  assert.equal((await service.summary('sample')).comments, 0);
+});
+test('root moderation hides the whole thread and cannot be bypassed by deleting the root', async () => {
+  const { service } = fixture();
+  const root = (await service.comment('sample', first, '원댓글', true)).comments[0];
+  const reply = (await service.comment('sample', second, '답글', true, root.id)).comments[0];
+  await service.moderate('sample', teacher, reply.id, true);
+  assert.equal((await service.summary('sample')).comments, 1);
+  assert.equal((await service.comments('sample')).comments[0].replyCount, 0);
+  await service.moderate('sample', teacher, reply.id, false);
+  await service.moderate('sample', teacher, root.id, true); await service.removeComment('sample', first, root.id);
+  assert.equal((await service.comments('sample')).total, 0); assert.equal((await service.summary('sample')).comments, 0);
+  await assert.rejects(service.comments('sample', null, { parentId: root.id }), { status: 404 });
+  const managed = await service.comments('sample', teacher, { parentId: root.id, manage: true });
+  assert.equal(managed.comments[0].text, '답글');
+  await service.moderate('sample', teacher, root.id, false);
+  assert.equal((await service.comments('sample')).total, 1);
+});
+test('reply pagination has no duplicates and the per-minute limit is shared with root comments', async () => {
+  const { service, advance } = fixture();
+  const root = (await service.comment('sample', first, '원댓글', true)).comments[0];
+  await assert.rejects(service.comment('sample', first, '같은 분 답글', true, root.id), { status: 429 });
+  advance();
+  for (let i = 0; i < 45; i++) { await service.comment('sample', second, `답글 ${i}`, true, root.id); advance(); }
+  let cursor = '', ids = [];
+  do { const page = await service.comments('sample', null, { parentId: root.id, cursor }); ids.push(...page.comments.map(item => item.id)); cursor = page.nextCursor; } while (cursor);
+  assert.equal(ids.length, 45); assert.equal(new Set(ids).size, 45);
+  assert.equal((await service.comments('sample')).comments.length, 1);
+  assert.equal((await service.comments('sample')).total, 46);
+  await service.comment('sample', second, '일반 댓글', true);
+  await assert.rejects(service.comment('sample', second, '제한 우회 답글', true, root.id), { status: 429 });
+});
+test('the HTTP reply flow binds parentId, preserves ownership and redacts a deleted root', async () => {
+  process.env.ALLOWED_ORIGINS = 'https://jihyuniee.github.io';
+  const { service } = fixture();
+  const run = createHandler({ env: { DATABASE_URL: 'test-only' }, community: service, auth: async token => token === 'first' ? first : second });
+  async function request(method, actor, body, suffix = '') {
+    const res = { statusCode: null, body: null, setHeader() {}, status(value) { this.statusCode = value; return this; }, json(value) { this.body = value; }, end() {} };
+    await run({ method, url: '/api/ai-data/community' + suffix, body, headers: { origin: 'https://jihyuniee.github.io', ...(actor ? { authorization: 'Bearer ' + actor } : {}), 'content-type': 'application/json' } }, res);
+    return res;
+  }
+  const parent = (await request('POST', 'first', { action: 'comment', projectId: 'sample', text: '원댓글', profileConsent: true })).body.comments[0].id;
+  const body = { action: 'comment', projectId: 'sample', text: 'HTTP 답글', profileConsent: true, parentId: parent };
+  assert.equal((await request('POST', null, body)).statusCode, 401);
+  assert.equal((await request('POST', 'second', { ...body, profileConsent: false })).statusCode, 400);
+  const saved = await request('POST', 'second', body); assert.equal(saved.statusCode, 200); assert.equal(saved.body.comments[0].parentId, parent);
+  const read = await request('GET', null, null, '?project=sample&parent=' + parent);
+  assert.equal(read.body.comments[0].text, 'HTTP 답글'); assert.equal(read.body.comments[0].own, false);
+  await request('DELETE', 'first', { projectId: 'sample', commentId: parent });
+  assert.equal((await request('GET', null, null, '?project=sample')).body.comments[0].deleted, true);
+  assert.equal((await request('GET', null, null, '?session=true')).body.features.replies, true);
+});
+
+test('adding reply columns twice preserves an existing comment from the previous schema', async () => {
+  const previous = new PGlite();
+  try {
+    await previous.exec(schema.split('ALTER TABLE hyfl_community.comments')[0]);
+    const id = '99970000000-' + 'd'.repeat(64);
+    await previous.query('INSERT INTO hyfl_community.comments (project_id, comment_id, author_id, text, profile, author_email, created_at) VALUES ($1,$2,$3,$4,$5::jsonb,$6,$7)', ['sample', id, first.id, '기존 댓글 보존', JSON.stringify(first.profile), first.email, '2026-11-11T06:00:00Z']);
+    await previous.exec(schema); await previous.exec(schema);
+    const {rows} = await previous.query('SELECT comment_id, text, profile, author_email, parent_id, deleted_at FROM hyfl_community.comments');
+    assert.equal(rows.length, 1); assert.equal(rows[0].comment_id, id); assert.equal(rows[0].text, '기존 댓글 보존');
+    assert.equal(rows[0].profile.name, first.profile.name); assert.equal(rows[0].author_email, first.email);
+    assert.equal(rows[0].parent_id, null); assert.equal(rows[0].deleted_at, null);
+  } finally { await previous.close(); }
+});
+test('a concurrent root deletion and reply cannot leave a reply without its root', async () => {
+  const { service } = fixture();
+  const parent = (await service.comment('sample', first, '원댓글', true)).comments[0].id;
+  const result = await Promise.allSettled([service.comment('sample', second, '동시 답글', true, parent), service.removeComment('sample', first, parent)]);
+  assert.equal(result[1].status, 'fulfilled');
+  if (result[0].status === 'rejected') assert.equal(result[0].reason.status, 404);
+  const [row] = await query('SELECT count(*)::int AS orphaned FROM hyfl_community.comments r LEFT JOIN hyfl_community.comments p ON p.project_id=r.project_id AND p.comment_id=r.parent_id WHERE r.parent_id IS NOT NULL AND p.comment_id IS NULL');
+  assert.equal(row.orphaned, 0);
 });

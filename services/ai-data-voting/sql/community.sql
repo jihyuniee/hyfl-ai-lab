@@ -36,3 +36,8 @@ CREATE TABLE IF NOT EXISTS hyfl_community.migrations (
 );
 
 REVOKE ALL ON ALL TABLES IN SCHEMA hyfl_community FROM PUBLIC;
+
+ALTER TABLE hyfl_community.comments
+  ADD COLUMN IF NOT EXISTS parent_id text COLLATE "C" CHECK (parent_id IS NULL OR (parent_id ~ '^[0-9]{11}-[0-9a-f]{64}$' AND parent_id <> comment_id)),
+  ADD COLUMN IF NOT EXISTS deleted_at timestamptz;
+CREATE INDEX IF NOT EXISTS community_comments_parent ON hyfl_community.comments (project_id, parent_id, comment_id);

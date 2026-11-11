@@ -36,11 +36,18 @@ export async function prepareCommunityDatabase(query, schema, legacyStorage, app
     let denied = false;
     try { await service.removeComment(id, other, commentId); } catch (error) { denied = error.status === 403; }
     check(denied, 'DB_COMMENT_OWNER_FAILED');
+    const reply = await service.comment(id, other, '비공개 답글 연결 점검', true, commentId);
+    const replyId = reply.comments[0]?.id;
+    check(reply.total === 1 && reply.comments[0]?.parentId === commentId, 'DB_REPLY_WRITE_FAILED');
+    check((await service.comments(id, actor)).comments[0]?.replyCount === 1, 'DB_REPLY_COUNT_FAILED');
     await service.moderate(id, teacher, commentId, true);
     check((await service.comments(id)).total === 0, 'DB_COMMENT_HIDE_FAILED');
     await service.moderate(id, teacher, commentId, false);
-    check((await service.comments(id)).total === 1, 'DB_COMMENT_RESTORE_FAILED');
+    check((await service.comments(id)).total === 2, 'DB_COMMENT_RESTORE_FAILED');
     await service.removeComment(id, actor, commentId);
+    const deleted = await service.comments(id);
+    check(deleted.total === 1 && deleted.comments[0]?.deleted && deleted.comments[0]?.profile === null, 'DB_REPLY_PRESERVATION_FAILED');
+    await service.removeComment(id, other, replyId);
     await service.like(id, actor, false);
     const summary = await service.summary(id, actor);
     check(summary.likes === 0 && summary.comments === 0, 'DB_COMMENT_CLEANUP_FAILED');
@@ -49,7 +56,7 @@ export async function prepareCommunityDatabase(query, schema, legacyStorage, app
     await applicationQuery('DELETE FROM hyfl_community.comments WHERE project_id = $1', [id]);
     await applicationQuery('DELETE FROM hyfl_community.likes WHERE project_id = $1', [id]);
   }
-  return { schemaReady: true, privateStorageTest: true, diagnosticRowsRemoved: true, ...(legacyImport ? { legacyImport } : {}) };
+  return { schemaReady: true, privateStorageTest: true, replyStorageTest: true, diagnosticRowsRemoved: true, ...(legacyImport ? { legacyImport } : {}) };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
