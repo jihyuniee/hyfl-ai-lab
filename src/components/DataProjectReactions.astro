@@ -4,135 +4,21 @@ const { projectId, title } = Astro.props;
 ---
 <div class="work-reactions" data-community-project={projectId} data-community-title={title}>
   <div class="reaction-buttons">
+    <button class="reaction-people" data-community-people aria-label={`${title} 좋아요한 사람 보기`}><span class="avatar-stack" data-community-avatars></span><span data-community-people-label>함께 응원해요</span></button>
     <button class="reaction-like" data-community-like disabled aria-pressed="false" aria-label={`${title} 좋아요`}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg><span>좋아요</span><span data-community-likes>…</span></button>
     <button data-community-open aria-haspopup="dialog" aria-controls={`comments-${projectId}`} aria-label={`${title} 댓글 보기 및 쓰기`}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg><span>댓글</span><span data-community-count>…</span></button>
   </div>
   <p class="reaction-status" data-community-status role="status"></p>
   <dialog class="feedback-dialog" id={`comments-${projectId}`} aria-labelledby={`comments-title-${projectId}`}>
     <div class="feedback-heading"><div><p>작품에 이야기를 남겨 주세요</p><h2 id={`comments-title-${projectId}`}>{title}</h2></div><button type="button" data-community-close aria-label="댓글 창 닫기">×</button></div>
-    <div class="feedback-body"><p class="feedback-note">직접 써 본 소감이나 팀에게 전하고 싶은 제안을 남겨 주세요.</p><div data-community-comments class="feedback-comments" aria-live="polite"></div></div>
-    <form class="feedback-form" data-community-form><label for={`comment-text-${projectId}`}>댓글 쓰기</label><textarea id={`comment-text-${projectId}`} name="comment" maxlength="300" required rows="3" placeholder="이 기능이 좋았어요. 이런 점을 더해 보면 어떨까요?"></textarea><div class="feedback-form-bottom"><p>관람객으로 공개됩니다. · 최대 300자</p><button type="submit" disabled>댓글 남기기</button></div><p data-community-form-status class="feedback-message" role="status"></p></form>
+    <div class="feedback-tabs" role="tablist" aria-label="작품 반응"><button type="button" role="tab" aria-selected="true" aria-controls={`feedback-panel-${projectId}`} data-community-tab="comments">댓글</button><button type="button" role="tab" aria-selected="false" aria-controls={`feedback-panel-${projectId}`} data-community-tab="likes">좋아요한 사람</button><label data-community-manage-label hidden><input type="checkbox" data-community-manage/> 댓글 관리</label></div>
+    <div class="feedback-body" id={`feedback-panel-${projectId}`} role="tabpanel"><p class="feedback-note" data-community-prompt>직접 써 본 소감이나 팀에게 전하고 싶은 제안을 남겨 주세요.</p><div data-community-comments class="feedback-comments" aria-live="polite"></div><button type="button" class="feedback-more" data-community-more hidden>이전 댓글 더 보기</button></div>
+    <form class="feedback-form" data-community-form><label for={`comment-text-${projectId}`}>댓글 남기기</label><div class="feedback-signin" data-community-signin><p>학교 계정으로 로그인하고 대화에 참여해 주세요.</p><button type="button" data-community-login>학교 계정으로 로그인</button></div><div data-community-editor hidden><textarea id={`comment-text-${projectId}`} name="comment" maxlength="300" required rows="3" disabled placeholder="직접 써 보니 이 기능이 좋았어요. 이런 점을 더해 보면 어떨까요?"></textarea><div class="feedback-form-bottom"><p data-community-author-note>이름·프로필이 공개됩니다. · 최대 300자</p><button type="submit" disabled>댓글 남기기</button></div></div><p data-community-form-status class="feedback-message" role="status"></p></form>
     <p class="feedback-vote-note">좋아요와 댓글은 작품 감상용이며, 공감상 투표와 별개입니다.</p>
   </dialog>
 </div>
-<script>
-type Summary = { projectId: string; likes: number; comments: number; liked: boolean };
-type Comment = { id: string; text: string; createdAt: string; own: boolean };
-const roots = [...document.querySelectorAll<HTMLElement>('[data-community-project]')];
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-let endpoint = '';
-let visitor = '';
-try {
-  visitor = localStorage.getItem('hyfl-community-visitor-v1') || crypto.randomUUID();
-  localStorage.setItem('hyfl-community-visitor-v1', visitor);
-} catch { /* Reading remains available when browser storage is blocked. */ }
-async function request(method = 'GET', body?: unknown, project?: string) {
-  if (!endpoint) throw new Error('좋아요와 댓글을 준비하고 있습니다.');
-  const response = await fetch(endpoint + (project ? '?project=' + encodeURIComponent(project) : ''), {
-    method, cache: 'no-store', headers: { ...(visitor ? { Authorization: 'Bearer ' + visitor } : {}), ...(body ? { 'Content-Type': 'application/json' } : {}) },
-    ...(body ? { body: JSON.stringify(body) } : {}), signal: AbortSignal.timeout(20000)
-  });
-  const result = await response.json();
-  if (!response.ok) throw new Error(result.error || '반응을 불러오지 못했습니다.');
-  return result;
-}
-function update(summary: Summary) {
-  for (const root of roots.filter(item => item.dataset.communityProject === summary.projectId)) {
-    root.querySelector('[data-community-likes]')!.textContent = String(summary.likes);
-    root.querySelector('[data-community-count]')!.textContent = String(summary.comments);
-    root.querySelector('[data-community-like]')!.setAttribute('aria-pressed', String(summary.liked));
-  }
-}
-const ready = (async () => {
-  try {
-    const response = await fetch(`${base}/exhibition-community.json`, { cache: 'no-store' });
-    if (!response.ok) throw new Error('좋아요와 댓글을 준비하고 있습니다.');
-    const config = await response.json();
-    const url = new URL(config.apiBaseUrl);
-    if (url.protocol !== 'https:' || url.origin !== config.apiBaseUrl) throw new Error('좋아요와 댓글을 준비하고 있습니다.');
-    endpoint = url.origin + '/api/ai-data/community';
-    const result = await request();
-    result.projects.forEach(update);
-    for (const root of roots) {
-      root.querySelector<HTMLButtonElement>('[data-community-like]')!.disabled = !visitor;
-      root.querySelector<HTMLButtonElement>('button[type=submit]')!.disabled = !visitor;
-      if (!visitor) root.querySelector('[data-community-status]')!.textContent = '참여하려면 브라우저 저장을 허용해 주세요.';
-    }
-  } catch (error) {
-    roots.forEach(root => {
-      root.querySelector('[data-community-status]')!.textContent = '반응을 연결하지 못했어요. 새로고침 후 다시 시도해 주세요.';
-      root.querySelector('[data-community-likes]')!.textContent = '—';
-      root.querySelector('[data-community-count]')!.textContent = '—';
-    });
-  }
-})();
-for (const root of roots) {
-  const projectId = root.dataset.communityProject!;
-  const like = root.querySelector<HTMLButtonElement>('[data-community-like]')!;
-  const status = root.querySelector<HTMLElement>('[data-community-status]')!;
-  const dialog = root.querySelector<HTMLDialogElement>('dialog')!;
-  const list = root.querySelector<HTMLElement>('[data-community-comments]')!;
-  const form = root.querySelector<HTMLFormElement>('form')!;
-  const textarea = form.querySelector<HTMLTextAreaElement>('textarea')!;
-  const submit = form.querySelector<HTMLButtonElement>('[type=submit]')!;
-  const message = root.querySelector<HTMLElement>('[data-community-form-status]')!;
-  const trigger = root.querySelector<HTMLButtonElement>('[data-community-open]')!;
-  function render(result: { comments: Comment[]; total: number }) {
-    list.replaceChildren();
-    root.querySelector('[data-community-count]')!.textContent = String(result.total);
-    if (!result.comments.length) {
-      const empty = document.createElement('p'); empty.className = 'feedback-empty'; empty.textContent = '첫 감상을 남겨 주세요.'; list.append(empty);
-    }
-    for (const comment of result.comments) {
-      const item = document.createElement('article'); item.className = 'feedback-comment';
-      const meta = document.createElement('div'); meta.className = 'feedback-comment-meta';
-      const author = document.createElement('strong'); author.textContent = comment.own ? '관람객 · 나' : '관람객';
-      const time = document.createElement('time'); time.dateTime = comment.createdAt;
-      time.textContent = new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(comment.createdAt));
-      meta.append(author, time);
-      if (comment.own) {
-        const remove = document.createElement('button'); remove.type = 'button'; remove.textContent = '삭제'; remove.setAttribute('aria-label', '내 댓글 삭제');
-        remove.addEventListener('click', async () => {
-          remove.disabled = true;
-          try { render(await request('DELETE', { projectId, commentId: comment.id })); message.textContent = '댓글을 삭제했습니다.'; }
-          catch (error) { message.textContent = error instanceof Error ? error.message : '댓글을 삭제하지 못했습니다.'; remove.disabled = false; }
-        });
-        meta.append(remove);
-      }
-      const text = document.createElement('p'); text.textContent = comment.text;
-      item.append(meta, text); list.append(item);
-    }
-    if (result.total > result.comments.length) { const note = document.createElement('p'); note.className = 'feedback-note'; note.textContent = '최근 댓글 50개를 보여드립니다.'; list.append(note); }
-  }
-  like.addEventListener('click', async () => {
-    like.disabled = true; status.textContent = '';
-    try { update(await request('POST', { action: 'like', projectId, liked: like.getAttribute('aria-pressed') !== 'true' })); }
-    catch (error) { status.textContent = error instanceof Error ? error.message : '좋아요를 저장하지 못했습니다.'; }
-    finally { like.disabled = false; }
-  });
-  trigger.addEventListener('click', async () => {
-    dialog.showModal(); list.textContent = '댓글을 불러오고 있어요.'; message.textContent = '';
-    await ready;
-    try { render(await request('GET', undefined, projectId)); }
-    catch (error) { list.textContent = error instanceof Error ? error.message : '댓글을 불러오지 못했습니다.'; }
-  });
-  root.querySelector('[data-community-close]')!.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('close', () => trigger.focus());
-  dialog.addEventListener('click', event => {
-    if (event.target !== dialog) return;
-    const rect = dialog.getBoundingClientRect();
-    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
-  });
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
-    if (!textarea.value.trim()) { message.textContent = '댓글을 입력해 주세요.'; return; }
-    submit.disabled = true; message.textContent = '댓글을 저장하고 있어요.';
-    try { render(await request('POST', { action: 'comment', projectId, text: textarea.value })); textarea.value = ''; message.textContent = '댓글을 남겼습니다.'; }
-    catch (error) { message.textContent = error instanceof Error ? error.message : '댓글을 저장하지 못했습니다.'; }
-    finally { submit.disabled = false; }
-  });
-}
-</script>
+
 <style is:global>
+[hidden]{display:none!important}
 .work-reactions{margin-top:14px}.reaction-buttons{display:flex;gap:17px;padding-top:11px;border-top:1px solid #e8e8e8}.reaction-buttons button{display:inline-flex;align-items:center;gap:5px;background:none;border:0;padding:5px 0;color:#8a8a8a;font-size:10px;line-height:1.5}.reaction-buttons button:disabled{cursor:default;opacity:.65}.reaction-buttons button:hover:enabled{color:#202020}.reaction-buttons [aria-pressed=true]{color:#ce5264}.reaction-buttons [aria-pressed=true] svg{fill:#ce5264;stroke:#ce5264}.reaction-buttons [data-community-likes],.reaction-buttons [data-community-count]{font-variant-numeric:tabular-nums;color:#555}.reaction-status{font-size:10px;color:#8a6565;line-height:1.7;margin-top:4px}.reaction-status:empty{display:none}.feedback-dialog{width:min(580px,calc(100% - 32px));height:auto;max-height:85dvh;border:1px solid #ddd;border-radius:12px;background:#fff;color:#222;box-shadow:0 24px 90px #0003}.feedback-dialog::backdrop{background:#10101088;backdrop-filter:blur(3px)}.feedback-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #eee;padding:23px 25px}.feedback-heading p{font-size:10px;color:#999;margin-bottom:7px}.feedback-heading h2{font-size:21px;letter-spacing:-.04em;line-height:1.4}.feedback-heading>button{border:0;background:none;font-size:29px;color:#888;line-height:1;padding:4px}.feedback-body{padding:20px 25px;overflow:auto;min-height:110px}.feedback-note{font-size:12px;line-height:1.9;color:#888}.feedback-comments{font-size:13px;line-height:1.8;margin-top:15px}.feedback-empty{padding:25px 0;text-align:center;color:#999}.feedback-comment{border-bottom:1px solid #eee;padding:15px 0}.feedback-comment:first-child{padding-top:0}.feedback-comment>p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.9;color:#444}.feedback-comment-meta{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-size:10px}.feedback-comment-meta strong{font-weight:600}.feedback-comment-meta time{color:#aaa;font-size:10px}.feedback-comment-meta button{margin-left:auto;border:0;background:none;color:#999;font-size:10px;padding:4px}.feedback-form{padding:19px 25px 14px;border-top:1px solid #eee}.feedback-form label{display:block;font-size:12px;font-weight:600;margin-bottom:9px}.feedback-form textarea{display:block;width:100%;resize:vertical;border:1px solid #ddd;border-radius:7px;padding:12px;font:inherit;font-size:12px;line-height:1.8;color:#333;min-height:86px;max-height:160px}.feedback-form-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:11px}.feedback-form-bottom p{font-size:10px;color:#999;line-height:1.8}.feedback-form-bottom button{background:#222;color:white;border:1px solid #222;border-radius:6px;padding:9px 13px;font-size:11px;white-space:nowrap}.feedback-form-bottom button:disabled{opacity:.45;cursor:default}.feedback-message{font-size:11px;line-height:1.8;color:#777;margin-top:8px}.feedback-message:empty{display:none}.feedback-vote-note{font-size:10px;line-height:1.8;color:#999;padding:0 25px 19px}.feedback-dialog button:focus-visible,.feedback-dialog textarea:focus-visible{outline:2px solid #2563eb;outline-offset:3px}@media(max-width:480px){.reaction-buttons button{font-size:11px}.feedback-heading{padding:19px}.feedback-body,.feedback-form{padding:17px 19px}.feedback-vote-note{padding:0 19px 17px}}
 </style>
