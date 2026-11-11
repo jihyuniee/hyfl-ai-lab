@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import handler, { prepareCommunity } from '../../../api/ai-data/community.mjs';
+import handler, { prepareCommunity, communityForEnvironment, createHandler } from '../../../api/ai-data/community.mjs';
 import { BlobStoreSuspendedError } from '../lib/blob.mjs';
 function response() { return { headers: {}, statusCode: null, body: null, setHeader(key, value) { this.headers[key] = value; }, status(value) { this.statusCode = value; return this; }, json(value) { this.body = value; }, end() {} }; }
 test('community rejects other origins and exposes exact approved CORS methods', () => {
@@ -56,4 +56,26 @@ test('an authenticated write reports suspended storage without exposing credenti
   for (const privateValue of ['test-only-credential', 'private@school.example', 'private test text']) {
     assert.equal(JSON.stringify({ body: res.body, failures }).includes(privateValue), false);
   }
+});
+test('DATABASE_URL selects Postgres and session responses never expose the connection string', async () => {
+  const url = 'postgresql://private-user:private-password@private.example/database';
+  const env = { DATABASE_URL: url, BLOB_STORE_ID: 'old-blob' };
+  let queries = 0;
+  const community = communityForEnvironment(env, value => { assert.equal(value, url); return async () => { queries++; return []; }; });
+  const res = response();
+  await createHandler({ env, community })({ headers: { origin: 'https://jihyuniee.github.io' }, method: 'GET', url: '/api/ai-data/community?session=true' }, res);
+  assert.equal(res.statusCode, 200); assert.equal(res.body.storage, 'postgres'); assert.equal(queries, 0);
+  assert.equal(JSON.stringify(res.body).includes('private-password'), false);
+  await community.all(); assert.equal(queries, 1);
+});
+test('a database failure does not silently switch a write to Blob', async () => {
+  const env = { DATABASE_URL: 'postgresql://private@db.example/database', BLOB_STORE_ID: 'old-blob' };
+  const failures = [];
+  const community = communityForEnvironment(env, () => async () => { const error = new Error('private database detail'); error.code = 'DB_FAILURE'; throw error; });
+  const res = response();
+  await createHandler({ env, community, auth: async () => ({ authenticated: true, id: 'a'.repeat(64), profile: { name: '관람객', picture: '' } }),
+    reportFailure: (...args) => failures.push(args) })({ headers: { origin: 'https://jihyuniee.github.io', authorization: 'Bearer test-only', 'content-type': 'application/json' }, method: 'POST', url: '/api/ai-data/community', body: { action: 'like', projectId: 'data-queen', liked: true, profileConsent: true } }, res);
+  assert.equal(res.statusCode, 503); assert.equal('likes' in res.body, false);
+  assert.equal(JSON.stringify(res.body).includes('private database detail'), false);
+  assert.deepEqual(failures, [['COMMUNITY_UNEXPECTED_FAILURE', 'POST']]);
 });

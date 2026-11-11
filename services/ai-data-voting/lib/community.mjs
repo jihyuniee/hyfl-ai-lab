@@ -4,11 +4,11 @@ export class CommunityError extends Error {
   constructor(status, message) { super(message); this.status = status; }
 }
 export const isLegacyVisitor = token => /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(token || '');
-const validComment = id => /^\d{11}-[0-9a-f]{64}$/.test(id || '');
+export const validComment = id => /^\d{11}-[0-9a-f]{64}$/.test(id || '');
 const fileId = file => file.pathname.split('/').at(-1).replace('.json', '');
-const profileOf = record => record?.profile ? { name: record.profile.name, picture: record.profile.picture || '' } : null;
+export const profileOf = record => record?.profile ? { name: record.profile.name, picture: record.profile.picture || '' } : null;
 
-export function createCommunity({ storage, projects, secret, now = Date.now }) {
+export function communityIdentity({ projects, secret }) {
   function project(id) {
     if (!projects.some(item => item.id === id)) throw new CommunityError(400, '등록된 작품을 선택해 주세요.');
   }
@@ -20,6 +20,11 @@ export function createCommunity({ storage, projects, secret, now = Date.now }) {
     return isLegacyVisitor(token) && secret?.length >= 32 ? createHmac('sha256', secret).update('community-v1:' + token).digest('hex') : null;
   }
   function owns(record, actor, legacyToken) { return Boolean(record?.author && ((actor?.id && record.author === actor.id) || (legacy(legacyToken) && record.author === legacy(legacyToken)))); }
+  return { project, signedIn, owns };
+}
+
+export function createCommunity({ storage, projects, secret, now = Date.now }) {
+  const { project, signedIn, owns } = communityIdentity({ projects, secret });
   function likePath(id, author) { return `community/likes/${id}/${author}.json`; }
   const forProject = (files, namespace, id) => files.filter(file => file.pathname.startsWith(`community/${namespace}/${id}/`));
   async function commentFiles(id, manage = false, snapshot) {
