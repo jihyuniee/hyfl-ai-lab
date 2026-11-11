@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { createHmac } from 'node:crypto';
 import { PGlite } from '@electric-sql/pglite';
 import { createPostgresCommunity } from '../lib/community-postgres.mjs';
-import { prepareCommunityDatabase } from '../scripts/prepare-community-db.mjs';
+import { prepareCommunityDatabase, deploymentConnections } from '../scripts/prepare-community-db.mjs';
 import { importBlobCommunity } from '../lib/community-import.mjs';
 import { createHandler } from '../../../api/ai-data/community.mjs';
 
@@ -23,6 +23,13 @@ function fixture(projects = [{ id: 'sample' }]) {
   return { service: createPostgresCommunity({ query: async (...args) => { count++; return query(...args); }, projects, secret, now: () => time }),
     advance: () => time += 60000, queries: () => count };
 }
+test('deployment uses a direct migration URL and retains pooling for application queries', () => {
+  const application = 'postgresql://test-only@ep-test-pooler.example/neondb';
+  const migration = 'postgresql://test-only@ep-test.example/neondb';
+  assert.deepEqual(deploymentConnections({ DATABASE_URL: application, DATABASE_URL_UNPOOLED: migration }), { migration, application });
+  assert.throws(() => deploymentConnections({ DATABASE_URL: application }), { code: 'DATABASE_DIRECT_URL_REQUIRED' });
+  assert.throws(() => deploymentConnections({ DATABASE_URL: application, DATABASE_URL_UNPOOLED: application }), { code: 'DATABASE_DIRECT_URL_INVALID' });
+});
 test('Postgres enforces one like per account under concurrency and supports cancellation', async () => {
   const { service } = fixture();
   await Promise.all([service.like('sample', first, true, true), service.like('sample', { ...first }, true, true)]);

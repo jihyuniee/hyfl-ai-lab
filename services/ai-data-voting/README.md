@@ -101,7 +101,7 @@ Google Cloud OAuth 웹 클라이언트의 승인된 JavaScript 원본에 `https:
 
 ## Neon Postgres로 좋아요·댓글 연결
 
-Vercel의 기존 `hyfl-ai-data-voting` 프로젝트에 연결된 `DATABASE_URL`이 있으면 좋아요·댓글은 Postgres를 사용한다. 없으면 기존 Blob 구현을 사용한다. DB 요청이 실패했을 때 다른 저장소로 쓰기를 전환하지 않는다. Google ID 토큰 검증, 계정 해시의 비밀값, 학교·개인 계정 허용 방식, 공감상 투표는 그대로 유지한다. Neon Auth 설정과 별도로 기존 Google 로그인을 사용한다.
+Vercel의 기존 `hyfl-ai-data-voting` 프로젝트에 연결된 `DATABASE_URL`이 있으면 좋아요·댓글은 Postgres를 사용한다. 없으면 기존 Blob 구현을 사용한다. 마이그레이션은 `DATABASE_URL_UNPOOLED`의 직접 연결로 수행하고, 운영 요청과 배포 검증은 `DATABASE_URL`의 풀링 연결로 수행한다. 직접 연결 변수가 없거나 풀링 호스트를 가리키면 배포를 중단한다. DB 요청이 실패했을 때 다른 저장소로 쓰기를 전환하지 않는다. Google ID 토큰 검증, 계정 해시의 비밀값, 학교·개인 계정 허용 방식, 공감상 투표는 그대로 유지한다. Neon Auth 설정과 별도로 기존 Google 로그인을 사용한다.
 
 `hyfl_community` 전용 스키마에 `likes`, `comments`, `moderation`, `migrations` 테이블을 만든다. 브라우저에는 DB 연결 정보가 전달되지 않으며 `PUBLIC`의 스키마·테이블 권한을 제거한다. 공개 응답에는 이름·프로필과 감상만 포함하고, 이메일은 지정 교사의 관리 요청에만 반환한다. 기존 Neon Auth 테이블은 변경하지 않는다.
 
