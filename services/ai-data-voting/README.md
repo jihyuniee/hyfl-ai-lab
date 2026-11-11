@@ -51,18 +51,40 @@ Redis 해시 한 필드가 한 계정의 선택을 나타낸다. Lua 스크립�
 
 참고: https://developers.google.com/identity/gsi/web/guides/verify-google-id-token · https://upstash.com/docs/redis/features/restapi
 
-## 전시관 좋아요·댓글 (2026-11-10)
+## Google 계정 좋아요·댓글 (2026-11-11)
 
-`/api/ai-data/community`는 공감상 투표와 독립된 관람객 반응이다. 학교 로그인이나 투표 설정을 요구하지 않으며, 여러 작품에 좋아요를 누르고 취소할 수 있다. 공감상은 기존 학교 계정 투표 규칙을 그대로 사용하고 현재 비활성 상태다.
+`/api/ai-data/community`는 공감상 투표와 독립된 작품 감상 기능이다. 조회는 로그인 없이 가능하고, 새 좋아요와 댓글은 Google 계정 인증 후에만 저장된다. 학교 Workspace 계정과 개인 Google 계정 모두 허용한다.
 
-- 공유 저장소: 이 프로젝트에 연결된 전용 **private Vercel Blob** `hyfl-ai-data-community` (`BLOB_READ_WRITE_TOKEN`은 서버 환경변수). 공용 브라우저 저장소에는 임의의 방문자 UUID만 보관한다. 숫자·댓글은 서버에서 불러온다.
-- UUID를 `VOTER_HASH_SECRET`과 별도 `community-v1` 문맥으로 HMAC 처리한다. 원래 UUID·이름·이메일은 저장하지 않는다. 댓글 응답에는 본문·시각·댓글 ID·본인 여부만 반환한다. 이름은 모두 ‘관람객’이다.
-- 좋아요는 브라우저당 작품별 한 번이다. 저장소 초기화·다른 브라우저·기기를 동일인으로 합치지 않으므로 시상·순위 판정에 사용하지 않는다. 공개 익명 참여이며 학교 구성원 인증이나 완전한 중복·스팸 방지는 제공하지 않는다.
-- 댓글은 최대 300자, 같은 브라우저에서 작품당 분당 한 번. 최신 50개를 보여주고 전체 개수는 별도로 표시한다. 본문은 `textContent`로 렌더링한다. 작성 브라우저만 자기 댓글을 삭제할 수 있고, 다른 방문자의 삭제 요청은 서버에서 거절한다.
-- 각 좋아요·댓글을 독립된 객체로 저장하여 다른 방문자의 동시 쓰기가 서로 덮어쓰지 않는다. 저장 실패 시 성공이나 임의의 숫자를 표시하지 않는다. 허용 Origin은 기존 `ALLOWED_ORIGINS`를 적용한다.
-- 운영자가 댓글을 삭제해야 하면 Vercel Storage에서 `community/comments/<작품 ID>/`의 해당 객체를 확인해 삭제한다. 새 댓글은 검수 없이 공개된다.
-- 공개 설정은 `public/exhibition-community.json`의 API 원본 주소 하나다. 비밀 토큰이나 방문자 식별값을 넣지 않는다.
+### 로그인 연결
 
-배포 패키지는 `node scripts/package-exhibition-api.mjs /저장소밖/새폴더`로 만든다. 서버 파일과 ID-only 작품 목록만 포함하며 이름·활동지·교과서는 배포하지 않는다. 패키지 폴더를 기존 `hyfl-ai-data-voting` 프로젝트에 배포한다. 이 저장소 전체를 Vercel 프로젝트에 연결하지 않는다. 작품 추가 시 API도 다시 배포한다.
+서버에 아래 값을 등록한 뒤 API를 다시 배포한다. 클라이언트 ID를 프런트엔드에 별도로 복사할 필요는 없다. 공개 세션 API가 준비 상태와 공개 클라이언트 ID만 내려준다.
 
-검증: `npm test --prefix services/ai-data-voting`과 `npm run build`. 실제 연결에서는 좋아요 두 번이 한 번으로 유지되는지, 취소·다시 읽기·댓글 작성/삭제, 다른 방문자 삭제 거부, 허용되지 않은 Origin 차단, 기존 투표 상태가 `preparing`인지 확인한다. 시험용 반응은 검증 후 모두 제거한다.
+| 환경변수 | 값 |
+| --- | --- |
+| `GOOGLE_CLIENT_ID` | 학교 Google Cloud 프로젝트의 웹 애플리케이션 OAuth 클라이언트 ID |
+| `COMMUNITY_LOGIN_MODE` | 기본 `google`: 학교·일반 Google 허용. 학교만 허용하려면 `school` |
+| `SCHOOL_DOMAINS` | 학교 전용 모드와 공감상 투표에서만 필요한 Workspace 도메인 |
+| `COMMUNITY_ADMIN_EMAILS` | 댓글 관리 권한을 줄 교사의 정확한 학교 계정 이메일, 쉼표로 구분 |
+| `VOTER_HASH_SECRET` | 기존 값을 유지. 변경하면 기존 반응의 본인 확인이 달라짐 |
+| `ALLOWED_ORIGINS` | 기존 `https://jihyuniee.github.io` 유지 |
+| `BLOB_READ_WRITE_TOKEN` 또는 `BLOB_STORE_ID` | 기존 전용 private Blob 유지 |
+
+Google Cloud OAuth 웹 클라이언트의 승인된 JavaScript 원본에 `https://jihyuniee.github.io`를 등록한다. 경로 `/hyfl-ai-lab`은 넣지 않는다. 일반 Google 계정도 참여할 수 있도록 외부 사용자용으로 구성하고 테스트 사용자·게시 상태를 확인한다. 학교 관리자의 앱 접근 제한도 확인한다. 이 방식에는 클라이언트 비밀키가 필요하지 않다.
+
+`GET /api/ai-data/community?session=true`에서 `auth.ready`를 확인한다. 설정이 없으면 참여 UI에 준비 안내가 표시되고 익명 쓰기를 허용하지 않는다. `ready=true`는 설정 유무만 나타내며, 실제 학교 로그인 성공을 뜻하지 않는다. 실제 학교 계정과 개인 Google 계정으로 Google 서명·발급대상·만료·이메일 확인을 검증해야 한다. `school` 모드에서만 Workspace `hd`를 제한한다.
+
+### 표시와 저장
+
+- 로그인 전 이름·프로필 공개 안내를 확인한다. 좋아요와 댓글의 작성자 이름·프로필 이미지는 공개되고, 이메일은 일반 응답에 포함하지 않는다.
+- Google 공식 라이브러리로 검증한 토큰의 `sub`를 `community-google-v1` 문맥으로 HMAC 처리해 Google 계정당 작품별 좋아요 한 번을 저장한다. 다른 기기에서도 같은 계정의 좋아요와 본인 댓글을 확인할 수 있다. 토큰은 브라우저 메모리에만 유지하고 저장소·로그에 기록하지 않는다.
+- 이름과 Google 프로필 이미지 주소만 공개 프로필로 저장한다. 이미지 주소는 HTTPS Google 이미지 도메인만 허용한다. 새 댓글에는 교사용 작성자 확인을 위해 이메일을 private Blob에 함께 저장하되, 지정 교사의 관리 요청에만 반환한다.
+- 기존 `community/likes/`·`community/comments/` 객체는 재작성·삭제·신원 연결하지 않는다. 기존 익명 좋아요는 총수에 포함하고 작성자 목록에는 익명임을 안내한다. 기존 익명 댓글은 관람객으로 표시하고, 작성 브라우저의 기존 UUID로 자기 댓글을 삭제할 수 있다. UUID로 새 좋아요·댓글을 저장하는 요청은 거절한다.
+- 댓글은 300자, 계정별 작품당 분당 한 번이다. 최근 20개부터 이전 댓글을 이어서 불러오며, 좋아요한 사람은 50명씩 이어서 조회한다. 본문과 이름은 `textContent`로 렌더링한다.
+- 선생님은 로그인 후 댓글 창의 ‘댓글 관리’에서 작성자를 확인하고 숨김·복원할 수 있다. 숨김은 별도 `community/moderation/` 객체로 기록하며 원본을 보존한다. 일반 조회와 댓글 수에서는 숨긴 댓글을 제외한다. 관리자 목록은 브라우저가 아닌 서버 환경변수로 결정한다.
+- 좋아요는 여러 작품에 남길 수 있으며 공감상 투표·시상 집계와 분리한다. 기존 투표 설정과 기록은 변경하지 않는다.
+
+### 배포와 확인
+
+`node scripts/package-exhibition-api.mjs /저장소밖/새폴더`로 API 전용 패키지를 만든 뒤 기존 `hyfl-ai-data-voting` 프로젝트에 배포한다. 서버 코드와 ID-only 작품 목록만 포함하며 학생 소개·교과서는 배포하지 않는다. 작품 추가 시 API도 다시 배포한다.
+
+`npm test --prefix services/ai-data-voting`과 `npm run build`를 실행한다. 단위 테스트는 검증 결과와 저장소를 주입하므로 실제 Google 계정 인증이나 운영 Blob 쓰기 검증을 대신하지 않는다. 운영 연결 후 학교 계정 로그인 → 공개 안내 확인 → 좋아요·취소 → 다른 브라우저에서 동일 계정 복원 → 댓글 작성·본인 삭제 → 교사 숨김·복원을 확인한다. 개인 Gmail·학교 계정 허용, 만료/위조 토큰·익명 UUID 쓰기 거절, `school` 모드에서 다른 학교 계정 거절과 일반 응답의 이메일 비공개도 확인한다.

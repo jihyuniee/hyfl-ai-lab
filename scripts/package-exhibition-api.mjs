@@ -6,6 +6,7 @@ if (!output || !relative(root, output).startsWith('..')) throw new Error('저장
 const allowlist = [
   'api/ai-data/community.mjs', 'api/ai-data/status.mjs', 'api/ai-data/vote.mjs',
   'services/ai-data-voting/lib/community.mjs', 'services/ai-data-voting/lib/blob.mjs',
+  'services/ai-data-voting/lib/community-auth.mjs',
   'services/ai-data-voting/lib/http.mjs', 'services/ai-data-voting/lib/voting.mjs',
   'services/ai-data-voting/package.json', 'services/ai-data-voting/package-lock.json'
 ];

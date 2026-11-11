@@ -15,3 +15,25 @@ test('missing storage never pretends to save a reaction', async () => {
   assert.equal(res.statusCode, 503); assert.equal('likes' in res.body, false);
   if (token) process.env.BLOB_READ_WRITE_TOKEN = token; if (id) process.env.BLOB_STORE_ID = id;
 });
+
+test('anonymous writes and legacy client UUID writes cannot bypass school login', async () => {
+  const { createHandler } = await import('../../../api/ai-data/community.mjs');
+  const { createCommunity } = await import('../lib/community.mjs');
+  let writes = 0;
+  const env = { BLOB_STORE_ID: 'test-only', VOTER_HASH_SECRET: 'test-secret-'.repeat(4) };
+  const community = createCommunity({ projects: [{ id: 'sample' }], secret: env.VOTER_HASH_SECRET, storage: { create: async () => { writes++; }, list: async () => [], read: async () => null } });
+  const run = createHandler({ env, community });
+  for (const authorization of [undefined, 'Bearer a0000000-0000-4000-8000-000000000001']) {
+    const res = response();
+    await run({ headers: { origin: 'https://jihyuniee.github.io', authorization, 'content-type': 'application/json' }, method: 'POST', url: '/api/ai-data/community', body: { action: 'like', projectId: 'sample', liked: true, profileConsent: true, actor: { authenticated: true, isAdmin: true } } }, res);
+    assert.equal(res.statusCode, 401);
+  }
+  assert.equal(writes, 0);
+});
+test('unconfigured session is readable, reports not ready and exposes no private env', async () => {
+  const { createHandler } = await import('../../../api/ai-data/community.mjs');
+  const res = response();
+  await createHandler({ env: { VOTER_HASH_SECRET: 'never-public', COMMUNITY_ADMIN_EMAILS: 'private@school.example' } })({ headers: { origin: 'https://jihyuniee.github.io' }, method: 'GET', url: '/api/ai-data/community?session=true' }, res);
+  assert.equal(res.statusCode, 200); assert.equal(res.body.auth.ready, false); assert.equal(res.body.viewer, null);
+  assert.equal(JSON.stringify(res.body).includes('never-public'), false); assert.equal(JSON.stringify(res.body).includes('private@'), false);
+});
