@@ -32,7 +32,7 @@ const palettes = ['#e4eee7', '#e7eaf5', '#ece4dc', '#dfe9eb'];
       return <article class="work-card" aria-labelledby={`work-${work.id}`}>
         <Browser id={work.id} title={work.title} url={work.url} href={href} eager={index < 4}/>
         <div class="work-body">
-        <div class="work-heading-row"><h2 class="work-app-name" id={`work-${work.id}`}><a href={href}>{work.title}</a></h2><span class="work-status">{work.status}</span></div>
+        <div class="work-heading-row"><h2 class="work-app-name" id={`work-${work.id}`}><a href={href}>{work.title}</a></h2>{work.status !== '학생 소개' && <span class="work-status">{work.status}</span>}</div>
         <p class="work-intro">{story?.oneLineIntro || work.question}</p>
         <div class="work-tags">{work.tags.slice(0, 2).map(tag => <span>{tag}</span>)}</div>
         <div class="work-credits"><div class="work-team"><span class="creator-avatar">{profileImage ? <img class="team-avatar" src={`${base}${profileImage}`} alt={`${creatorName} 프로필 사진`} width="44" height="44" loading="lazy"/> : <span class="team-avatar" style={`--avatar-bg:${palettes[index % palettes.length]}`} aria-hidden="true">{creatorName.slice(0, 1)}</span>}</span><div><span class="team-name">{creatorName}</span><span class="creator-members">{work.members.join(' · ')}</span><span class="team-class">2학년 {work.classroom}반{work.teamNumber ? ` · ${work.teamNumber}팀` : ''}</span></div></div><a class="work-launch" href={work.url} target="_blank" rel="noopener noreferrer" aria-label={`${work.title} 웹앱 새 창에서 체험`}>웹앱 체험 ↗</a></div>
