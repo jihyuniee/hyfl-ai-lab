@@ -1,13 +1,18 @@
 ---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 interface Props { id: string; title: string; url: string; href: string; external?: boolean; eager?: boolean }
 const { id, title, url, href, external = false, eager = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const coverPath = `/exhibition/ai-data/covers/${id}.webp`;
+const coverVersion = createHash('sha256').update(readFileSync(`public${coverPath}`)).digest('hex').slice(0, 12);
+const coverSrc = `${base}${coverPath}?v=${coverVersion}`;
 const address = new URL(url);
 const displayAddress = address.hostname + (address.pathname === '/' ? '' : address.pathname);
 ---
 <a class="browser-cover" href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined} aria-label={external ? `${title} 웹앱 새 창에서 체험` : `${title} 작품과 제작 이야기 보기`}>
   <div class="browser-toolbar" aria-hidden="true"><span class="browser-lights"><i></i><i></i><i></i></span><span class="browser-address">{displayAddress}</span><span class="browser-arrow">↗</span></div>
-  <div class="browser-screen"><img src={`${base}/exhibition/ai-data/covers/${id}.webp`} alt={`${title} 웹앱의 실제 첫 화면`} width="1200" height="824" loading={eager ? 'eager' : 'lazy'} decoding="async"/><span class="browser-caption">{external ? '웹앱 체험하기' : '우리 팀의 이야기'} <span aria-hidden="true">↗</span></span></div>
+  <div class="browser-screen"><img src={coverSrc} alt={`${title} 웹앱의 실제 첫 화면`} width="1200" height="824" loading={eager ? 'eager' : 'lazy'} decoding="async"/><span class="browser-caption">{external ? '웹앱 체험하기' : '우리 팀의 이야기'} <span aria-hidden="true">↗</span></span></div>
 </a>
 <style>
 .browser-cover{display:block;color:inherit;text-decoration:none;overflow:hidden;background:#fff}.browser-toolbar{height:41px;display:flex;align-items:center;gap:13px;padding:0 17px;background:#f9f8fc;border-bottom:1px solid #eae7f1}.browser-lights{display:flex;gap:6px;flex-shrink:0}.browser-lights i{height:8px;width:8px;border-radius:50%;background:#fa6b89}.browser-lights i:nth-child(2){background:#edc464}.browser-lights i:nth-child(3){background:#70c79e}.browser-address{background:#fff;border-radius:999px;color:#9992aa;font-size:10px;padding:5px 13px;min-width:0;flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.browser-arrow{color:#aaa0bd;font-size:13px}.browser-screen{position:relative;aspect-ratio:8/5;background:#f3f0f8;overflow:hidden}.browser-screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .3s ease}.browser-cover:hover img,.browser-cover:focus-visible img{transform:scale(1.018)}.browser-caption{position:absolute;right:16px;bottom:16px;display:flex;align-items:center;gap:17px;padding:9px 13px;border:1px solid #e8e2f3;border-radius:7px;box-shadow:0 4px 15px #30234f12;background:#fffffff5;font-size:11px;color:#4e3b7e;opacity:0;transform:translateY(4px);transition:.2s}.browser-cover:hover .browser-caption,.browser-cover:focus-visible .browser-caption{opacity:1;transform:none}@media(max-width:600px){.browser-toolbar{height:35px;padding:0 12px;gap:9px}.browser-address{font-size:9px}.browser-lights{gap:4px}.browser-lights i{height:6px;width:6px}.browser-caption{font-size:10px;right:10px;bottom:10px}}@media(prefers-reduced-motion:reduce){.browser-screen img,.browser-caption{transition:none}}

@@ -1,4 +1,5 @@
 ---
+import Browser from './DataProjectBrowser.astro';
 interface Props { id: string; url: string; title: string }
 const { id, url, title } = Astro.props;
 const dialogId = `preview-${id}`;
@@ -6,7 +7,7 @@ const titleId = `preview-title-${id}`;
 ---
 <div data-project-preview data-url={url} data-title={title}>
   <div class="cover">
-    <div class="cover-frame" data-cover aria-hidden="true" inert></div>
+    <div aria-hidden="true" inert><Browser id={id} url={url} title={title} href={url} external eager/></div>
     <button class="cover-button" data-open-preview aria-haspopup="dialog" aria-controls={dialogId} aria-label={`${title} 웹앱 화면 미리보기`}><span>웹앱 화면 미리보기 ↗</span></button>
   </div>
   <dialog id={dialogId} aria-labelledby={titleId}>
@@ -17,40 +18,27 @@ const titleId = `preview-title-${id}`;
 </div>
 <script>
 document.querySelectorAll<HTMLElement>('[data-project-preview]').forEach(root => {
-  const cover = root.querySelector<HTMLElement>('[data-cover]')!;
   const dialog = root.querySelector<HTMLDialogElement>('dialog')!;
   const full = root.querySelector<HTMLElement>('[data-preview-frame]')!;
   const trigger = root.querySelector<HTMLButtonElement>('[data-open-preview]')!;
   const url = root.dataset.url!;
   const title = root.dataset.title!;
-  function frame(small = false) {
+  function frame() {
     const node = document.createElement('iframe');
     node.src = url;
     node.title = `${title} 웹앱`;
     node.referrerPolicy = 'no-referrer';
     node.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
     node.setAttribute('allow', "camera 'none'; microphone 'none'; geolocation 'none'; autoplay 'none'");
-    if (small) node.tabIndex = -1;
     return node;
   }
-  new ResizeObserver(entries => entries.forEach(entry => {
-    cover.style.setProperty('--cover-scale', String(entry.contentRect.width / 1280));
-  })).observe(cover);
-  let visible = false;
-  new IntersectionObserver(entries => {
-    visible = entries[0].isIntersecting;
-    if (visible && !dialog.open && !cover.children.length) cover.replaceChildren(frame(true));
-    else if (!visible) cover.replaceChildren();
-  }).observe(cover);
   trigger.addEventListener('click', () => {
-    cover.replaceChildren();
     full.replaceChildren(frame());
     dialog.showModal();
   });
   root.querySelector('[data-close-preview]')!.addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => {
     full.replaceChildren();
-    if (visible) cover.replaceChildren(frame(true));
     trigger.focus();
   });
   dialog.addEventListener('click', event => {
