@@ -1,0 +1,64 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  src: string;
+  size?: number;
+  fit?: 'cover' | 'contain';
+}
+const { id, name, src, size = 38, fit = 'cover' } = Astro.props;
+const dialogId = `team-photo-${id}`;
+---
+<div class="team-photo" data-team-photo style={`--team-photo-size:${size}px;--team-photo-fit:${fit}`}>
+  <button class="team-photo-trigger" type="button" data-photo-open aria-label={`${name} 프로필 사진 크게 보기`} aria-haspopup="dialog" aria-controls={dialogId} title="프로필 사진 크게 보기">
+    <img class="team-photo-thumb" src={src} alt={`${name} 프로필 사진`} width={size} height={size} loading="lazy"/>
+  </button>
+  <dialog class="team-photo-dialog" id={dialogId} aria-labelledby={`${dialogId}-title`}>
+    <div class="team-photo-heading">
+      <h2 id={`${dialogId}-title`}>{name} 프로필 사진</h2>
+      <button class="team-photo-close" type="button" data-photo-close aria-label="프로필 사진 닫기" autofocus>×</button>
+    </div>
+    <div class="team-photo-body"><img src={src} alt={`${name} 프로필 사진 원본`} loading="lazy"/></div>
+  </dialog>
+</div>
+<script>
+document.querySelectorAll<HTMLElement>('[data-team-photo]').forEach(root => {
+  const trigger = root.querySelector<HTMLButtonElement>('[data-photo-open]')!;
+  const dialog = root.querySelector<HTMLDialogElement>('dialog')!;
+  const close = root.querySelector<HTMLButtonElement>('[data-photo-close]')!;
+  let previousOverflow = '';
+  trigger.addEventListener('click', () => {
+    if (dialog.open) return;
+    previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+  });
+  close.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+  dialog.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    trigger.focus({ preventScroll: true });
+  });
+});
+</script>
+<style>
+.team-photo{width:var(--team-photo-size);height:var(--team-photo-size);flex-shrink:0;line-height:0}
+.team-photo-trigger{display:block;width:100%;height:100%;padding:0;border:0;border-radius:50%;background:transparent;cursor:zoom-in}
+.team-photo-thumb{display:block;width:100%;height:100%;border:3px solid #fff;border-radius:50%;object-fit:var(--team-photo-fit);background:#fff;box-shadow:0 0 0 1px #e8e2f0}
+.team-photo-trigger:hover .team-photo-thumb{box-shadow:0 0 0 2px #8b70cb}
+.team-photo-trigger:focus-visible{outline:3px solid #8b70cb;outline-offset:3px}
+.team-photo-dialog{display:none;width:min(820px,calc(100vw - 32px));max-width:none;height:fit-content;max-height:calc(100dvh - 32px);margin:auto;padding:0;border:1px solid #e8e2f0;border-radius:16px;background:#fff;color:#342c43;box-shadow:0 24px 80px #21103333;line-height:1.5}
+.team-photo-dialog[open]{display:flex;flex-direction:column}
+.team-photo-dialog::backdrop{background:#21182d99;backdrop-filter:blur(3px)}
+.team-photo-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px;border-bottom:1px solid #eee8f3}
+.team-photo-heading h2{margin:0;font-size:15px;font-weight:600;line-height:1.5;overflow-wrap:anywhere}
+.team-photo-close{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:#f5f1f9;color:#6f5a84;font-size:25px;line-height:1;cursor:pointer}
+.team-photo-close:hover{background:#ebe2f5}
+.team-photo-body{display:grid;place-items:center;min-height:0;overflow:auto;padding:20px;background:#f8f6fc}
+.team-photo-body img{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100dvh - 150px);object-fit:contain;border-radius:6px}
+@media(max-width:600px){.team-photo-dialog{width:calc(100vw - 24px);max-height:calc(100dvh - 24px);border-radius:12px}.team-photo-heading{padding:12px 14px}.team-photo-heading h2{font-size:14px}.team-photo-body{padding:12px}.team-photo-body img{max-height:calc(100dvh - 124px)}}
+</style>
