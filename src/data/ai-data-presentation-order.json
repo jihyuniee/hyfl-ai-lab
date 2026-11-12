@@ -1,0 +1,13 @@
+{
+  "9": [
+    { "projectId": "data-queen", "teamNumber": 2, "members": ["김나연", "한제인", "변유나"] },
+    { "projectId": "beoril-zido", "teamNumber": 9, "members": ["박수현", "정재윤"] },
+    { "projectId": "epic-pizza", "teamNumber": 3, "members": ["김도희", "김민수", "유현서"] },
+    { "projectId": "atti", "teamNumber": 5, "members": ["김서윤", "임소윤", "최다흔"] },
+    { "projectId": null, "teamNumber": 4, "members": ["김민서", "박지후", "장수안"] },
+    { "projectId": "hyfl-dinner", "teamNumber": 6, "members": ["백혜아", "이선우", "이수빈"] },
+    { "projectId": "maeum-check", "teamNumber": 8, "members": ["김소윤", "윤재인"] },
+    { "projectId": "crowdless", "teamNumber": 7, "members": ["이시온", "정태연", "황서하"] },
+    { "projectId": "seoul-tour-guide", "teamNumber": 1, "members": ["강서윤", "김하율", "조수현"] }
+  ]
+}
