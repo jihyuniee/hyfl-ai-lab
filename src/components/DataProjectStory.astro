@@ -3,7 +3,7 @@ import Browser from './DataProjectBrowser.astro';
 import TeamPhoto from './TeamProfilePhoto.astro';
 import Reactions from './DataProjectReactions.astro';
 interface Props {
-  work: { id: string; title: string; url: string; team: string; classroom: number; members: string[]; profileImage?: string };
+  work: { id: string; title: string; url: string; team: string; classroom: number; members: string[]; profileImage?: string; profileImageCrop?: string };
   story: { oneLineIntro: string; motivation: string; dataUse: string; features: string; memory: string };
 }
 const { work, story } = Astro.props;
@@ -16,7 +16,7 @@ const sections = [
 ];
 ---
 <a class="story-back" href={`${base}/exhibition/ai-data/`}>← 전체 작품</a>
-<section class="story-intro"><p class="story-kicker">2학년 {work.classroom}반</p><h1>{work.title}</h1><p class="story-description">{story.oneLineIntro}</p><div class="story-byline"><div class="story-team">{work.profileImage && <TeamPhoto id={work.id} name={work.team || work.title} src={`${base}${work.profileImage}`} size={66}/>}<div><strong>{work.team || work.title}</strong><p>{work.members.join(' · ')}</p></div></div><a class="story-launch" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 체험 ↗</a></div><p class="story-source">우리 팀의 프로젝트 이야기</p></section>
+<section class="story-intro"><p class="story-kicker">2학년 {work.classroom}반</p><h1>{work.title}</h1><p class="story-description">{story.oneLineIntro}</p><div class="story-byline"><div class="story-team">{work.profileImage && <TeamPhoto id={work.id} name={work.team || work.title} src={`${base}${work.profileImage}`} size={66} bottomSquare={work.profileImageCrop === 'bottom-square'}/>}<div><strong>{work.team || work.title}</strong><p>{work.members.join(' · ')}</p></div></div><a class="story-launch" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 체험 ↗</a></div><p class="story-source">우리 팀의 프로젝트 이야기</p></section>
 <div class="story-browser"><Browser id={work.id} title={work.title} url={work.url} href={work.url} external eager/></div>
 <nav class="story-nav" aria-label="우리 팀의 이야기">{sections.map(section => <a href={`#${section.id}`}>{section.label}</a>)}</nav>
 <div class="student-story">{sections.map(section => <section class="story-section" id={section.id}><div class="story-section-heading"><span>{section.number} / {section.label}</span><h2>{section.title}</h2></div><div class="story-answer">{section.text.split(/\n\s*\n/).map(paragraph => <p>{paragraph}</p>)}</div></section>)}</div>
