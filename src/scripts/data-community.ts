@@ -36,6 +36,23 @@ export function initCommunity() {
   const refreshPanels: Array<() => void> = [];
   try { legacy = localStorage.getItem('hyfl-community-visitor-v1') || ''; } catch { /* Browsing and school login do not require localStorage. */ }
 
+  const sessionKey = 'hyfl-community-session-v1';
+  function clearSession() {
+    token = ''; session.viewer = null; consent = false; consentBox.checked = false;
+    try { sessionStorage.removeItem(sessionKey); } catch { /* Storage may be disabled. */ }
+  }
+  function saveSession() {
+    try { sessionStorage.setItem(sessionKey, JSON.stringify({ token, consent, endpoint })); } catch { /* Keep in-memory login working. */ }
+  }
+  function restoreSession() {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(sessionKey) || 'null');
+      if (saved?.endpoint === endpoint && saved.consent === true && typeof saved.token === 'string' && saved.token) {
+        token = saved.token; consent = true; consentBox.checked = true;
+      }
+    } catch { /* Ignore unavailable or malformed storage. */ }
+  }
+
   function renderSession() {
     const viewer = session.viewer;
     const account = sessionRoot!.querySelector<HTMLElement>('[data-community-account]')!;
@@ -56,13 +73,14 @@ export function initCommunity() {
   }
   async function request<T>(method = 'GET', body?: unknown, params?: Record<string, string>): Promise<T> {
     if (!endpoint) throw new Error('좋아요와 댓글을 준비하고 있습니다.');
+    const requestedToken = token;
     const response = await fetch(endpoint + (params ? '?' + new URLSearchParams(params) : ''), {
       method, cache: 'no-store', headers: { ...(token ? { Authorization: 'Bearer ' + token } : {}), ...(legacy ? { 'X-Community-Visitor': legacy } : {}), ...(body ? { 'Content-Type': 'application/json' } : {}) },
       ...(body ? { body: JSON.stringify(body) } : {}), signal: AbortSignal.timeout(20000)
     });
     const result = await response.json();
     if (!response.ok) {
-      if (response.status === 401 && token) { token = ''; session.viewer = null; consent = false; consentBox.checked = false; renderSession(); }
+      if (response.status === 401 && requestedToken && token === requestedToken) { clearSession(); renderSession(); }
       throw new Error(result.error || '반응을 불러오지 못했습니다.');
     }
     return result;
@@ -89,7 +107,14 @@ export function initCommunity() {
       const config = await fetch(`${base}/exhibition-community.json`, { cache: 'no-store' }).then(response => { if (!response.ok) throw new Error(); return response.json(); });
       const url = new URL(config.apiBaseUrl);
       if (url.protocol !== 'https:' || url.origin !== config.apiBaseUrl) throw new Error();
-      endpoint = url.origin + '/api/ai-data/community'; await refreshAll();
+      endpoint = url.origin + '/api/ai-data/community';
+      restoreSession();
+      try { await refreshAll(); }
+      catch (error) {
+        // An expired saved credential must not prevent public reactions loading.
+        if (consent) throw error;
+        await refreshAll();
+      }
     } catch {
       connected = false; renderSession(); sessionNote.textContent = '반응을 연결하지 못했습니다. 새로고침 후 다시 시도해 주세요.';
       roots.forEach(root => { root.querySelector('[data-community-likes]')!.textContent = '—'; root.querySelector('[data-community-count]')!.textContent = '—'; });
@@ -126,9 +151,9 @@ export function initCommunity() {
             if (!verified.viewer) throw new Error('Google 계정을 확인하지 못했습니다.');
             session = verified; consent = consentBox.checked;
             if (!consent) { token = ''; session.viewer = null; return; }
-            await refreshAll(); loginDialog.close(); refreshPanels.forEach(refresh => refresh());
+            await refreshAll(); saveSession(); loginDialog.close(); refreshPanels.forEach(refresh => refresh());
             sessionNote.textContent = '로그인했습니다. 좋아요와 댓글로 작품에 참여해 주세요.';
-          } catch (error) { token = ''; session.viewer = null; renderSession(); loginMessage.textContent = messageOf(error); }
+          } catch (error) { clearSession(); renderSession(); loginMessage.textContent = messageOf(error); }
         }
       });
       identity.renderButton(googleSlot, { theme: 'outline', size: 'large', text: 'signin_with' });
@@ -144,7 +169,7 @@ export function initCommunity() {
   loginDialog.querySelector('[data-community-login-close]')!.addEventListener('click', () => loginDialog.close());
   loginDialog.addEventListener('close', () => loginTrigger?.focus());
   sessionRoot.querySelector('[data-community-logout]')!.addEventListener('click', () => {
-    token = ''; session.viewer = null; consent = false; consentBox.checked = false; googleIdentity()?.disableAutoSelect();
+    clearSession(); googleIdentity()?.disableAutoSelect();
     roots.forEach(root => { root.querySelector<HTMLTextAreaElement>('textarea')!.value = ''; });
     renderSession(); refreshPanels.forEach(refresh => refresh());
     sessionNote.textContent = '로그아웃했습니다. 남긴 좋아요와 댓글은 유지됩니다.';
