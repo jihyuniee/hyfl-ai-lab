@@ -2,7 +2,7 @@
 import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
-<div class="brand-links"><SiteTitle /><a class="student-work-link" href={`${base}/exhibition/school-image-lab/`}>프로젝트 전시관</a></div>
+<div class="brand-links"><SiteTitle /><a class="student-work-link" href={`${base}/exhibition/`}>프로젝트 전시관</a></div>
 <style>
 .brand-links{display:flex;align-items:center;gap:1rem;min-width:0}.student-work-link{flex-shrink:0;color:var(--sl-color-gray-2);font-size:.75rem;font-weight:500;text-decoration:none;border-inline-start:1px solid var(--sl-color-gray-5);padding-inline-start:1rem;white-space:nowrap}.student-work-link:hover{text-decoration:underline}.student-work-link:focus-visible{outline:2px solid var(--sl-color-accent);outline-offset:4px}@media(max-width:30rem){.brand-links{gap:.5rem}.student-work-link{font-size:.7rem;padding-inline-start:.5rem}.brand-links :global(.site-title){font-size:1rem}}
 </style>
