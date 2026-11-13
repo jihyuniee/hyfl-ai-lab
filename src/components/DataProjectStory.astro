@@ -9,10 +9,10 @@ interface Props {
 const { work, story } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const sections = [
-  { id: 'motivation', number: '01', label: '시작한 이유', title: '왜 이 문제에 관심을 갖게 되었나요?', text: story.motivation },
-  { id: 'data', number: '02', label: '데이터에서 발견한 것', title: '어떤 공공데이터를 활용했고, 무엇을 확인했나요?', text: story.dataUse },
-  { id: 'features', number: '03', label: '직접 써 보세요', title: '우리 웹앱으로 무엇을 할 수 있나요?', text: story.features },
-  { id: 'memory', number: '04', label: '만들어 가는 이야기', title: '만드는 과정에서 가장 기억에 남는 일은 무엇인가요?', text: story.memory },
+  { id: 'motivation', number: '01', label: '시작한 이유', title: '저희는 이런 이유로 시작했습니다', text: story.motivation },
+  { id: 'data', number: '02', label: '데이터에서 발견한 것', title: '이 데이터를 살펴보고 활용했습니다', text: story.dataUse },
+  { id: 'features', number: '03', label: '직접 써 보세요', title: '저희 웹앱을 이렇게 이용해 보세요', text: story.features },
+  { id: 'memory', number: '04', label: '만들어 가는 이야기', title: '만들면서 이런 경험을 했습니다', text: story.memory },
 ];
 ---
 <a class="story-back" href={`${base}/exhibition/ai-data/`}>← 전체 작품</a>
