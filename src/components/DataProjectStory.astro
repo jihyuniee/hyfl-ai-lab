@@ -3,24 +3,27 @@ import Browser from './DataProjectBrowser.astro';
 import TeamPhoto from './TeamProfilePhoto.astro';
 import Reactions from './DataProjectReactions.astro';
 interface Props {
-  work: { id: string; title: string; url: string; team: string; classroom: number; members: string[]; profileImage?: string; profileImageCrop?: string };
+  work: { id: string; title: string; url: string; team: string; classroom: number; members: string[]; profileImage?: string; profileImageCrop?: string; verificationNote?: string };
   story: { oneLineIntro: string; motivation: string; dataUse: string; features: string; memory: string };
 }
 const { work, story } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const sections = [
-  { id: 'motivation', number: '01', label: '시작한 이유', title: '저희는 이런 이유로 시작했습니다', text: story.motivation },
-  { id: 'data', number: '02', label: '데이터에서 발견한 것', title: '이 데이터를 살펴보고 활용했습니다', text: story.dataUse },
-  { id: 'features', number: '03', label: '직접 써 보세요', title: '저희 웹앱을 이렇게 이용해 보세요', text: story.features },
-  { id: 'memory', number: '04', label: '만들어 가는 이야기', title: '만들면서 이런 경험을 했습니다', text: story.memory },
+  { id: 'motivation', number: '01', label: '시작한 이유', title: '왜 이 문제에 관심을 갖게 되었나요?', text: story.motivation },
+  { id: 'data', number: '02', label: '데이터에서 발견한 것', title: '어떤 공공데이터를 활용했고, 무엇을 확인했나요?', text: story.dataUse },
+  { id: 'features', number: '03', label: '직접 써 보세요', title: '우리 웹앱으로 무엇을 할 수 있나요?', text: story.features },
+  { id: 'memory', number: '04', label: '만들어 가는 이야기', title: '만드는 과정에서 가장 기억에 남는 일은 무엇인가요?', text: story.memory },
 ];
 ---
 <a class="story-back" href={`${base}/exhibition/ai-data/`}>← 전체 작품</a>
-<section class="story-intro"><p class="story-kicker">2학년 {work.classroom}반</p><h1>{work.title}</h1><p class="story-description">{story.oneLineIntro}</p><div class="story-byline"><div class="story-team">{work.profileImage && <TeamPhoto id={work.id} name={work.team || work.title} src={`${base}${work.profileImage}`} size={66} bottomSquare={work.profileImageCrop === 'bottom-square'}/>}<div><strong>{work.team || work.title}</strong><p>{work.members.join(' · ')}</p></div></div><a class="story-launch" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 체험 ↗</a></div><p class="story-source">우리 팀의 프로젝트 이야기</p></section>
+<section class="story-intro"><p class="story-kicker">2학년 {work.classroom}반</p><h1>{work.title}</h1><p class="story-description">{story.oneLineIntro}</p><div class="story-byline"><div class="story-team">{work.profileImage && <TeamPhoto id={work.id} name={work.team || work.title} src={`${base}${work.profileImage}`} size={66} bottomSquare={work.profileImageCrop === 'bottom-square'}/>}<div><strong>{work.team || work.title}</strong><p>{work.members.join(' · ')}</p></div></div><a class="story-launch" href={work.url} target="_blank" rel="noopener noreferrer">웹앱 체험 ↗</a></div><p class="story-source">프로젝트 소개</p></section>
 <div class="story-browser"><Browser id={work.id} title={work.title} url={work.url} href={work.url} external eager/></div>
-<nav class="story-nav" aria-label="우리 팀의 이야기">{sections.map(section => <a href={`#${section.id}`}>{section.label}</a>)}</nav>
+<nav class="story-nav" aria-label="프로젝트 소개 항목">{sections.map(section => <a href={`#${section.id}`}>{section.label}</a>)}</nav>
 <div class="student-story">{sections.map(section => <section class="story-section" id={section.id}><div class="story-section-heading"><span>{section.number} / {section.label}</span><h2>{section.title}</h2></div><div class="story-answer">{section.text.split(/\n\s*\n/).map(paragraph => <p>{paragraph}</p>)}</div></section>)}</div>
+{work.verificationNote && <aside class="story-verification"><strong>전시 운영 참고 · 구현 상태 확인</strong><p>{work.verificationNote}</p></aside>}
 <div class="story-response"><h2>우리 팀에게 한마디</h2><Reactions projectId={work.id} title={work.title}/></div>
 <style>
+.story-verification{max-width:920px;margin:24px auto;padding:18px 20px;background:#f7f5fa;border:1px solid #e8e2f0;border-radius:10px;font-size:13px;line-height:1.9;color:#71677e}.story-verification strong{font-size:12px}.story-verification p{margin:6px 0 0}
+
 .story-team{display:flex;align-items:center;gap:15px}.story-source{font-size:11px;color:#a398af;margin-top:22px}.story-back{display:inline-block;margin-top:30px;color:#83788f;text-decoration:none;font-size:12px}.story-intro{max-width:920px;margin:36px auto 34px}.story-kicker{font-size:13px;color:#8a78a4;line-height:1.8;margin-bottom:14px}.story-intro h1{font-size:clamp(30px,3.6vw,46px);line-height:1.4;font-weight:700;letter-spacing:-.055em;word-break:keep-all;overflow-wrap:anywhere;color:#242033}.story-description{font-size:15px;line-height:1.95;color:#88818e;margin-top:17px;max-width:850px;word-break:keep-all;overflow-wrap:anywhere}.story-byline{display:flex;align-items:center;justify-content:space-between;gap:25px;margin-top:28px}.story-byline strong{font-size:14px;color:#342c43}.story-byline p{font-size:12px;color:#91869e;margin-top:7px}.story-launch{display:inline-block;text-decoration:none;background:#7354d3;color:#fff;padding:11px 20px;border-radius:8px;font-size:13px;white-space:nowrap}.story-browser{border:1px solid #e8e2f0;border-radius:15px;overflow:hidden;box-shadow:0 15px 50px #4131580e}.story-nav{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid #eee8f3;margin:10px auto 0;max-width:920px}.story-nav a{font-size:12px;text-decoration:none;color:#887a96}.student-story{max-width:920px;margin:auto}.story-section{display:grid;grid-template-columns:1fr 1.9fr;gap:50px;padding:52px 0;border-bottom:1px solid #eee8f3;scroll-margin-top:28px}.story-section-heading>span{font-size:11px;color:#9c8bad}.story-section-heading h2{font-size:21px;line-height:1.65;letter-spacing:-.04em;word-break:keep-all;margin-top:13px;color:#332a42}.story-answer p{white-space:pre-line;font-size:15px;line-height:2.05;color:#62596d;overflow-wrap:anywhere}.story-answer p+p{margin-top:18px}.story-response{max-width:920px;margin:34px auto}.story-response h2{font-size:16px;font-weight:600;color:#675975}.story-response :global(.reaction-buttons){border:0;gap:25px}.story-response :global(.reaction-buttons button){font-size:13px}.story-response :global(.work-reactions){margin-top:6px}@media(max-width:700px){.story-intro{margin:25px 0}.story-intro h1{font-size:30px}.story-description{font-size:13px;margin-top:13px}.story-section{grid-template-columns:1fr;gap:20px;padding:32px 0}.story-section-heading h2{font-size:21px}.story-answer p{font-size:14px}.story-nav{justify-content:flex-start;gap:13px 20px}.story-nav a{font-size:11px}.story-byline{gap:12px}.story-launch{font-size:12px;padding:10px 13px}}
 </style>
