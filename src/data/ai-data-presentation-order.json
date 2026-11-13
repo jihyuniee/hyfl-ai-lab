@@ -1,33 +1,294 @@
 {
   "7": [
-    { "projectId": "foreign-students", "teamNumber": 1, "members": ["강지원", "김유빈", "최예서"] },
-    { "projectId": "kiosk-practice", "teamNumber": 6, "members": ["홍서진", "신재영"] },
-    { "projectId": "damoa", "teamNumber": 2, "members": ["황혜민", "남유주", "김지효"] },
-    { "projectId": "godsaeng-wallet", "teamNumber": 4, "members": ["우준범", "강나율", "이채원"] },
-    { "projectId": "pediatric-hospital", "teamNumber": 7, "members": ["황규온", "강서율", "김은재"] },
-    { "projectId": null, "teamNumber": 3, "members": ["부송연", "양해원", "조서현"] },
-    { "projectId": "culturelink", "teamNumber": 8, "members": ["정민제", "윤주은"] },
-    { "projectId": "remind", "teamNumber": 5, "members": ["유채현", "김도연", "나예서"] }
+    {
+      "projectId": "foreign-students",
+      "teamNumber": 1,
+      "members": [
+        "강지원",
+        "김유빈",
+        "최예서"
+      ]
+    },
+    {
+      "projectId": "kiosk-practice",
+      "teamNumber": 6,
+      "members": [
+        "홍서진",
+        "신재영"
+      ]
+    },
+    {
+      "projectId": "damoa",
+      "teamNumber": 2,
+      "members": [
+        "황혜민",
+        "남유주",
+        "김지효"
+      ]
+    },
+    {
+      "projectId": "godsaeng-wallet",
+      "teamNumber": 4,
+      "members": [
+        "우준범",
+        "강나율",
+        "이채원"
+      ]
+    },
+    {
+      "projectId": "pediatric-hospital",
+      "teamNumber": 7,
+      "members": [
+        "황규온",
+        "강서율",
+        "김은재"
+      ]
+    },
+    {
+      "projectId": null,
+      "teamNumber": 3,
+      "members": [
+        "부송연",
+        "양해원",
+        "조서현"
+      ]
+    },
+    {
+      "projectId": "culturelink",
+      "teamNumber": 8,
+      "members": [
+        "정민제",
+        "윤주은"
+      ]
+    },
+    {
+      "projectId": "remind",
+      "teamNumber": 5,
+      "members": [
+        "유채현",
+        "김도연",
+        "나예서"
+      ]
+    }
+  ],
+  "8": [
+    {
+      "projectId": "gwangjin-clean-street",
+      "teamNumber": 3,
+      "members": [
+        "박지안",
+        "김채원",
+        "남지우"
+      ]
+    },
+    {
+      "projectId": "hungry-korean",
+      "teamNumber": 1,
+      "members": [
+        "이지민",
+        "강연아",
+        "천여원"
+      ]
+    },
+    {
+      "projectId": "safeway",
+      "teamNumber": 6,
+      "members": [
+        "김시현",
+        "하지윤",
+        "이예림"
+      ]
+    },
+    {
+      "projectId": "benefit",
+      "teamNumber": 2,
+      "members": [
+        "신채윤",
+        "고승연",
+        "이나윤"
+      ]
+    },
+    {
+      "projectId": "tamagochi",
+      "teamNumber": 5,
+      "members": [
+        "주이현",
+        "김나연",
+        "이은별"
+      ]
+    },
+    {
+      "projectId": "bapgaphae",
+      "teamNumber": 7,
+      "members": [
+        "강채윤",
+        "임채린",
+        "정유진"
+      ]
+    },
+    {
+      "projectId": "alba-mouse",
+      "teamNumber": 4,
+      "members": [
+        "오정인",
+        "이시윤",
+        "전민서"
+      ]
+    }
   ],
   "9": [
-    { "projectId": "data-queen", "teamNumber": 2, "members": ["김나연", "한제인", "변유나"] },
-    { "projectId": "beoril-zido", "teamNumber": 9, "members": ["박수현", "정재윤"] },
-    { "projectId": "epic-pizza", "teamNumber": 3, "members": ["김도희", "김민수", "유현서"] },
-    { "projectId": "atti", "teamNumber": 5, "members": ["김서윤", "임소윤", "최다흔"] },
-    { "projectId": null, "teamNumber": 4, "members": ["김민서", "박지후", "장수안"] },
-    { "projectId": "hyfl-dinner", "teamNumber": 6, "members": ["백혜아", "이선우", "이수빈"] },
-    { "projectId": "maeum-check", "teamNumber": 8, "members": ["김소윤", "윤재인"] },
-    { "projectId": "crowdless", "teamNumber": 7, "members": ["이시온", "정태연", "황서하"] },
-    { "projectId": "seoul-tour-guide", "teamNumber": 1, "members": ["강서윤", "김하율", "조수현"] }
+    {
+      "projectId": "data-queen",
+      "teamNumber": 2,
+      "members": [
+        "김나연",
+        "한제인",
+        "변유나"
+      ]
+    },
+    {
+      "projectId": "beoril-zido",
+      "teamNumber": 9,
+      "members": [
+        "박수현",
+        "정재윤"
+      ]
+    },
+    {
+      "projectId": "epic-pizza",
+      "teamNumber": 3,
+      "members": [
+        "김도희",
+        "김민수",
+        "유현서"
+      ]
+    },
+    {
+      "projectId": "atti",
+      "teamNumber": 5,
+      "members": [
+        "김서윤",
+        "임소윤",
+        "최다흔"
+      ]
+    },
+    {
+      "projectId": null,
+      "teamNumber": 4,
+      "members": [
+        "김민서",
+        "박지후",
+        "장수안"
+      ]
+    },
+    {
+      "projectId": "hyfl-dinner",
+      "teamNumber": 6,
+      "members": [
+        "백혜아",
+        "이선우",
+        "이수빈"
+      ]
+    },
+    {
+      "projectId": "maeum-check",
+      "teamNumber": 8,
+      "members": [
+        "김소윤",
+        "윤재인"
+      ]
+    },
+    {
+      "projectId": "crowdless",
+      "teamNumber": 7,
+      "members": [
+        "이시온",
+        "정태연",
+        "황서하"
+      ]
+    },
+    {
+      "projectId": "seoul-tour-guide",
+      "teamNumber": 1,
+      "members": [
+        "강서윤",
+        "김하율",
+        "조수현"
+      ]
+    }
   ],
   "10": [
-    { "projectId": "drink-forest", "teamNumber": 2, "members": ["홍시연", "한예람", "윤서하"] },
-    { "projectId": "dameal", "teamNumber": 5, "members": ["장상현", "최동건", "주민재"] },
-    { "projectId": "halfway", "teamNumber": 4, "members": ["이은휴", "박인수", "김예솔"] },
-    { "projectId": "truman-volunteer", "teamNumber": 1, "members": ["김보겸", "김민찬", "박지원"] },
-    { "projectId": "re-school", "teamNumber": 3, "members": ["김현주", "이다은", "최예원"] },
-    { "projectId": "as-if", "teamNumber": 7, "members": ["이영채", "박수빈", "오서연"] },
-    { "projectId": "barrier-free", "teamNumber": 8, "members": ["김세빈", "이지효", "황예성"] },
-    { "projectId": "homeward", "teamNumber": 6, "members": ["안예지", "김나원", "이시현"] }
+    {
+      "projectId": "drink-forest",
+      "teamNumber": 2,
+      "members": [
+        "홍시연",
+        "한예람",
+        "윤서하"
+      ]
+    },
+    {
+      "projectId": "dameal",
+      "teamNumber": 5,
+      "members": [
+        "장상현",
+        "최동건",
+        "주민재"
+      ]
+    },
+    {
+      "projectId": "halfway",
+      "teamNumber": 4,
+      "members": [
+        "이은휴",
+        "박인수",
+        "김예솔"
+      ]
+    },
+    {
+      "projectId": "truman-volunteer",
+      "teamNumber": 1,
+      "members": [
+        "김보겸",
+        "김민찬",
+        "박지원"
+      ]
+    },
+    {
+      "projectId": "re-school",
+      "teamNumber": 3,
+      "members": [
+        "김현주",
+        "이다은",
+        "최예원"
+      ]
+    },
+    {
+      "projectId": "as-if",
+      "teamNumber": 7,
+      "members": [
+        "이영채",
+        "박수빈",
+        "오서연"
+      ]
+    },
+    {
+      "projectId": "barrier-free",
+      "teamNumber": 8,
+      "members": [
+        "김세빈",
+        "이지효",
+        "황예성"
+      ]
+    },
+    {
+      "projectId": "homeward",
+      "teamNumber": 6,
+      "members": [
+        "안예지",
+        "김나원",
+        "이시현"
+      ]
+    }
   ]
 }
