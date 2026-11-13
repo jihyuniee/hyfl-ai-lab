@@ -9,5 +9,15 @@
     { "projectId": "maeum-check", "teamNumber": 8, "members": ["김소윤", "윤재인"] },
     { "projectId": "crowdless", "teamNumber": 7, "members": ["이시온", "정태연", "황서하"] },
     { "projectId": "seoul-tour-guide", "teamNumber": 1, "members": ["강서윤", "김하율", "조수현"] }
+  ],
+  "10": [
+    { "projectId": "drink-forest", "teamNumber": 2, "members": ["홍시연", "한예람", "윤서하"] },
+    { "projectId": "dameal", "teamNumber": 5, "members": ["장상현", "최동건", "주민재"] },
+    { "projectId": "halfway", "teamNumber": 4, "members": ["이은휴", "박인수", "김예솔"] },
+    { "projectId": "truman-volunteer", "teamNumber": 1, "members": ["김보겸", "김민찬", "박지원"] },
+    { "projectId": "re-school", "teamNumber": 3, "members": ["김현주", "이다은", "최예원"] },
+    { "projectId": "as-if", "teamNumber": 7, "members": ["이영채", "박수빈", "오서연"] },
+    { "projectId": "barrier-free", "teamNumber": 8, "members": ["김세빈", "이지효", "황예성"] },
+    { "projectId": "homeward", "teamNumber": 6, "members": ["안예지", "김나원", "이시현"] }
   ]
 }
