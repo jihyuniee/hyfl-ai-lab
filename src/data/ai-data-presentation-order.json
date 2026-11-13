@@ -1,4 +1,14 @@
 {
+  "7": [
+    { "projectId": "foreign-students", "teamNumber": 1, "members": ["강지원", "김유빈", "최예서"] },
+    { "projectId": "kiosk-practice", "teamNumber": 6, "members": ["홍서진", "신재영"] },
+    { "projectId": "damoa", "teamNumber": 2, "members": ["황혜민", "남유주", "김지효"] },
+    { "projectId": "godsaeng-wallet", "teamNumber": 4, "members": ["우준범", "강나율", "이채원"] },
+    { "projectId": "pediatric-hospital", "teamNumber": 7, "members": ["황규온", "강서율", "김은재"] },
+    { "projectId": null, "teamNumber": 3, "members": ["부송연", "양해원", "조서현"] },
+    { "projectId": "culturelink", "teamNumber": 8, "members": ["정민제", "윤주은"] },
+    { "projectId": "remind", "teamNumber": 5, "members": ["유채현", "김도연", "나예서"] }
+  ],
   "9": [
     { "projectId": "data-queen", "teamNumber": 2, "members": ["김나연", "한제인", "변유나"] },
     { "projectId": "beoril-zido", "teamNumber": 9, "members": ["박수현", "정재윤"] },
