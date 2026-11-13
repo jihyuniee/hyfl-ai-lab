@@ -45,7 +45,7 @@ const palettes = ['#e4eee7', '#e7eaf5', '#ece4dc', '#dfe9eb'];
       const story = getProjectStory(work);
       const profileImage = 'profileImage' in work && typeof work.profileImage === 'string' ? work.profileImage : null;
       const creatorName = work.team || work.title;
-      const showTeamNumber = ![9, 10].includes(work.classroom) && teamNumber;
+      const showTeamNumber = ![7, 9, 10].includes(work.classroom) && teamNumber;
       return <article class="work-card" aria-labelledby={`work-${work.id}`}>
         <Browser id={work.id} title={work.title} url={work.url} href={href} eager={index < 4}/>
         <div class="work-body">
