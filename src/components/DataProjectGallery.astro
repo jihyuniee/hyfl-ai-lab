@@ -4,6 +4,7 @@ import Reactions from './DataProjectReactions.astro';
 import Browser from './DataProjectBrowser.astro';
 import TeamPhoto from './TeamProfilePhoto.astro';
 import { getProjectStory } from '../lib/project-story.mjs';
+import { getProjectRevision } from '../lib/project-media.mjs';
 import projects from '../data/ai-data-projects.json';
 import presentationOrders from '../data/ai-data-presentation-order.json';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -41,7 +42,7 @@ const palettes = ['#e4eee7', '#e7eaf5', '#ece4dc', '#dfe9eb'];
         <div class="work-body"><h2 class="work-app-name" id={`pending-team-${teamNumber}`}>{members.join(' · ')}</h2><p class="work-intro">작품이 준비되면 이 자리에 전시됩니다.</p></div>
       </article>;
       const index = projects.findIndex(item => item.id === work.id);
-      const href = `${base}/exhibition/ai-data/${work.id}/`;
+      const href = `${base}/exhibition/ai-data/${work.id}/?v=${getProjectRevision(work)}`;
       const story = getProjectStory(work);
       const profileImage = 'profileImage' in work && typeof work.profileImage === 'string' ? work.profileImage : null;
       const creatorName = work.team || work.title;

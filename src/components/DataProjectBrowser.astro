@@ -1,12 +1,9 @@
 ---
-import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { getProjectCover } from '../lib/project-media.mjs';
 interface Props { id: string; title: string; url: string; href: string; external?: boolean; eager?: boolean }
 const { id, title, url, href, external = false, eager = false } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const coverPath = `/exhibition/ai-data/covers/${id}.webp`;
-const coverVersion = createHash('sha256').update(readFileSync(`public${coverPath}`)).digest('hex').slice(0, 12);
-const coverSrc = `${base}${coverPath}?v=${coverVersion}`;
+const coverSrc = `${base}${getProjectCover(id).path}`;
 const address = new URL(url);
 const displayAddress = address.hostname + (address.pathname === '/' ? '' : address.pathname);
 ---
