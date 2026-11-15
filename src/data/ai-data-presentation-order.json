@@ -1,4 +1,76 @@
 {
+  "6": [
+    {
+      "projectId": "emergency-go",
+      "teamNumber": 7,
+      "members": [
+        "정승유",
+        "이서정"
+      ]
+    },
+    {
+      "projectId": null,
+      "teamNumber": 5,
+      "members": [
+        "정혜안",
+        "송혜령",
+        "박성빈"
+      ]
+    },
+    {
+      "projectId": "hyfl-valley",
+      "teamNumber": 4,
+      "members": [
+        "이시은",
+        "정유담",
+        "전성원"
+      ]
+    },
+    {
+      "projectId": "busmate",
+      "teamNumber": 1,
+      "members": [
+        "최지운",
+        "김재찬",
+        "곽민서"
+      ]
+    },
+    {
+      "projectId": "tamgu-itda",
+      "teamNumber": 3,
+      "members": [
+        "이동은",
+        "김나희",
+        "이은채"
+      ]
+    },
+    {
+      "projectId": null,
+      "teamNumber": 2,
+      "members": [
+        "권다온",
+        "남소은",
+        "김진아"
+      ]
+    },
+    {
+      "projectId": "we-bare-bears",
+      "teamNumber": 6,
+      "members": [
+        "오소영",
+        "이채윤",
+        "김지윤"
+      ]
+    },
+    {
+      "projectId": null,
+      "teamNumber": 8,
+      "members": [
+        "김채안",
+        "박승아"
+      ]
+    }
+  ],
   "7": [
     {
       "projectId": "foreign-students",
