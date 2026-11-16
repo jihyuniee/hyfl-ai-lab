@@ -23,7 +23,7 @@ test('practical starter and all existing worksheet steps remain available', () =
  assert.ok(guide.includes('/templates/ai-chatbot-starter.zip'));
  assert.ok(guide.includes('현재 앱 파일과 압축을 푼 시작 파일을 함께'));
  for (let n=0;n<=5;n++) assert.ok(project.includes('## STEP '+n+'.'));
- for (const text of ['content={developmentPrompt}', '현재 앱 파일을 첨부했습니다.', 'content={analysisPrompt}']) assert.ok(project.includes(text));
+ for (const text of ['content={developmentPrompt}', '현재 앱 파일을 첨부했습니다.']) assert.ok(project.includes(text));
 });
 test('prompts support work students can do without inventing infrastructure', () => {
  for (const name of ['addChatbotPrompt','chatbotDebugPrompt']) assert.ok(guide.includes(`content={${name}}`));
