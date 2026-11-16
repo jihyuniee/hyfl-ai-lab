@@ -1,0 +1,16 @@
+---
+import Gallery from '../../../../components/DataProjectGallery.astro';
+import projects from '../../../../data/ai-data-projects.json';
+import { GALLERY_PAGE_SIZE } from '../../../../lib/gallery-pagination.mjs';
+
+export function getStaticPaths() {
+  const pageCount = Math.ceil(projects.length / GALLERY_PAGE_SIZE);
+  return Array.from({ length: pageCount - 1 }, (_, index) => {
+    const page = index + 2;
+    return { params: { page: String(page) }, props: { page } };
+  });
+}
+
+const { page } = Astro.props;
+---
+<Gallery page={page} />
