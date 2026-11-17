@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  paragraphs: string[];
+  lessonHref: string;
+  tabs: { label: string; href: string; count: number; current: boolean }[];
+}
+const { title, paragraphs, lessonHref, tabs } = Astro.props;
+---
+<section class="exhibition-intro" aria-labelledby="exhibition-title">
+  <p class="exhibition-edition">2026 · 한영외국어고등학교</p>
+  <h1 id="exhibition-title">{title}</h1>
+  <div class="exhibition-description">{paragraphs.map(paragraph => <p>{paragraph}</p>)}</div>
+</section>
+<div class="exhibition-browse" id="gallery-works">
+  <nav class="exhibition-class-tabs" aria-label="반별 작품 보기">
+    {tabs.map(tab => <a href={tab.href} aria-current={tab.current ? 'page' : undefined}>{tab.label} <span>{tab.count}</span></a>)}
+  </nav>
+  <a class="exhibition-lesson" href={lessonHref}>이 프로젝트의 수업 보기 ↗</a>
+</div>
+<style>
+.exhibition-intro{padding:34px 0 30px;color:#202124}
+.exhibition-edition{font-size:11px;line-height:1.7;color:#8b8b8b;margin:0 0 12px;letter-spacing:.01em}
+.exhibition-intro h1{font-size:clamp(27px,2.2vw,34px);line-height:1.45;font-weight:600;letter-spacing:-.035em;word-break:keep-all;margin:0}
+.exhibition-description{max-width:1160px;margin-top:21px;font-size:13px;line-height:1.95;color:#73767b;word-break:keep-all;overflow-wrap:anywhere}
+.exhibition-description p{margin:0}
+.exhibition-description p+p{margin-top:12px}
+.exhibition-browse{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 0 18px;border-bottom:1px solid #e8e8e8;scroll-margin-top:24px}
+.exhibition-class-tabs{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+.exhibition-class-tabs a{display:inline-flex;align-items:center;gap:7px;padding:10px 15px;font-size:12px;line-height:1.5;font-weight:500;color:#696b70;text-decoration:none;border-radius:3px;white-space:nowrap}
+.exhibition-class-tabs a:hover{background:#f3f4f7;color:#344b9d}
+.exhibition-class-tabs a[aria-current=page]{background:#354b9f;color:white}
+.exhibition-class-tabs span{font-size:10px;opacity:.65;font-variant-numeric:tabular-nums}
+.exhibition-lesson{font-size:12px;line-height:1.7;color:#7a7d84;text-decoration:none;white-space:nowrap}
+.exhibition-lesson:hover{color:#354b9f}
+@media(max-width:760px){.exhibition-intro{padding:26px 0 25px}.exhibition-intro h1{font-size:26px}.exhibition-description{font-size:12px;margin-top:17px}.exhibition-browse{gap:14px;align-items:flex-start;flex-wrap:wrap;padding-bottom:16px}.exhibition-class-tabs{gap:3px}.exhibition-class-tabs a{font-size:11px;padding:9px 10px;gap:5px}.exhibition-lesson{font-size:11px;margin-left:auto}}
+</style>
