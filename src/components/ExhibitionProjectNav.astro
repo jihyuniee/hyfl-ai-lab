@@ -2,41 +2,17 @@
 interface Props { active: 'model' | 'data' }
 const { active } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const currentLabel = active === 'model' ? '머신러닝 분류 모델' : '공공데이터 웹앱';
 ---
-<details class="exhibition-project-picker">
-  <summary><span class="projects-label">PROJECTS <span aria-hidden="true">⌄</span></span><span class="current-project">{currentLabel}</span></summary>
-  <nav class="exhibition-project-menu" aria-label="프로젝트 선택">
-    <a href={`${base}/exhibition/school-image-lab/`} aria-current={active === 'model' ? 'page' : undefined}><span>프로젝트 1</span>머신러닝 분류 모델</a>
-    <a href={`${base}/exhibition/ai-data/`} aria-current={active === 'data' ? 'page' : undefined}><span>프로젝트 2</span>공공데이터 웹앱</a>
-  </nav>
-</details>
-<script>
-  document.querySelectorAll<HTMLDetailsElement>('.exhibition-project-picker').forEach(picker => {
-    document.addEventListener('click', event => {
-      if (picker.open && event.target instanceof Node && !picker.contains(event.target)) picker.open = false;
-    });
-    picker.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && picker.open) {
-        picker.open = false;
-        picker.querySelector('summary')?.focus();
-      }
-    });
-  });
-</script>
+<nav class="exhibition-projects" aria-label="프로젝트 선택">
+  <a href={`${base}/exhibition/school-image-lab/`} aria-current={active === 'model' ? 'page' : undefined}><span>프로젝트 1</span>머신러닝 분류 모델</a>
+  <a href={`${base}/exhibition/ai-data/`} aria-current={active === 'data' ? 'page' : undefined}><span>프로젝트 2</span>공공데이터 웹앱</a>
+</nav>
 <style>
-.exhibition-project-picker{position:relative;padding:16px 0;border-bottom:1px solid #e8e8e8}
-.exhibition-project-picker summary{display:flex;align-items:center;gap:20px;width:fit-content;cursor:pointer;list-style:none}
-.exhibition-project-picker summary::-webkit-details-marker{display:none}
-.projects-label{display:inline-flex;align-items:center;justify-content:space-between;gap:30px;padding:12px 20px;background:#354b9f;color:white;font-size:13px;font-weight:600;line-height:1.5;min-width:160px}
-.projects-label>span{font-size:16px;line-height:1;transition:transform .15s}
-.exhibition-project-picker[open] .projects-label>span{transform:rotate(180deg)}
-.current-project{font-size:12px;line-height:1.7;color:#7c7d82}
-.exhibition-project-menu{position:absolute;z-index:10;top:calc(100% - 12px);left:0;display:flex;flex-wrap:wrap;gap:12px 30px;width:max-content;max-width:100%;padding:24px;background:#fff;border:1px solid #e4e5e9;box-shadow:0 8px 18px #2021240a}
-.exhibition-project-menu a{display:flex;flex-direction:column;gap:5px;padding:0 0 5px;font-size:14px;line-height:1.7;color:#44464c;text-decoration:none;border-bottom:2px solid transparent;word-break:keep-all}
-.exhibition-project-menu a>span{font-size:10px;color:#8b8e95}
-.exhibition-project-menu a:hover,.exhibition-project-menu a[aria-current=page]{color:#354b9f;border-bottom-color:#354b9f}
-.exhibition-project-picker summary:focus-visible,.exhibition-project-menu a:focus-visible{outline:2px solid #354b9f;outline-offset:4px}
-@media(max-width:600px){.exhibition-project-picker{padding:13px 0}.projects-label{min-width:135px;font-size:12px;padding:11px 15px;gap:20px}.exhibition-project-picker summary{gap:14px}.current-project{font-size:11px}.exhibition-project-menu{width:100%;gap:18px;padding:20px}.exhibition-project-menu a{font-size:12px;flex:1}}
-@media(prefers-reduced-motion:reduce){.projects-label>span{transition:none}}
+.exhibition-projects{display:flex;align-items:stretch;gap:34px;padding:18px 0 0;border-bottom:1px solid #e8e8e8}
+.exhibition-projects a{display:flex;flex-direction:column;gap:6px;padding:0 3px 15px;border-bottom:2px solid transparent;font-size:14px;line-height:1.6;font-weight:500;color:#686b72;text-decoration:none;word-break:keep-all}
+.exhibition-projects a>span{font-size:10px;font-weight:400;color:#92959b}
+.exhibition-projects a:hover{color:#354b9f;border-bottom-color:#c4cade}
+.exhibition-projects a[aria-current=page]{color:#354b9f;border-bottom-color:#354b9f}
+.exhibition-projects a:focus-visible{outline:2px solid #354b9f;outline-offset:4px}
+@media(max-width:600px){.exhibition-projects{gap:25px;padding-top:15px}.exhibition-projects a{font-size:12px;gap:5px;padding-bottom:13px}.exhibition-projects a>span{font-size:10px}}
 </style>
